@@ -4,7 +4,7 @@ Nachdem wir uns die Basistypen von TypeScript angeschaut haben werden wir jetzt 
 Es ist vielleicht dem einen oder dem anderen aufgefallen, dass wir kein Basistyp für Objekte, ausgenommen von Arrays, gesehen haben.
 Mit Interfaces können wir genau dies tun, wir können den Typ von Objekten definieren.
 
-Wir haben zwei Möglichkeiten ein Interface zu definieren. Einmal anonyme Interfaces bei z. B. eine Variabledefinition oder benannte Interfaces mit dem Keyword "interface". In beiden Fällen wird der kompilierter JavaScript-Code, den Code für das Interface nicht beinhalten. Als erstes schauen wir uns anonyme Interfaces an.
+Wir haben zwei Möglichkeiten ein Interface zu definieren. Einmal anonyme Interfaces z. B. bei eine Variablendefinition oder benannte Interfaces mit dem Keyword "interface". In beiden Fällen wird der kompilierter JavaScript-Code, den Code für das Interface nicht beinhalten. Als erstes schauen wir uns anonyme Interfaces an.
 
 ```js
 var user: {name: string; age: number};
@@ -30,5 +30,5 @@ user = {
 }
 ```
 
-Wir haben hier die einfachste Form von Interfaces gezeigt. Aber TypeScript bietet uns da noch mehr möglichkeiten wie Interfaces mit optionalen Eigenschaften, Interfaces für Funktionen und mehr. Wer mehr darüber erfahren möchte, kann im [TypeScript-Handbuch](http://www.typescriptlang.org/Handbook#interfaces) nachschauen.
+Wir haben hier die einfachste Form von Interfaces gezeigt. Aber TypeScript bietet uns da noch mehr Möglichkeiten wie Interfaces mit optionalen Eigenschaften, Interfaces für Funktionen und mehr. Wer mehr darüber erfahren möchte, kann im [TypeScript-Handbuch](http://www.typescriptlang.org/Handbook#interfaces) nachschauen.
 

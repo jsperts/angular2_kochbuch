@@ -1,4 +1,4 @@
-## Angular 2 Anwendung {#angular-app}
+## Angular 2 Anwendung {#c02-angular-app}
 
 ### Problem
 
@@ -12,8 +12,8 @@ Ich möchte von Null auf eine Angular 2 Anwendung implementieren.
 
 ### Lösung
 
-main.ts
-```js
+{title="main.ts", lang=js}
+```
 import {bootstrap, Component, View} from 'angular2/angular2';
 
 @Component({
@@ -27,19 +27,19 @@ class MyApp {}
 bootstrap(MyApp);
 ```
 
-Erklärungen zu main.ts:
+Erklärung:
 
 Diese Datei definiert die Haupt- und in dem Fall einzige Komponente unserer Anwendung. Sie ist ein ES6-Modul.
 Die Hauptkomponente erkennt man dadurch, dass die der bootstrap-Funktion als Parameter übergeben wird (Zeile 11).
 
-* Zeile 1: Hier importieren wir die nötige Abhängigkeiten aus dem angular2-Paket. Dafür nutzen wir eine [ES6 import-Anweisungen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-* Zeile 3-5: Hier definieren wir eine Komponente mittels TypeScript-Decorator und sagen Angular, dass unser Komponente im my-app-Tag gerendert werden soll
+* Zeile 1: Hier importieren wir die nötige Abhängigkeiten aus dem angular2-Paket. Dafür nutzen wir eine ES6/ES2015 [import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* Zeile 3-5: Hier definieren wir eine Komponente mittels [TypeScript-Decorator](#gl-decorator) und sagen Angular, dass unser Komponente im my-app-Tag gerendert werden soll
 * Zeile 6-8: Definiert die View die zu der Komponente gehört. Das HTML im template-Attribut wird später zwischen <my-tag> und </my-tag> hinzugefügt
-* Zeile 9: Ist die dazugehörige Klasse. In diesem Fall ist die Klasse leer da unsere Komponente keine Funktionalität hat
-* Zeile 11: Die Anwendung wird initialisiert
+* Zeile 9: Ist die dazugehörige Klasse. In diesem Fall ist die Klasse leer da unsere Komponente keine Logic und keine Daten hat
+* Zeile 11: Die Anwendung wird initialisiert (bootstrap)
 
-index.html
-```html
+{title="index.html", lang=html}
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +64,7 @@ index.html
 </html>
 ```
 
-Erklärungen zu index.html:
+Erklärung:
 
 In dieser Datei laden wir unsere Abhängigkeiten und laden mittels SystemJS das Hauptmodul unserer Anwendung (main.ts).
 
@@ -77,7 +77,7 @@ In dieser Datei laden wir unsere Abhängigkeiten und laden mittels SystemJS das 
 
 Jetzt brauchen wir noch ein Webserver, um unsere Anwendung zu testen. Das Angular-Team empfiehlt den [live-server](https://www.npmjs.com/package/live-server) der automatisch die Seite im Browser Neuladen kann bei Änderungen. Wer kein live-reload mag kann auch den [http-server](https://www.npmjs.com/package/http-server) nutzen. Beide Webserver sind über npm installierbar.
 
-Nach der Installation und Start des Webservers, können wir unsere Anwendung testen. Wenn im Browser Fenster "Hello World!" steht, ist alles gut gelaufen. Wenn das nicht der Fall ist, muss man wahrscheinlich noch das [es6-shim](https://www.npmjs.com/package/es6-shim) installieren und in der index.html-Datei laden. Angular 2 braucht gewisse ES6-Features die in ältere Browser, darunter auch IE 11, nicht vorhanden sind.
+Nach der Installation und Start des Webservers, können wir unsere Anwendung testen. Wenn im Browser Fenster "Hello World!" steht, ist alles gut gelaufen. Wenn das nicht der Fall ist, muss man wahrscheinlich noch das [es6-shim](https://www.npmjs.com/package/es6-shim) installieren und in der index.html-Datei laden. Angular 2 braucht gewisse ES6-Features die in ältere Browser, darunter auch Internet Explorer 11, nicht vorhanden sind.
 
 ### Diskussion
 
@@ -89,9 +89,14 @@ Bei der Definition einer Komponente, darf sich kein Code zwischen @Component(), 
 No Directive annotation found on MyApp
 ```
 
-wobei "MyApp" der Namen der Komponenten ist. Das gilt für alle Komponenten unabhängig davon, ob sie Haupt- oder normale Komponenten sind.
+Wobei "MyApp" der Namen der Komponenten ist. Das gilt für alle Komponenten unabhängig davon, ob sie Haupt- oder normale Komponenten sind.
 
 ### Code
 
-Code auf Github: [https://github.com/jsperts/angular2\_kochbuch\_code/tree/master/01-Basic\_Recipes/01-Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/01-Basic_Recipes/01-Angular_App)
+Code auf Github: [02-Basic\_Recipes/01-Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/01-Angular_App)
+
+### Weitere Ressourcen
+
+* Informationen über ES6/ES2015 [Module](http://exploringjs.com/es6/ch_modules.html)
+* Mehr Informationen über Decorators in TypeScript und JavaScript (wahrscheinlich in ES7/ES2016) gibt es [hier](https://github.com/wycats/javascript-decorators)
 

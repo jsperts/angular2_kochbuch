@@ -5,15 +5,15 @@
 Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Komponente halten.
 
 ### Zutaten
-* Eine Komponente
+* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
 * Eine HTML-Datei für das HTML
 
 ### Lösung
 
 Statt das template-Attribut können wir das templateUrl-Attribut nutzen und dort angeben wo unsere HTML-Datei sich befindet.
 
-Ausschnitt aus einer Komponente
-```js
+{title="Ausschnitt aus einer Komponente", lang=js}
+```
 ...
 
 @Component({
@@ -33,5 +33,5 @@ Das templateUrl-Attribut ist sehr nützlich wenn wir HTML haben mit mehr als 5-1
 
 ### Code
 
-Code auf Github: [https://github.com/jsperts/angular2\_kochbuch\_code/tree/master/06-Component\_Recipes/02-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Component_Recipes/02-Separation_of_Component_and_Template)
+Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Component_and_Template)
 

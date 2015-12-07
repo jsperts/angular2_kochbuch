@@ -1,19 +1,19 @@
 # Einführung zu TypeScript
 
-Vermutlich ist TypeScript für einige Leser Neuland, und aus diesem Grund habenm wir uns entschieden, dass das Buch auch eine kurze Einführung zu TypeScript beinhalten soll.
-TypeScript ist eine von Microsoft geschriebene Programmiersprache mit derer man Anwendungen schreiben kann, die dann später zu JavaScript kompiliert werden, damit sie z. B. im Browser funktionieren. Es ist eine typisierte Übermenge von JavaScript (ES5). Außer Typen unterstützt TypeScript auch gewisse Features aus ES6/ES2015 aber auch Features die vermutlich in ES7/ES2016 standarisiert werden. Da TypeScript eine Übermenge von JavaScript ist, ist auch jede JavaScript Anwendung zumindest Anwendungen die mit ES5 geschrieben wurden sind, auch eine valide TypeScript Anwendung.
+Vermutlich ist TypeScript für einige Leser Neuland, und aus diesem Grund haben wir uns entschieden, dass das Buch auch eine kurze Einführung zu TypeScript beinhalten soll.
+TypeScript ist eine von Microsoft geschriebene Programmiersprache mit derer man Anwendungen schreiben kann, die dann später zu JavaScript kompiliert werden, damit sie z. B. im Browser funktionieren. Es ist eine typisierte Übermenge von JavaScript (ES5). Außer Typen unterstützt TypeScript auch gewisse Features aus ES6/ES2015 aber auch Features die vermutlich in ES7/ES2016 standardisiert werden. Da TypeScript eine Übermenge von JavaScript ist, ist auch jede JavaScript Anwendung zumindest Anwendungen die mit ES5 geschrieben wurden sind, auch eine valide TypeScript Anwendung.
 
 Wir werden uns nicht die komplette TypeScript Funktionalität anschauen, sondern nur die Teile die wir auch in den verschiedenen Rezepten brauchen werden.
 Der Grund dafür ist einfach, wir möchten uns auf Angular 2 konzentrieren und nicht zu viele Zeit mit TypeScript verbringen.
 Um die komplette Funktionalität von TypeScript abzudecken, bräuchte man ein eigenes Buch dafür.
-Der große Vorteile von TypeScript gegenüber von plain JavaScript, ist das Typ-System das uns TypeScript zu verfügung stellt.
+Der große Vorteile von TypeScript gegenüber von plain JavaScript, ist das Typ-System das uns TypeScript zur Verfügung stellt.
 Dieses ermöglicht uns Typinformationen zu hinterlegen für Variablen, Funktionen, Objekten und mehr.
 In kleineren Anwendungen ist dieser Vorteil vielleicht nicht so relevant, da wir dort relativ schnell ein Überblick bekommen kann, welche Datentypen wo verwendet werden.
 Wer aber größere JavaScript Anwendungen geschrieben hat, weißt wie schwer es sein kann den Überblick zu bewahren und heraus zu finden z. B. welche Eigenschaften ein bestimmtes Objekt hat.
 Mit Hilfe von Typinformationen können wir solche Probleme vermeiden.
 Da Typen ein so wichtiger Aspekt von TypeScript sind, werden wir uns als erstes damit befassen.
 
-## Basistypen
+## Basistypen {#c01-basic-types}
 
 TypeScript bringt von sich aus eine Anzahl von Basistypen mit wie z. B. string, boolean und number aber es erlaubt es uns auch eigenen Typen zu definieren mit Hilfe von Interfaces die wir im nächsten Abschnitt uns anschauen werden. Es ist zwar nicht erforderlich, dass wir mit dem Typ-System arbeiten, kann aber manchmal ganz nützlich sein und darum werden wir in den verschiedenen Rezepten immer wieder auf Typen stoßen.
 
@@ -26,7 +26,7 @@ Insgesamt hat TypeScript 7 Typen die immer vorhanden sind:
 * Any
 * Void
 
-Typdefinitionen kommen immer nach einem doppelt Punkt (:). Wenn wir nach einem Variablenamen, Funktionsnamen oder Funktionsparameter einen doppelt Punkt sehen, Dann handelt es sich um eine Typdefinition.
+Typdefinitionen kommen immer nach einem doppelt Punkt (:). Wenn wir nach einem Variablennamen, Funktionsnamen oder Funktionsparameter einen doppelt Punkt sehen, dann handelt es sich um eine Typdefinition.
 
 ### Boolean
 
@@ -36,7 +36,7 @@ Diese Typ ist für boolesche Werte gedacht und beinhaltet die Werte true und fal
 var isTrue: boolean = false;
 ```
 
-Der unterschied zu plain JavaScript ist der Doppelpunkt nach dem Variablenamen. Was dort steht, gibt den Typ der Variable an. Bei dem Kompilieren werden die Typinformationen benutzt, um sicher zu stellen, dass wir der Variablen die richtige Werte zuweisen. Der Kompilierte JavaScript-Code enthält dann diese Informationen nicht mehr.
+Der unterschied zu plain JavaScript ist der Doppelpunkt nach dem Variablennamen. Bei dem Kompilieren werden die Typinformationen benutzt, um sicher zu stellen, dass wir der Variablen die richtige Werte zuweisen. Der Kompilierte JavaScript-Code enthält dann diese Informationen nicht mehr.
 
 ### Number
 
@@ -48,7 +48,7 @@ var aNumber: number = 2;
 
 ### String
 
-Texte haben den Typ 'string'. Es ist dabei egal, ob wir dabei Anführungszeichen ('), doppelte Anführungszeichen (") oder Backticks (\`) nutzen, der Typ bleibt gleich. Backticks werden für ES6/ES2015 [template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) benutzt und die werden auch von TypeScript unterstützt.
+Texte haben den Typ "string". Es ist dabei egal, ob wir dabei Anführungszeichen ('), doppelte Anführungszeichen (") oder Backticks (\`) nutzen, der Typ bleibt gleich. Backticks werden für ES6/ES2015 [template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) benutzt und die werden auch von TypeScript unterstützt.
 
 ```js
 var aString: string = 'A string';
@@ -56,11 +56,11 @@ aString = "another string";
 aString = `yet another string`;
 ```
 
-Die oben gezeigte Beispiele sind all valide Werte von Typ String.
+Die oben gezeigte Beispiele sind all valide Werte vom Typ String.
 
 ### Array
 
-Diese Typ wird für Liste verwendet und es ist ein zusammen gesetzter Typ. Das bedeutet, dass wir auch noch den Typ der Elemente der Liste angeben müssen. Es gibt zwei möglichkeiten dies zu tun.
+Dieser Typ wird für Liste verwendet und es ist ein zusammen gesetzter Typ. Das bedeutet, dass wir auch noch den Typ der Elemente der Liste angeben müssen. Es gibt zwei Möglichkeiten dies zu tun.
 
 ```js
 var list: number[] = [1, 2, 3];
@@ -78,7 +78,7 @@ Die kleiner (<) und größer (>) Zeichen geben an das es sich um ein generischen
 
 ### Enum
 
-Dieser Typ wird für Aufzählungen benutzt. Damit können wir ein Entwickler-freundlichen Namen für Nummerischewerte angeben. Der Namen des Typs ist "enum".
+Dieser Typ wird für Aufzählungen benutzt. Damit können wir ein Entwickler-freundlichen Namen für nummerische Werte angeben. Der Namen des Typs ist "enum".
 
 ```js
 // Enumdefinition
@@ -87,7 +87,7 @@ enum Status {DONE, IN_PROGRESS, NEW};
 var status: Status = Status.NEW;
 ```
 
-Beim Kompilieren werden die Werte DONE, IN\_PROGRESS und NEW in Zahlen von 0 bis 2 umgewandelt. Enums bieten uns noch mehr Möglichkeiten an, z. B. können wir selbst definieren ob die Zahlen von 0 oder von 1 Anfangen. Mehr Infomationen über [Enums gibt es im TypeScript-Handbuch](http://www.typescriptlang.org/Handbook#basic-types-enum).
+Beim Kompilieren werden die Werte DONE, IN\_PROGRESS und NEW in Zahlen von 0 bis 2 umgewandelt. Enums bieten uns noch mehr Möglichkeiten an, z. B. können wir selbst definieren ob die Zahlen von 0 oder von 1 Anfangen. Mehr Informationen über [Enums gibt es im TypeScript-Handbuch](http://www.typescriptlang.org/Handbook#basic-types-enum).
 
 ### Any
 
@@ -98,7 +98,7 @@ Den "any"-Typ können wir auch benutzen wenn wir wie hier ein Array haben mit El
 var list: Array<any> = [1, true, 'false'];
 ```
 
-Dank des "any"-Typs können wir existierendes JavaScript in TypeScript umwandeln ohne, dass wir für jede Variable und Funktion explizit ein Typ definieren müssen.
+Dank des "any"-Typs können wir existierendes JavaScript als TypeScript behandeln ohne, dass wir für jede Variable und Funktion explizit ein Typ definieren müssen.
 
 ### Void
 
@@ -116,7 +116,7 @@ Nachdem wir uns die Basistypen von TypeScript angeschaut haben werden wir jetzt 
 Es ist vielleicht dem einen oder dem anderen aufgefallen, dass wir kein Basistyp für Objekte, ausgenommen von Arrays, gesehen haben.
 Mit Interfaces können wir genau dies tun, wir können den Typ von Objekten definieren.
 
-Wir haben zwei Möglichkeiten ein Interface zu definieren. Einmal anonyme Interfaces bei z. B. eine Variabledefinition oder benannte Interfaces mit dem Keyword "interface". In beiden Fällen wird der kompilierter JavaScript-Code, den Code für das Interface nicht beinhalten. Als erstes schauen wir uns anonyme Interfaces an.
+Wir haben zwei Möglichkeiten ein Interface zu definieren. Einmal anonyme Interfaces z. B. bei eine Variablendefinition oder benannte Interfaces mit dem Keyword "interface". In beiden Fällen wird der kompilierter JavaScript-Code, den Code für das Interface nicht beinhalten. Als erstes schauen wir uns anonyme Interfaces an.
 
 ```js
 var user: {name: string; age: number};
@@ -142,9 +142,9 @@ user = {
 }
 ```
 
-Wir haben hier die einfachste Form von Interfaces gezeigt. Aber TypeScript bietet uns da noch mehr möglichkeiten wie Interfaces mit optionalen Eigenschaften, Interfaces für Funktionen und mehr. Wer mehr darüber erfahren möchte, kann im [TypeScript-Handbuch](http://www.typescriptlang.org/Handbook#interfaces) nachschauen.
+Wir haben hier die einfachste Form von Interfaces gezeigt. Aber TypeScript bietet uns da noch mehr Möglichkeiten wie Interfaces mit optionalen Eigenschaften, Interfaces für Funktionen und mehr. Wer mehr darüber erfahren möchte, kann im [TypeScript-Handbuch](http://www.typescriptlang.org/Handbook#interfaces) nachschauen.
 
-## Klassen
+## Klassen {#c01-classes}
 
 Klassen in TypeScript sind ähnlich zu [ES6/ES2015 Klassen](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes). Beide bieten uns eine einfachere Möglichkeit an in JavaScript bzw. TypeScript Objekt-orientiert zu programmieren. Auch wenn wir hier das Keyword "class" nutzen werden, arbeiten wir hier nicht mit echten Klassen wie man die vielleicht aus Java oder andere Programmiersprachen kennt. Als Grundlage für Klassen in JavaScript bzw. TypeScript dient immer noch der Prototyp. So sieht eine Klasse in TypeScript aus:
 
@@ -163,7 +163,7 @@ class User {
 var user = new User('Max');
 ```
 
-Nach dem "class"-Keyword kommt der Name der Klasse, in unserem Fall "User" und in der Klasse gibts eine optional Konstruktorfunktion (constructor) mit dem Parameter "name" und eine "print"-Methode. In ES5 würde unsere Klasse so aussehen:
+Nach dem "class"-Keyword kommt der Name der Klasse, in unserem Fall "User" und in der Klasse gibt es eine optional Konstruktorfunktion (constructor) mit dem Parameter "name" und eine "print"-Methode. In ES5 würde unsere Klasse so aussehen:
 
 ```js
 // Konstruktorfunktion
@@ -178,7 +178,7 @@ User.prototype.print = function() {
 var user = new User('Max');
 ```
 
-Der Namen der Konstruktorfunktion wird in TypeScript als Klassenname benutzt und der Rumpf der Konstruktorfunktion und ihre Parameter, werden der constructor-Eigenschaft übergeben. Die restliche Methoden einer Klasse sind einfach Methoden die in ES5 zu der prototype-Eigenschaft gehören. Da wir hier mit TypeScript arbeiten, können wir natürlich auch Typinformationen in unsere Klassen hinterlegen. So könnte die Klasse von oben aussehen mit Typinformationen:
+Der Namen der Konstruktorfunktion wird in TypeScript als Klassennamen benutzt und der Rumpf der Konstruktorfunktion und ihre Parameter, werden der constructor-Eigenschaft übergeben. Die restliche Methoden einer Klasse sind einfach Methoden die in ES5 zu der prototype-Eigenschaft gehören. Da wir hier mit TypeScript arbeiten, können wir natürlich auch Typinformationen in unsere Klassen hinterlegen. So könnte die Klasse von oben aussehen mit Typinformationen:
 
 ```js
 class User {
@@ -192,7 +192,7 @@ class User {
 }
 ```
 
-In Zeile 2, sagen wir TypeScript, dass unsere Instanzen der Klasse User eine Instanzvariable names "name" mit Typ "string" haben. Das hier ist ein von den Unterschieden zwischen TypeScript und ES6/ES2015 Klassen. In ES6/ES2015 Klassen haben wir keine Typinformationen und wir geben auch nicht an was für Instanzvariablen unsere Instanzen haben. Ein weiteren Unterschied sehen wir hier:
+In Zeile 2, sagen wir TypeScript, dass unsere Instanzen der Klasse User eine Instanzvariable namens "name" mit Typ "string" haben. Das hier ist ein von den Unterschieden zwischen TypeScript und ES6/ES2015 Klassen. In ES6/ES2015 Klassen haben wir keine Typinformationen und wir geben auch nicht an was für Instanzvariablen unsere Instanzen haben. Ein weiteren Unterschied sehen wir hier:
 
 ```js
 class User {
@@ -206,5 +206,5 @@ class User {
 }
 ```
 
-Dieses mal haben wir in Zeile 2 direkt einen Wert an unsere Instanzvariable "name" zugewiesen. Diese Schreibweise ist vorallem nützlich wenn wir der Instanzvariable einen Standardwert geben möchten oder wenn man mit statischen Daten arbeitet. Auch das ist in ES6/ES2015 Klassen nicht erlaubt, aber es ist möglich, dass [ES7/ES2016 Klassen](https://github.com/jeffmo/es-class-fields-and-static-properties) das können, natürlich aber ohne die Typinformation. Im allgemeinen können TypeScript Klassen noch viel mehr als hier beschrieben, aber das reicht uns um die Angular 2 Rezepte zu verstehen. Wer mehr über TypeScript Klassen erfahren möchte, kann [hier](http://www.typescriptlang.org/Handbook#classes) nachlesen.
+Dieses mal haben wir in Zeile 2 direkt einen Wert an unsere Instanzvariable "name" zugewiesen. Diese Schreibweise ist vor allem nützlich wenn wir der Instanzvariable einen Standardwert geben möchten oder wenn man mit statischen Daten arbeitet. Auch das ist in ES6/ES2015 Klassen nicht erlaubt, aber es ist möglich, dass [ES7/ES2016 Klassen](https://github.com/jeffmo/es-class-fields-and-static-properties) das können, natürlich aber ohne die Typinformation. Im allgemeinen können TypeScript Klassen noch viel mehr als hier beschrieben, aber das reicht uns um die Angular 2 Rezepte zu verstehen. Wer mehr über TypeScript Klassen erfahren möchte, kann [hier](http://www.typescriptlang.org/Handbook#classes) nachlesen.
 

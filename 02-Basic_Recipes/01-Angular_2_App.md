@@ -47,15 +47,16 @@ Die Hauptkomponente erkennt man dadurch, dass die der bootstrap-Funktion als Par
   <title>Angular 2 Starter</title>
   <script src="https://code.angularjs.org/tools/system.js"></script>
   <script src="https://code.angularjs.org/tools/typescript.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-alpha.46/angular2.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-alpha.48/angular2.dev.js"></script>
   <script>
     System.config({
       transpiler: 'typescript',
         typescriptOptions: {
         emitDecoratorMetadata: true
       }
+      package: {app: {defaultExtension: 'ts'}}
     });
-    System.import('./main.ts');
+    System.import('./app/main');
   </script>
 </head>
 <body>

@@ -153,3 +153,5 @@ Modul/Klasse für die Todo-Liste. Wir haben hier 3 Methoden, "render", "add" und
 * Zeile 1: Hier importieren wir "TodoItem" um es als Typ zu verwenden und nicht mit "new". Dieser Import wird im kompilierten Code nicht vor kommen
 * Zeile 9: Statt eine normale Funktion (Keyword "function") nutzen wir hier eine [ES6/ES2015 Arrow-Funktion](https://jsperts.de/blog/arrow-functions/). Arrow-Funktionen sind kürzer zu schreiben und sie haben die Eigenschaft, dass sie den this-Wert ihrer Umgebung nutzen und kein eigenen this-Wert definieren
 
+Da SystemJS Ajax nutzt, um die einzelne Module zu laden brauchen wir eine Webserver, um unsere Todo-Anwendung zu testen. Das Angular-Team empfiehlt den [live-server](https://www.npmjs.com/package/live-server) der automatisch die Seite bei Änderungen im Browser Neuladen kann. Wer kein live-reload mag kann auch den [http-server](https://www.npmjs.com/package/http-server) nutzen. Beide Webserver sind über npm installierbar. Natürlich kann man auch andere Webserver nutzen wie z. B. Apache, nginx oder Webserver die in einem IDE integriert sind.
+

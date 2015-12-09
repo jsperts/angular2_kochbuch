@@ -33,8 +33,8 @@ class MyApp {
 
 Erklärung:
 
-* __Zeile 7__: Der Name zwischen den Klammern, hier "click", signalisiert das Event auf den wir hören möchten. Nach dem Gleichheitszeichen folgt die Funktion die wir bei klick aufrufen möchten
-* __Zeile 10-12__: Die Funktion die aufgerufen werden soll wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Funktion identisch sein muss zum Namen den wir im Template nutzen
+* __Zeile 7__: Der Name zwischen den Klammern, hier "click", signalisiert das Event auf das wir hören möchten. Nach dem Gleichheitszeichen folgt die Methode die wir bei klick aufrufen möchten
+* __Zeile 10-12__: Die Methode die aufgerufen werden soll wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
 
 ### Lösung 2
 
@@ -63,9 +63,13 @@ Das ist eine alternative Schreibweise zu der Schreibweise in Lösung 1. Statt Kl
 
 ### Diskussion
 
-Die neue Schreibweise mit Klammern für Browser-Events ersetzt alle Event-Direktiven die es in Angular 1.x gibt wie z. B. ng-click, ng-keypress und ng-keydown. Wir haben im Beispiel "click" benutzt aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress" und "keydown". Allgemein ist der Namen zwischen den Klammer, der Namen des Events auf das wir reagieren möchten.
+Die neue Schreibweise mit Klammern für Browser-Events ersetzt alle Event-Direktiven die es in Angular 1.x gibt wie z. B. ng-click, ng-keypress und ng-keydown. Wir haben im Beispiel "click" benutzt aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress" und "keydown". Allgemein ist der Namen zwischen den Klammer, der Namen des Events auf das wir reagieren möchten. Nach dem Gleichheitszeichen kommt die Aktion die als Reaktion zum Event ausgeführt werden soll. Wir haben ein Methodenaufruf als Aktion definiert, man kann aber auch andere Aktionen definieren wie z. B. die Zuweisung eines Wertes an einer Variablen.
 
 ### Code
 
 Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/03-User_Interaction)
+
+### Weitere Ressourcen
+
+* Die Angular 2 Dokumentation gibt mehr Informationen über [Event-Bindings](https://angular.io/docs/ts/latest/guide/template-syntax.html#event-binding)
 

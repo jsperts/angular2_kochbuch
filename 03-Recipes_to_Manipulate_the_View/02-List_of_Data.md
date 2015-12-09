@@ -62,3 +62,7 @@ Es gibt noch weitere mögliche Schreibweisen für das Anzeigen von einer Liste v
 
 Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/02-List\_of\_Data](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/02-List_of_Data)
 
+### Weitere Ressourcen
+
+* Offizielle [NgFor](https://angular.io/docs/ts/latest/api/common/NgFor-directive.html) Dokumentation auf der Angular 2 Webseite
+

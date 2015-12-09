@@ -11,7 +11,7 @@ Ich möchte von Null auf eine Angular 2 Anwendung implementieren.
 ### Zutaten
 * Leeres Verzeichnis für unsere Anwendung
 * index.html-Datei, um die nötige Bibliotheken zu laden und die Anwendung zu starten
-* main.ts-Datei mit der Komponentendefinition
+* main.ts-Datei mit der Komponentendefinition in eine Unterverzeichnis namens "app"
 * Webserver, um die index.html-Datei und die Angular Anwendung zu laden
 
 ### Lösung
@@ -77,7 +77,7 @@ In dieser Datei laden wir unsere Abhängigkeiten und laden mittels SystemJS das 
 * Zeile 7: Lade den TypeScript-Compiler. Der wird benötigt, um on-the-fly die main.ts-Datei in JavaScript umzuwandeln, so dass der Browser sie lesen kann
 * Zeile 8: Lade die Entwicklungsversion von Angular 2
 * Zeile 10-15: Konfiguriere SystemJS, so dass es TypeScript-Dateien on-the-fly umwandeln kann
-* Zeile 16: Lade unser Hauptmodul
+* Zeile 16: Das Hauptmodul laden
 * Zeile 20: Hier wird unsere Hauptkomponente gerendert. Initial wird "Loading..." angezeigt bis Angular initialisiert wird
 
 Jetzt brauchen wir noch ein Webserver, um unsere Anwendung zu testen. Das Angular-Team empfiehlt den [live-server](https://www.npmjs.com/package/live-server) der automatisch die Seite im Browser Neuladen kann bei Änderungen. Wer kein live-reload mag kann auch den [http-server](https://www.npmjs.com/package/http-server) nutzen. Beide Webserver sind über npm installierbar.
@@ -86,7 +86,10 @@ Nach der Installation und Start des Webservers, können wir unsere Anwendung tes
 
 ### Diskussion
 
-TypeScript on-the-fly in JavaScript umzuwandeln ist auf Dauer keine Option, da mit wachsende Datei Anzahl der Kompiliervorgan langsamer wird. Wir werden in spätere Rezepte sehen wie wir die TypeScript-Dateien vor kompilieren können.
+Wie schon im Abschnitt [TypeScript-Dateien vorkompilieren](#c01-precompile) erwähnt, ist TypeScript on-the-fly in JavaScript umzuwandeln auf Dauer keine Option.
+Wir könnten die TypeScript-Dateien wie im Abschnitt "TypeScript-Dateien vorkompilieren" gezeigt kompilieren, aber der Kompiler wird Warnungen anzeigen. Aber trotz Warnungen werden die Dateien kompiliert. Die Warnungen werden angezeigt weil TypeScript keine Typinformationen über Angular hat und auch nicht weißt wo sich das Modul "angular2/angular2" befindet.
+Im Abschnitt [Angular 2 Anwendung vorkompilieren](#c02-precompile-angular-app) werden wir sehen, wie man dieses Problem überwinden kann.
+Um den schnellen Einstieg zu ermöglichen, ohne Abhängigkeiten installieren zu müssen, werden die meiste Code-Beispiele die on-the-fly Variante für das Kompilieren nutzen.
 
 Bei der Definition einer Komponente, darf sich kein Code zwischen @Component(), @View() und class befinden. Da sind nur Kommentare und/oder Leerzeilen erlaubt. Falls sich da Code befindet, werden wir folgenden Fehler in der Konsole sehen:
 
@@ -174,3 +177,4 @@ Die Komponente "MyComponent" ist jetzt ein Kindelement von unsere Hauptkomponent
 
 Code auf Github: [02-Basic\_Recipes/02-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Define_Component)
 
+## Angular 2 Anwendung vorkompilieren {#c02-precompile-angular-app}

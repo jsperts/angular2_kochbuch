@@ -1,4 +1,4 @@
-## TypeScript-Dateien vorkompilieren
+## TypeScript-Dateien vorkompilieren {#c01-precompile}
 
 Wie schon angekündigt, ist das on-the-fly Kompilieren von TypeScript auf Dauer keine Lösung. In diesem Abschnitt werden wir sehen wie wir die TypeScript-Dateien vor dem Laden im Browser kompilieren können.
 Als erstes brauchen wir den TypeScript-Kompiler. Es gibt verschiedene Möglichkeiten, um den TypeScript-Kompiler herunter zu laden. Wir werden hier mit Node.js und npm arbeiten, da diese Tools weit verbreitet und einfach zu nutzen sind. Wir können Node.js installieren, in dem wir es von der [offizielle Webseite](https://nodejs.org/en/download/) herunter laden. Bei der Installation von Node.js, wird npm mit installiert.

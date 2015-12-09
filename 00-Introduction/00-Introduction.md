@@ -3,7 +3,7 @@
 Angular 2 ist eine von Null auf neu geschriebene Version des populären Google Frameworks Angular 1.x.
 Die neue Version des Frameworks wurde im März 2014 in einem Blog Artikel angekündigt. Anfangs war es geplant das Framework in eine neue Sprache zu schreiben namens AtScript.
 Letztendlich wurde aber entschieden es in Microsofts [TypeScript](http://www.typescriptlang.org/) zu schreiben und es dann in JavaScript zu kompilieren.
-Wir als Entwickler haben die Möglichkeit Angular 2 Anwendungen in TypeScript, ECMAScript 6 (ES6) / ECMAScript 2015 (ES2015) oder ECMAScript 5 (ES5) zu schreiben.
+Wir als Entwickler haben die Möglichkeit Angular 2 Anwendungen in TypeScript, ECMAScript 6 (ES6) / ECMAScript 2015 (ES2015), ECMAScript 5 (ES5) oder Dart zu schreiben.
 In diesem Buch werden wir uns auf TypeScript konzentrieren, da es vermutlich die am häufigste verwendete Sprache ist um Projekten mit Angular 2 zu schreiben.
 
 ## Angular 1.x vs 2

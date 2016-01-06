@@ -1,1 +1,0 @@
-# Rezepte für den Datenaustausch

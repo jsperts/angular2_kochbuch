@@ -105,7 +105,8 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 
 {title="main.ts", lang=js}
 ```
-import {bootstrap, Component, View} from 'angular2/angular2';
+import {Component, View} from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
 
 interface IUser {
   firstname: string,
@@ -120,7 +121,7 @@ const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstn
 @View({
   template: `
     <ul>
-      <li *ng-for="#user of users">
+      <li *ngFor="#user of users">
         Name: {{user.firstname}} {{user.lastname}}
       </li>
     </ul>
@@ -138,13 +139,13 @@ bootstrap(MyApp);
 
 Erklärung:
 
-Zeile 3: Interface Definition für ein User-Objekt
-Zeile 16: Nutzung der NgFor-Direktive um eine Liste anzuzeigen
-Zeile 17: Hier nutzen wir die lokale Variable, um Informationen anzuzeigen wie wir es im Rezept [Daten einer Komponente in der View anzeigen](#c03-show-data) gemacht haben
+Zeile 4-7: Interface Definition für ein User-Objekt
+Zeile 17: Nutzung der NgFor-Direktive um eine Liste anzuzeigen
+Zeile 18: Hier nutzen wir die lokale Variable, um Informationen anzuzeigen wie wir es im Rezept [Daten einer Komponente in der View anzeigen](#c03-show-data) gemacht haben
 
-Erklärung zu der ng-for Syntax:
+Erklärung zu der ngFor Syntax:
 
-Der Stern (\*) vor dem ng-for ist essentiell und ist Teil der Syntax. Er zeigt an, dass der li-Tag und alle Elemente die es beinhaltet als Template für das ng-for benutzt werden. Der Teil nach dem "of" definiert die Instanzvariable in der sich unsere Liste befindet. Die Raute (#) definiert eine lokale Variable. Diese können wir nur innerhalb des Elementes mit dem ng-for nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
+Der Stern (\*) vor dem ngFor ist essentiell und Teil der Syntax. Er zeigt an, dass der li-Tag und alle Elemente die es beinhaltet als Template für das ngFor benutzt werden. Der Teil nach dem "of", ist der Name der Instanzvariable die unsere Liste referenziert. Die Raute (#) definiert eine lokale Variable. Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
 
 ### Diskussion
 

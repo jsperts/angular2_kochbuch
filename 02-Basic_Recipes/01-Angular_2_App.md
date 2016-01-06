@@ -91,16 +91,14 @@ Wir könnten die TypeScript-Dateien wie im Abschnitt "TypeScript-Dateien vorkomp
 Im Abschnitt [Angular 2 Anwendung vorkompilieren](#c02-precompile-angular-app) werden wir sehen, wie man dieses Problem überwinden kann.
 Um den schnellen Einstieg zu ermöglichen, ohne Abhängigkeiten installieren zu müssen, werden die meiste Code-Beispiele die on-the-fly Variante für das Kompilieren nutzen.
 
-W> #### Komponentendefinition
-W>
-W> Bei der Definition einer Komponente, darf sich kein Code zwischen @Component(), @View() und class befinden. Da sind nur Kommentare und/oder Leerzeilen erlaubt. Falls sich da Code befindet, werden wir folgenden Fehler in der Konsole sehen:
+Bei der Definition einer Komponente, darf sich kein Code zwischen @Component(), @View() und class befinden. Da sind nur Kommentare und/oder Leerzeilen erlaubt. Falls sich da Code befindet, werden wir folgenden Fehler in der Konsole sehen:
 
 {linenos=off}
 ```text
 No Directive annotation found on MyApp
 ```
 
-W> Wobei "MyApp" der Namen der Komponenten ist. Das gilt für alle Komponenten unabhängig davon, ob sie Haupt- oder normale Komponenten sind.
+Wobei "MyApp" der Namen der Komponenten ist. Das gilt für alle Komponenten unabhängig davon, ob sie Haupt- oder normale Komponenten sind.
 
 ### Code
 

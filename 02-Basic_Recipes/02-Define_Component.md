@@ -13,7 +13,7 @@ Ich möchte weitere Komponenten nutzen, um meine Anwendung modularer zu gestalte
 
 {title="component.ts", lang=js}
 ```
-import {Component, View} from 'angular2/angular2';
+import {Component, View} from 'angular2/core';
 
 @Component({
     selector: 'my-component'
@@ -36,7 +36,8 @@ Anpassungen an der Hauptkomponente
 
 {title="main.ts", lang=js}
 ```
-import {bootstrap, Component, View} from 'angular2/angular2';
+import {Component, View} from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
 import MyComponent from './component.ts';
 
 @Component({
@@ -53,9 +54,9 @@ bootstrap(MyApp);
 
 Erklärung:
 
-Zeile 2: Hier importieren wir unsere Komponente
-Zeile 8: Wir haben den Tag <my-component></my-component> an das Template hinzugefügt. Zu beachten ist, dass dieser Tag gleich zu dem Selektor in Zeile 4 von component.ts sein muss
-Zeile 9: Mit dem Attribute "directives", definieren wir welche Direktiven im Template benutzt werden können
+Zeile 3: Hier importieren wir unsere Komponente
+Zeile 9: Wir haben den Tag <my-component></my-component> an das Template hinzugefügt. Zu beachten ist, dass dieser Tag gleich zu dem Selektor in Zeile 4 von component.ts sein muss
+Zeile 10: Mit dem Attribute "directives", definieren wir welche Direktiven im Template benutzt werden können
 
 ### Diskussion
 

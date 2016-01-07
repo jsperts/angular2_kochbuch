@@ -87,4 +87,33 @@ Die Sourcemaps werden im gleichen Verzeichnis wie die JavaScript-Dateien abgeleg
 
 ### Konfigurationsdatei für den Kompiler nutzen
 
-TODO
+Auf Dauer kann es nerven wenn man die ewig lange Zeile eintippen muss um unser Projekt zu kompilieren. Eine Alternative dafür bietet die tsconfig.json-Datei. Darin können wir alle nötige Optionen angeben und dann den Kompilierer aufrufen ohne selbst die Optionen angeben zu müssen.
+
+{title="tsconfig.json", lang=json}
+```
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
+}
+```
+
+Das Verzeichnis in dem sich die tsconfig.json-Datei befindet, ist das Hauptverzeichnis unseres TypeScript-Projektes. Nachdem wir die config-Datei erstellt haben, haben wir zwei Möglichkeiten um unsere Anwendung zu kompilieren.
+
+Wir können
+
+```bash
+tsc
+```
+
+im Haupt- oder einem Unterverzeichnis unsere Anwendung aufrufen oder wir können
+
+```bash
+tsc -p Hauptverzeichnis
+```
+
+aufrufen wobei __Hauptverzeichnis__ der Pfad zu dem Verzeichnis ist, in dem die tsconfig.json-Datei liegt. Da unsere config-Datei die "files"-Eigenschaft nicht setzt, werden all \*.ts-Dateien kompiliert die sich im Haupt- und in den Unterverzeichnisse befinden. Das TypeScript-Wiki hat mehr Informationen über die [tsconfig.json-Datei](https://github.com/Microsoft/TypeScript/wiki/tsconfig.json) und die Eigenschaften die sie enthalten kann.
+

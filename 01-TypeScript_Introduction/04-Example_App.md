@@ -44,11 +44,11 @@ Erklärung:
   * Zeile 14: Hier sagen wir SystemJS, dass alle Dateien im Verzeichnis "app" eine ".ts" Endung haben. Somit brauchen wir bei dem Importieren eines Moduls, nicht explizit die Endung anzugeben
   * Zeile 16: Laden der main.ts-Datei, das Hauptmodul unserer Anwendung
 
-W> ## Achtung
+W> #### Achtung
 W>
 W> Wichtig zu beachten ist, dass wir hier TypeScript on-the-fly, sprich im Browser kompilieren. Für unsere kleine Anwendung ist das noch in Ordnung, wird aber für größere Anwendungen zu langsam sein. Wir werden in einem weiteren Abschnitt sehen wie wir die TypeScript-Dateien vorkompilieren können.
 
-I> ## SystemJS
+I> #### SystemJS
 I>
 I> SystemJS ist ein Modullader, der verschiedene Arten von Modulen wie z. B. CommonJS, AMD und ES6/ES2015 Module unterstützt. Strenggenommen müssen wir SystemJS nicht nutzen, es gibt auch andere Möglichkeiten, aber da es vom Angular-Team empfohlen wird, nutzen wir es hier. Wer mehr über SystemJS erfahren möchte kann [hier](https://github.com/systemjs/systemjs) darüber lesen.
 
@@ -84,7 +84,7 @@ Dies ist das Hauptmodul für unsere Anwendung. Instantiiert Todos und die Liste,
 * Zeile 4: Todos für unsere Liste. Das Array ist vom Typ "TodoItem"
 * Zeile 6-8: DOM-Elemente an Konstanten zuweisen. Wir nutzen dafür das [ES6/ES2015 Keyword "const"](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const). Die Typen "HTMLInputElement" und "HTMLElement" sind in TypeScript vordefiniert
 
-I> ## TypeScript DOM-Typen
+I> #### TypeScript DOM-Typen
 I>
 I> Leider scheint es keine Liste von Typen zu geben die TypeScript bereitstellt, außer der Liste mit den Basistypen. Wer also mit dem Browser arbeitet und Typen für HTML-Elemente usw. sucht, muss in der [Typdefinitionsdatei für den DOM](https://github.com/Microsoft/TypeScript/blob/master/src/lib/dom.generated.d.ts) schauen.
 

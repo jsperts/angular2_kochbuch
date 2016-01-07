@@ -43,12 +43,12 @@ TypeScript wird jetzt nicht mehr in der index.html-Datei geladen und in der Syst
 
 {title="Dateien kompilieren", lang=bash}
 ```
-tsc --emitDecoratorMetadata --experimentalDecorators --module commonjs app/main.ts
+tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commonjs app/main.ts
 ```
 
 Erklärung:
 
-tsc ist der TypeScript-Compiler. Die Optionen "--emitDecoratorMetadata" und "--experimentalDecorators" sind in unserem Beispiel optional, werden aber später für die Angular Rezepte gebraucht. Die Option "--module" gibt an, dass die ES6/ES2015 Module die wir nutzen in CommonJS-Module umgewandelt werden sollen. Als letztes geben wir die main.ts-Datei an. Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert. Wir müssen also nicht jedes Modul einzeln kompilieren.
+tsc ist der TypeScript-Compiler. Die Optionen "--emitDecoratorMetadata" und "--experimentalDecorators" sind in unserem Beispiel optional, werden aber später für die Angular Rezepte gebraucht. Die Option "--module" gibt an, dass die ES6/ES2015 Module die wir nutzen in CommonJS-Module umgewandelt werden sollen. Die Option --target gibt an welchen ECMAScript-Version unser JavaScript entsprechen soll. Hier nutzen wir ECMAScript 5. Als letztes geben wir die main.ts-Datei an. Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert. Wir müssen also nicht jedes Modul einzeln kompilieren.
 Der TypeScript-Compiler bietet noch mehr Optionen an die wir nutzen können. Zwei davon werden wir noch gleich sehen. Weitere Optionen gibt es im [TypeScript-Wiki](https://github.com/Microsoft/TypeScript/wiki/Compiler-Options).
 
 W> #### Wichtig
@@ -59,13 +59,17 @@ I> #### CommonJS
 I>
 I> CommonJS ist ein Modul-Standard der hauptsächlich in Node.js verwendet wird. Wir nutzen CommonJS, weil dies die Zusammenarbeit von TypeScript mit externen Bibliotheken wie Angular 2 vereinfacht. Durch die Verwendung von CommonJS-Modulen ist der Compiler in der Lage automatisch nach Typdefinitionen für externe Bibliotheken im "node\_modules" Verzeichnis zu suchen ohne, dass wir ihm sagen müssen wo die Typdefinitionen sind.
 
+I> #### --target
+I>
+I> Standardmäßig nutzt der TypeScript-Compiler ECMAScript 3 als "target". ECMAScript 3 zu nutzen ist nur sinnvoll wenn wir alte Browser wie z. B. Internet Explorer 8 unterstützen möchten. Da Angular 2 nur neuere Browser (ab Internet Explorer 9) unterstützt, können wir ruhig ES5 nutzen. Ein weiterer Grund um ES5 zu nutzen ist, dass manche TypeScript-Features wie z. B. [getter/setters](http://www.typescriptlang.org/Handbook#classes-accessors) für Klassen, in ES3 nicht unterstützt werden.
+
 ### Dateien automatisch kompilieren mit "watch"
 
 Bei jede Änderung die Dateien manuell zu kompilieren, kann auf Dauer nerven. Dafür bietet uns der Compiler eine einfache Lösung. Es gibt eine Option namens "--watch". Mit dieser Option werden die Dateien automatisch bei jede Änderung kompiliert.
 
 {title="Kommando mit watch", lang=bash}
 ```
-tsc --emitDecoratorMetadata --experimentalDecorators --module commonjs --watch app/main.ts
+tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commonjs --watch app/main.ts
 ```
 
 Erklärung:
@@ -78,7 +82,7 @@ Nach dem kompilieren stimmen meistens die Zeilennummern in der JavaScript- und d
 
 {title="Sourcemaps generieren", lang=bash}
 ```
-tsc --emitDecoratorMetadata --experimentalDecorators --module commonjs --sourceMap app/main.ts
+tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commonjs --sourceMap app/main.ts
 ```
 
 Erklärung:
@@ -96,7 +100,8 @@ Auf Dauer kann es nerven wenn man die ewig lange Zeile eintippen muss um unser P
     "module": "commonjs",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "target": "ES5"
   }
 }
 ```

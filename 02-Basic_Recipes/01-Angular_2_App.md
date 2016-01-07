@@ -87,7 +87,7 @@ Nach der Installation und Start des Webservers, können wir unsere Anwendung tes
 ### Diskussion
 
 Wie schon im Abschnitt [TypeScript-Dateien vorkompilieren](#c01-precompile) erwähnt, ist TypeScript on-the-fly in JavaScript umzuwandeln auf Dauer keine Option.
-Wir könnten die TypeScript-Dateien wie im Abschnitt "TypeScript-Dateien vorkompilieren" gezeigt kompilieren, aber der Kompiler wird Warnungen anzeigen. Aber trotz Warnungen werden die Dateien kompiliert. Die Warnungen werden angezeigt weil TypeScript keine Typinformationen über Angular hat und auch nicht weißt wo sich das Modul "angular2/core" bzw. "angular2/platform/browser" befindet.
+Wir könnten die TypeScript-Dateien wie im Abschnitt "TypeScript-Dateien vorkompilieren" gezeigt kompilieren, aber der Compiler wird Warnungen anzeigen. Aber trotz Warnungen werden die Dateien kompiliert. Die Warnungen werden angezeigt weil TypeScript keine Typinformationen über Angular hat und auch nicht weißt wo sich das Modul "angular2/core" bzw. "angular2/platform/browser" befindet.
 Im Abschnitt [Angular 2 Anwendung vorkompilieren](#c02-precompile-angular-app) werden wir sehen, wie man dieses Problem überwinden kann.
 Um den schnellen Einstieg zu ermöglichen, ohne Abhängigkeiten installieren zu müssen, werden die meiste Code-Beispiele die on-the-fly Variante für das Kompilieren nutzen.
 

@@ -57,7 +57,7 @@ class User {
 
 Erklärung:
 
-In Zeile 2, sagen wir TypeScript, dass unsere Instanzen der Klasse User eine Eigenschaft namens "name" mit Typ "string" haben. Das ist ein von den Unterschieden zwischen TypeScript und ES6/ES2015 Klassen. Da wir hier mit TypeScript arbeiten, können wir natürlich auch Typinformationen in unsere Klassen hinterlegen. Wie immer ist die Typangabe optional, aber wir müssen den Namen der Eigenschaft angeben ansonsten wird der Kompiler eine Warnung geben. Wir können also Zeile 2 auch so schreiben: "name;" ohne die Typangabe.
+In Zeile 2, sagen wir TypeScript, dass unsere Instanzen der Klasse User eine Eigenschaft namens "name" mit Typ "string" haben. Das ist ein von den Unterschieden zwischen TypeScript und ES6/ES2015 Klassen. Da wir hier mit TypeScript arbeiten, können wir natürlich auch Typinformationen in unsere Klassen hinterlegen. Wie immer ist die Typangabe optional, aber wir müssen den Namen der Eigenschaft angeben ansonsten wird der Compiler eine Warnung geben. Wir können also Zeile 2 auch so schreiben: "name;" ohne die Typangabe.
 
 {title="Eine weitere Schreibweise von TypeScript Klassen", lang=js}
 ```

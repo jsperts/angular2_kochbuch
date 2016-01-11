@@ -6,4 +6,5 @@
 05-Recipes_for_Data_Exchange.md
 06-Routing_Recipes.md
 07-Component_Recipes.md
+08-List_Recipes.md
 A-Glossary.md

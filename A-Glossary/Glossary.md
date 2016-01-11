@@ -16,7 +16,7 @@ __Direktive__: Eine Direktive in Angular 2 ist ein UI-Baustein den wir nutzen k�
 __Hauptkomponent__: Der Komponent den wir der bootstrap-Funktion übergeben. Siehe auch __Komponent__.
 
 {#gl-interpolation}
-__Interpolation__: TODO
+__Interpolation__: Ein Ausdruck in einem Template wird evaluiert und dann in ein String konvertiert. Der String wird dann mit benachbarten Strings konkateniert und in den DOM gesetzt. Um Angular zu sagen was interpoliert werden muss, wird der Ausdruck zwischen __{{__ und __}}__ gesetzt.
 
 {#gl-component}
 __Komponente__: Komponenten sind die Haupt-UI-Bausteine einer Angular 2 Anwendung. Sie kombinieren Logic mit eine HTML-Template (View), um die Anwendung anzuzeigen. Zu einer Komponente gehört immer meta-Daten für die Komponente (@Component-Decorator), meta-Daten für die View (meistens mit dem @View-Decorator definiert) und eine Klasse (Komponenten-Klasse), die die Logik für die Komponente beinhaltet. Verglichen mit Angular 1.x, ist eine Komponente eine Direktive mit dem dazugehörigen Controller.

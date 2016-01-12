@@ -6,6 +6,9 @@ __Angular 2 Anwendung__: Eine Angular 2 Anwendung ist ein Baum von Komponenten u
 {#gl-bootstrap}
 __bootstrap__: Das initialisieren einer Angular 2 Anwendung. Der Initialisierungsprozess beginnt in dem wir die bootstrap-Funktion aufrufen und den Hauptkomponent als Parameter übergeben.
 
+{#gl-data-binding}
+__Daten-Bindung__: Auf englisch "data binding" ist die Verbindung zwischen Daten in einem HTML-Template und entsprechende Daten in einer Komponente oder Direktive. Daten-Bindungen können auf verschiedenen Weisen entstehen z. B. durch Interpolation, Event-Bindung mittels Klammern (...) oder Eigenschaft-Bindung mittels eckigen Klammern [...].
+
 {#gl-decorator}
 __Decorator__: Ist eine Funktion die Meta-Daten zu einer Klasse, deren Methoden und Eigenschaften und Funktionsparameter hinzufügen kann. Decorators sind ein TypeScript Feature und fangen immer mit einem "@" an.
 

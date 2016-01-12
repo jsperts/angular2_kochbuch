@@ -37,7 +37,7 @@ class MyApp {
 Erklärung:
 
 Um Daten anzuzeigen müssen wir zwei Sachen machen. Erstens müssen wir dem Template sagen welche Variablen es anzeigen soll und zweitens müssen wir diese Variablen in unsere Klasse definieren.
-Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (\`) für das template-Attribut statt Anführungszeichen ('). Das ermöglicht uns das HTML in mehreren Zeilen aufzuspalten ohne mehrere Strings mit Hilfe von Pluszeichen konkatenieren zu müssen.
+Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (\`) für die template-Eigenschaft statt Anführungszeichen ('). Das ermöglicht uns das HTML in mehreren Zeilen aufzuspalten ohne mehrere Strings mit Hilfe von Pluszeichen konkatenieren zu müssen.
 
 * Zeile 9: Hier sagen wir Angular das "name" [interpoliert](#gl-interpolation) werden soll. Instanzvariablen die in doppelte geschweifte Klammern sind, werden evaluiert und im DOM durch deren Wert ersetzt
 * Zeile 13: [Typdefinition](#c01-basic-types) für die Instanzvariable

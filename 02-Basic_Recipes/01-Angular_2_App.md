@@ -35,7 +35,7 @@ Die Hauptkomponente erkennt man dadurch, dass die der bootstrap-Funktion als Par
 
 * Zeile 1-2: Hier importieren wir die nötige Abhängigkeiten aus dem angular2-Paket. Dafür nutzen wir eine ES6/ES2015 [import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 * Zeile 4-6: Hier definieren wir eine Komponente mittels [TypeScript-Decorator](#gl-decorator) und sagen Angular, dass unser Komponente im my-app-Tag gerendert werden soll
-* Zeile 7-9: Definiert die View die zu der Komponente gehört. Das HTML im template-Attribut wird später zwischen <my-tag> und </my-tag> hinzugefügt
+* Zeile 7-9: Definiert die View die zu der Komponente gehört. Das HTML der template-Eigenschaft wird später zwischen <my-tag> und </my-tag> hinzugefügt
 * Zeile 10: Ist die dazugehörige Klasse. In diesem Fall ist die Klasse leer da unsere Komponente keine Logic und keine Daten hat
 * Zeile 12: Die Anwendung wird initialisiert (bootstrap)
 

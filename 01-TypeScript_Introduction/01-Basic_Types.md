@@ -1,6 +1,6 @@
 ## Basistypen {#c01-basic-types}
 
-TypeScript bringt von sich aus eine Anzahl von Basistypen mit wie z. B. string, boolean und number aber es erlaubt es uns auch eigenen Typen zu definieren mit Hilfe von Interfaces die wir im nächsten Abschnitt uns anschauen werden. Es ist zwar nicht erforderlich, dass wir mit dem Typ-System arbeiten, kann aber manchmal ganz nützlich sein und darum werden wir in den verschiedenen Rezepten immer wieder auf Typen stoßen.
+TypeScript bringt von sich aus eine Anzahl von Basistypen mit wie z. B. "string", "boolean" und "number", aber es erlaubt es uns auch eigenen Typen zu definieren mit Hilfe von Interfaces die wir im nächsten Abschnitt uns anschauen werden. Es ist zwar nicht erforderlich, dass wir mit dem Typ-System arbeiten, kann aber manchmal ganz nützlich sein und darum werden wir in den verschiedenen Rezepten immer wieder auf Typen stoßen.
 
 Insgesamt hat TypeScript 7 Typen die immer vorhanden sind:
 * Boolean
@@ -31,7 +31,7 @@ var aNumber: number = 2;
 
 ### String
 
-Texte haben den Typ "string". Es ist dabei egal, ob wir dabei Anführungszeichen ('), doppelte Anführungszeichen (") oder Backticks (\`) nutzen, der Typ bleibt gleich. Backticks werden für ES6/ES2015 [template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) benutzt und die werden auch von TypeScript unterstützt. Die unten gezeigte Beispiele, sind alle valide Werte vom Typ "string".
+Texte haben den Typ "string". Es ist dabei egal, ob wir dabei Anführungszeichen ('), doppelte Anführungszeichen (") oder Backticks (\`) nutzen, der Typ bleibt gleich. Backticks werden für ES6/ES2015 [Template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) benutzt und die werden auch von TypeScript unterstützt. Die unten gezeigte Beispiele, sind alle valide Werte vom Typ "string".
 
 ```js
 var aString: string = 'A string';

@@ -1,4 +1,4 @@
-## Auf Nutzer-Input reagieren
+## Auf Nutzer-Input reagieren {#c03-user-input}
 
 ### Problem
 

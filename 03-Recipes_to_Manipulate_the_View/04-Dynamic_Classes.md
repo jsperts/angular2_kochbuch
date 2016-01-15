@@ -1,4 +1,4 @@
-## CSS-Klassen auf Basis von booleschen Werten setzen/entfernen
+## CSS-Klassen auf Basis von booleschen Werten setzen/entfernen {#c03-dynamic-classes}
 
 ### Problem
 

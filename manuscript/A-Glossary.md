@@ -6,6 +6,9 @@ __Angular 2 Anwendung__: Eine Angular 2 Anwendung ist ein Baum von Komponenten u
 {#gl-bootstrap}
 __bootstrap__: Das initialisieren einer Angular 2 Anwendung. Der Initialisierungsprozess beginnt in dem wir die bootstrap-Funktion aufrufen und den Hauptkomponent als Parameter übergeben.
 
+{#gl-data-binding}
+__Daten-Bindung__: Auf englisch "data binding" ist die Verbindung zwischen Daten in einem HTML-Template und entsprechende Daten in einer Komponente oder Direktive. Daten-Bindungen können auf verschiedenen Weisen entstehen z. B. durch Interpolation, Event-Bindung mittels Klammern (...) oder Eigenschaft-Bindung mittels eckigen Klammern [...].
+
 {#gl-decorator}
 __Decorator__: Ist eine Funktion die Meta-Daten zu einer Klasse, deren Methoden und Eigenschaften und Funktionsparameter hinzufügen kann. Decorators sind ein TypeScript Feature und fangen immer mit einem "@" an.
 
@@ -16,7 +19,7 @@ __Direktive__: Eine Direktive in Angular 2 ist ein UI-Baustein den wir nutzen k�
 __Hauptkomponent__: Der Komponent den wir der bootstrap-Funktion übergeben. Siehe auch __Komponent__.
 
 {#gl-interpolation}
-__Interpolation__: TODO
+__Interpolation__: Ein Ausdruck in einem Template wird evaluiert und dann in ein String konvertiert. Der String wird dann mit benachbarten Strings konkateniert und in den DOM gesetzt. Um Angular zu sagen was interpoliert werden muss, wird der Ausdruck zwischen __{{__ und __}}__ gesetzt.
 
 {#gl-component}
 __Komponente__: Komponenten sind die Haupt-UI-Bausteine einer Angular 2 Anwendung. Sie kombinieren Logic mit eine HTML-Template (View), um die Anwendung anzuzeigen. Zu einer Komponente gehört immer meta-Daten für die Komponente (@Component-Decorator), meta-Daten für die View (meistens mit dem @View-Decorator definiert) und eine Klasse (Komponenten-Klasse), die die Logik für die Komponente beinhaltet. Verglichen mit Angular 1.x, ist eine Komponente eine Direktive mit dem dazugehörigen Controller.

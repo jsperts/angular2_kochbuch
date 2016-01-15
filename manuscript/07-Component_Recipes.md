@@ -57,7 +57,7 @@ Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Kom
 
 ### Lösung
 
-Statt das template-Attribut können wir das templateUrl-Attribut nutzen und dort angeben wo unsere HTML-Datei sich befindet.
+Statt die template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben wo unsere HTML-Datei sich befindet.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
@@ -75,8 +75,8 @@ Statt das template-Attribut können wir das templateUrl-Attribut nutzen und dort
 
 ### Diskussion
 
-Wichtig zu beachten ist, dass wir entweder das template-Attribut oder das templateUrl-Attribut verwenden können. Beide gleichzeitig geht nicht.
-Das templateUrl-Attribut ist sehr nützlich wenn wir HTML haben mit mehr als 5-10 Zeilen. Wenn man weniger als 10 Zeilen hat, kann man sich überlegen, ob man lieber [ES6 template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) mit dem template-Attribut nutzt. Dadurch kann man sich die Serveranfrage nach der HTML-Datei sparen.
+Wichtig zu beachten ist, dass wir entweder die template-Eigenschaft oder die templateUrl-Eigenschaft verwenden können. Beide gleichzeitig geht nicht.
+Die templateUrl-Eigenschaft ist vor allem  nützlich wenn wir HTML haben mit mehr als 5-10 Zeilen. Wenn man weniger als 10 Zeilen hat, kann man überlegen, ob man lieber [ES6 Template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) mit der template-Eigenschaft nutzt. Dadurch kann man sich die Serveranfrage für die HTML-Datei sparen.
 
 ### Code
 

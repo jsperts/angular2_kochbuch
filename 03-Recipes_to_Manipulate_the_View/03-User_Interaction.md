@@ -2,12 +2,12 @@
 
 ### Problem
 
-Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Browser-Event wie z. B. "klick" auslöst.
+Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Browser-Event wie z. B. "click" auslöst.
 
 ### Zutaten
 
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
-* Ein Browser-Event, wir nutzten hier "klick" als Beispiel
+* Ein Browser-Event, wir nutzten hier "click" als Beispiel
 * Methode die Aufgerufen werden soll wenn der Nutzer auf das Element klickt
 
 ### Lösung 1
@@ -33,8 +33,8 @@ class MyApp {
 
 Erklärung:
 
-* __Zeile 7__: Der Name zwischen den Klammern, hier "click", signalisiert das Event auf das wir hören möchten. Nach dem Gleichheitszeichen folgt die Methode die wir bei klick aufrufen möchten
-* __Zeile 10-12__: Die Methode die aufgerufen werden soll wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
+* Zeile 7: Hier findet eine Event-Bindung statt. In diesem Fall wird das click-Event gebunden
+* Zeile 10-12: Die Methode die aufgerufen werden soll wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
 
 ### Lösung 2
 
@@ -63,7 +63,10 @@ Das ist eine alternative Schreibweise zu der Schreibweise in Lösung 1. Statt Kl
 
 ### Diskussion
 
-Die neue Schreibweise mit Klammern für Browser-Events ersetzt alle Event-Direktiven die es in Angular 1.x gibt wie z. B. ng-click, ng-keypress und ng-keydown. Wir haben im Beispiel "click" benutzt aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress" und "keydown". Allgemein ist der Namen zwischen den Klammer, der Namen des Events auf das wir reagieren möchten. Nach dem Gleichheitszeichen kommt die Aktion die als Reaktion zum Event ausgeführt werden soll. Wir haben ein Methodenaufruf als Aktion definiert, man kann aber auch andere Aktionen definieren wie z. B. die Zuweisung eines Wertes an einer Variablen. Die Klammern definieren eine sogenannte ["Daten-Bindung"](#gl-data-binding). In diesem Fall ist es eine einweg-Bindung da die Daten nur aus der View in unser Klasse fließen.
+Die Event-Bindung ersetzt alle Event-Direktiven die es in Angular 1.x gibt wie z. B. "ng-click", "ng-keypress" und "ng-keydown".
+Wir haben im Beispiel "click" benutzt aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress".
+Allgemein ist der Namen zwischen den Klammern, der Namen des Events auf das wir reagieren möchten. Nach dem Gleichheitszeichen kommt die Aktion die als Reaktion zum Event ausgeführt werden soll.
+Die Event-Bindung ist eine Form der [Daten-Bindung](#gl-data-binding).
 
 ### Code
 
@@ -72,4 +75,5 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](ht
 ### Weitere Ressourcen
 
 * Die Angular 2 Dokumentation gibt mehr Informationen über [Event-Bindings](https://angular.io/docs/ts/latest/guide/template-syntax.html#event-binding)
+* Weitere informationen zur Event-Bindung gibt es im [Appendix A: Template-Syntax](#appendix-a)
 

@@ -13,7 +13,7 @@ Hier ein kurzer Überblick, was Sie lernen können:
 
 ## Angular Version
 
-Angular 2 befindet sich im Beta-Stadion und wird ständig aktualisiert. Teilweise wird auch die API verändert.
+Angular 2 befindet sich im Beta-Stadium und wird ständig aktualisiert. Teilweise wird auch die API verändert.
 Ich versuche das Buch möglichst aktuell zu halten und bitte um Entschuldigung, falls die Rezepte mit der aktuellsten Version von Angular nicht funktionieren.
 
 ## Wo kann ich das Buch lesen/kaufen

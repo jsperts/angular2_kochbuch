@@ -7,4 +7,5 @@
 06-Routing_Recipes.md
 07-Component_Recipes.md
 08-List_Recipes.md
+Appendix.md
 A-Glossary.md

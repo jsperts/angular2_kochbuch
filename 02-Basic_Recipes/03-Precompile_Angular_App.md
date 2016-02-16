@@ -8,8 +8,9 @@ Zusätzlich sollen alle Abhängigkeiten lokal installiert sein.
 ### Zutaten
 * Node.js, npm und TypeScript-Compiler muss installiert sein wie in [TypeScript-Dateien vorkompilieren](#c01-precompile) beschrieben
 * [Angular 2 Anwendung](#c02-angular-app)
-* Anpassungen an die index.html-Datei von der Angular 2 Anwendung
 * package.json, um die Abhängigkeiten zu definieren
+* Anpassungen an der main.ts-Datei von der Angular 2 Anwendung
+* Anpassungen an der index.html-Datei von der Angular 2 Anwendung
 
 ### Lösung
 
@@ -18,12 +19,12 @@ Zusätzlich sollen alle Abhängigkeiten lokal installiert sein.
 {
   "name": "Angular2Kochbuch",
   "dependencies": {
-    "angular2": "2.0.0-beta.1",
-    "es6-shim": "0.33.3",
+    "angular2": "2.0.0-beta.6",
+    "es6-shim": "0.33.13",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
-    "systemjs": "0.19.12",
-    "zone.js": "0.5.10"
+    "systemjs": "0.19.21",
+    "zone.js": "0.5.14"
   },
   "private": true
 }
@@ -33,9 +34,9 @@ Erklärung:
 
 Wir haben hier eine minimale package.json-Datei die wir benutzen, um Abhängigkeiten für unser Anwendung zu definieren.
 
-Zeile 2: Der Namen unserer Anwendung
-Zeile 3-10: Abhängigkeiten die wir entweder direkt in unserer Anwendung brauchen oder die wir installieren damit der TypeScript-Compiler die Typen für die verschiedene Klassen, Methoden usw. finden kann
-Zeile 11: Mit der Eigenschaft "private" verhindern wir, dass unser Anwendung aus Versehen in das npm-Register hoch geladen werden kann
+* Zeile 2: Der Namen unserer Anwendung
+* Zeile 3-10: Abhängigkeiten die wir entweder direkt in unserer Anwendung brauchen oder die wir installieren damit der TypeScript-Compiler die Typen für die verschiedene Klassen, Methoden usw. finden kann
+* Zeile 11: Mit der Eigenschaft "private" verhindern wir, dass unser Anwendung aus Versehen in das npm-Register hoch geladen werden kann
 
 Die Abhängigkeiten können jetzt mit
 
@@ -45,6 +46,17 @@ npm install
 ```
 
 installiert werden.
+
+{title="Anpassungen an der main.ts-Datei", lang=js}
+```
+///<reference path="../node_modules/angular2/typings/browser.d.ts"/>
+
+...
+```
+
+Erklärung:
+
+Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen wo er Typ-Informationen für gewisse Konstrukten wie z. B. Promise, Map und Set finden kann. Wir können unseren Code auch ohne diese Zeile kompilieren, aber der Compiler wird Warnungen ausgeben da ihm Typ-Informationen fehlen.
 
 {title="Anpassungen an der index.html-Datei", lang=js}
 ```
@@ -81,7 +93,7 @@ Nachdem wir die index.html-Datei angepasst und die Abhängigkeiten mittels npm i
 
 Statt der angular2-polyfills.js-Datei, hätten wir auch reflect-metadata und zone.js einzeln laden können. Ist aber einfacher die Abhängigkeiten direkt über angular2-polyfills.js zu laden. Es ist auch sicherer, dass die Versionen von reflect-metadata und zone.js kompatible zu der Version von Angular sind. Trotzdem müssen wir beide Module über npm laden, damit der TypeScript-Compiler keine Typ-Fehler meldet.
 
-Die meisten Rezepte in diesem Buch nutzen die on-the-fly Kompilierung, wie die in [Angular 2 Anwendung](#c02-angular-app) zu sehen ist. Der Grund dafür, ist dass wir damit schneller starten können ohne erst Abhängigkeiten zu installieren und Dateien zu kompilieren. Natürlich funktionieren die Rezepte auch mit der index.html-Datei die hier zu sehen ist und mit der tsconfig.json-Datei die im Beispiel-Code für dieses Rezept zu finden ist.
+Die meisten Rezepte in diesem Buch nutzen die on-the-fly Kompilierung, wie die in [Angular 2 Anwendung](#c02-angular-app) zu sehen ist. Der Grund dafür, ist dass wir damit schneller starten können ohne erst Abhängigkeiten zu installieren und Dateien zu kompilieren. Natürlich funktionieren die Rezepte auch mit der index.html-Datei die hier zu sehen ist und mit der tsconfig.json-Datei die im Beispiel-Code für dieses Rezept zu finden ist. Damit der Compiler ohne Warnungen kompilieren kann, müssen wir in der Haupt-TypeScript-Datei jedes Rezeptes die Typ-Informationen hinzufügen wie wir es hier für die main.ts-Datei getan haben.
 
 ### Code
 

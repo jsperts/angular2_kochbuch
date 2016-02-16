@@ -48,9 +48,9 @@ Die Hauptkomponente erkennt man dadurch, dass die der bootstrap-Funktion als Par
   <title>Angular 2 Starter</title>
   <script src="https://code.angularjs.org/tools/system.js"></script>
   <script src="https://code.angularjs.org/tools/typescript.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.1/Rx.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.1/angular2-polyfills.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.1/angular2.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.6/Rx.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.6/angular2-polyfills.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.6/angular2.dev.js"></script>
   <script>
     System.config({
       transpiler: 'typescript',

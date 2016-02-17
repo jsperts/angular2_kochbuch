@@ -107,5 +107,5 @@ Code auf Github: [02-Basic\_Recipes/01-Angular\_App](https://github.com/jsperts/
 ### Weitere Ressourcen
 
 * Informationen über ES6/ES2015 [Module](http://exploringjs.com/es6/ch_modules.html)
-* Mehr Informationen über Decorators in TypeScript und JavaScript (wahrscheinlich in ES7/ES2016) gibt es [hier](https://github.com/wycats/javascript-decorators)
+* Decorators werden vermutlich Teil einer spätern Version des ECMAScript-Standards. Mehr Informationen über Decorators in TypeScript und JavaScript gibt es [hier](https://github.com/wycats/javascript-decorators)
 

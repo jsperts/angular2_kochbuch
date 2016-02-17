@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte Daten die in meinem TypeScript-Code sind, in der View anzeigen damit der Nutzer die sieht.
+Ich möchte Daten die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer die sehen kann.
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
@@ -74,8 +74,8 @@ Siehe auch [TypeScript-Klassen](#c01-classes).
 ### Diskussion
 
 Das Beispiel ist sehr einfach gehalten.
-Für die Schreibweise in Lösung 2 brauchen wir weniger Code, es ist aber Geschmackssache welche von den beiden Schreibweisen man benutzt. Von der Funktionalität her sind beide gleich.
-Ein Beispiel mit beide Schreibweisen und mit eine Instanzvariable vom Typ "object" gibt es in dem Code-Beispiel auf Github.
+Die zweite Lösung braucht weniger Code, es ist aber Geschmackssache welche von den beiden Schreibweisen man benutzt. Von der Funktionalität her sind beide gleich.
+Ein Beispiel mit beide Schreibweisen und mit eine Instanzvariable vom Typ "object" gibt es im Code-Beispiel auf Github.
 
 ### Code
 

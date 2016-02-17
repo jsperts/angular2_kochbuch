@@ -2,7 +2,7 @@
 
 ### Problem
 
-Mir gefällt nicht, dass ich zwei Decorators nutzen muss, um eine Komponente zu definieren und möchte eine alternative Schreibeweise nutzen ohne den @View-Decorator.
+Mir gefällt es nicht, dass ich zwei Decorators nutzen muss, um eine Komponente zu definieren. Ich möchte eine alternative Schreibeweise nutzen ohne den @View-Decorator.
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
@@ -22,6 +22,10 @@ Angular bietet uns die Möglichkeit alle Attribute die wir normalerweise im @Vie
 
 ...
 ```
+
+Erklärung:
+
+Statt @View zu nutzen, haben wir die View-Eigenschaften die wir brauchen direkt im @Component-Decorator definiert.
 
 ### Diskussion
 

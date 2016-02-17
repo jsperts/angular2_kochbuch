@@ -8,7 +8,7 @@ Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Brow
 
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
 * Ein Browser-Event, wir nutzten hier "click" als Beispiel
-* Methode die Aufgerufen werden soll wenn der Nutzer auf das Element klickt
+* Methode die aufgerufen werden soll, wenn der Nutzer auf das Element klickt
 
 ### Lösung 1
 
@@ -74,6 +74,5 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](ht
 
 ### Weitere Ressourcen
 
-* Die Angular 2 Dokumentation gibt mehr Informationen über [Event-Bindings](https://angular.io/docs/ts/latest/guide/template-syntax.html#event-binding)
 * Weitere informationen zur Event-Bindung gibt es im [Appendix A: Template-Syntax](#appendix-a)
 

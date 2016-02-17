@@ -11,10 +11,9 @@ Ich möchte anhand eines booleschen Wertes definieren wann eine CSS-Klasse geset
 
 ### Lösung 1
 
-{title="main.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import {Component, View} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
 
 @Component({
   selector: 'my-app'
@@ -46,7 +45,7 @@ class MyApp {
   constructor() {}
 }
 
-bootstrap(MyApp);
+export default MyApp;
 ```
 
 Erklärung:
@@ -61,7 +60,7 @@ Erklärung:
 
 Wir haben schon in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt bekommt mit CSS-Klassen als Keys und true/false als Werte für die Keys. Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
-{title="Ausschnitt aus der main.ts", lang=js}
+{title="Ausschnitt aus der app.component.ts", lang=js}
 ```
 ...
 
@@ -99,7 +98,7 @@ Erklärung:
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" die CSS-Klassen für unsere divs entfernen und hinzufügen kann. Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch gebraucht.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" die CSS-Klassen für unsere divs entfernen und hinzufügen kann. Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
 
 Wir haben hier eine neue Schreibweise für Templates gesehen und zwar [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
 Diese Art von Daten-Bindung wird Eigenschafts-Bindung genannt.
@@ -119,4 +118,5 @@ Code auf Github für die zweite Lösung: [03-Recipes\_to\_Manipulate\_the\_View/
 
 * Offizielle Dokumentation für die [NgClass-Direktive](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html)
 * Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
+* Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
 

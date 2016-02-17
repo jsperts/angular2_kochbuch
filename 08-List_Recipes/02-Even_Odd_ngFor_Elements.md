@@ -6,12 +6,12 @@ Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungera
 
 ### Zutaten
 * [Liste von Daten anzeigen](#c03-data-list)
-* Anpassungen in der main.ts-Datei, die im Rezept "Liste von Daten anzeigen" verwendet wird
+* Anpassungen in der app.component.ts-Datei, die im Rezept "Liste von Daten anzeigen" verwendet wird
 * [CSS-Klasse dynamisch setzen](#c03-dynamic-classes), um die CSS-Klasse mit der richtigen Farbe zu setzen
 
 ### Lösung
 
-{title="main.ts Anpassungen, lang=js}
+{title="app.component.ts Anpassungen, lang=js}
 ```
 ...
 
@@ -47,7 +47,7 @@ Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest 
 
 ### Diskussion
 
-Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich kann man die lokalen Variablen __odd__ und __even__ auch einer Funktion übergeben oder sie nutzen um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
+Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich kann man die lokalen Variablen __odd__ und __even__ auch einer Methode übergeben oder sie nutzen, um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
 
 ### Code
 

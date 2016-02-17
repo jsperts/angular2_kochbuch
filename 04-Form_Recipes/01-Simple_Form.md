@@ -7,11 +7,11 @@ Ich möchte ein einfaches Formular implementieren, um Daten vom Benutzer zu beko
 ### Zutaten
 * [Eine Komponente](#c02-component-definition)
 * NgModel-Direktive
-* NgSubmit-Event (Teil der NgForm-Direktive)
+* NgSubmit-Event (Gehört zu der NgForm-Direktive)
 
 ### Lösung
 
-{title="component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import {Component, View} from 'angular2/core';
 
@@ -59,7 +59,7 @@ Im Grunde genommen bindet die NgForm-Direktive, das submit-Event des Formulars u
 Wir hätten in unserem Code auch direkt das submit-Event nutzen können.
 
 In Zeile 10 und 12 hätten wir, statt eine beidseitige-Bindung, eine Eigenschafts- und eine Event-Bindung nutzten können.
-Da die Nutzung der beidseitige-Bindung einfacher ist, werden wir sie auch in weitere Formular-Rezepte nutzen.
+Da die Nutzung der beidseitige-Bindung einfacher ist, werden wir sie auch in weiteren Formular-Rezepten nutzen.
 
 ### Code
 

@@ -6,7 +6,7 @@ In diesem Kapitel geht es, um die verschiedene Möglichkeiten die uns Angular an
 
 ### Problem
 
-Ich möchte Daten die in meinem TypeScript-Code sind, in der View anzeigen damit der Nutzer die sieht.
+Ich möchte Daten die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer die sehen kann.
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
@@ -78,8 +78,8 @@ Siehe auch [TypeScript-Klassen](#c01-classes).
 ### Diskussion
 
 Das Beispiel ist sehr einfach gehalten.
-Für die Schreibweise in Lösung 2 brauchen wir weniger Code, es ist aber Geschmackssache welche von den beiden Schreibweisen man benutzt. Von der Funktionalität her sind beide gleich.
-Ein Beispiel mit beide Schreibweisen und mit eine Instanzvariable vom Typ "object" gibt es in dem Code-Beispiel auf Github.
+Die zweite Lösung braucht weniger Code, es ist aber Geschmackssache welche von den beiden Schreibweisen man benutzt. Von der Funktionalität her sind beide gleich.
+Ein Beispiel mit beide Schreibweisen und mit eine Instanzvariable vom Typ "object" gibt es im Code-Beispiel auf Github.
 
 ### Code
 
@@ -104,10 +104,9 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 
 ### Lösung
 
-{title="main.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import {Component, View} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
 
 interface IUser {
   firstname: string,
@@ -135,14 +134,14 @@ class MyApp {
   }
 }
 
-bootstrap(MyApp);
+export default MyApp;
 ```
 
 Erklärung:
 
-* Zeile 4-7: Interface Definition für ein User-Objekt
-* Zeile 17: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
-* Zeile 18: Hier nutzen wir die lokale Variable, um Informationen anzuzeigen wie wir es im Rezept [Daten einer Komponente in der View anzeigen](#c03-show-data) gemacht haben
+* Zeile 3-6: Interface Definition für ein User-Objekt
+* Zeile 16: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
+* Zeile 17: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept [Daten einer Komponente in der View anzeigen](#c03-show-data) getan haben
 
 ### Diskussion
 
@@ -150,7 +149,7 @@ Es gibt noch weitere mögliche Schreibweisen für das Anzeigen von einer Liste v
 
 #### Erklärung zu der ngFor-Syntax:
 
-Der Stern (\*) vor dem ngFor ist essentiell und Teil der Syntax. Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für das ngFor benutzt werden sollen. Der Teil nach dem "of", ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert. Die Raute (#) definiert eine lokale Variable. Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
+Der Stern (\*) vor dem __ngFor__ ist essentiell und Teil der Syntax. Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für das ngFor benutzt werden sollen. Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert. Die Raute (#) definiert eine lokale Variable. Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
 
 ### Code
 
@@ -171,7 +170,7 @@ Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Brow
 
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
 * Ein Browser-Event, wir nutzten hier "click" als Beispiel
-* Methode die Aufgerufen werden soll wenn der Nutzer auf das Element klickt
+* Methode die aufgerufen werden soll, wenn der Nutzer auf das Element klickt
 
 ### Lösung 1
 
@@ -237,7 +236,6 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](ht
 
 ### Weitere Ressourcen
 
-* Die Angular 2 Dokumentation gibt mehr Informationen über [Event-Bindings](https://angular.io/docs/ts/latest/guide/template-syntax.html#event-binding)
 * Weitere informationen zur Event-Bindung gibt es im [Appendix A: Template-Syntax](#appendix-a)
 
 ## CSS-Klassen auf Basis von booleschen Werten setzen/entfernen {#c03-dynamic-classes}
@@ -253,10 +251,9 @@ Ich möchte anhand eines booleschen Wertes definieren wann eine CSS-Klasse geset
 
 ### Lösung 1
 
-{title="main.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import {Component, View} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
 
 @Component({
   selector: 'my-app'
@@ -288,7 +285,7 @@ class MyApp {
   constructor() {}
 }
 
-bootstrap(MyApp);
+export default MyApp;
 ```
 
 Erklärung:
@@ -303,7 +300,7 @@ Erklärung:
 
 Wir haben schon in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt bekommt mit CSS-Klassen als Keys und true/false als Werte für die Keys. Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
-{title="Ausschnitt aus der main.ts", lang=js}
+{title="Ausschnitt aus der app.component.ts", lang=js}
 ```
 ...
 
@@ -341,7 +338,7 @@ Erklärung:
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" die CSS-Klassen für unsere divs entfernen und hinzufügen kann. Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch gebraucht.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" die CSS-Klassen für unsere divs entfernen und hinzufügen kann. Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
 
 Wir haben hier eine neue Schreibweise für Templates gesehen und zwar [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
 Diese Art von Daten-Bindung wird Eigenschafts-Bindung genannt.
@@ -361,4 +358,5 @@ Code auf Github für die zweite Lösung: [03-Recipes\_to\_Manipulate\_the\_View/
 
 * Offizielle Dokumentation für die [NgClass-Direktive](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html)
 * Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
+* Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
 

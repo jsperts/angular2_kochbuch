@@ -1,12 +1,13 @@
 # Rezepte für Komponenten
 
-In diesem Kapitel befinden sich verschiedene Rezepte die Komponenten betreffen. Hier kann man z. B. alternative Schreibweisen für Komponenten finden oder Wege die wir nutzen können um die Kommunikation zwischen Komponenten zu ermöglichen.
+In diesem Kapitel befinden sich verschiedene Rezepte die Komponenten betreffen.
+Hier gibt es z. B. alternative Schreibweisen für Komponenten oder Wege die wir nutzen können, um die Kommunikation zwischen Komponenten zu ermöglichen.
 
 ## Komponente ohne @View-Decorator
 
 ### Problem
 
-Mir gefällt nicht, dass ich zwei Decorators nutzen muss, um eine Komponente zu definieren und möchte eine alternative Schreibeweise nutzen ohne den @View-Decorator.
+Mir gefällt es nicht, dass ich zwei Decorators nutzen muss, um eine Komponente zu definieren. Ich möchte eine alternative Schreibeweise nutzen ohne den @View-Decorator.
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
@@ -26,6 +27,10 @@ Angular bietet uns die Möglichkeit alle Attribute die wir normalerweise im @Vie
 
 ...
 ```
+
+Erklärung:
+
+Statt @View zu nutzen, haben wir die View-Eigenschaften die wir brauchen direkt im @Component-Decorator definiert.
 
 ### Diskussion
 
@@ -53,7 +58,7 @@ Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Kom
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
-* Eine HTML-Datei für das HTML
+* Eine Datei für das HTML. Hier my\_app.html
 
 ### Lösung
 
@@ -76,7 +81,7 @@ Statt die template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen un
 ### Diskussion
 
 Wichtig zu beachten ist, dass wir entweder die template-Eigenschaft oder die templateUrl-Eigenschaft verwenden können. Beide gleichzeitig geht nicht.
-Die templateUrl-Eigenschaft ist vor allem  nützlich wenn wir HTML haben mit mehr als 5-10 Zeilen. Wenn man weniger als 10 Zeilen hat, kann man überlegen, ob man lieber [ES6 Template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) mit der template-Eigenschaft nutzt. Dadurch kann man sich die Serveranfrage für die HTML-Datei sparen.
+Die templateUrl-Eigenschaft ist vor allem nützlich, wenn wir HTML haben mit mehr als 5-10 Zeilen. Wenn man weniger als 10 Zeilen hat, kann man überlegen, ob man lieber [ES6 Template literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) mit der template-Eigenschaft nutzt. Dadurch kann man sich die Serveranfrage für die HTML-Datei sparen.
 
 ### Code
 

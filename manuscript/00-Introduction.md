@@ -55,6 +55,8 @@ __Kapitel 6: Rezepte für Routing__, enthält Lösungen zu Problemen die mit dem
 
 __Kapitel 7: Rezepte für Komponenten__, enthält Lösungen zu Problemen die Komponenten betreffen.
 
+__Kapitel 8: Rezepte für ngFor-Listen__, enthält Lösungsvorschläge die uns bei der Arbeit mit Listen helfen können.
+
 ## Hilfe und Support
 
 Bei Fragen und Anregungen über das Buch und/oder den Beispiel-Code, gibt es die Möglichkeit Issues bzw. Pull-Request über Github zu öffnen.

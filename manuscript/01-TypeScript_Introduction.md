@@ -1,7 +1,7 @@
 # Einführung zu TypeScript
 
 Vermutlich ist TypeScript für einige Leser Neuland, und aus diesem Grund haben wir uns entschieden, dass das Buch auch eine kurze Einführung zu TypeScript beinhalten soll.
-TypeScript ist eine von Microsoft geschriebene Programmiersprache mit derer man Anwendungen schreiben kann, die dann später zu JavaScript kompiliert werden, damit sie z. B. im Browser funktionieren. Es ist eine typisierte Übermenge von JavaScript (ES5). Außer Typen unterstützt TypeScript auch gewisse Features aus ES6/ES2015 aber auch Features die vermutlich in ES7/ES2016 standardisiert werden. Da TypeScript eine Übermenge von JavaScript ist, ist auch jede JavaScript Anwendung zumindest Anwendungen die mit ES5 geschrieben wurden sind, auch eine valide TypeScript Anwendung.
+TypeScript ist eine von Microsoft geschriebene Programmiersprache mit derer man Anwendungen schreiben kann, die dann später zu JavaScript kompiliert werden, damit sie z. B. im Browser funktionieren. Es ist eine typisierte Übermenge von JavaScript (ES5). Außer Typen unterstützt TypeScript auch gewisse Features aus ES6/ES2015 aber auch Features die vermutlich in späteren ECMAScript Versionen enthalten sein werden. Da TypeScript eine Übermenge von JavaScript ist, ist auch jede JavaScript Anwendung zumindest Anwendungen die mit ES5 geschrieben wurden sind, auch eine valide TypeScript Anwendung.
 
 Wir werden uns nicht die komplette TypeScript Funktionalität anschauen, sondern nur die Teile die wir auch in den verschiedenen Rezepten brauchen werden.
 Der Grund dafür ist einfach, wir möchten uns auf Angular 2 konzentrieren und nicht zu viele Zeit mit TypeScript verbringen.
@@ -221,7 +221,7 @@ class User {
 
 Erklärung:
 
-Dieses mal haben wir in Zeile 2 direkt einen Wert an unsere Instanzvariable "name" zugewiesen. Diese Schreibweise ist vor allem nützlich wenn wir der Instanzvariable einen Standardwert geben möchten oder wenn man mit statischen Daten arbeitet. Auch das ist in ES6/ES2015 Klassen nicht erlaubt, es ist aber möglich, dass [ES7/ES2016 Klassen](https://github.com/jeffmo/es-class-fields-and-static-properties) das können, natürlich ohne die Typinformation.
+Dieses mal haben wir in Zeile 2 direkt einen Wert an unsere Instanzvariable "name" zugewiesen. Diese Schreibweise ist vor allem nützlich wenn wir der Instanzvariable einen Standardwert geben möchten oder wenn man mit statischen Daten arbeitet. Auch das ist in ES6/ES2015 Klassen nicht erlaubt. Es ist aber möglich, dass spätere Versionen von [ECMAScript Klassen](https://github.com/jeffmo/es-class-fields-and-static-properties) das können, natürlich ohne die Typinformation.
 
 ### Klassen mit Interfaces
 
@@ -256,7 +256,7 @@ Im allgemeinen können TypeScript Klassen noch mehr als hier beschrieben, aber d
 
 ## Beispielanwendung
 
-Um besser zu verstehen wie Typen, Interfaces und Klassen zusammen arbeiten, gibt es hier noch eine kleine TypeScript Todo-Anwendung. Die Anwendung kann vordefinierte Todos anzeigen und neue Todos in einer existierende Liste von Todos hinzufügen. Es ist zwar eine kleine Anwendung, ist aber trotzdem in mehrere Dateien aufgespaltet, um zu zeigen wie man in TypeScript mit Hilfe von ES6/ES2015 Modulen eine Anwendung modular gestalten kann. Der komplette Code für die Anwendung befindet sich im Github unter [01-TypeScript/01-Simple\_Todo\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/01-TypeScript/01-Simple_Todo_App).
+Um besser zu verstehen wie Typen, Interfaces und Klassen zusammen arbeiten, gibt es hier noch eine kleine TypeScript Todo-Anwendung. Die Anwendung kann vordefinierte Todos anzeigen und neue Todos in einer existierende Liste von Todos hinzufügen. Es ist zwar eine kleine Anwendung, ist aber trotzdem in mehrere Dateien aufgespaltet. Wir wollen damit zeigen wie man mit Hilfe von ECMAScript-Modulen (ESM) eine Anwendung modular gestalten kann. Der komplette Code für die Anwendung befindet sich im Github unter [01-TypeScript/01-Simple\_Todo\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/01-TypeScript/01-Simple_Todo_App).
 
 Die Anwendung hat eine index.html-Datei in der wir die Anwendung laden und im Browser anzeigen und ein Verzeichnis namens "app" für unsere TypeScript-Dateien. Im app-Verzeichnis gibt es 3 Dateien namens "main.ts", "todo\_item.ts" und "todo\_list.ts".
 
@@ -306,7 +306,7 @@ W> Wichtig zu beachten ist, dass wir hier TypeScript on-the-fly, sprich im Brows
 
 I> #### SystemJS
 I>
-I> SystemJS ist ein Modullader, der verschiedene Arten von Modulen wie z. B. CommonJS, AMD und ES6/ES2015 Module unterstützt. Strenggenommen müssen wir SystemJS nicht nutzen, es gibt auch andere Möglichkeiten, aber da es vom Angular-Team empfohlen wird, nutzen wir es hier. Wer mehr über SystemJS erfahren möchte kann [hier](https://github.com/systemjs/systemjs) darüber lesen.
+I> SystemJS ist ein Modullader, der verschiedene Arten von Modulen wie z. B. CommonJS, AMD und ESM unterstützt. Strenggenommen müssen wir SystemJS nicht nutzen, es gibt auch andere Möglichkeiten, aber da es vom Angular-Team empfohlen wird, nutzen wir es hier. Wer mehr über SystemJS erfahren möchte kann [hier](https://github.com/systemjs/systemjs) darüber lesen.
 
 {title="app/main.ts", lang=js}
 ```
@@ -336,7 +336,7 @@ Erklärung:
 
 Dies ist das Hauptmodul für unsere Anwendung. Instantiiert Todos und die Liste, hat Zugriff auf DOM-Elemente und ruft Methoden auf, um die Todos anzuzeigen und hinzuzufügen.
 
-* Zeile 1-2: Importiere die Module TodoList und TodoItem mittels [ES6/ES2015 import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import). Wir nutzen hier den Namen der Datei ohne Endung, da wir SystemJS schon gesagt haben, dass Dateien im app-Verzeichnis immer die Endung ".ts" haben (Zeile 14, index.html)
+* Zeile 1-2: Importiere die Module TodoList und TodoItem mittels [ESM import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import). Wir nutzen hier den Namen der Datei ohne Endung, da wir SystemJS schon gesagt haben, dass Dateien im app-Verzeichnis immer die Endung ".ts" haben (Zeile 14, index.html)
 * Zeile 4: Todos für unsere Liste. Das Array ist vom Typ "TodoItem"
 * Zeile 6-8: DOM-Elemente an Konstanten zuweisen. Wir nutzen dafür das [ES6/ES2015 Keyword "const"](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const). Die Typen "HTMLInputElement" und "HTMLElement" sind in TypeScript vordefiniert
 
@@ -374,7 +374,7 @@ export default TodoItem;
 
 Erklärung:
 
-Modul und Klassendefinition für ein Todo-Element. Unsere Klasse erzeugt Instanzen vom Typ "TodoItem". In der letzte Zeile nutzen wir eine [ES6/ES2015 export-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) um die Klasse zu exportieren, damit wir die in anderen Modulen importieren und nutzen kann.
+Modul und Klassendefinition für ein Todo-Element. Unsere Klasse erzeugt Instanzen vom Typ "TodoItem". In der letzte Zeile nutzen wir eine [ESM export-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) um die Klasse zu exportieren, damit wir die in anderen Modulen importieren und nutzen kann.
 
 {title="app/todo_list.ts", lang=js}
 ```
@@ -461,7 +461,7 @@ tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commo
 
 Erklärung:
 
-tsc ist der TypeScript-Compiler. Die Optionen "--emitDecoratorMetadata" und "--experimentalDecorators" sind in unserem Beispiel optional, werden aber später für die Angular Rezepte gebraucht. Die Option "--module" gibt an, dass die ES6/ES2015 Module die wir nutzen in CommonJS-Module umgewandelt werden sollen. Die Option --target gibt an welchen ECMAScript-Version unser JavaScript entsprechen soll. Hier nutzen wir ECMAScript 5. Als letztes geben wir die main.ts-Datei an. Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert. Wir müssen also nicht jedes Modul einzeln kompilieren.
+tsc ist der TypeScript-Compiler. Die Optionen "--emitDecoratorMetadata" und "--experimentalDecorators" sind in unserem Beispiel optional. Diese werden später für die Angular Rezepte gebraucht. Die Option "--module" gibt an, dass die ESM die wir nutzen in CommonJS-Module umgewandelt werden sollen. Die Option --target gibt an welchen ECMAScript-Version unser JavaScript entsprechen soll. Hier nutzen wir ECMAScript 5. Als letztes geben wir die main.ts-Datei an. Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert. Wir müssen also nicht jedes Modul einzeln kompilieren.
 Der TypeScript-Compiler bietet noch mehr Optionen an die wir nutzen können. Zwei davon werden wir noch gleich sehen. Weitere Optionen gibt es im [TypeScript-Wiki](https://github.com/Microsoft/TypeScript/wiki/Compiler-Options).
 
 W> #### Wichtig

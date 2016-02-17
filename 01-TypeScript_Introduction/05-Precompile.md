@@ -48,7 +48,7 @@ tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commo
 
 Erklärung:
 
-tsc ist der TypeScript-Compiler. Die Optionen "--emitDecoratorMetadata" und "--experimentalDecorators" sind in unserem Beispiel optional, werden aber später für die Angular Rezepte gebraucht. Die Option "--module" gibt an, dass die ES6/ES2015 Module die wir nutzen in CommonJS-Module umgewandelt werden sollen. Die Option --target gibt an welchen ECMAScript-Version unser JavaScript entsprechen soll. Hier nutzen wir ECMAScript 5. Als letztes geben wir die main.ts-Datei an. Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert. Wir müssen also nicht jedes Modul einzeln kompilieren.
+tsc ist der TypeScript-Compiler. Die Optionen "--emitDecoratorMetadata" und "--experimentalDecorators" sind in unserem Beispiel optional. Diese werden später für die Angular Rezepte gebraucht. Die Option "--module" gibt an, dass die ESM die wir nutzen in CommonJS-Module umgewandelt werden sollen. Die Option --target gibt an welchen ECMAScript-Version unser JavaScript entsprechen soll. Hier nutzen wir ECMAScript 5. Als letztes geben wir die main.ts-Datei an. Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert. Wir müssen also nicht jedes Modul einzeln kompilieren.
 Der TypeScript-Compiler bietet noch mehr Optionen an die wir nutzen können. Zwei davon werden wir noch gleich sehen. Weitere Optionen gibt es im [TypeScript-Wiki](https://github.com/Microsoft/TypeScript/wiki/Compiler-Options).
 
 W> #### Wichtig

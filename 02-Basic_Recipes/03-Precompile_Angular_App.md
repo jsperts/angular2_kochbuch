@@ -6,7 +6,7 @@ Ich möchte meine Angular 2 Anwendung vorkompilieren, so dass die im Browser sch
 Zusätzlich sollen alle Abhängigkeiten lokal installiert sein.
 
 ### Zutaten
-* Node.js, npm und TypeScript-Compiler muss installiert sein wie in [TypeScript-Dateien vorkompilieren](#c01-precompile) beschrieben
+* Node.js, npm und TypeScript-Compiler. Siehe [TypeScript-Dateien vorkompilieren](#c01-precompile)
 * [Angular 2 Anwendung](#c02-angular-app)
 * package.json, um die Abhängigkeiten zu definieren
 * Anpassungen an der main.ts-Datei von der Angular 2 Anwendung
@@ -38,14 +38,12 @@ Wir haben hier eine minimale package.json-Datei die wir benutzen, um Abhängigke
 * Zeile 3-10: Abhängigkeiten die wir entweder direkt in unserer Anwendung brauchen oder die wir installieren damit der TypeScript-Compiler die Typen für die verschiedene Klassen, Methoden usw. finden kann
 * Zeile 11: Mit der Eigenschaft "private" verhindern wir, dass unser Anwendung aus Versehen in das npm-Register hoch geladen werden kann
 
-Die Abhängigkeiten können jetzt mit
+Die Abhängigkeiten können jetzt installiert werden mit:
 
 {lang=bash}
 ```
 npm install
 ```
-
-installiert werden.
 
 {title="Anpassungen an der main.ts-Datei", lang=js}
 ```
@@ -56,7 +54,7 @@ installiert werden.
 
 Erklärung:
 
-Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen wo er Typ-Informationen für gewisse Konstrukten wie z. B. Promise, Map und Set finden kann. Wir können unseren Code auch ohne diese Zeile kompilieren, aber der Compiler wird Warnungen ausgeben da ihm Typ-Informationen fehlen.
+Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen wo er Typinformationen für gewisse Konstrukten wie z. B. Promise, Map und Set finden kann. Wir können unseren Code auch ohne diese Zeile kompilieren, aber der Compiler wird Warnungen ausgeben da ihm Typinformationen fehlen.
 
 {title="Anpassungen an der index.html-Datei", lang=js}
 ```
@@ -84,8 +82,8 @@ Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen wo e
 
 Erklärung:
 
-Zeile 6-9: SystemJS, Angular und Abhängigkeiten aus node\_modules laden statt online wie in der [Angular Anwendung](#c02-angular-app)
-Zeile 8: angular2-polyfills.js beinhaltet die Abhängigkeiten reflect-metadata und zone.js
+* Zeile 6-9: SystemJS, Angular und Abhängigkeiten aus node\_modules laden statt online wie in der [Angular Anwendung](#c02-angular-app)
+* Zeile 8: angular2-polyfills.js beinhaltet die Abhängigkeiten reflect-metadata und zone.js
 
 Nachdem wir die index.html-Datei angepasst und die Abhängigkeiten mittels npm installiert haben, können wir die Anwendung mit dem TypeScript-Compiler so wie in [TypeScript-Dateien vorkompilieren](#c01-precompile) kompilieren. Im Beispiel-Code auf Github befindet sich auch eine tsconfig.json-Datei, die das Kompilieren erleichtert.
 
@@ -93,7 +91,7 @@ Nachdem wir die index.html-Datei angepasst und die Abhängigkeiten mittels npm i
 
 Statt der angular2-polyfills.js-Datei, hätten wir auch reflect-metadata und zone.js einzeln laden können. Ist aber einfacher die Abhängigkeiten direkt über angular2-polyfills.js zu laden. Es ist auch sicherer, dass die Versionen von reflect-metadata und zone.js kompatible zu der Version von Angular sind. Trotzdem müssen wir beide Module über npm laden, damit der TypeScript-Compiler keine Typ-Fehler meldet.
 
-Die meisten Rezepte in diesem Buch nutzen die on-the-fly Kompilierung, wie die in [Angular 2 Anwendung](#c02-angular-app) zu sehen ist. Der Grund dafür, ist dass wir damit schneller starten können ohne erst Abhängigkeiten zu installieren und Dateien zu kompilieren. Natürlich funktionieren die Rezepte auch mit der index.html-Datei die hier zu sehen ist und mit der tsconfig.json-Datei die im Beispiel-Code für dieses Rezept zu finden ist. Damit der Compiler ohne Warnungen kompilieren kann, müssen wir in der Haupt-TypeScript-Datei jedes Rezeptes die Typ-Informationen hinzufügen wie wir es hier für die main.ts-Datei getan haben.
+Die meisten Rezepte in diesem Buch nutzen die on-the-fly Kompilierung, wie diese in [Angular 2 Anwendung](#c02-angular-app) zu sehen ist. Der Grund dafür, ist dass wir damit schneller starten können ohne erst Abhängigkeiten zu installieren und Dateien zu kompilieren. Natürlich funktionieren alle Rezepte auch mit der index.html-Datei die hier zu sehen ist und mit der tsconfig.json-Datei die im Beispiel-Code für dieses Rezept zu finden ist. Damit der Compiler ohne Warnungen kompilieren kann, müssen wir in der Haupt-TypeScript-Datei (main.ts) jedes Rezeptes die Typinformationen hinzufügen wie wir es hier für die main.ts-Datei getan haben.
 
 ### Code
 

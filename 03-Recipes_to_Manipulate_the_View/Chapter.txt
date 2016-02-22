@@ -4,3 +4,4 @@
 03-User_Interaction.md
 04-Dynamic_Classes.md
 05-Conditionally_Show_Parts_of_the_View_with_NgIf.md
+06-Conditionally_Show_Parts_of_the_View_with_NgSwitch.md

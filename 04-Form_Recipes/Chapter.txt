@@ -1,4 +1,5 @@
 00-Introduction.md
 01-Simple_Form.md
-02-Form_Validation_CSS-Classes.md
+02-Check_Form_Validity.md
 03-Form_Show_Error_for_Field.md
+04-Form_Validation_CSS-Classes.md

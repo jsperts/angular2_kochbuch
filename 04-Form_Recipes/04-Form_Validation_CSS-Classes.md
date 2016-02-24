@@ -5,53 +5,59 @@
 Ich möchte ein ungültiges Formular-Feld farblich hervorheben.
 
 ### Zutaten
-* [Ein Formular](#c04-simple-form)
-* Eingabefeld mit Validierungs-Eigenschaften
-* Anpassungen an den Eingabefeldern im Formular
+* [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * Styles für die CSS-Klassen die von Angular gesetzt werden
 
 ### Lösung
 
-{title="Template as app.component.ts plus Anpassungen", lang=html}
-```
-<style>
-  .ng-invalid {
-    border-color: red;
-  }
+Jedes Eingabefeld bekommt von Angular gewisse CSS-Klassen gesetzt.
+Um diese zu nutzen, müssen wir nur entsprechende Styles definieren.
 
-  .ng-valid {
-    border-color: green;
-  }
-</style>
-<form (ngSubmit)="onSubmit()" novalidate>
-  <label>Username</label>
-  <input type="text" [(ngModel)]="user.username" required/>
-  <label>Password</label>
-  <input type="password" [(ngModel)]="user.password" required minlength="10"/>
-  <button type="submit">Submit</button>
-</form>
+{title="Ausschnitt aus einer Komponente", lang=js}
+```
+...
+
+@View({
+  template: `
+    <style>
+      .ng-invalid {
+        border-color: red;
+      }
+
+      .ng-valid {
+        border-color: green;
+      }
+    </style>
+    <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
+      <label>Username</label>
+      <input type="text" [(ngModel)]="user.username" required ngControl="username"/>
+      <label>Password</label>
+      <input type="password" [(ngModel)]="user.password" required minlength="10" ngControl="password"/>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+  `
+})
+
+...
 ```
 
 Erklärung:
 
-* Zeile 1-9: CSS-Styles für die __ng-invalid__ und __ng-valid__ CSS-Klassen
-* Zeile 10-16: Unser Formular
-  * Zeile 10: Da nutzen wir das validate-Attribut, damit der Browser keine Fehlermeldungen für ungültige Eingabefelder anzeigt. Dieses Attribut ist nicht Angular spezifisch
-  * Zeile 11: Eingabefeld für den Benutzernamen. Durch das required-Attribut wird das Eingabefeld zu einem Pflichtfeld
-  * Zeile 13: Eingabefeld für das Passwort. Durch das required-Attribut wird das Eingabefeld zu einem Pflichtfeld. Da wir hier noch das minlength-Attribut gesetzt haben, muss das Passwort mindestens 10 Zeichen lang sein
+* Zeile 5-13: CSS-Styles für die __ng-invalid__ und __ng-valid__ CSS-Klassen
 
 ### Diskussion
 
-Beim Laden der Anwendung sieht Angular die Attribute __required__ und __minlength__ und setzt die CSS-Klasse __ng-invalid__, da die Eingabefelder leer und somit ungültig sind. Sobald wir mindestens einen Buchstaben in das Benutzername-Eingabefeld schreiben, wird das Eingabefeld gültig und Angular entfernt die ng-invalid-Klasse und setzt stattdesen die ng-valid-Klasse. Beim Eingabefeld für das Passwort wird die ng-valid-Klasse erst dann gesetzt, wenn wir mindestens 10 Zeichen eingeben.
+Beim Laden der Anwendung sieht Angular die Attribute __required__ und __minlength__ und setzt die CSS-Klasse __ng-invalid__, da die Eingabefelder leer und somit ungültig sind. Sobald wir mindestens einen Buchstaben in das Benutzername-Eingabefeld schreiben, wird das Eingabefeld gültig und Angular entfernt die ng-invalid-Klasse und setzt stattdessen die ng-valid-Klasse. Beim Eingabefeld für das Passwort wird die ng-valid-Klasse erst dann gesetzt, wenn wir mindestens zehn Zeichen eingeben.
 
-Von Haus aus unterstützt Angular derzeit drei Validierungs-Attribute:
-* required
-* minlength
-* maxlength
-
-Vermutlich wird es mit der Zeit noch mehr eingebaute Validierungs-Attribute bzw. Validierungs-Typen wie z. B. "email" und "url" geben. Siehe hierzu Github-Issues [#2962](https://github.com/angular/angular/issues/2962) und [#2961](https://github.com/angular/angular/issues/2961).
-
-Außer __ng-valid__ und __ng-invalid__ werden von Angular noch vier weitere CSS-Klassen gesetzt. Die sind: __ng-touched__, __ng-untouched__, __ng-dirty__ und __ng-pristine__. Die ng-touched-Klasse wird gesetzt, wenn der Nutzer einmal in einem Eingabefeld drin war und danach raus gesprungen ist. Beim Laden der Anwendung ist die ng-untouched-Klasse gesetzt. Die ng-dirty-Klasse wird gesetzt, sobald der Nutzer in ein Eingabefeld etwas geschrieben hat. Beim Laden der Anwendung ist die ng-pristine-Klasse gesetzt. Wir haben also drei CSS-Klassen Paare die Informationen über den Zustand eines Eingabefelds geben.
+Außer __ng-valid__ und __ng-invalid__ werden von Angular noch vier weitere CSS-Klassen gesetzt.
+Diese sind:
+* ng-touched/ng-untouched und
+* ng-dirty/ng-pristine.
+Die ng-touched-Klasse wird gesetzt, wenn der Nutzer einmal in einem Eingabefeld drin war und danach raus gesprungen ist.
+Beim Laden der Anwendung ist die ng-untouched-Klasse gesetzt.
+Die ng-dirty-Klasse wird gesetzt, sobald der Nutzer in ein Eingabefeld etwas geschrieben hat.
+Beim Laden der Anwendung ist die ng-pristine-Klasse gesetzt.
+Wir haben also drei CSS-Klassen Paare die Informationen über den Zustand eines Eingabefelds geben.
 
 ### Code
 

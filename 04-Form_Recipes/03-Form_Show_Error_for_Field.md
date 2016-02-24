@@ -20,7 +20,7 @@ In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes ü
 
 @View({
   template: `
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm" novalidate>
+    <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
       <input type="text" [(ngModel)]="user.username" required ngControl="username"/>
       <div *ngIf="!form.controls.username?.valid">
@@ -59,7 +59,7 @@ Hier werden wir lokale Variable für jedes Eingabefeld definieren.
 
 @View({
   template: `
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm" novalidate>
+    <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
       <input type="text" [(ngModel)]="user.username" required ngControl="username" #username="ngForm"/>
       <div *ngIf="!username.valid">

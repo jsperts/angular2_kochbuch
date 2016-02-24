@@ -124,9 +124,9 @@ Diese Instanz registriert sich dann mit dem gegebenen Namen als Control für das
 Wir können auch Eingabefelder haben die kein __ngControl__ nutzen. Diese werden allerdings nicht bei der Validierung des Formulars mit einbezogen.
 
 Von Haus aus unterstützt Angular derzeit drei Validierungs-Attribute:
-* required
-* minlength
-* maxlength
+* required,
+* minlength und
+* maxlength.
 Vermutlich wird es mit der Zeit noch mehr eingebaute Validierungs-Attribute bzw. Validierungs-Typen wie z. B. "email" und "url" geben. Siehe hierzu Github-Issues [#2962](https://github.com/angular/angular/issues/2962) und [#2961](https://github.com/angular/angular/issues/2961).
 
 ### Code

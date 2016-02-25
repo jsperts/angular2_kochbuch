@@ -3,3 +3,7 @@
 02-Check_Form_Validity.md
 03-Form_Show_Error_for_Field.md
 04-Form_Validation_CSS-Classes.md
+05-Form_with_FormBuilder.md
+06-Form_Validation_with_FormBuilder.md
+07-Custom_Validation.md
+08-Custom_Async_Validation.md

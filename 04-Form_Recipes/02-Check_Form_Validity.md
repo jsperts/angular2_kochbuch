@@ -134,7 +134,11 @@ Vermutlich wird es mit der Zeit noch mehr eingebaute Validierungs-Attribute bzw.
 
 Code auf Github für die erste Lösung: [04-Form\_Recipes/04-Check\_Form\_Validity\_in\_Template/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-01)
 
+Live Demo für die erste Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-01/index.html)
+
 Code auf Github für die zweite Lösung: [04-Form\_Recipes/04-Check\_Form\_Validity\_in\_Template/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-02)
+
+Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-02/index.html)
 
 ### Weitere Ressourcen
 

@@ -127,7 +127,11 @@ Wenn wir nur einzelne Eingabefelder überprüfen möchten, reicht die NgModel-Di
 
 Code auf Github für die erste Lösung: [04-Form\_Recipes/03-Form\_Show\_Error\_for\_Field/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-01)
 
+Live Demo für die erste Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-01/index.html)
+
 Code auf Github für die zweite Lösung: [04-Form\_Recipes/03-Form\_Show\_Error\_for\_Field/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-02)
+
+Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-02/index.html)
 
 ### Weitere Ressourcen
 

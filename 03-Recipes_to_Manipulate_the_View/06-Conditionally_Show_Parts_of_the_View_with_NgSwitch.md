@@ -76,6 +76,8 @@ Das NgSwitchDefault-Template wird nur dann angezeigt, wenn alle Vergleiche __fal
 
 Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/06-Conditionally\_Show\_Parts\_of\_the\_View\_with\_NgSwitch](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/05-Conditionally_Show_Parts_of_the_View_with_NgSwitch)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-Recipes_to_Manipulate_the_View/06-Conditionally_Show_Parts_of_the_View_with_NgSwitch/index.html)
+
 ### Weitere Ressourcen
 
 * Offizielle [NgSwitch](https://angular.io/docs/ts/latest/api/common/NgSwitch-directive.html) Dokumentation auf der Angular 2 Webseite

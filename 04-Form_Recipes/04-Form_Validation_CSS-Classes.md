@@ -63,3 +63,5 @@ Wir haben also drei CSS-Klassen Paare die Informationen über den Zustand eines 
 
 Code auf Github: [04-Form\_Recipes/02-Form\_Validation\_CSS-Classes](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/02-Form_Validation_CSS-Classes)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/04-Form_Validation_CSS-Classes/index.html)
+

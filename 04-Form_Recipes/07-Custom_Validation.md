@@ -78,3 +78,5 @@ Andere Werte wie z. B. __undefined__ haben den gleichen Effekt, da aber die Ang
 
 Code auf Github: [04-Form\_Recipes/07-Custom\_Validation](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/07-Custom_Validation)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/07-Custom_Validation/index.html)
+

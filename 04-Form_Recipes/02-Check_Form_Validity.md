@@ -14,7 +14,7 @@ Ich möchte, dass ein Submit nur dann möglich ist, wenn das Formular gültig is
 ### Lösung 1
 
 In dieser Lösung werden wir sehen wie wir die Gültigkeit des Formulars im Template überprüfen können.
-Wir den Submit-Button deaktivieren, wenn das Formular ungültig ist.
+Wir werden den Submit-Button deaktivieren, wenn das Formular ungültig ist.
 Das wird das Submit-Event unterbinden, wenn nicht alle Formular-Felder gültig sind.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
@@ -68,7 +68,7 @@ Erklärung:
 
 In dieser Lösung werden wir sehen wie wir die gültigkeit des Formulars in der Klasse überprüfen können.
 Wir nutzen das Formular von der ersten Lösung mit zwei Änderungen.
-Als Erstes übergeben wir die lokale "form" Variable der onSubmit-Methode und als Zweites nutzen wir nicht mehr die disabled-Eigenschaft des Buttons.
+Als Erstes übergeben wir die lokale Variable "form" der onSubmit-Methode und als Zweites nutzen wir nicht mehr die disabled-Eigenschaft des Buttons.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
@@ -118,9 +118,10 @@ Den Wert der exportAs-Eigenschaft können wir im Template nutzen, um die Instanz
 Ein Formular ist nur dann gültig, wenn alle seine Eingabefelder gültig sind.
 Die NgForm-Direktive überprüft also die einzelne Eingabefelder und setzt die valid-Eigenschaft auf __true__, wenn jedes Eingabefeld gültig ist.
 Damit die Direktive weiß welche Eingabefelder überprüft werden müssen, müssen die Eingabefelder als Controls definiert sein.
-Wir definieren, dass ein Eingabefeld zu dem Formular gehört indem man __ngControl="controlName"__ nutzen.
+Wir definieren, dass ein Eingabefeld zu dem Formular gehört, indem man __ngControl="controlName"__ nutzen.
 Im Hintergrund wird von Angular eine neue Instanz der NgControlName-Direktive erzeugt.
 Diese Instanz registriert sich dann mit dem gegebenen Namen als Control für das Formular.
+Die NgForm-Direktive wird dann für unser Control eine Instanz der Control-Klasse erzeugen.
 Wir können auch Eingabefelder haben die kein __ngControl__ nutzen. Diese werden allerdings nicht bei der Validierung des Formulars mit einbezogen.
 
 Von Haus aus unterstützt Angular derzeit drei Validierungs-Attribute:

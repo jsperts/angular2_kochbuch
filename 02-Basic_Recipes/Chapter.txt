@@ -2,3 +2,4 @@
 01-Angular_2_App.md
 02-Define_Component.md
 03-Precompile_Angular_App.md
+04-Define_Service.md

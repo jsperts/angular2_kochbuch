@@ -1,4 +1,4 @@
-## Ein Service Definieren {#c02-define-service}
+## Ein Service definieren {#c02-define-service}
 
 ### Problem
 

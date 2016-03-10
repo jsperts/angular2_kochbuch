@@ -15,12 +15,12 @@ Ich möchte zur Laufzeit Daten im JSON-Format von einem Server holen.
 ### Lösung
 
 In dieser Lösung werden wir sehen wie wir JSON-Daten von einem Server holen können.
-Die Fehlerbehandlung lassen wir außen vor und werden uns mit diese in einem weiteren Rezept beschäftigen.
+Die Fehlerbehandlung lassen wir außen vor, damit wir uns für das Erste auf die GET-Anfrage konzentrieren können.
+Über Fehler bei Server-Anfragen reden wir im Rezept [Server-Anfragen und Fehlerbehandlung](#c05-error-handling).
 
 Wir gehen hier davon aus, dass wir einen Server haben der auf __127.0.0.1:3000__ hört.
-Der Server antwortet auf GET-Anfragen, wenn diese __/data__ als Pfad haben.
+Wenn eine GET-Anfrage nach __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
 Wir nutzen __http://127.0.0.1:3000/data__ als URL für die Anfrage.
-So sieht eine Server Antwort aus:
 
 {title="Server-Antwort", lang=json}
 ```
@@ -59,7 +59,7 @@ Erklärung:
 Wir haben den Service aus dem Rezept "Ein Service Definieren" und diesen so angepasst, dass wir die Daten mittels Http holen statt statische Daten zu nutzen.
 
 * Zeile 2: Hier importieren wir den Http-Service von Angular
-* Zeile 3: Durch diesen Import erweitern wir das Observable-Objekt (siehe Zeile 15) um eine Methode namens "map"
+* Zeile 3: Durch diesen Import erweitern wir die Instanzen der Observable-Klasse (siehe Zeile 15) um eine Methode namens "map"
 * Zeile 5: Im Gegensatz zu dem Service im Rezept "Ein Service definieren", brauchen wir den Injectable-Decorator, da unser Service eine Abhängigkeit hat und zwar den Http-Service (siehe Zeile 9)
 * Zeile 9: Hier definieren wir den Http-Service als Abhängigkeit von unserem Service
 * Zeile 15: Hier rufen wir die get-Methode von Http auf. Als Parameter bekommt diese Methode eine URL. Der Rückgabewert ist ein Observable (Teil von RxJS)

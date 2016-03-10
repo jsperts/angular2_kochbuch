@@ -13,11 +13,13 @@ Ich möchte mittels POST-Anfrage Daten an einem Server schicken.
 
 Wir werden hier die Lösung vom Rezept "Daten vom Server mit GET holen" erweitern, so dass wir auch Daten an den Server schicken können.
 Auch hier lassen wir die Fehlerbehandlung außen vor.
+Siehe dazu [Server-Anfragen und Fehlerbehandlung](#c05-error-handling).
 
 Wir gehen davon aus, dass wir einen Server haben der auf __127.0.0.1:3000__ hört.
-Der Server erwartet POST-Anfragen mit Pfad __/data__.
+Wenn eine POST-Anfrage nach __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
+Bei der Anfrage erwartet der Server ein Objekt im JSON-Format mit eine name-Eigenschaft.
+Für die Antwort wird dieses Objekt um eine id-Eigenschaft erweitert.
 Wir nutzten __http://127.0.0.1:3000/data__ als URL für die Anfrage.
-Der Server erwartet ein Objekt mit eine name-Eigenschaft und antwortet mit einem Objekt mit der name-Eigenschaft und eine id-Eigenschaft.
 
 {title="Daten für die Anfrage", lang=json}
 ```

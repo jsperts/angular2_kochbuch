@@ -2,3 +2,4 @@
 01-Get_Data.md
 02-Post_Data.md
 03-Error_Handling.md
+04-Query_Parameters.md

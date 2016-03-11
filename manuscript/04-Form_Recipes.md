@@ -440,8 +440,10 @@ Beim Laden der Anwendung sieht Angular die Attribute __required__ und __minlengt
 
 Außer __ng-valid__ und __ng-invalid__ werden von Angular noch vier weitere CSS-Klassen gesetzt.
 Diese sind:
+
 * ng-touched/ng-untouched und
 * ng-dirty/ng-pristine.
+
 Die ng-touched-Klasse wird gesetzt, wenn der Nutzer einmal in einem Eingabefeld drin war und danach raus gesprungen ist.
 Beim Laden der Anwendung ist die ng-untouched-Klasse gesetzt.
 Die ng-dirty-Klasse wird gesetzt, sobald der Nutzer in ein Eingabefeld etwas geschrieben hat.
@@ -450,7 +452,7 @@ Wir haben also drei CSS-Klassen Paare die Informationen über den Zustand eines 
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/02-Form\_Validation\_CSS-Classes](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/02-Form_Validation_CSS-Classes)
+Code auf Github: [04-Form\_Recipes/04-Form\_Validation\_CSS-Classes](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Form_Validation_CSS-Classes)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/04-Form_Validation_CSS-Classes/index.html)
 

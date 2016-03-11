@@ -285,7 +285,7 @@ Falls es __false__ ist, wird die Breite "50px" sein.
 ## Lokale Variablen
 
 Wie schon erwähnt, können wir in Templates lokale Variablen definieren und nutzen.
-Um eine lokale Variable zu definieren, nutzen wir eine Raute __#__.
+Um eine lokale Variable zu definieren, nutzen wir eine Raute (#).
 Hier ein Beispiel:
 
 {lang=html}

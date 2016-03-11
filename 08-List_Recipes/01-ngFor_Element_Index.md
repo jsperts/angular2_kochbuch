@@ -37,7 +37,7 @@ Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest 
 
 ### Diskussion
 
-Hier zeigen wir den Index nur in der View an. Natürlich kann man die lokale Variable "i" auch einer Methode übergeben oder sie nutzen, um etwas zu berechnen. Z. B. kann man in Zeile 7 eine __Eins__ zu der Variable "i" addieren, so dass die Anzeige mit __1__ statt __0__ beginnt. Der Ausdruck dafür wäre _{{i + 1}}_.
+Hier zeigen wir den Index nur in der View an. Natürlich kann man die lokale Variable "i" auch einer Methode übergeben oder sie nutzen, um etwas zu berechnen. Z. B. kann man in Zeile 7 eine __Eins__ zu der Variable "i" addieren, so dass die Anzeige mit __1__ statt __0__ beginnt. Der Ausdruck dafür wäre __{{i + 1}}__.
 
 ### Code
 

@@ -115,11 +115,11 @@ Erklärung:
 Verglichen mit der Komponente aus "Ein Service definieren", wurden zwei Änderungen vorgenommen.
 Wir haben weitere Providers definiert und die Konstruktorfunktion angepasst.
 
-Zeile 2: Hier importieren wir die HTTP\_PROVIDERS Variable. Diese beinhaltet Providers für verschiedene Services die mit Server-Anfragen zu tun haben
-Zeile 12: Damit unser Service den Http-Service nutzen kann, müssen wir dem Injector die HTTP\_PROVIDERS-Variable übergeben
-Zeile 24: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "IData" (Siehe Zeilen 5-8)
-Zeilen 30-25: Methode die Aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
-Zeile 31: Die getData-Methode des Service gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
+* Zeile 2: Hier importieren wir die HTTP\_PROVIDERS Variable. Diese beinhaltet Providers für verschiedene Services die mit Server-Anfragen zu tun haben
+* Zeile 12: Damit unser Service den Http-Service nutzen kann, müssen wir dem Injector die HTTP\_PROVIDERS-Variable übergeben
+* Zeile 24: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "IData" (Siehe Zeilen 5-8)
+* Zeilen 30-25: Methode die Aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
+* Zeile 31: Die getData-Methode des Service gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
 Da sich der Http-Service in eine eigener JavaScript-Datei befindet, müssen wir diese Datei in unsere index.html-Datei importieren.
 

@@ -555,7 +555,7 @@ Der Unterschied zwischen den beiden Rezepten ist der Weg den wir gewählt haben,
 
 Ein Detail hatten wir bis jetzt ignoriert.
 Wie wusste Angular überhaupt, dass wir den FormBuilder-Service brauchten?
-Anhand der Typinformation die wir bei der Parameterdefinition im Konstruktor gegeben haben und mittels Dependency Injection (DI) kann Angular uns eine Instanz eines Services bei der Initialisierung der Komponente übergeben.
+Anhand der Typinformation die wir bei der Parameterdefinition im Konstruktor gegeben haben und mittels [Dependency Injection (DI)](#gl-di) kann Angular uns eine Instanz eines Services bei der Initialisierung der Komponente übergeben.
 Die Typinformation befindet sich auf Zeile 20 und ist der Teil nach dem Doppelpunkt.
 Wir haben __builder: FormBuilder__ geschrieben. In diesem Fall ist "builder" der Parameternamen und "FormBuilder" die Typinformation.
 Mit Hilfe des Typs schaut Angular welche Services zur Verfügung stehen und gibt uns zurück eine Instanz mit dem richtigen Typ.
@@ -575,6 +575,7 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-
 * Offizielle [ControlGroup](https://angular.io/docs/ts/latest/api/common/ControlGroup-class.html) Dokumentation auf der Angular 2 Webseite
 * Offizielle [NgFormModel](https://angular.io/docs/ts/latest/api/common/NgFormModel-directive.html) Dokumentation auf der Angular 2 Webseite
 * Offizielle [NgControlName](https://angular.io/docs/ts/latest/api/common/NgControlName-directive.html) Dokumentation auf der Angular 2 Webseite
+* Eine kurze Diskussion über Dependency Injection gibt es im Rezept [Service definieren](#02-define-service)
 * Weiter Informationen zur [Dependency Injection](https://angular.io/docs/ts/latest/guide/dependency-injection.html) gibt es auf der Angular 2 Webseite
 
 ## Formular mit dem FormBuilder und Validierung {#c04-formbuilder-validation}

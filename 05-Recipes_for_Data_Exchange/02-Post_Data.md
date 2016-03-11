@@ -6,8 +6,8 @@ Ich möchte mittels POST-Anfrage Daten an einem Server schicken.
 
 ### Zutaten
 * [Daten vom Server mit GET holen](#c05-get-data)
-* Eine Instanz der Headers-Klasse
-* Eine Instanz der RequestOptions-Klasse
+* Die Headers-Klasse von Angular
+* Die RequestOptions-Klasse von Angular
 
 ### Lösung
 
@@ -78,7 +78,6 @@ Erklärung:
   * Zeile 14: Instantiierung eines Objektes für Request-Optionen. Das headers-Objekt wird bei der Instantiierung dem options-Objekt übergeben
   * Zeile 16: Zur Zeit erwartet Angular ein String bei dem Aufruf der post-Methode (Zeile 18). Darum müssen wir unser Objekt in ein String transformieren
   * Zeile 18: Aufruf der post-Methode mit den Daten als zweiten Parameter und die Optionen für die Anfrage als dritten Parameter
-
 
 Auch unsere Komponente wird um eine sendData-Methode erweitert.
 Teile der Komponente die wir nicht geändert haben, werden durch Punkte (...) ersetzt.

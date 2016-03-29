@@ -1,4 +1,4 @@
-## Teile der View konditional anzeigen mit NgIf {#c03-ngif}
+## Teile der View konditional mit NgIf anzeigen {#c03-ngif}
 
 ### Problem
 

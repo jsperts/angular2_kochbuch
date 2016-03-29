@@ -1,4 +1,4 @@
-## Teile der View konditional anzeigen mit NgSwitch
+## Teile der View konditional mit NgSwitch anzeigen
 
 ### Problem
 

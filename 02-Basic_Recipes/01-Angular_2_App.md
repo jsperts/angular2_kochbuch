@@ -14,7 +14,7 @@ Ich möchte von Null auf eine Angular 2 Anwendung implementieren.
 
 ### Lösung
 
-Als Erstes werden wir uns die app.component.ts-Datei mit der Komponentendefinition anschauen. Diese Datei befindet sich im Unterverzeichnis "app".
+Als erstes werden wir uns die app.component.ts-Datei mit der Komponentendefinition anschauen. Diese Datei befindet sich im Unterverzeichnis "app".
 
 {title="app.component.ts", lang=js}
 ```

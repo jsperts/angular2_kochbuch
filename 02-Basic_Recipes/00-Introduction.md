@@ -1,4 +1,7 @@
 # Basisrezepte
 
-In diesem Kapitel befinden sich Basisrezepte die in weitere Kapitel des Buches benötigt werden. Der Code von den Rezepten die hier gezeigt werden, kann später kopiert und angepasst werden, um weiter Rezepte zu implementieren. Ziel des Kapitels ist es dem Leser den schnellen Einstieg in die Basics von Angular 2 zu ermöglichen.
+In diesem Kapitel befinden sich Basisrezepte, die in späteren Rezepten als Zutaten benötigt werden.
+Der Code, der in der Lösung(en) gezeigt wird kann kopiert und angepasst werden, um die Lösung(en) für weitere Rezepte zu implementieren.
+Es wird empfohlen dieses Kapitel als Erstes zu lesen, um ein Überblick zu bekommen und sich erst dann mit weiteren Rezepten zu beschäftigen.
+Es ist das Ziel des Kapitels den schnellen Einstieg in die Grundlagen und die Hauptbauteile von Angular 2 Anwendungen zu ermöglichen.
 

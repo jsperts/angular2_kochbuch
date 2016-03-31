@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte anhand eines booleschen Wertes definieren wann eine CSS-Klasse gesetzt wird und wann nicht.
+Ich möchte anhand eines booleschen Wertes definieren, wann eine CSS-Klasse gesetzt wird und, wann nicht.
 
 ### Zutaten
 * [Daten einer Komponente in der View anzeigen](#c03-show-data)
@@ -13,12 +13,10 @@ Ich möchte anhand eines booleschen Wertes definieren wann eine CSS-Klasse geset
 
 {title="app.component.ts", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: `
     <style>
       .box {
@@ -48,23 +46,25 @@ class MyApp {
 export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 9-21: Definition der CSS-Klassen die wir benötigen
-* Zeile 22-23: Zwei divs mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit der ngClass-Eigenschaft gesetzt. Die Keys im ngClass-Objekt sind die CSS-Klassen die entfernt/hinzugefügt werden
-  * Zeile 22: Durch ngClass wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
-  * Zeile 23: Durch ngClass wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
-* Zeile 27-30: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
+* Zeilen 6-18: Definition der CSS-Klassen die wir benötigen
+* Zeilen 19-20: Zwei div-Tags mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit Hilfe der ngClass-Eigenschaft gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die CSS-Klassen sind die entfernt/hinzugefügt werden
+  * Zeile 22: Durch die input-Eigenschaft "ngClass" wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
+  * Zeile 23: Durch die input-Eigenschaft "ngClass" wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
+* Zeilen 24-27: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
 
 ### Lösung 2
 
-Wir haben schon in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt bekommt mit CSS-Klassen als Keys und true/false als Werte für die Keys. Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
+Wir haben bereits in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt mit CSS-Klassen als Keys und __true__/__false__ als Werte für die Keys bekommt.
+Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
 {title="Ausschnitt aus der app.component.ts", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <style>
       .box {
@@ -87,26 +87,28 @@ class MyApp {
   constructor() {}
 }
 
-bootstrap(MyApp);
+export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 5-14: Definition der CSS-Klassen die wir benötigen
-* Zeile 15: Div mit ngClass-Eigenschaft die auf das classes-Objekt in unsere Klasse zugreift
-* Zeile 19-22: Objekt mit CSS-Klassen als Keys und boolesche Werte die angeben, ob die CSS-Klasse gesetzt wird oder nicht
+* Zeilen 6-15: Definition der CSS-Klassen die wir benötigen
+* Zeile 16: div-Tag mit ngClass-Eigenschaft, die auf die classes-Eigenschaft der Klasse zugreift
+* Zeilen 20-23: Objekt mit CSS-Klassen als Keys und boolesche Werte die angeben, ob die CSS-Klasse gesetzt wird oder nicht
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" die CSS-Klassen für unsere divs entfernen und hinzufügen kann. Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet.
+Im Github Code-Beispiel wird gezeigt wie wir mittels "click" die CSS-Klassen für unsere div-Tags entfernen und hinzufügen können.
+Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
 
 Wir haben hier eine neue Schreibweise für Templates gesehen und zwar [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
-Diese Art von Daten-Bindung wird Eigenschafts-Bindung genannt.
+Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
 Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung dafür nutzen.
 
 I> #### Inline-styles
 I>
-I> Wenn wir inline-styles in einer Komponente nutzen, können die definierte CSS-Klassen standardmäßig nur in dieser Komponente benutzt werden in der sie definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Klassen, wenn man Komponente wiederverwendet. Die Kapselung von CSS-Klassen und Komponenten wird in Angular _View Encapsulation_ genannt.
+I> Wenn wir inline-styles in einer Komponente nutzen, können die definierte CSS-Klassen standardmäßig nur in dieser Komponente verwendet werden in der diese definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Klassen, wenn man Komponente wiederverwendet. Die Kapselung von CSS-Klassen und Komponenten wird in Angular "View Encapsulation" genannt.
 
 ### Code
 

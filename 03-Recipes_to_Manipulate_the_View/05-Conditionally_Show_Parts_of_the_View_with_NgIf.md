@@ -7,7 +7,7 @@ Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Kondition erf�
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
 * Die NgIf-Direktive von Angular
-* Eine Instanzeigenschaft vom Typ "boolean"
+* Eine Eigenschaft vom Typ "boolean"
 
 ### Lösung
 
@@ -15,7 +15,8 @@ Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Kondition erf�
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <div>Hello world!</div>
     <div *ngIf="isConditionTrue">
@@ -33,21 +34,32 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 6: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "isConditionTrue" den Wert __true__ hat
-* Zeile 12: Definition der isConditionTrue-Eigenschaft mit Typ "boolean"
-* Zeile 14: Standardmäßig soll die isConditionTrue-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
+* Zeile 7: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "isConditionTrue" den Wert __true__ hat
+* Zeile 13: Definition der isConditionTrue-Eigenschaft mit Typ "boolean"
+* Zeile 15: Standardmäßig soll die isConditionTrue-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die isConditionTrue-Eigenschaft verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" den Wert verändern können. Da können wir auch sehen wie sich die View verändert je nachdem, ob "isConditionTrue" den Wert __true__ oder __false__ hat.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die isConditionTrue-Eigenschaft verzichtet.
+Im Github Code-Beispiel wird gezeigt wie wir mittels "click" den Wert verändern können.
+Da können wir auch sehen, wie sich die View verändert je nachdem, ob "isConditionTrue" den Wert __true__ oder __false__ hat.
 
-Es gibt noch weiter mögliche Schreibweisen für das konditionale Anzeigen Teile der View mittels NgIf. Die hier ist die kürzeste und vermutlich die einfachste. Weitere Schreibweisen sind im Github Code-Beispiel zu finden. Von der Funktionalität her sind alle Varianten gleich.
+Es gibt noch weiter mögliche Schreibweisen für das konditionale Anzeigen Teile der View mittels der NgIf-Direktive.
+Die hier ist die kürzeste und vermutlich die einfachste.
+Weitere Schreibweisen sind im Github Code-Beispiel zu finden.
+Von der Funktionalität her sind alle Varianten gleich.
 
 #### Erklärung zu der ngIf-Syntax
 
-Der Stern (\*) vor dem __ngIf__ ist essentiell und Teil der Syntax. Er zeigt an, dass der div-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgIf-Direktive benutzt werden sollen. Nach "\*ngIf=" kommt ein Angular-Template-Ausdruck, der die Kondition angibt. Wenn die Evaluation des Ausdruckes __true__ zurückgibt, ist die Kondition wahr und das Template wird angezeigt. Andernfalls wird das Template aus dem DOM entfernt. Wir haben hier ein sehr einfachen Ausdruck benutzt. Wir hätten auch einen komplexeren Ausdruck nutzen können z. B. einen der ein Vergleich mit __===__ beinhaltet.
+Der Stern (__\*__) vor dem __ngIf__ ist essentiell und Teil der Syntax.
+Er zeigt an, dass der div-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgIf-Direktive benutzt werden sollen.
+Nach __\*ngIf=__ kommt ein Angular-Template-Ausdruck, der die Kondition angibt.
+Wenn die Evaluation des Ausdruckes __true__ zurückgibt, ist die Kondition wahr und das Template wird angezeigt.
+Andernfalls wird das Template aus dem DOM entfernt.
+Wir haben hier einen sehr einfachen Ausdruck benutzt.
+Wir hätten auch einen komplexeren Ausdruck nutzen können z. B. einen der ein Vergleich mit __===__ beinhaltet.
 
 ### Code
 

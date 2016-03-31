@@ -13,7 +13,7 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 
 {title="app.component.ts", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 
 interface IUser {
   firstname: string,
@@ -23,9 +23,7 @@ interface IUser {
 const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstname: 'John', lastname: 'Doe'}];
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: `
     <ul>
       <li *ngFor="#user of users">
@@ -44,19 +42,25 @@ class MyApp {
 export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 3-6: Interface Definition für ein User-Objekt
-* Zeile 16: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
-* Zeile 17: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept [Daten einer Komponente in der View anzeigen](#c03-show-data) getan haben
+* Zeilen 3-6: Interface Definition für ein User-Objekt
+* Zeile 14: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
+* Zeile 15: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept "[Daten einer Komponente in der View anzeigen](#c03-show-data)" getan haben
 
 ### Diskussion
 
-Es gibt noch weitere mögliche Schreibweisen für das Anzeigen von einer Liste von Daten. Die hier ist die kürzeste und auch vermutlich die einfachste. Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktionalität her sind alle Varianten gleich.
+Es gibt noch weitere mögliche Schreibweisen für das Anzeigen von einer Liste von Daten.
+Die hier ist die kürzeste und auch vermutlich die einfachste.
+Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktionalität her sind alle Varianten gleich.
 
 #### Erklärung zu der ngFor-Syntax:
 
-Der Stern (\*) vor dem __ngFor__ ist essentiell und Teil der Syntax. Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für das ngFor benutzt werden sollen. Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert. Die Raute (#) definiert eine lokale Variable. Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
+Der Stern (__\*__) vor dem __ngFor__ ist essentiell und Teil der Syntax.
+Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgFor-Direktive benutzt werden sollen.
+Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert.
+Die Raute (__#__) definiert eine lokale Variable.
+Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
 
 ### Code
 

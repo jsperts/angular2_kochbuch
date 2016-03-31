@@ -17,9 +17,7 @@ Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Brow
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<div (click)="clicked()">Click me!</div>'
 })
 class MyApp {
@@ -31,21 +29,19 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 7: Hier findet eine Event-Bindung statt. In diesem Fall wird das click-Event gebunden
-* Zeile 10-12: Die Methode die aufgerufen werden soll wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
+* Zeile 5: Hier findet eine Event-Bindung statt. In diesem Fall wird das click-Event gebunden
+* Zeilen 8-10: Die Methode die aufgerufen werden soll, wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
 
 ### Lösung 2
 
-{title="Ausschnitt aus einer Komponente, lang=js}
+{title="Ausschnitt aus einer Komponente", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<div on-click="clicked()">Click me!</div>'
 })
 class MyApp {
@@ -57,13 +53,13 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Das ist eine alternative Schreibweise zu der Schreibweise in Lösung 1. Statt Klammern für den Event-Namen, nutzen wir hier "on-" als Präfix. Die Funktionalität bleibt dabei gleich.
 
 ### Diskussion
 
-Die Event-Bindung ersetzt alle Event-Direktiven die es in Angular 1.x gibt wie z. B. "ng-click", "ng-keypress" und "ng-keydown".
+Die Event-Bindung ersetzt alle Event-Direktiven, die es in Angular 1.x gibt wie z. B. "ng-click", "ng-keypress" und "ng-keydown".
 Wir haben im Beispiel "click" benutzt aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress".
 Allgemein ist der Namen zwischen den Klammern, der Namen des Events auf das wir reagieren möchten. Nach dem Gleichheitszeichen kommt die Aktion die als Reaktion zum Event ausgeführt werden soll.
 Die Event-Bindung ist eine Form der [Daten-Bindung](#gl-data-binding).

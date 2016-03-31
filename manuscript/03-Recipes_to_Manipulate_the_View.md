@@ -1,16 +1,19 @@
 # Rezepte, um mit der Anzeige zu interagieren
 
-In diesem Kapitel geht es, um die verschiedene Möglichkeiten die uns Angular anbietet um Daten einer Komponente in der View anzuzeigen. Desweiteren zeigen wir Möglichkeiten um CSS-Klassen und Styles zu ändern, abhängig von den Daten die wir in unsere Komponente haben. Auch das Ein- und Ausblenden von Teilen des DOMs abhängig von einer Kondition, wird hier gezeigt. Möglichkeiten wie wir auf Nutzer-Input wie z. B. auf Klicks reagieren können, werden auch hier behandelt.
+In diesem Kapitel geht es um die verschiedene Möglichkeiten die uns Angular anbietet, um Daten einer Komponente in der View anzuzeigen.
+Des Weiteren zeigen wir Möglichkeiten um CSS-Klassen und Styles zu ändern abhängig von den Daten die wir in unsere Komponente haben.
+Auch das Ein- und Ausblenden von Teilen des DOMs abhängig von einer Kondition, wird hier gezeigt.
+Ferner werden wir sehen wie wir auf Nutzer-Input wie z. B. auf Klicks reagieren können.
 
 ## Daten einer Komponente in der View anzeigen {#c03-show-data}
 
 ### Problem
 
-Ich möchte Daten die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer die sehen kann.
+Ich möchte Daten, die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer diese sehen kann.
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
-* Dummy Daten in der Komponente
+* Dummy Daten in der Klasse der Komponente
 
 ### Lösung 1
 
@@ -19,9 +22,7 @@ Ich möchte Daten die sich in meinem TypeScript-Code befinden in der View anzeig
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: `
     <div>Hello World!</div>
     <div>My name is {{name}}</div>
@@ -38,14 +39,16 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-Um Daten anzuzeigen müssen wir zwei Sachen machen. Erstens müssen wir dem Template sagen welche Variablen es anzeigen soll und zweitens müssen wir diese Variablen in unsere Klasse als Eigenschaften definieren.
-Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (\`) für die template-Eigenschaft statt Anführungszeichen ('). Das ermöglicht uns das HTML in mehreren Zeilen aufzuspalten ohne mehrere Strings mit Hilfe von Pluszeichen konkatenieren zu müssen.
+Um Daten anzuzeigen, müssen wir zwei Sachen machen.
+Erstens müssen wir dem Angular-Template sagen welche Variablen es anzeigen soll und zweitens müssen wir diese Variablen in unsere Klasse als Eigenschaften definieren.
+Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (` ` `) für die template-Eigenschaft statt Anführungszeichen (`'`).
+Das ermöglicht uns das Template in mehreren Zeilen aufzuspalten ohne mehrere Strings mit Hilfe von Pluszeichen konkatenieren zu müssen.
 
-* Zeile 9: Hier sagen wir Angular das "name" [interpoliert](#gl-interpolation) werden soll
-* Zeile 13: [Typdefinition](#c01-basic-types) für die Komponenten-Eigenschaft
-* Zeile 16: Wert Zuweisung für die name-Eigenschaft. Wichtig ist, dass der Name der Eigenschaft genau so im Template geschrieben wird wie in der Klasse
+* Zeile 7: Hier sagen wir Angular das "name" [interpoliert](#gl-interpolation) werden soll
+* Zeile 11: [Typdefinition](#c01-basic-types) für die Komponenten-Eigenschaft
+* Zeile 14: Wert Zuweisung für die name-Eigenschaft. Wichtig ist, dass der Name der Eigenschaft genau so im Template geschrieben wird wie in der Klasse
 
 ### Lösung 2
 
@@ -55,9 +58,7 @@ Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (\`) für d
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: `
     <div>Hello World!</div>
     <div>My name is {{name}}</div>
@@ -70,16 +71,17 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-In dieser Lösung wird "name" nicht im Konstruktor initialisiert, sondern als Variable in der Klasse.
+In dieser Lösung wird "name" nicht im Konstruktor initialisiert, sondern in der Klasse (Zeile 11).
 Siehe auch [TypeScript-Klassen](#c01-classes).
 
 ### Diskussion
 
 Das Beispiel ist sehr einfach gehalten.
-Die zweite Lösung braucht weniger Code, es ist aber Geschmackssache welche von den beiden Schreibweisen man benutzt. Von der Funktionalität her sind beide gleich.
-Ein Beispiel mit beide Schreibweisen und mit eine Instanzvariable vom Typ "object" gibt es im Code-Beispiel auf Github.
+Die zweite Lösung braucht weniger Code aber es ist Geschmackssache welche von den beiden Varianten wir benutzen.
+Von der Funktionalität her sind beide gleich.
+Ein Beispiel mit beide Schreibweisen gibt es im Code-Beispiel auf Github.
 
 ### Code
 
@@ -88,7 +90,6 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/01-Displaying\_Data](htt
 ### Weitere Ressourcen
 
 * Backticks statt Anführungszeichen für Strings: ECMAScript 6 (2015) [Template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings)
-* [controllerAs-Schreibweise](https://jsperts.de/blog/ng-ctrl-as-syntax/) in Angular 1.x
 * Weitere Informationen zu Interpolation und der Template-Syntax, befinden sich im [Appendix-A: Template-Syntax](#appendix-a)
 
 ## Liste von Daten anzeigen {#c03-data-list}
@@ -106,7 +107,7 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 
 {title="app.component.ts", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 
 interface IUser {
   firstname: string,
@@ -116,9 +117,7 @@ interface IUser {
 const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstname: 'John', lastname: 'Doe'}];
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: `
     <ul>
       <li *ngFor="#user of users">
@@ -137,19 +136,25 @@ class MyApp {
 export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 3-6: Interface Definition für ein User-Objekt
-* Zeile 16: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
-* Zeile 17: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept [Daten einer Komponente in der View anzeigen](#c03-show-data) getan haben
+* Zeilen 3-6: Interface Definition für ein User-Objekt
+* Zeile 14: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
+* Zeile 15: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept "[Daten einer Komponente in der View anzeigen](#c03-show-data)" getan haben
 
 ### Diskussion
 
-Es gibt noch weitere mögliche Schreibweisen für das Anzeigen von einer Liste von Daten. Die hier ist die kürzeste und auch vermutlich die einfachste. Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktionalität her sind alle Varianten gleich.
+Es gibt noch weitere mögliche Schreibweisen für das Anzeigen von einer Liste von Daten.
+Die hier ist die kürzeste und auch vermutlich die einfachste.
+Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktionalität her sind alle Varianten gleich.
 
 #### Erklärung zu der ngFor-Syntax:
 
-Der Stern (\*) vor dem __ngFor__ ist essentiell und Teil der Syntax. Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für das ngFor benutzt werden sollen. Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert. Die Raute (#) definiert eine lokale Variable. Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
+Der Stern (__\*__) vor dem __ngFor__ ist essentiell und Teil der Syntax.
+Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgFor-Direktive benutzt werden sollen.
+Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert.
+Die Raute (__#__) definiert eine lokale Variable.
+Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
 
 ### Code
 
@@ -179,9 +184,7 @@ Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Brow
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<div (click)="clicked()">Click me!</div>'
 })
 class MyApp {
@@ -193,21 +196,19 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 7: Hier findet eine Event-Bindung statt. In diesem Fall wird das click-Event gebunden
-* Zeile 10-12: Die Methode die aufgerufen werden soll wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
+* Zeile 5: Hier findet eine Event-Bindung statt. In diesem Fall wird das click-Event gebunden
+* Zeilen 8-10: Die Methode die aufgerufen werden soll, wenn der Nutzer auf das Element klickt. Zu beachten ist, dass der Name der Methode identisch sein muss zum Namen den wir im Template nutzen
 
 ### Lösung 2
 
-{title="Ausschnitt aus einer Komponente, lang=js}
+{title="Ausschnitt aus einer Komponente", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<div on-click="clicked()">Click me!</div>'
 })
 class MyApp {
@@ -219,13 +220,13 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Das ist eine alternative Schreibweise zu der Schreibweise in Lösung 1. Statt Klammern für den Event-Namen, nutzen wir hier "on-" als Präfix. Die Funktionalität bleibt dabei gleich.
 
 ### Diskussion
 
-Die Event-Bindung ersetzt alle Event-Direktiven die es in Angular 1.x gibt wie z. B. "ng-click", "ng-keypress" und "ng-keydown".
+Die Event-Bindung ersetzt alle Event-Direktiven, die es in Angular 1.x gibt wie z. B. "ng-click", "ng-keypress" und "ng-keydown".
 Wir haben im Beispiel "click" benutzt aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress".
 Allgemein ist der Namen zwischen den Klammern, der Namen des Events auf das wir reagieren möchten. Nach dem Gleichheitszeichen kommt die Aktion die als Reaktion zum Event ausgeführt werden soll.
 Die Event-Bindung ist eine Form der [Daten-Bindung](#gl-data-binding).
@@ -242,7 +243,7 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](ht
 
 ### Problem
 
-Ich möchte anhand eines booleschen Wertes definieren wann eine CSS-Klasse gesetzt wird und wann nicht.
+Ich möchte anhand eines booleschen Wertes definieren, wann eine CSS-Klasse gesetzt wird und, wann nicht.
 
 ### Zutaten
 * [Daten einer Komponente in der View anzeigen](#c03-show-data)
@@ -253,12 +254,10 @@ Ich möchte anhand eines booleschen Wertes definieren wann eine CSS-Klasse geset
 
 {title="app.component.ts", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: `
     <style>
       .box {
@@ -288,23 +287,25 @@ class MyApp {
 export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 9-21: Definition der CSS-Klassen die wir benötigen
-* Zeile 22-23: Zwei divs mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit der ngClass-Eigenschaft gesetzt. Die Keys im ngClass-Objekt sind die CSS-Klassen die entfernt/hinzugefügt werden
-  * Zeile 22: Durch ngClass wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
-  * Zeile 23: Durch ngClass wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
-* Zeile 27-30: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
+* Zeilen 6-18: Definition der CSS-Klassen die wir benötigen
+* Zeilen 19-20: Zwei div-Tags mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit Hilfe der ngClass-Eigenschaft gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die CSS-Klassen sind die entfernt/hinzugefügt werden
+  * Zeile 22: Durch die input-Eigenschaft "ngClass" wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
+  * Zeile 23: Durch die input-Eigenschaft "ngClass" wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
+* Zeilen 24-27: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
 
 ### Lösung 2
 
-Wir haben schon in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt bekommt mit CSS-Klassen als Keys und true/false als Werte für die Keys. Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
+Wir haben bereits in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt mit CSS-Klassen als Keys und __true__/__false__ als Werte für die Keys bekommt.
+Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
 {title="Ausschnitt aus der app.component.ts", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <style>
       .box {
@@ -327,26 +328,28 @@ class MyApp {
   constructor() {}
 }
 
-bootstrap(MyApp);
+export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 5-14: Definition der CSS-Klassen die wir benötigen
-* Zeile 15: Div mit ngClass-Eigenschaft die auf das classes-Objekt in unsere Klasse zugreift
-* Zeile 19-22: Objekt mit CSS-Klassen als Keys und boolesche Werte die angeben, ob die CSS-Klasse gesetzt wird oder nicht
+* Zeilen 6-15: Definition der CSS-Klassen die wir benötigen
+* Zeile 16: div-Tag mit ngClass-Eigenschaft, die auf die classes-Eigenschaft der Klasse zugreift
+* Zeilen 20-23: Objekt mit CSS-Klassen als Keys und boolesche Werte die angeben, ob die CSS-Klasse gesetzt wird oder nicht
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" die CSS-Klassen für unsere divs entfernen und hinzufügen kann. Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der CSS-Klassen verzichtet.
+Im Github Code-Beispiel wird gezeigt wie wir mittels "click" die CSS-Klassen für unsere div-Tags entfernen und hinzufügen können.
+Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
 
 Wir haben hier eine neue Schreibweise für Templates gesehen und zwar [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
-Diese Art von Daten-Bindung wird Eigenschafts-Bindung genannt.
+Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
 Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung dafür nutzen.
 
 I> #### Inline-styles
 I>
-I> Wenn wir inline-styles in einer Komponente nutzen, können die definierte CSS-Klassen standardmäßig nur in dieser Komponente benutzt werden in der sie definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Klassen, wenn man Komponente wiederverwendet. Die Kapselung von CSS-Klassen und Komponenten wird in Angular _View Encapsulation_ genannt.
+I> Wenn wir inline-styles in einer Komponente nutzen, können die definierte CSS-Klassen standardmäßig nur in dieser Komponente verwendet werden in der diese definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Klassen, wenn man Komponente wiederverwendet. Die Kapselung von CSS-Klassen und Komponenten wird in Angular "View Encapsulation" genannt.
 
 ### Code
 
@@ -373,7 +376,7 @@ Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Kondition erf�
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
 * Die NgIf-Direktive von Angular
-* Eine Instanzeigenschaft vom Typ "boolean"
+* Eine Eigenschaft vom Typ "boolean"
 
 ### Lösung
 
@@ -381,7 +384,8 @@ Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Kondition erf�
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <div>Hello world!</div>
     <div *ngIf="isConditionTrue">
@@ -399,21 +403,32 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 6: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "isConditionTrue" den Wert __true__ hat
-* Zeile 12: Definition der isConditionTrue-Eigenschaft mit Typ "boolean"
-* Zeile 14: Standardmäßig soll die isConditionTrue-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
+* Zeile 7: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "isConditionTrue" den Wert __true__ hat
+* Zeile 13: Definition der isConditionTrue-Eigenschaft mit Typ "boolean"
+* Zeile 15: Standardmäßig soll die isConditionTrue-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die isConditionTrue-Eigenschaft verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" den Wert verändern können. Da können wir auch sehen wie sich die View verändert je nachdem, ob "isConditionTrue" den Wert __true__ oder __false__ hat.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die isConditionTrue-Eigenschaft verzichtet.
+Im Github Code-Beispiel wird gezeigt wie wir mittels "click" den Wert verändern können.
+Da können wir auch sehen, wie sich die View verändert je nachdem, ob "isConditionTrue" den Wert __true__ oder __false__ hat.
 
-Es gibt noch weiter mögliche Schreibweisen für das konditionale Anzeigen Teile der View mittels NgIf. Die hier ist die kürzeste und vermutlich die einfachste. Weitere Schreibweisen sind im Github Code-Beispiel zu finden. Von der Funktionalität her sind alle Varianten gleich.
+Es gibt noch weiter mögliche Schreibweisen für das konditionale Anzeigen Teile der View mittels der NgIf-Direktive.
+Die hier ist die kürzeste und vermutlich die einfachste.
+Weitere Schreibweisen sind im Github Code-Beispiel zu finden.
+Von der Funktionalität her sind alle Varianten gleich.
 
 #### Erklärung zu der ngIf-Syntax
 
-Der Stern (\*) vor dem __ngIf__ ist essentiell und Teil der Syntax. Er zeigt an, dass der div-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgIf-Direktive benutzt werden sollen. Nach "\*ngIf=" kommt ein Angular-Template-Ausdruck, der die Kondition angibt. Wenn die Evaluation des Ausdruckes __true__ zurückgibt, ist die Kondition wahr und das Template wird angezeigt. Andernfalls wird das Template aus dem DOM entfernt. Wir haben hier ein sehr einfachen Ausdruck benutzt. Wir hätten auch einen komplexeren Ausdruck nutzen können z. B. einen der ein Vergleich mit __===__ beinhaltet.
+Der Stern (__\*__) vor dem __ngIf__ ist essentiell und Teil der Syntax.
+Er zeigt an, dass der div-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgIf-Direktive benutzt werden sollen.
+Nach __\*ngIf=__ kommt ein Angular-Template-Ausdruck, der die Kondition angibt.
+Wenn die Evaluation des Ausdruckes __true__ zurückgibt, ist die Kondition wahr und das Template wird angezeigt.
+Andernfalls wird das Template aus dem DOM entfernt.
+Wir haben hier einen sehr einfachen Ausdruck benutzt.
+Wir hätten auch einen komplexeren Ausdruck nutzen können z. B. einen der ein Vergleich mit __===__ beinhaltet.
 
 ### Code
 
@@ -444,7 +459,8 @@ Ich möchte unterschiedliche Teile der View anzeigen je nach Wert eines Angular-
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <div [ngSwitch]="color">
       <p>What color are you?</p>
@@ -465,15 +481,15 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 5: Nutzung der NgSwitch-Direktive mit der color-Eigenschaft der Komponente
-* Zeile 6-9: Inhalt der NgSwitch-Direktive
-  * Zeile 6: Wird immer angezeigt egal was der Wert von "color" ist
-  * Zeile 7: Wird nur dann angezeigt, wenn "color" den Wert __'blue'__ hat
-  * Zeile 8: Wird nur dann angezeigt, wenn "color" den Wert __'red'__ hat
-  * Zeile 9: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __'blue'__ und __'red'__ hat
-* Zeile 17: Standardmäßig ist der Wert von "color" __'blue'__
+* Zeile 6: Nutzung der NgSwitch-Direktive mit der color-Eigenschaft der Komponente
+* Zeilen 7-10: Inhalt der NgSwitch-Direktive
+  * Zeile 7: Wird immer angezeigt egal was der Wert von "color" ist
+  * Zeile 8: Wird nur dann angezeigt, wenn "color" den Wert __`'`blue`'`__ hat
+  * Zeile 9: Wird nur dann angezeigt, wenn "color" den Wert __`'`red`'`__ hat
+  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __'blue'__ und __'red'__ hat
+* Zeile 18: Standardmäßig ist der Wert von "color" __'blue'__
 
 ### Diskussion
 
@@ -482,21 +498,24 @@ Bei der Nutzung im Template bekommt sie über __ngSwitch__ (input-Eigenschaft de
 In unserem Beispiel besteht der Ausdruck aus der color-Eigenschaft.
 Diese Auswertung wird dann mit jedem Ausdruck der NgSwitchWhen-Direktiven verglichen.
 Angular nutzt für den Vergleich __===__.
-In unserem Beispiel haben wir __'blue'__ und __'red'__ als Ausdrücke für NgSwitchWhen benutzt.
-Wenn der Vergleich den Wert __true__ zurück gibt, wird der Tag mit der Direktive und desen Inhalt in der View angezeigt.
-Wenn kein Vergleich __true__ zurück gibt, wird der Tag mit der NgSwitchDefault-Direktive und desen Inhalt angezeigt.
+In unserem Beispiel haben wir __`'`blue`'`__ und __`'`red`'`__ als Ausdrücke für NgSwitchWhen benutzt.
+Wenn der Vergleich den Wert __true__ zurück gibt, wird der Tag mit der Direktive und dessen Inhalt angezeigt.
+Wenn kein Vergleich __true__ zurück gibt, wird der Tag mit der NgSwitchDefault-Direktive und dessen Inhalt angezeigt.
 Tags die weder eine NgSwitchWhen- noch eine NgSwitchDefault-Direktive nutzen werden immer angezeigt.
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die color-Eigenschaft verzichtet. Im Github Code-Beispiel wird gezeigt wie man mittels "click" den Wert verändern können. Da können wir auch sehen wie sich die View verändert je nachdem, was für ein Wert die color-Eigenschaft hat.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die color-Eigenschaft verzichtet.
+Im Github Code-Beispiel wird gezeigt wie wir mittels "click" den Wert verändern können.
+Da können wir auch sehen wie sich die View verändert je nachdem, was für ein Wert die color-Eigenschaft hat.
 
 Es gibt noch eine weitere mögliche Schreibweise für die NgSwitchWhen- und NgSwitchDefault-Direktiven. Die hier ist die kürzeste und vermutlich die einfachste. Die zweite Schreibweise ist im Github Code-Beispiel zu finden. Von der Funktionalität her sind beide Schreibweisen gleich.
 
 #### Erklärung zu der ngSwitchWhen- und ngSwitchDefault-Syntax
 
-Der Stern (\*) vor dem __ngSwitchWhen__ und __ngSwitchDefault__ ist essentiell und Teil der Syntax. Er zeigt an, dass die p-Tags und alle Elemente, die die Tags beinhalten, als Template für die jeweilige Instanz der NgSwitchWhen bzw. der NgSwitchDefault-Direktiven benutzt werden sollen.
-Nach "\*ngSwitchWhen=" kommt ein Angular-Template-Ausdruck.
+Der Stern (__\*__) vor dem __ngSwitchWhen__ und __ngSwitchDefault__ ist essentiell und Teil der Syntax.
+Er zeigt an, dass die p-Tags und alle Elemente, die die Tags beinhalten, als Template für die jeweilige Instanz der NgSwitchWhen bzw. der NgSwitchDefault-Direktiven benutzt werden sollen.
+Nach __\*ngSwitchWhen=__ kommt ein Angular-Template-Ausdruck.
 Dieser Ausdruck verglichen mit der Auswertung des NgSwitch-Ausdruckes gibt an, wann das Template angezeigt werden soll.
-Wenn der Vergleich __true__ ergibt, wird das Template in der View angezeigt.
+Wenn der Vergleich __true__ ergibt, wird das Template angezeigt.
 Wenn der __false__ ergibt, wird das Template aus dem DOM entfernt.
 Das NgSwitchDefault-Template wird nur dann angezeigt, wenn alle Vergleiche __false__ ergeben.
 

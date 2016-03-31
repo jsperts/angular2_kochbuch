@@ -58,7 +58,7 @@ var aNumber: number = 2;
 ### String
 
 Texte haben den Typ "string".
-Es ist dabei egal, ob wir Anführungszeichen ('), doppelte Anführungszeichen (") oder Backticks (\`) nutzen, der Typ bleibt gleich.
+Es ist dabei egal, ob wir Anführungszeichen (`'`), doppelte Anführungszeichen (`"`) oder Backticks (` ` `) nutzen, der Typ bleibt gleich.
 Backticks werden für ES6/ES2015 [Template Literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals) benutzt und diese werden auch von TypeScript unterstützt.
 Die unten gezeigte Beispiele sind alle valide Werte vom Typ "string".
 
@@ -345,7 +345,7 @@ Um besser zu verstehen wie wir mit TypeScript arbeiten können, gibt es hier noc
 Da Todo-Listen mittlerweile zum Standard geworden sind was Beispielanwendungen angeht, haben wir uns entschieden, dass unsere Anwendung eine Todo-Liste sein soll.
 Die Anwendung kann vordefinierte Todos anzeigen und neue Todos in einer existierenden Liste von Todos hinzufügen.
 Es ist zwar eine kleine Anwendung, ist aber trotzdem in mehrere Dateien aufgespalten.
-Wir wollen damit zeigen wie man mit Hilfe von [ECMAScript-Modulen (ESM)](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) eine Anwendung modular gestalten kann.
+Wir wollen damit zeigen wie man mit Hilfe von [ECMAScript-Modulen (ESM)](http://exploringjs.com/es6/ch_modules.html) eine Anwendung modular gestalten kann.
 Wenn wir mit ESM arbeiten, ist jede Datei auch ein Modul.
 Der komplette Code für die Anwendung befindet sich im Github unter [01-TypeScript/01-Simple\_Todo\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/01-TypeScript/01-Simple_Todo_App).
 
@@ -573,10 +573,10 @@ tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commo
 
 __Erklärung__:
 
-tsc ist der TypeScript-Compiler. Die Optionen "-\-emitDecoratorMetadata" und "-\-experimentalDecorators" sind in unserem Beispiel optional.
+tsc ist der TypeScript-Compiler. Die Optionen "emitDecoratorMetadata" und "experimentalDecorators" sind in unserem Beispiel optional.
 Diese werden später für die Angular Rezepte gebraucht.
-Die Option "-\-module" gibt an, dass die ESM die wir nutzen in CommonJS-Module umgewandelt werden sollen.
-Die Option "-\-target" gibt an welcher ECMAScript-Version unser JavaScript entsprechen soll.
+Die Option "module" gibt an, dass die ESM die wir nutzen in CommonJS-Module umgewandelt werden sollen.
+Die Option "target" gibt an welcher ECMAScript-Version unser JavaScript entsprechen soll.
 Hier nutzen wir ECMAScript 5.
 Als letztes geben wir die main.ts-Datei an.
 Da die main.ts-Datei weitere Module importiert, werden diese automatisch kompiliert.
@@ -591,14 +591,14 @@ I> #### CommonJS
 I>
 I> CommonJS ist ein Modul-Standard der hauptsächlich in Node.js verwendet wird. Wir nutzen CommonJS, weil dies die Zusammenarbeit von TypeScript mit externen Bibliotheken wie Angular 2 vereinfacht. Durch die Verwendung von CommonJS-Modulen ist der Compiler in der Lage automatisch nach Typdefinitionen für externe Bibliotheken im node\_modules-Verzeichnis zu suchen ohne, dass wir ihm sagen müssen wo die Typdefinitionen sind.
 
-I> #### -\-target
+I> #### Die target-Option
 I>
-I> Standardmäßig nutzt der TypeScript-Compiler ECMAScript 3 als "target". ECMAScript 3 zu nutzen ist nur sinnvoll wenn wir alte Browser wie z. B. Internet Explorer 8 unterstützen möchten. Da Angular 2 nur neuere Browser (ab Internet Explorer 9) unterstützt, können wir ruhig ES5 nutzen. Ein weiterer Grund um ES5 zu nutzen ist, dass manche TypeScript-Features wie z. B. [getter/setters](https://www.typescriptlang.org/docs/handbook/classes.html#accessors) für Klassen, in ES3 nicht unterstützt werden.
+I> Standardmäßig nutzt der TypeScript-Compiler ECMAScript 3 als "target". Der generierter JavaScript-Code ist also ES3 kompatibel. ES3 zu nutzen ist nur sinnvoll wenn wir alte Browser wie z. B. Internet Explorer 8 unterstützen möchten. Da Angular 2 nur neuere Browser (ab Internet Explorer 9) unterstützt, können wir ruhig ES5 nutzen. Ein weiterer Grund um ES5 zu nutzen ist, dass manche TypeScript-Features wie z. B. [getter/setters](https://www.typescriptlang.org/docs/handbook/classes.html#accessors) für Klassen, in ES3 nicht unterstützt werden.
 
 ### Dateien automatisch kompilieren mit "watch"
 
 Bei jede Änderung die Dateien manuell zu kompilieren, kann auf Dauer nerven. Dafür bietet uns der Compiler eine einfache Lösung.
-Es gibt eine Option namens "-\-watch". Mit dieser Option werden die Dateien automatisch bei jede Änderung kompiliert.
+Es gibt eine Option namens "watch". Mit dieser Option werden die Dateien automatisch bei jede Änderung kompiliert.
 
 {title="Kommando mit watch", lang=bash}
 ```
@@ -607,7 +607,7 @@ tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commo
 
 __Erklärung__:
 
-Mit "-\-watch" werden unsere Dateien bei jede Änderung automatisch neukompiliert. Das gilt nicht nur für die angegebene app/main.ts-Datei, sondern auch alle Dateien die importiert werden.
+Mit der watch-Option werden unsere Dateien bei jede Änderung automatisch neukompiliert. Das gilt nicht nur für die angegebene app/main.ts-Datei, sondern auch alle Dateien die importiert werden.
 
 ### Sourcemaps generieren
 
@@ -623,7 +623,7 @@ tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commo
 
 __Erklärung__:
 
-Die Sourcemaps werden im gleichen Verzeichnis wie die JavaScript-Dateien abgelegt und automatisch vom Browser geladen. Wir können auch "-\-watch" mit "-\-sourceMap" kombinieren, wenn wir das möchten.
+Die Sourcemaps werden im gleichen Verzeichnis wie die JavaScript-Dateien abgelegt und automatisch vom Browser geladen. Wir können auch "watch" mit "sourceMap" kombinieren, wenn wir das möchten.
 
 ### Konfigurationsdatei für den Compiler nutzen
 

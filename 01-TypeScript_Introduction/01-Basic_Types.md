@@ -40,7 +40,7 @@ var aNumber: number = 2;
 ### String
 
 Texte haben den Typ "string".
-Es ist dabei egal, ob wir Anführungszeichen ('), doppelte Anführungszeichen (") oder Backticks (\`) nutzen, der Typ bleibt gleich.
+Es ist dabei egal, ob wir Anführungszeichen (`'`), doppelte Anführungszeichen (`"`) oder Backticks (` ` `) nutzen, der Typ bleibt gleich.
 Backticks werden für ES6/ES2015 [Template Literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals) benutzt und diese werden auch von TypeScript unterstützt.
 Die unten gezeigte Beispiele sind alle valide Werte vom Typ "string".
 

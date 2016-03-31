@@ -62,7 +62,7 @@ var list2: Array<number> = [1, 2, 3];
 
 __Erklärung__:
 
-* Zeile 1: Eine Liste von Zahlen definieren. Als erstes haben wir gesagt, dass der Typ der Elemente "number" ist und mit den eckigen Klammern haben wir TypeScript gesagt, dass es sich um ein Array handelt
+* Zeile 1: Eine Liste von Zahlen definieren. Als Erstes haben wir gesagt, dass der Typ der Elemente "number" ist und mit den eckigen Klammern haben wir TypeScript gesagt, dass es sich um ein Array handelt
 * Zeile 2: Auch eine Liste von Zahlen, diesmal mit eine generische Typdefinition. Die kleiner (<) und größer (>) Zeichen geben an, dass es sich um einen generischen Typ handelt. Das TypeScript-Handbuch hat mehr Informationen über [generische Typen](https://www.typescriptlang.org/docs/handbook/generics.html)
 
 ### Tuple

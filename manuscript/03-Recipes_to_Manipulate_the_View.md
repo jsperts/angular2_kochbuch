@@ -1,4 +1,4 @@
-# Rezepte um mit der Anzeige zu interagieren
+# Rezepte, um mit der Anzeige zu interagieren
 
 In diesem Kapitel geht es, um die verschiedene Möglichkeiten die uns Angular anbietet um Daten einer Komponente in der View anzuzeigen. Desweiteren zeigen wir Möglichkeiten um CSS-Klassen und Styles zu ändern, abhängig von den Daten die wir in unsere Komponente haben. Auch das Ein- und Ausblenden von Teilen des DOMs abhängig von einer Kondition, wird hier gezeigt. Möglichkeiten wie wir auf Nutzer-Input wie z. B. auf Klicks reagieren können, werden auch hier behandelt.
 
@@ -364,7 +364,7 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 * Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 * Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
 
-## Teile der View konditional anzeigen mit NgIf {#c03-ngif}
+## Teile der View konditional mit NgIf anzeigen {#c03-ngif}
 
 ### Problem
 
@@ -426,7 +426,7 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 * Offizielle [NgIf](https://angular.io/docs/ts/latest/api/common/NgIf-directive.html) Dokumentation auf der Angular 2 Webseite
 * Weitere Informationen zur Template-Ausdrücke gibt es in [Appendix A: Template-Syntax](#appendix-a)
 
-## Teile der View konditional anzeigen mit NgSwitch
+## Teile der View konditional mit NgSwitch anzeigen
 
 ### Problem
 

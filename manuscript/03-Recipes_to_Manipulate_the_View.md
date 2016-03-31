@@ -43,7 +43,7 @@ __Erklärung__:
 
 Um Daten anzuzeigen, müssen wir zwei Sachen machen.
 Erstens müssen wir dem Angular-Template sagen welche Variablen es anzeigen soll und zweitens müssen wir diese Variablen in unsere Klasse als Eigenschaften definieren.
-Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (` ` `) für die template-Eigenschaft statt Anführungszeichen (`'`).
+Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (`` ` ``) für die template-Eigenschaft statt Anführungszeichen (`'`).
 Das ermöglicht uns das Template in mehreren Zeilen aufzuspalten ohne mehrere Strings mit Hilfe von Pluszeichen konkatenieren zu müssen.
 
 * Zeile 7: Hier sagen wir Angular das "name" [interpoliert](#gl-interpolation) werden soll
@@ -488,8 +488,8 @@ __Erklärung__:
   * Zeile 7: Wird immer angezeigt egal was der Wert von "color" ist
   * Zeile 8: Wird nur dann angezeigt, wenn "color" den Wert __`'`blue`'`__ hat
   * Zeile 9: Wird nur dann angezeigt, wenn "color" den Wert __`'`red`'`__ hat
-  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __'blue'__ und __'red'__ hat
-* Zeile 18: Standardmäßig ist der Wert von "color" __'blue'__
+  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __`'`blue`'`__ und __`'`red`'`__ hat
+* Zeile 18: Standardmäßig ist der Wert von "color" __`'`blue`'`__
 
 ### Diskussion
 

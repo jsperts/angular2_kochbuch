@@ -68,7 +68,7 @@ Erklärung:
 
 In dieser Lösung werden wir sehen wie wir die gültigkeit des Formulars in der Klasse überprüfen können.
 Wir nutzen das Formular von der ersten Lösung mit zwei Änderungen.
-Als erstes übergeben wir die lokale Variable "form" der onSubmit-Methode und als Zweites nutzen wir nicht mehr die disabled-Eigenschaft des Buttons.
+Als Erstes übergeben wir die lokale Variable "form" der onSubmit-Methode und als Zweites nutzen wir nicht mehr die disabled-Eigenschaft des Buttons.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```

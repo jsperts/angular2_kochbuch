@@ -45,8 +45,8 @@ __Erklärung__:
   * Zeile 7: Wird immer angezeigt egal was der Wert von "color" ist
   * Zeile 8: Wird nur dann angezeigt, wenn "color" den Wert __`'`blue`'`__ hat
   * Zeile 9: Wird nur dann angezeigt, wenn "color" den Wert __`'`red`'`__ hat
-  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __'blue'__ und __'red'__ hat
-* Zeile 18: Standardmäßig ist der Wert von "color" __'blue'__
+  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __`'`blue`'`__ und __`'`red`'`__ hat
+* Zeile 18: Standardmäßig ist der Wert von "color" __`'`blue`'`__
 
 ### Diskussion
 

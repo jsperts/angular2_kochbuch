@@ -4,7 +4,7 @@ Um besser zu verstehen wie wir mit TypeScript arbeiten können, gibt es hier noc
 Da Todo-Listen mittlerweile zum Standard geworden sind was Beispielanwendungen angeht, haben wir uns entschieden, dass unsere Anwendung eine Todo-Liste sein soll.
 Die Anwendung kann vordefinierte Todos anzeigen und neue Todos in einer existierenden Liste von Todos hinzufügen.
 Es ist zwar eine kleine Anwendung, ist aber trotzdem in mehrere Dateien aufgespalten.
-Wir wollen damit zeigen wie man mit Hilfe von [ECMAScript-Modulen (ESM)](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) eine Anwendung modular gestalten kann.
+Wir wollen damit zeigen wie man mit Hilfe von [ECMAScript-Modulen (ESM)](http://exploringjs.com/es6/ch_modules.html) eine Anwendung modular gestalten kann.
 Wenn wir mit ESM arbeiten, ist jede Datei auch ein Modul.
 Der komplette Code für die Anwendung befindet sich im Github unter [01-TypeScript/01-Simple\_Todo\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/01-TypeScript/01-Simple_Todo_App).
 

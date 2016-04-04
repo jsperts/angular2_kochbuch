@@ -11,11 +11,11 @@ Ich möchte überprüfen, ob der gegebene Benutzername schon existiert. Dafür m
 
 ### Lösung
 
-Um die Lösung möglichst einfach zu halten, werden wir die Server-Anfrage mit einem Timeout simulieren. Für eine echte Server-Anfrage brauchen wir einen Server, der auf die Anfrage antworten kann und Code z. B. die Http-Klasse von Angular, der die Anfrage schicken kann.
+Um die Lösung möglichst einfach zu halten, werden wir die Server-Anfrage mit einem Timeout simulieren. Für eine echte Server-Anfrage brauchen wir einen Server, der auf die Anfrage antworten kann und Code, der die Anfrage schicken kann.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {
     FormBuilder,
     ControlGroup,
@@ -58,12 +58,12 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 * Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 17
 * Zeilen 17-29: Unsere asynchrone Validierungs-Funktion
   * Zeile 17: Als Parameter bekommt eine Validierungs-Funktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser username-Control
-  * Zeile 18: Asynchrone Validierungs-Funktionen haben ein Promise als Rückgabewert
+  * Zeile 18: Asynchrone Validierungs-Funktionen haben einen Promise als Rückgabewert
   * Zeile 19: Wir simulieren eine Server-Anfrage mit der setTimeout-Funktion
   * Zeile 20: Überprüfung, ob der Wert (__control.value__) des Controls gleich dem String __Max__ ist
   * Zeilen 21-23: Wenn der Wert gleich __Max__ ist, ist das Eingabefeld ungültig und wir teilen das Angular mit, indem wir der resolve-Funktion ein Objekt übergeben
@@ -72,7 +72,7 @@ Erklärung:
 
 ### Diskussion
 
-Eine asynchrone Validierungs-Funktion ist sehr ähnlich zur einer synchrone Validierungs-Funktion wie wir sie im Rezept [Eigene Validatoren definieren](#c04-custom-validation) gesehen haben.
+Eine asynchrone Validierungs-Funktion ist sehr ähnlich zu einer synchrone Validierungs-Funktion wie wir diese im Rezept "[Eigene Validatoren definieren](#c04-custom-validation)" gesehen haben.
 Beide Funktionen bekommen eine Instanz der Control-Klasse als Funktionsparameter.
 Beide signalisieren die Gültigkeit des Eingabefelds, indem sie __null__ zurückgeben und die Ungültigkeit des Eingabefelds, indem sie ein Objekt zurückgeben.
 Es gibt aber auch Unterschiede zwischen synchrone und asynchrone Validierungs-Funktionen.
@@ -82,13 +82,13 @@ Sie haben ein Promise als Rückgabewert. Die Gültigkeit wird durch den Aufruf d
 
 Asynchrone Validierungs-Funktionen haben noch weitere Besonderheiten.
 Sie werden nur dann aufgerufen, wenn das Eingabefeld gültig ist nach dem Aufruf der synchronen Validierungs-Funktionen. Wenn es ungültig ist, werden die asynchrone Validierungs-Funktionen nicht aufgerufen.
-Da wir auf die asynchrone Funktionen warten müssen, vor wir die Gültigkeit des Eingabefelds und des Formulars prüfen können wird von Angular die pending-Eigenschaft des Controls und des Formulars auf __true__ gesetzt bis wir eine Antwort haben.
+Da wir auf die asynchrone Funktionen warten müssen vor wir die Gültigkeit des Eingabefelds und des Formulars prüfen können, wird von Angular die pending-Eigenschaft des Controls und des Formulars auf __true__ gesetzt bis wir eine Antwort haben.
 Wir haben schon im Code gesehen (Zeile 35) wie wir die pending-Eigenschaft nutzen können.
 
 Es ist vermutlich bekannt, dass Promises zwei Funktionen haben.
 Die resolve- und die reject-Funktion.
 Asynchrone Validierungs-Funktionen brauchen die reject-Funktion nicht.
-Im Gegenteil, wenn wir __reject__ nutzen wird die pending-Eigenschaft __true__ bleiben bis die resolve-Funktion aufgerufen wird.
+Im Gegenteil, wenn wir "reject" nutzen wird die pending-Eigenschaft __true__ bleiben bis die resolve-Funktion aufgerufen wird.
 Es ist also wichtig, dass wir Fehler in der Validierungs-Funktion abfangen und in der Fehlerbehandlungsroutine die resolve-Funktion aufrufen.
 
 ### Code

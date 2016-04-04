@@ -16,7 +16,7 @@ Das Template hat nur die nötigen Informationen, um die Formular-Felder mit dem 
 Als Formular-Modell bezeichnen wir in diesem Zusammenhang die Implementierung des Formulars in der Klasse der Komponente.
 "Model Driven Forms" benötigen in der Regel mehr Code.
 Wir müssen das Formular im Template implementieren und dann die Logik in der Klasse.
-Da die Logik sich in der Klasse befindet, können wir die Komponente gut Unit-Testen.
+Da die Logik sich in der Klasse befindet, können wir die Komponente gut Unit-testen.
 
 Wir werden jetzt mit einem einfachen "Template Driven" Formular anfangen und werden nach und nach komplexere "Model Driven" Formulare implementieren.
 

@@ -8,17 +8,18 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 * [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * [Teile der View konditional Anzeigen mit NgIf](#c03-ngif)
 * Elvis-Operator (?.)
-* Lokale (Template-) Variable, die die Instanz der NgControlName-Direktive das jeweilige Eingabefeld referenziert (nur Lösung 2)
+* Lokale (Template-) Variable, die die Instanz der NgControlName-Direktive für das jeweilige Eingabefeld referenziert (nur Lösung 2)
 
 ### Lösung 1
 
-In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf das Control über die lokale Variable für das Formular darauf zugreifen.
+In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf das Control über die lokale Variable für das Formular zugreifen.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -42,11 +43,11 @@ In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes ü
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeilen 8-10: Nutzung von __ngIf__ mit Kondition __!form.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
-* Zeilen 13-15: Nutzung von __ngIf__ mit Kondition __form.controls.password?.errors?.required__. Die Kondition ist wahr, wenn das Eingabefeld leer ist
-* Zeilen 16-18: Nutzung von __ngIf__ mit Kondition __form.controls.password?.errors?.minlength__. Die Kondition ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
+* Zeilen 9-11: Nutzung von __ngIf__ mit Kondition __!form.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeilen 14-16: Nutzung von __ngIf__ mit Kondition __form.controls.password?.errors?.required__. Die Kondition ist wahr, wenn das Eingabefeld leer ist
+* Zeilen 17-19: Nutzung von __ngIf__ mit Kondition __form.controls.password?.errors?.minlength__. Die Kondition ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Lösung 2
 
@@ -57,7 +58,8 @@ Hier werden wir lokale Variable für jedes Eingabefeld definieren.
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -81,17 +83,19 @@ Hier werden wir lokale Variable für jedes Eingabefeld definieren.
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 7: Mit __#username="ngForm"__ definieren wir eine lokale Variable namens "username". Die Variable ist eine Referenz auf die Instanz der NgControlName-Direktive für das Eingabefeld
-* Zeilen 8-10: Nutzung von __ngIf__ mit Kondition __!username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
-* Zeile 12: Mit __#password="ngForm"__ definieren wir eine lokale Variable namens "password". Die Variable ist eine Referenz auf die Instanz der NgControlName-Direktive für das Eingabefeld
-* Zeilen 13-15: Nutzung von __ngIf__ mit Kondition __password.errors?.required__. Die Kondition ist wahr, wenn das Eingabefeld leer ist
-* Zeilen 16-18: Nutzung von __ngIf__ mit Kondition __password.errors?.minlength__. Die Kondition ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
+* Zeile 8: Mit __#username=`"`ngForm`"`__ definieren wir eine lokale Variable namens "username". Die Variable ist eine Referenz auf die Instanz der NgControlName-Direktive für das Eingabefeld
+* Zeilen 9-11: Nutzung von __ngIf__ mit Kondition __!username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeile 13: Mit __#password=`"`ngForm`"`__ definieren wir eine lokale Variable namens "password". Die Variable ist eine Referenz auf die Instanz der NgControlName-Direktive für das Eingabefeld
+* Zeilen 14-16: Nutzung von __ngIf__ mit Kondition __password.errors?.required__. Die Kondition ist wahr, wenn das Eingabefeld leer ist
+* Zeilen 17-19: Nutzung von __ngIf__ mit Kondition __password.errors?.minlength__. Die Kondition ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Diskussion
 
 Bei der Erklärung der Lösung haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
+
+#### Elvis-Operator
 
 Den Elvis-Operator haben wir in beide Lösungen verwendet.
 Dieser kann uns helfen, wenn wir im Template mit Objekten arbeiten die __null__ oder __undefined__ sein könnten.
@@ -99,12 +103,14 @@ Da das controls-Objekt des Formulars leer ist (__undefined__) am Anfang, nutzen 
 Wenn ein Eingabefeld gültig ist, ist das errors-Objekt des Controls __null__.
 Darum haben wir in beiden Lösungen den Elvis-Operator bei der Überprüfung der Gültigkeit des Passwort-Feldes verwendet.
 
+#### errors-Objekt
+
 In beiden Lösungen haben wir das errors-Objekt benutzt, um Konditionen für die NgIf-Direktive zu definieren.
 Dieses beinhaltet die Gründe weshalb ein Eingabefeld ungültig ist.
 Wenn z. B. das required-Attribut eines Eingabefeldes definiert ist und das Feld leer ist, beinhaltet das errors-Objekt die Eigenschaft "required" mit dem Wert __true__.
 Der Namen der Eigenschaft, in unserem Beispiel "required" zeigt an welche Validierung fehlschlägt.
 Dieser Fehlschlag ist der Grund für die Ungültigkeit des Eingabefeldes.
-Als zweite NgIf-Kondition für das Passwort-Feld, haben wir "minlength" benutzt.
+Als zweite Kondition für das Passwort-Feld, haben wir "minlength" benutzt.
 Die Wahrheit ist, dass "minlength" keine boolesche Eigenschaft ist, sondern ein Objekt.
 Wenn das Eingabefeld genügend Zeichen beinhaltet, ist die minlength-Eigenschaft des errors-Objektes __undefined__.
 Wenn das Eingabefeld nicht genügend Zeichen beinhaltet, ist der Wert der Eigenschaft ein Objekt mit den Eigenschaften "actualLength" und "requiredLength".
@@ -114,12 +120,12 @@ In der Lösung die wir oben gezeigt haben wäre der Wert für die requiredLength
 
 #### Lösung 2
 
-Genau so wie die NgForm-Direktive, hat auch die NgControlName-Direktive die exportAs-Eigenschaft mit dem Wert __'ngForm'__.
+Genau so wie die NgForm-Direktive, hat auch die NgControlName-Direktive die exportAs-Eigenschaft mit dem Wert __`'`ngForm`'`__.
 Somit können wir im Template Zugriff auf das Control und dessen Eigenschaften wie z. B. "valid" und "errors" bekommen.
 Im übrigen können wir diese Lösung auch ohne Formular und __ngControl__ anwenden.
-Die NgModel-Direktive hat auch __'ngForm'__ als exportAs-Eigenschaft und gibt uns auch Zugriff auf das Control.
-Vom Interface her ist das Control von der NgControlName- und der NgModel-Direktive gleich nur, dass wir für die NgModel-Direktive und deren Control kein Formular brauchen.
-Das Control der NgModel-Direktive registriert sich nicht mit dem Formular auch, wenn wir theoretisch eins hätten.
+Die NgModel-Direktive hat auch __`'`ngForm`'`__ als exportAs-Eigenschaft und gibt uns auch Zugriff auf das Control.
+Vom Interface her ist das Control von der NgControlName- und der NgModel-Direktive gleich nur, dass wir für die NgModel-Direktive und deren Control kein Formular benötigen.
+Das Control der NgModel-Direktive registriert sich nicht mit dem Formular auch, wenn wir eins haben.
 Darum brauchen wir die NgControlName-Direktive, um die Gültigkeit eines Formulars zu überprüfen.
 Wenn wir nur einzelne Eingabefelder überprüfen möchten, reicht die NgModel-Direktive aus.
 

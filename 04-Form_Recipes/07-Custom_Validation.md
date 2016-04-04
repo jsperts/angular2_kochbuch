@@ -15,7 +15,7 @@ Wir werden hier die gleiche Validierungs-Funktionen wie im "Formular mit dem For
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {
     FormBuilder,
     ControlGroup,
@@ -55,7 +55,7 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 * Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 19
 * Zeilen 19-26: Unsere Validierungs-Funktion
@@ -68,7 +68,7 @@ Erklärung:
 
 Wenn die Validierung fehlschlägt, muss die Validierungs-Funktion ein Objekt zurück geben.
 Wir bekommen Zugriff auf dieses Objekt über das errors-Objekt des Controls.
-Dieses Objekt haben wir im Rezept [Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-erros) gesehen.
+Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors)" gesehen.
 Solang das Passwort-Feld kein Großbuchstabe enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
 Wir hätten auch ein komplexeres Objekt zurückgeben können genau so wie es die minLength-Validierungs-Funktion tut.
 Wenn der Wert im Eingabefeld gültig ist, geben wir __null__ zurück.

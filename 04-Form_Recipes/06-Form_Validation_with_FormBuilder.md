@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich auch in der Lage sein zu erkennen wann das Formular gültig ist.
+Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich auch in der Lage sein zu erkennen, wann das Formular gültig ist.
 
 ### Zutaten
 * [Formular mit dem FormBuilder implementieren](#c04-formbuilder)
@@ -11,12 +11,12 @@ Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich a
 
 ### Lösung
 
-In dieser Lösung werden wir dasselbe Problem lösen wie im Rezept [Gültigkeit eines Formulars überprüfen](#c04-form-validation).
+In dieser Lösung werden wir dasselbe Problem lösen wie im Rezept "[Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
 Nur werden wir hier mit Validierungs-Funktionen statt mit Validierungs-Attribute arbeiten.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {FormBuilder, ControlGroup} from 'angular2/common';
 import {Validators} from 'angular2/common';
 
@@ -44,9 +44,9 @@ class MyApp {
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 3: Hier importieren wir alle Validatoren die uns Angular zur Verfügung stellt
+* Zeile 3: Hier importieren wir alle Validatoren, die uns Angular zur Verfügung stellt
 * Zeile 11: Control für das Benutzername-Feld definieren. Mit __Validators.required__ definieren wir das Eingabefeld als Pflichtfeld
 * Zeile 12: Ein Control erwartet als zweiten Parameter eine Validierungs-Funktion. Wenn wir mehrere Funktionen gleichzeitig nutzen möchten, müssen wir die compose-Funktion nutzen
 * Zeile 13: Hier definieren wir das Passwort-Feld als Pflichtfeld

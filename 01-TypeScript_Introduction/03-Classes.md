@@ -54,7 +54,7 @@ Methoden einer Klasse sind einfach Methoden die in ES5 zu der prototype-Eigensch
 ### TypeScript-Klassen
 
 Neben Interfaces bieten TypeScript-Klassen eine weitere Möglichkeit, um Typen für Objekte zu definieren.
-Interfaces definieren die Typen für die Eigenschaften und die Methoden eines Objekts wo hingegen Klassen nicht nur Typen sondern auch das Verhalten und Werte für die Eigenschaften definieren.
+Interfaces definieren die Typen für die Eigenschaften und die Methoden eines Objekts, wo hingegen Klassen nicht nur Typen sondern auch das Verhalten und Werte für die Eigenschaften definieren.
 Der Klassennamen ist auch der Typnamen für die Instanzen einer Klasse.
 Wir können also den Namen einer Klasse bei einer Typdefinition nutzen genau so wie wir es für Interfaces getan haben.
 

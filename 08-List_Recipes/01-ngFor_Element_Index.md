@@ -10,7 +10,7 @@ Ich möchte den Index von den ngFor-Elementen in der View anzeigen.
 
 ### Lösung
 
-{title="app.component.ts Anpassungen, lang=js}
+{title="app.component.ts Anpassungen", lang=js}
 ```
 ...
 

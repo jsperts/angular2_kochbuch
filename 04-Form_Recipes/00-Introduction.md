@@ -5,7 +5,7 @@ Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: 
 
 Bei den "Template Driven Forms" ist ein Großteil der Logik wie z. B. die Validierung im Template.
 Auch die Synchronisation zwischen den Daten, die der Nutzer sieht und den Daten in der Klasse der Komponente (dem Modell) wird im Template definiert.
-So werden Formulare in Angular 1.x implementiert wo wir direkt im Template z. B. mit dem required-Attribut definieren, dass das Feld ein Pflichtfeld ist.
+So werden Formulare in Angular 1.x implementiert, wo wir direkt im Template z. B. mit dem required-Attribut definieren, dass das Feld ein Pflichtfeld ist.
 Da "Template Driven Forms" einfacher und in der Regel mit weniger Code zu implementieren sind, werden wir uns zuerst damit beschäftigen.
 Allerdings haben diese Formulare auch Nachteile.
 Da die Logik im Template ist, ist es schwer bis unmöglich diese in Unit-Tests zu testen.

@@ -54,7 +54,7 @@ npm install
 
 __Erklärung__:
 
-Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen wo er Typinformationen für gewisse Konstrukte wie z. B. Promise, Map und Set finden kann.
+Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen, wo er Typinformationen für gewisse Konstrukte wie z. B. Promise, Map und Set finden kann.
 Wir können unseren Code auch ohne diese Zeile kompilieren aber der Compiler wird Warnungen ausgeben, da ihm Typinformationen fehlen.
 
 {title="Anpassungen an der index.html-Datei", lang=html}

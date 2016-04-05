@@ -46,7 +46,7 @@ Der Code für die Anwendung mit angepasste index.html-Datei befindet sich in [01
 
 __Erklärung__:
 
-TypeScript wird jetzt nicht mehr in der index.html-Datei geladen und in der SystemJS-Konfiguration haben wir die transpiler-Eigenschaft und die Optionen für den Compiler entfernt. Einen weiteren Unterschied sehen wir in Zeile 9 wo wir jetzt ".js" als Endung nutzen und nicht mehr ".ts". Der Grund dafür ist, dass wir jetzt die kompilierte JavaScript-Dateien laden möchten. Jetzt müssen wir nur noch die TypeScript-Dateien kompilieren. Weitere Anpassungen sind nicht nötig.
+TypeScript wird jetzt nicht mehr in der index.html-Datei geladen und in der SystemJS-Konfiguration haben wir die transpiler-Eigenschaft und die Optionen für den Compiler entfernt. Einen weiteren Unterschied sehen wir in Zeile 9, wo wir jetzt ".js" als Endung nutzen und nicht mehr ".ts". Der Grund dafür ist, dass wir jetzt die kompilierte JavaScript-Dateien laden möchten. Jetzt müssen wir nur noch die TypeScript-Dateien kompilieren. Weitere Anpassungen sind nicht nötig.
 
 {title="Dateien kompilieren", lang=bash}
 ```
@@ -71,7 +71,7 @@ W> Das Kommando muss im Hauptverzeichnis unserer Anwendung aufgerufen werden. Di
 
 I> #### CommonJS
 I>
-I> CommonJS ist ein Modul-Standard der hauptsächlich in Node.js verwendet wird. Wir nutzen CommonJS, weil dies die Zusammenarbeit von TypeScript mit externen Bibliotheken wie Angular 2 vereinfacht. Durch die Verwendung von CommonJS-Modulen ist der Compiler in der Lage automatisch nach Typdefinitionen für externe Bibliotheken im node\_modules-Verzeichnis zu suchen ohne, dass wir ihm sagen müssen wo die Typdefinitionen sind.
+I> CommonJS ist ein Modul-Standard der hauptsächlich in Node.js verwendet wird. Wir nutzen CommonJS, weil dies die Zusammenarbeit von TypeScript mit externen Bibliotheken wie Angular 2 vereinfacht. Durch die Verwendung von CommonJS-Modulen ist der Compiler in der Lage automatisch nach Typdefinitionen für externe Bibliotheken im node\_modules-Verzeichnis zu suchen ohne, dass wir ihm sagen müssen, wo die Typdefinitionen sind.
 
 I> #### Die target-Option
 I>

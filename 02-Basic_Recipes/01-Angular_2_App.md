@@ -117,7 +117,7 @@ Angular 2 braucht gewisse ES6-Features, die in ältere Browser darunter auch Int
 Wie schon im Abschnitt "[TypeScript-Dateien vorkompilieren](#c01-precompile)" erwähnt, ist TypeScript on-the-fly in JavaScript umzuwandeln auf Dauer keine Option.
 Wir könnten die TypeScript-Dateien wie im Abschnitt "[TypeScript-Dateien vorkompilieren](#c01-precompile)" gezeigt kompilieren aber der Compiler wird Warnungen anzeigen.
 Trotz Warnungen werden die Dateien kompiliert.
-Die Warnungen werden angezeigt, weil TypeScript keine Typinformationen über Angular hat und auch nicht weiß wo sich die Module "angular2/core" bzw. "angular2/platform/browser" befinden.
+Die Warnungen werden angezeigt, weil TypeScript keine Typinformationen über Angular hat und auch nicht weiß, wo sich die Module "angular2/core" bzw. "angular2/platform/browser" befinden.
 Im Abschnitt "[Angular 2 Anwendung vorkompilieren](#c02-precompile-angular-app)" werden wir sehen, wie wir dieses Problem lösen können.
 Um den schnellen Einstieg zu ermöglichen, ohne Abhängigkeiten installieren zu müssen, werden die meiste Code-Beispiele die on-the-fly Variante für das Kompilieren nutzen.
 

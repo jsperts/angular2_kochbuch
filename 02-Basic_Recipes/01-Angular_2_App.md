@@ -153,6 +153,7 @@ Code auf Github: [02-Basic\_Recipes/01-Angular\_App](https://github.com/jsperts/
 ### Weitere Ressourcen
 
 * Informationen über [ECMAScript-Module](http://exploringjs.com/es6/ch_modules.html)
+* Weitere Eigenschaften des Component-Decorators gibt es auf der Angular 2 Webseite: [ComponentMetadata](https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html)
 * Decorators werden vermutlich als Teil einer späteren Version des ECMAScript-Standards spezifiziert. Mehr Informationen über Decorators in TypeScript und JavaScript gibt es [hier](https://github.com/wycats/javascript-decorators)
 * Weitere Informationen über die Angular-Templates gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

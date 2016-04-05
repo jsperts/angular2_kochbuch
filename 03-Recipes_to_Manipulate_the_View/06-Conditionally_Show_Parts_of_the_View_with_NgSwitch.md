@@ -51,7 +51,7 @@ __Erklärung__:
 ### Diskussion
 
 Die NgSwitch-Direktive ist vergleichbar mit eine JavaScript switch-Anweisung.
-Bei der Nutzung im Template bekommt sie über __ngSwitch__ (input-Eigenschaft der NgSwitch-Direktive) einen Angular-Template-Ausdruck der dann ausgewertet wird.
+Bei der Nutzung im Template bekommt sie über __ngSwitch__ ([input-Eigenschaft](#gl-input-property) der NgSwitch-Direktive) einen Angular-Template-Ausdruck der dann ausgewertet wird.
 In unserem Beispiel besteht der Ausdruck aus der color-Eigenschaft.
 Diese Auswertung wird dann mit jedem Ausdruck der NgSwitchWhen-Direktiven verglichen.
 Angular nutzt für den Vergleich __===__.

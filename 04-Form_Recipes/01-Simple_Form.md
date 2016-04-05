@@ -54,7 +54,7 @@ __Erklärung__:
 Jedes form-Tag bekommt automatisch eine Instanz der NgForm-Direktive.
 Ein Formular hat von sich aus kein ngSubmit-Event, sondern ein submit-Event.
 Da aber das Formular auch eine Instanz der NgForm-Direktive ist, haben wir Zugriff auf das ngSubmit-Event der Direktive.
-Das ngSubmit-Event ist also eine output-Eigenschaft der NgForm-Direktive.
+Das ngSubmit-Event ist also eine [output-Eigenschaft](#gl-output-property) der NgForm-Direktive.
 Im Grunde genommen bindet die NgForm-Direktive das submit-Event des Formulars und leitet es an das ngSubmit-Event weiter.
 Wir hätten in unserem Code auch direkt das submit-Event nutzen können.
 

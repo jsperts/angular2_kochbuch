@@ -5,7 +5,7 @@ Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: 
 
 Bei den "Template Driven Forms" ist ein Großteil der Logik wie z. B. die Validierung im Template.
 Auch die Synchronisation zwischen den Daten, die der Nutzer sieht und den Daten in der Klasse der Komponente (dem Modell) wird im Template definiert.
-So werden Formulare in Angular 1.x implementiert wo wir direkt im Template z. B. mit dem required-Attribut definieren, dass das Feld ein Pflichtfeld ist.
+So werden Formulare in Angular 1.x implementiert, wo wir direkt im Template z. B. mit dem required-Attribut definieren, dass das Feld ein Pflichtfeld ist.
 Da "Template Driven Forms" einfacher und in der Regel mit weniger Code zu implementieren sind, werden wir uns zuerst damit beschäftigen.
 Allerdings haben diese Formulare auch Nachteile.
 Da die Logik im Template ist, ist es schwer bis unmöglich diese in Unit-Tests zu testen.
@@ -68,7 +68,7 @@ __Erklärung__:
   * Zeile 6: Wir binden das ngSubmit-Event des Formulars an unsere onSubmit-Methode
   * Zeile 8: Eingabefeld für den Benutzernamen. Hier nutzen wir die NgModel-Direktive, um die View mit den Daten (dem Modell) der Komponente zu verbinden. Konkreter, reden wir hier von einer beidseitige-Bindung zwischen den Wert des Eingabefeldes und der username-Eigenschaft des user-Objekts (siehe Zeilen 16-19)
   * Zeile 10: Ähnlich wie Zeile 8 aber für das Passwort-Feld
-* Zeilen 16-19: Ein Objekt wo die Daten, die der Nutzer in das Formular eingibt gespeichert werden. Die leere Strings für die Eigenschaften "username" und "password", sind die Default-Werte für die Eingabefelder
+* Zeilen 16-19: Ein Objekt, wo die Daten, die der Nutzer in das Formular eingibt gespeichert werden. Die leere Strings für die Eigenschaften "username" und "password", sind die Default-Werte für die Eingabefelder
 * Zeilen 22-24: Methode die Aufgerufen wird, wenn der Nutzer ein submit-Event auslöst z. B. durch ein Klick auf den Button (siehe auch Zeile 6)
 
 ### Diskussion

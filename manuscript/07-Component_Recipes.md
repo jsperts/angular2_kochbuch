@@ -1,9 +1,13 @@
 # Rezepte für Komponenten
 
-In diesem Kapitel befinden sich verschiedene Rezepte die Komponenten betreffen.
-Hier gibt es z. B. alternative Schreibweisen für Komponenten oder Wege die wir nutzen können, um die Kommunikation zwischen Komponenten zu ermöglichen.
+In diesem Kapitel befinden sich verschiedene Rezepte, die Komponenten betreffen.
+Hier gibt es z. B. alternative Schreibweisen für Komponenten oder Wege, die wir nutzen können, um die Kommunikation zwischen Komponenten zu ermöglichen.
 
 ## Komponente ohne @View-Decorator
+
+### Warnung
+
+Der View-Decorator (@View) wird in eine spätere Version von Angular entfernt. Alle Rezepte wurden angepasst und der View-Decorator wurde entfernt, dadurch ist dieses Rezept nicht mehr nützlich und wird in eine spätere Version des Buches entfernt.
 
 ### Problem
 
@@ -62,17 +66,16 @@ Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Kom
 
 ### Lösung
 
-Statt die template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben wo unsere HTML-Datei sich befindet.
+Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben, wo unsere HTML-Datei sich befindet.
+Der Pfad der templateUrl-Eigenschaft ist relativ zu der index.html-Datei der Anwendung.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
-  templateUrl: 'my_app.html'
+  selector: 'my-app',
+  templateUrl: './app/my_app.html'
 })
 
 ...

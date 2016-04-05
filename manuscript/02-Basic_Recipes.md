@@ -124,7 +124,7 @@ Angular 2 braucht gewisse ES6-Features, die in ältere Browser darunter auch Int
 Wie schon im Abschnitt "[TypeScript-Dateien vorkompilieren](#c01-precompile)" erwähnt, ist TypeScript on-the-fly in JavaScript umzuwandeln auf Dauer keine Option.
 Wir könnten die TypeScript-Dateien wie im Abschnitt "[TypeScript-Dateien vorkompilieren](#c01-precompile)" gezeigt kompilieren aber der Compiler wird Warnungen anzeigen.
 Trotz Warnungen werden die Dateien kompiliert.
-Die Warnungen werden angezeigt, weil TypeScript keine Typinformationen über Angular hat und auch nicht weiß wo sich die Module "angular2/core" bzw. "angular2/platform/browser" befinden.
+Die Warnungen werden angezeigt, weil TypeScript keine Typinformationen über Angular hat und auch nicht weiß, wo sich die Module "angular2/core" bzw. "angular2/platform/browser" befinden.
 Im Abschnitt "[Angular 2 Anwendung vorkompilieren](#c02-precompile-angular-app)" werden wir sehen, wie wir dieses Problem lösen können.
 Um den schnellen Einstieg zu ermöglichen, ohne Abhängigkeiten installieren zu müssen, werden die meiste Code-Beispiele die on-the-fly Variante für das Kompilieren nutzen.
 
@@ -160,6 +160,7 @@ Code auf Github: [02-Basic\_Recipes/01-Angular\_App](https://github.com/jsperts/
 ### Weitere Ressourcen
 
 * Informationen über [ECMAScript-Module](http://exploringjs.com/es6/ch_modules.html)
+* Weitere Eigenschaften des Component-Decorators gibt es auf der Angular 2 Webseite: [ComponentMetadata](https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html)
 * Decorators werden vermutlich als Teil einer späteren Version des ECMAScript-Standards spezifiziert. Mehr Informationen über Decorators in TypeScript und JavaScript gibt es [hier](https://github.com/wycats/javascript-decorators)
 * Weitere Informationen über die Angular-Templates gibt es in [Appendix A: Template-Syntax](#appendix-a)
 
@@ -284,7 +285,7 @@ npm install
 
 __Erklärung__:
 
-Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen wo er Typinformationen für gewisse Konstrukte wie z. B. Promise, Map und Set finden kann.
+Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen, wo er Typinformationen für gewisse Konstrukte wie z. B. Promise, Map und Set finden kann.
 Wir können unseren Code auch ohne diese Zeile kompilieren aber der Compiler wird Warnungen ausgeben, da ihm Typinformationen fehlen.
 
 {title="Anpassungen an der index.html-Datei", lang=html}

@@ -1,6 +1,6 @@
 # Rezepte für ngFor-Listen
 
-In diesem Kapitel befinden sich Rezepte die uns bei der Arbeit mit Listen helfen, die in der View mittels ngFor angezeigt werden. Wie man solche Listen anzeigen kann wird im Rezept [Liste von Daten anzeigen](#c03-data-list) gezeigt.
+In diesem Kapitel befinden sich Rezepte, die uns bei der Arbeit mit Listen helfen, die in der View mittels der NgFor-Direktive angezeigt werden. Wie man solche Listen anzeigen kann wird im Rezept "[Liste von Daten anzeigen](#c03-data-list)" gezeigt.
 
 ## Mit dem Index von ngFor-Elementen arbeiten
 
@@ -14,11 +14,12 @@ Ich möchte den Index von den ngFor-Elementen in der View anzeigen.
 
 ### Lösung
 
-{title="app.component.ts Anpassungen, lang=js}
+{title="app.component.ts Anpassungen", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <ul>
       <li *ngFor="#user of users; #i = index">
@@ -32,16 +33,16 @@ Ich möchte den Index von den ngFor-Elementen in der View anzeigen.
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
-* Zeile 6: Definiert eine lokale Variable "i" die den Index für das aktuelle Element referenziert. In dem Fall ist __index__ ein spezielles ngFor-Konstrukt
-* Zeile 7: Die lokale Variable "i" für den Index wird mittels [Interpolation](#gl-interpolation) angezeigt
+* Zeile 7: Definiert eine lokale Variable "i", die den Index für das aktuelle Element referenziert. In dem Fall ist __index__ ein spezielles ngFor-Konstrukt
+* Zeile 8: Die lokale Variable "i" für den Index wird mittels [Interpolation](#gl-interpolation) angezeigt
 
 ### Diskussion
 
-Hier zeigen wir den Index nur in der View an. Natürlich kann man die lokale Variable "i" auch einer Methode übergeben oder sie nutzen, um etwas zu berechnen. Z. B. kann man in Zeile 7 eine __Eins__ zu der Variable "i" addieren, so dass die Anzeige mit __1__ statt __0__ beginnt. Der Ausdruck dafür wäre __{{i + 1}}__.
+Hier zeigen wir den Index nur in der View an. Natürlich können wir die lokale Variable "i" auch einer Methode übergeben oder diese nutzen, um etwas zu berechnen. Z. B. können wir in Zeile 8 eine Eins zu der Variable "i" addieren, so dass die Anzeige mit __1__ statt __0__ beginnt. Der Ausdruck dafür wäre __{{i + 1}}__.
 
 ### Code
 
@@ -65,11 +66,12 @@ Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungera
 
 ### Lösung
 
-{title="app.component.ts Anpassungen, lang=js}
+{title="app.component.ts Anpassungen", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <style>
       .red {
@@ -91,17 +93,17 @@ Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungera
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
-* Zeile 5-12: Definition von CSS-Klassen mittels style-Tags.
-* Zeile 14: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
-* Zeile 15: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
+* Zeilen 6-13: Definition von CSS-Klassen mittels style-Tags.
+* Zeile 15: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
+* Zeile 16: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
 
 ### Diskussion
 
-Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich kann man die lokalen Variablen __odd__ und __even__ auch einer Methode übergeben oder sie nutzen, um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
+Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich können wir die lokalen Variablen "isOdd" und "isEven" auch einer Methode übergeben oder diese nutzen, um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
 
 ### Code
 
@@ -125,11 +127,12 @@ Ich möchte das erste und letzte Element meiner Liste farblich hervorheben.
 
 ### Lösung
 
-{title="app.component.ts Anpassungen, lang=js}
+{title="app.component.ts Anpassungen", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <style>
       .first {
@@ -151,20 +154,20 @@ Ich möchte das erste und letzte Element meiner Liste farblich hervorheben.
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
-* Zeile 5-12: Definition von CSS-Klassen mittels style-Tags
-* Zeile 14: Definiert lokale Variable "isLast" und "i". Die isLast-Variable ist __true__ wenn das aktuelle Element das letzte in der Liste ist, ansonsten ist sie __false__. Die i-Variable nutzen wir um den aktuellen Index zu speichern. In diesem Fall sind __last__ und __index__ spezielle ngFor-Konstrukte
-* Zeile 15: Hier wird die Klasse __first__ gesetzt falls das aktuelle Element der Liste ist oder "last" falls es das letzte Element der Liste ist
+* Zeilen 6-13: Definition von CSS-Klassen mittels style-Tags
+* Zeile 15: Definiert lokale Variable "isLast" und "i". Die isLast-Variable ist __true__ wenn das aktuelle Element das letzte in der Liste ist, ansonsten ist sie __false__. Die i-Variable nutzen wir, um den aktuellen Index zu speichern. In diesem Fall sind __last__ und __index__ spezielle ngFor-Konstrukte
+* Zeile 16: Hier wird die Klasse "first" gesetzt falls das aktuelle Element das Erste der Liste ist oder "last" falls es das letzte Element der Liste ist
 
 ### Diskussion
 
-Hier nutzen wir die Information, ob das aktuelle Element das erste oder das letzte in der Liste ist, um die entsprechenden Elemente farblich hervorzuheben.
-Da es derzeit kein spezielles ngFor-Konstrukt für das erste Element einer Liste gibt, sind wir gezwungen es selbst zu berechne auf Basis des Indexes.
-In der Zukunft wird es vermutlich auch für das erste Element einer Liste ein spezielles Konstrukt geben wie für das letzte.
-Wie auch in den vorherigen zwei Rezepten, können wir auch hier die Information, ob ein Element das erste oder letzte einer Liste ist, an z. B. einer Methode übergeben.
+Hier nutzen wir die Information, ob das aktuelle Element das Erste oder das Letzte in der Liste ist, um die entsprechenden Elemente farblich hervorzuheben.
+Da es derzeit kein spezielles ngFor-Konstrukt für das erste Element einer Liste gibt, sind wir gezwungen es selbst zu berechnen auf Basis des Indexes.
+In der Zukunft wird es vermutlich auch für das erste Element einer Liste ein spezielles Konstrukt geben wie für das Letzte.
+Wie auch in den vorherigen zwei Rezepten, können wir auch hier die Information, ob ein Element das Erste oder Letzte einer Liste ist, an z. B. einer Methode übergeben.
 
 ### Code
 

@@ -63,12 +63,12 @@ class DataService {
 export default DataService;
 ```
 
-Erklärung:
+__Erklärung__:
 
 * Zeile 3: Durch diesen Import erweitern wir die Instanzen der Observable-Klasse (siehe Zeile 18) um eine Methode namens "catch"
 * Zeile 4: Hier importieren wir die Observable-Klasse von RxJS
 * Zeile 5: Durch diesen Import erweitern wir die Observable-Klasse (siehe Zeile 31) um eine statische Methode namens "throw"
-* Zeile 12: Die Url, um ein Server-Fehler zu erzwingen
+* Zeile 12: Die URL, um einen Server-Fehler zu erzwingen
 * Zeilen 18-20: Hier wird die catch-Methode benutzt, um Fehler beim Server-Aufruf zu behandeln
   * Zeile 19: Wenn ein Fehler auftritt, wird die handleResponseError-Methode aufgerufen
 * Zeilen 24-32: Methode, um Server-Fehler zu behandeln
@@ -81,7 +81,9 @@ Da wir auch dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen w
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
+  providers: [DataService, HTTP_PROVIDERS],
   template: `
     <button (click)="getData()">Get Data</button>
     <p>
@@ -111,36 +113,36 @@ class MyApp {
 export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 7: Fehlermeldung in der View anzeigen
-* Zeilen 24-26: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
-  * Zeile 25: Fehlertext von Zeile 31 des Service als Wert für die errorText-Eigenschaft setzen
+* Zeile 9: Fehlermeldung in der View anzeigen
+* Zeilen 26-28: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
+  * Zeile 27: Fehlertext von Zeile 31 des Services als Wert für die errorText-Eigenschaft setzen
 
 ### Diskussion
 
-Die catch-Methode von Instanzen der Observable-Klasse ist vergleichbar zu der catch-Methode einer Promise-Kette oder im catch-Block einer try/catch-Anweisung.
+Die catch-Methode von Instanzen der Observable-Klasse ist vergleichbar zu der catch-Methode einer Promise-Kette oder dem catch-Block einer __try__/__catch__-Anweisung.
 Jeder Fehler in der Kette von Observables, der vor der catch-Methode auftritt, kann in der catch-Methode behandelt werden.
-Ähnlich wie bei einem try/catch und bei Promises wird bei einen Fehler die Ausführungs-Kette "unterbrochen" und wir springen direkt zu der catch-Methode.
-Bei der Fehlerbehandlung im "catch" können wir eine Instanz von Observable mit Fehler zurück geben, um erneut ein Fehler zu erzeugen.
-Das ist ähnlich wie wenn wir bei einer try/catch-Anweisung ein "throw" im catch-Block nutzen.
+Ähnlich wie bei einem __try__/__catch__ und bei Promises wird bei einen Fehler die Ausführungs-Kette "unterbrochen" und wir springen direkt zu der catch-Methode.
+Bei der Fehlerbehandlung in der catch-Methode können wir eine Instanz von Observable mit Fehler zurück geben, um erneut ein Fehler zu erzeugen.
+Das ist ähnlich wie, wenn wir bei einer try/catch-Anweisung ein throw-Anweisung im catch-Block nutzen.
 
 Wie wir in diesem Rezept gesehen haben, kann die subscribe-Methode nicht nur eine Callback-Funktion als Parameter haben, sondern zwei (genauer gesagt sind es drei aber der dritte Parameter ist für uns vorerst nicht relevant).
 Wir wissen schon, dass die erste Callback-Funktion aufgerufen wird, wenn die Server-Anfrage erfolgreich ist.
 Die zweite Callback-Funktion wird im Falle eines Fehlers aufgerufen.
 Diese Callback-Funktion ist unsere zweite Möglichkeit einen Fehler in eine Observables-Kette zu behandeln.
-Wir haben also Fehler an zwei verschiedenen Orten behandelt.
-Einmal in unserem Service mittels "catch" und einmal in unsere Komponente mit Hilfe der zweite Parameter der subscribe-Methode.
+Wir haben also den Fehler an zwei verschiedenen Orten behandelt.
+Einmal in unserem Service mittels catch-Methode und einmal in unsere Komponente mit Hilfe des zweiten Parameters der subscribe-Methode.
 Prinzipiell wäre es möglich den Fehler entweder im Service oder in der Komponente zu behandeln.
 Der zweite Parameter der subscribe-Methode ist optional und optional ist auch die Nutzung der catch-Methode.
 Der Grund weshalb wir den Fehler an zwei Stellen behandeln ist ganz einfach.
-Wir wollen nicht, dass unsere Komponente wissen muss wie die Server-Antwort aussieht im Falle eines Fehlers genau so wie wir nicht wollten, dass die Komponente weiß was mit einer erfolgreiche Server-Antwort zu tun ist vor Daten angezeigt werden können.
+Wir wollen nicht, dass unsere Komponente wissen muss wie die Server-Antwort aussieht im Falle eines Fehlers genau so wie wir nicht wollten, dass die Komponente weiß was mit einer erfolgreiche Server-Antwort zu tun ist bevor Daten angezeigt werden können.
 Der Komponente reicht es Daten bzw. Fehlermeldungen zu bekommen, die direkt angezeigt werden können.
 
 I> #### Fehler bei einer Server-Anfrage
 I>
-I> Grob können wir bei Server-Anfragen mittels Http, zwei Fehlerquellen unterscheiden:
-I> (1) Die Anfrage kann nicht geschickt werden z. B. wenn der Server nicht verfügbar ist
+I> Grob können wir bei Server-Anfragen mittels des Http-Services, zwei Fehlerquellen unterscheiden:
+I> (1) Die Anfrage kann nicht geschickt werden z. B., wenn der Server nicht verfügbar ist
 I> (2) Der Status der Antwort (response.status) ist nicht zwischen __200__ und __299__
 
 ### Code

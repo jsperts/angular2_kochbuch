@@ -13,7 +13,7 @@ Ich möchte mittels POST-Anfrage Daten an einem Server schicken.
 
 Wir werden hier die Lösung vom Rezept "Daten vom Server mit GET holen" erweitern, so dass wir auch Daten an den Server schicken können.
 Auch hier lassen wir die Fehlerbehandlung außen vor.
-Siehe dazu [Server-Anfragen und Fehlerbehandlung](#c05-error-handling).
+Siehe dazu "[Server-Anfragen und Fehlerbehandlung](#c05-error-handling)".
 
 Wir gehen davon aus, dass wir einen Server haben der auf __127.0.0.1:3000__ hört.
 Wenn eine POST-Anfrage nach __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
@@ -38,9 +38,9 @@ Wir nutzten __http://127.0.0.1:3000/data__ als URL für die Anfrage.
 }
 ```
 
-Unser DataService wird, um eine neue Methode und ein Import erweitert.
+Unser DataService wird um eine neue Methode und ein Import erweitert.
 Der Rest bleibt gleich wie im Rezept "Daten vom Server mit GET holen".
-Damit wir uns besser auf die neuen Teilen konzentrieren können, haben wir die gleich bleibende Teile durch Punkte (...) ersetzt.
+Damit wir uns besser auf die neue Teilen konzentrieren können, haben wir die gleich bleibende Teile des Codes durch Punkte (...) ersetzt.
 
 {title="Ausschnitt aus data.service.ts", lang=js}
 ```
@@ -70,23 +70,25 @@ class DataService {
 export default DataService;
 ```
 
-Erklärung:
+__Erklärung__:
 
 * Zeile 3: Hier werden die Klassen Headers und RequestOptions importiert
 * Zeilen 12-21: Methode die wir Aufrufen, um Daten an den Server zu schicken
   * Zeile 13: Instantiierung eines headers-Objektes mit "Content-Type" __application/json__
-  * Zeile 14: Instantiierung eines Objektes für Request-Optionen. Das headers-Objekt wird bei der Instantiierung dem options-Objekt übergeben
+  * Zeile 14: Instantiierung eines Objektes für Request-Optionen. Das headers-Objekt wird dem RequestOptions-Konstruktor übergeben
   * Zeile 16: Zur Zeit erwartet Angular ein String bei dem Aufruf der post-Methode (Zeile 18). Darum müssen wir unser Objekt in ein String transformieren
   * Zeile 18: Aufruf der post-Methode mit den Daten als zweiten Parameter und die Optionen für die Anfrage als dritten Parameter
 
 Auch unsere Komponente wird um eine sendData-Methode erweitert.
 Teile der Komponente die wir nicht geändert haben, werden durch Punkte (...) ersetzt.
 
-{title="Ausschnitt aus app.component.ts", lang=js}
+{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
+  providers: [DataService, HTTP_PROVIDERS],
   template: `
     <button (click)="getData()">Get Data</button>
     <button (click)="sendData()">Send Data</button>
@@ -113,29 +115,29 @@ class MyApp {
 export default MyApp;
 ```
 
-Erklärung:
+__Erklärung__:
 
-* Zeile 6: Neuer Button. Bei Klick wird dir sendData-Methode aufgerufen
-* Zeilen 18-24: Methode die aufgerufen wird, um Daten zu schicken
-  * Zeile 19: Die Daten die wir schicken wollen
-  * Zeile 20: Aufruf der sendData-Methode des DataService. Diese Methode gibt ein Observable zurück.
-  * Zeile 21: Die Callback-Funktion der subscribe-Methode wird aufgerufen, wenn der Server uns eine Antwort geschickt hat. Die data-Variable ist ein Objekt mit "name" und "id" als Eigenschaften
-  * Zeile 22: Das neue Objekt wird der Liste mit den Daten hinzugefügt
+* Zeile 8: Neuer Button. Bei Klick wird dir sendData-Methode aufgerufen
+* Zeilen 20-26: Methode die aufgerufen wird, um Daten zu schicken
+  * Zeile 21: Die Daten, die wir schicken wollen
+  * Zeile 22: Aufruf der sendData-Methode des DataService. Diese Methode gibt ein Observable zurück.
+  * Zeile 23: Die Callback-Funktion (Observer) der subscribe-Methode wird aufgerufen, wenn der Server uns eine Antwort geschickt hat. Die data-Variable ist ein Objekt mit "name" und "id" als Eigenschaften
+  * Zeile 24: Das neue Objekt wird der Liste mit den Daten hinzugefügt
 
 ### Diskussion
 
-Einige Serverimplementierungen erwarten __application/json__ als Content-Type, damit diese eine Anfrage mit JSON-Daten bearbeiten können.
+Einige Serverimplementierungen erwarten __application/json__ als "Content-Type", damit diese eine Anfrage mit JSON-Daten bearbeiten können.
 Aus diesen Grund haben wir extra Optionen der post-Methode übergeben.
 Tatsächlich ist der dritte Parameter der post-Methode optional.
-Alle Methoden der Http-Klasse, darunter auch die get-Methode die wir schon gesehen haben, können als letzten Parameter eine Instanz der RequestOptions-Klasse bekommen.
-Wenn wir also für einzelne Anfragen extra Headers brauchen, können wir diese mit Hilfe der Headers- und der RequestOptions-Klasse definieren.
+Alle Methoden der Http-Klasse, darunter auch die get-Methode, die wir schon gesehen haben, können als letzten Parameter eine Instanz der RequestOptions-Klasse bekommen.
+Wenn wir also für einzelne Anfragen extra Headers brauchen, können wir diese mit Hilfe der Headers- und der RequestOptions-Klassen definieren.
 
 Wir haben bis jetzt ein Detail über die Observables, die die Methoden der Http-Klasse zurück geben verschwiegen.
-Die subscribe-Methode ist nicht nur eine Möglichkeit mittels eine Callback-Funktion auf Änderungen zu reagieren.
+Die subscribe-Methode ist nicht nur eine Möglichkeit mittels einer Callback-Funktion auf Änderungen zu reagieren.
 Ohne den Aufruf der subscribe-Methode (mit oder ohne Callback) würde Angular gar keine Server-Anfrage schicken.
 Der Grund dafür ist, dass die Http-Methoden sogenannte "Cold Observables" zurück geben.
 Cold Observables führen erst dann die gewünschte Operation, wenn jemand die subscribe-Methode des Observable aufruft.
-In unsere Lösung ist die Operation die GET-Anfrage und unser "jemand" die sendData-Methode der Komponente.
+In unsere Lösung ist die Operation die POST-Anfrage und unser "jemand" die sendData-Methode der Komponente.
 Siehe auch [Cold vs. Hot Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables).
 
 ### Code

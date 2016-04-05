@@ -11,11 +11,12 @@ Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungera
 
 ### Lösung
 
-{title="app.component.ts Anpassungen, lang=js}
+{title="app.component.ts Anpassungen", lang=js}
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <style>
       .red {
@@ -37,17 +38,17 @@ Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungera
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
-* Zeile 5-12: Definition von CSS-Klassen mittels style-Tags.
-* Zeile 14: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
-* Zeile 15: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
+* Zeilen 6-13: Definition von CSS-Klassen mittels style-Tags.
+* Zeile 15: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
+* Zeile 16: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
 
 ### Diskussion
 
-Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich kann man die lokalen Variablen __odd__ und __even__ auch einer Methode übergeben oder sie nutzen, um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
+Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich können wir die lokalen Variablen "isOdd" und "isEven" auch einer Methode übergeben oder diese nutzen, um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
 
 ### Code
 

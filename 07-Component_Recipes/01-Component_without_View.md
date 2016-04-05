@@ -1,5 +1,9 @@
 ## Komponente ohne @View-Decorator
 
+### Warnung
+
+Der View-Decorator (@View) wird in eine spätere Version von Angular entfernt. Alle Rezepte wurden angepasst und der View-Decorator wurde entfernt, dadurch ist dieses Rezept nicht mehr nützlich und wird in eine spätere Version des Buches entfernt.
+
 ### Problem
 
 Mir gefällt es nicht, dass ich zwei Decorators nutzen muss, um eine Komponente zu definieren. Ich möchte eine alternative Schreibeweise nutzen ohne den @View-Decorator.

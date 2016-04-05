@@ -14,7 +14,8 @@ Ich möchte den Index von den ngFor-Elementen in der View anzeigen.
 ```
 ...
 
-@View({
+@Component({
+  selector: 'my-app',
   template: `
     <ul>
       <li *ngFor="#user of users; #i = index">
@@ -28,16 +29,16 @@ Ich möchte den Index von den ngFor-Elementen in der View anzeigen.
 ...
 ```
 
-Erklärung:
+__Erklärung__:
 
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
-* Zeile 6: Definiert eine lokale Variable "i" die den Index für das aktuelle Element referenziert. In dem Fall ist __index__ ein spezielles ngFor-Konstrukt
-* Zeile 7: Die lokale Variable "i" für den Index wird mittels [Interpolation](#gl-interpolation) angezeigt
+* Zeile 7: Definiert eine lokale Variable "i", die den Index für das aktuelle Element referenziert. In dem Fall ist __index__ ein spezielles ngFor-Konstrukt
+* Zeile 8: Die lokale Variable "i" für den Index wird mittels [Interpolation](#gl-interpolation) angezeigt
 
 ### Diskussion
 
-Hier zeigen wir den Index nur in der View an. Natürlich kann man die lokale Variable "i" auch einer Methode übergeben oder sie nutzen, um etwas zu berechnen. Z. B. kann man in Zeile 7 eine __Eins__ zu der Variable "i" addieren, so dass die Anzeige mit __1__ statt __0__ beginnt. Der Ausdruck dafür wäre __{{i + 1}}__.
+Hier zeigen wir den Index nur in der View an. Natürlich können wir die lokale Variable "i" auch einer Methode übergeben oder diese nutzen, um etwas zu berechnen. Z. B. können wir in Zeile 8 eine Eins zu der Variable "i" addieren, so dass die Anzeige mit __1__ statt __0__ beginnt. Der Ausdruck dafür wäre __{{i + 1}}__.
 
 ### Code
 

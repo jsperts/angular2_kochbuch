@@ -10,17 +10,16 @@ Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Kom
 
 ### Lösung
 
-Statt die template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben wo unsere HTML-Datei sich befindet.
+Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben, wo unsere HTML-Datei sich befindet.
+Der Pfad der templateUrl-Eigenschaft ist relativ zu der index.html-Datei der Anwendung.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app'
-})
-@View({
-  templateUrl: 'my_app.html'
+  selector: 'my-app',
+  templateUrl: './app/my_app.html'
 })
 
 ...

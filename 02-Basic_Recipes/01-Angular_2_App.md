@@ -71,9 +71,9 @@ Als letztes schauen wir uns die index.html-Datei an. Diese Datei befindet sich i
   <title>Angular 2 Hello World</title>
   <script src="https://code.angularjs.org/tools/system.js"></script>
   <script src="https://code.angularjs.org/tools/typescript.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.6/Rx.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.6/angular2-polyfills.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.6/angular2.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.13/Rx.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.13/angular2-polyfills.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.13/angular2.dev.js"></script>
   <script>
     System.config({
       transpiler: 'typescript',

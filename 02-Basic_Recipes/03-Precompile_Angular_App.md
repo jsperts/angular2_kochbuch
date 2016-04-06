@@ -19,12 +19,12 @@ Zusätzlich sollen alle Abhängigkeiten lokal installiert sein.
 {
   "name": "Angular2Kochbuch",
   "dependencies": {
-    "angular2": "2.0.0-beta.6",
-    "es6-shim": "0.33.13",
+    "angular2": "2.0.0-beta.13",
+    "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
+    "rxjs": "5.0.0-beta.2",
     "systemjs": "0.19.21",
-    "zone.js": "0.5.14"
+    "zone.js": "^0.6.6"
   },
   "private": true
 }

@@ -126,10 +126,10 @@ Da sich der Http-Service in eine eigener JavaScript-Datei befindet, müssen wir 
 ```
 ...
 
-<script src="https://code.angularjs.org/2.0.0-beta.6/Rx.js"></script>
-<script src="https://code.angularjs.org/2.0.0-beta.6/angular2-polyfills.js"></script>
-<script src="https://code.angularjs.org/2.0.0-beta.6/angular2.dev.js"></script>
-<script src="https://code.angularjs.org/2.0.0-beta.6/http.dev.js"></script>
+<script src="https://code.angularjs.org/2.0.0-beta.13/Rx.js"></script>
+<script src="https://code.angularjs.org/2.0.0-beta.13/angular2-polyfills.js"></script>
+<script src="https://code.angularjs.org/2.0.0-beta.13/angular2.dev.js"></script>
+<script src="https://code.angularjs.org/2.0.0-beta.13/http.dev.js"></script>
 
 ...
 ```

@@ -107,9 +107,9 @@ Wir nutzen hier eine [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([..
 Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
 Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung dafür nutzen.
 
-I> #### Inline-styles
+I> #### CSS-Styles in einer Komponente
 I>
-I> Wenn wir inline-styles in einer Komponente nutzen, können die definierte CSS-Klassen standardmäßig nur in dieser Komponente verwendet werden in der diese definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Klassen, wenn man Komponente wiederverwendet. Die Kapselung von CSS-Klassen und Komponenten wird in Angular "View Encapsulation" genannt.
+I> Wenn wir CSS-Styles in einer Komponente definieren, können wir diese CSS-Styles standardmäßig nur in der Komponente verwenden in der diese definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Styles, wenn man z. B. Komponente wiederverwendet. Die Kapselung von CSS-Styles und Komponenten wird in Angular "View Encapsulation" genannt.
 
 ### Code
 
@@ -126,4 +126,5 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 * Offizielle Dokumentation für die [NgClass-Direktive](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html)
 * Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 * Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
+* Zwei weitere Möglichkeiten, um CSS-Styles für eine Komponente zu definieren gibt es in den Rezepten "[Das Template der Komponente von CSS trennen](#c07-styles)" und "[Komponente und CSS trennen](#c07-styleurls)"
 

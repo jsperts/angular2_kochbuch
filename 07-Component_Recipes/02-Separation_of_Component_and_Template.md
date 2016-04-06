@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Komponente halten.
+Ich hab ein langes Angular-Template und ich möchte das HTML getrennt von meine Komponente halten.
 
 ### Zutaten
 * [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
@@ -11,7 +11,6 @@ Ich hab ein langes HTML-Template und ich möchte das HTML getrennt von meine Kom
 ### Lösung
 
 Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben, wo unsere HTML-Datei sich befindet.
-Der Pfad der templateUrl-Eigenschaft ist relativ zu der index.html-Datei der Anwendung.
 
 {title="Ausschnitt aus einer Komponente", lang=js}
 ```
@@ -24,6 +23,10 @@ Der Pfad der templateUrl-Eigenschaft ist relativ zu der index.html-Datei der Anw
 
 ...
 ```
+
+__Erklärung__:
+
+* Zeile 5: Pfad zu der my\_app.html-Datei. Hier ist der Pfad relativ zu der index.html-Datei der Anwendung. Wer möchte kann auch ein absoluten Pfad angeben
 
 ### Diskussion
 

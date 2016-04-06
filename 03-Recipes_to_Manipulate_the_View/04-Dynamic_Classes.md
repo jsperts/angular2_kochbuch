@@ -5,8 +5,9 @@
 Ich möchte anhand eines booleschen Wertes definieren, wann eine CSS-Klasse gesetzt wird und, wann nicht.
 
 ### Zutaten
-* [Daten einer Komponente in der View anzeigen](#c03-show-data)
+* [Eine Komponente](#c02-component-definition)
 * CSS-Klassen die gesetzt bzw. entfernt werden sollen
+* Eigenschaften in der Komponente, die wir im Template referenzieren
 * NgClass-Direktive von Angular
 
 ### Lösung 1
@@ -59,7 +60,7 @@ __Erklärung__:
 Wir haben bereits in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt mit CSS-Klassen als Keys und __true__/__false__ als Werte für die Keys bekommt.
 Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
-{title="Ausschnitt aus der app.component.ts", lang=js}
+{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
 ```
 ...
 
@@ -102,7 +103,7 @@ Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Ve
 Im Github Code-Beispiel wird gezeigt wie wir mittels "click" die CSS-Klassen für unsere div-Tags entfernen und hinzufügen können.
 Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
 
-Wir haben hier eine neue Schreibweise für Templates gesehen und zwar [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
+Wir nutzen hier eine [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
 Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
 Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung dafür nutzen.
 

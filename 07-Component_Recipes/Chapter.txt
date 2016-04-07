@@ -3,3 +3,4 @@
 02-Separation_of_Component_and_Template.md
 03-Separation_of_Template_and_Styles.md
 04-Separation_of_Component_and_Styles.md
+05-Pass_Data_to_Child_with_Inputs.md

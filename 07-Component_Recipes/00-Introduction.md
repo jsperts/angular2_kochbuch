@@ -1,5 +1,6 @@
 # Rezepte für Komponenten
 
-In diesem Kapitel befinden sich verschiedene Rezepte, die Komponenten betreffen.
-Hier gibt es z. B. alternative Schreibweisen für Komponenten oder Wege, die wir nutzen können, um die Kommunikation zwischen Komponenten zu ermöglichen.
+In diesem Kapitel befinden sich verschiedene Rezepte, die hauptsächlich Komponenten betreffen.
+Manche von den Rezepten können auch bei Direktiven angewendet werden.
+Sachen wie z. B. die Kommunikation zwischen Komponenten, werden in diesem Kapitel behandelt.
 

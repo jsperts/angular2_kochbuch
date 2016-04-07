@@ -78,9 +78,9 @@ Als letztes schauen wir uns die index.html-Datei an. Diese Datei befindet sich i
   <title>Angular 2 Hello World</title>
   <script src="https://code.angularjs.org/tools/system.js"></script>
   <script src="https://code.angularjs.org/tools/typescript.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.6/Rx.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.6/angular2-polyfills.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.6/angular2.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.13/Rx.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.13/angular2-polyfills.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.13/angular2.dev.js"></script>
   <script>
     System.config({
       transpiler: 'typescript',
@@ -250,12 +250,12 @@ Zusätzlich sollen alle Abhängigkeiten lokal installiert sein.
 {
   "name": "Angular2Kochbuch",
   "dependencies": {
-    "angular2": "2.0.0-beta.6",
-    "es6-shim": "0.33.13",
+    "angular2": "2.0.0-beta.13",
+    "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
+    "rxjs": "5.0.0-beta.2",
     "systemjs": "0.19.21",
-    "zone.js": "0.5.14"
+    "zone.js": "^0.6.6"
   },
   "private": true
 }

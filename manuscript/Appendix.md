@@ -316,7 +316,7 @@ Da gibt es verschiedene Möglichkeiten für den Wert der Variable:
 
 1. Wir nutzen keine Zuweisung und die Direktive setzt kein Wert, dann ist der Wert der Variable das DOM-Element
 2. Wir nutzen keine Zuweisung aber die Direktive setzt ein Wert, dann hängt der Wert von der Direktive ab. Hier wird der Wert implizit gesetzt
-3. Wir nutzen eine Zuweisung und die Direktive nutzt "exportAs", dann ist der Wert der Variable die Direktive. Allerdings muss in so einem Fall die rechte Seite der Zuweisung, der Namen sein der bei "exportAs" definiert wurde
+3. Wir nutzen eine Zuweisung und die Direktive nutzt "exportAs", dann ist der Wert der Variable die Direktive. Allerdings muss in so einem Fall die rechte Seite der Zuweisung der Namen sein, der bei "exportAs" definiert wurde
 4. Wir nutzen eine Zuweisung und die Direktive setzt ein Wert mit einem bestimmten Namen, dann hängt der Wert der Variable von dem gesetzten Wert ab. Hier wird der Wert explizit gesetzt und die rechte Seite der Zuweisung muss den richtigen Namen haben. Der Namen wird von der Direktiven definiert
 
 Von der Fallunterscheidung sehen wir, dass es nicht immer einfach ist den Wert einer lokalen Variablen zu bestimmen. Ob die Direktive ein Wert setzt oder "exportAs" nutzt, steht in der Regel in der Dokumentation.

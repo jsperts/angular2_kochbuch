@@ -246,8 +246,9 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](ht
 Ich möchte anhand eines booleschen Wertes definieren, wann eine CSS-Klasse gesetzt wird und, wann nicht.
 
 ### Zutaten
-* [Daten einer Komponente in der View anzeigen](#c03-show-data)
+* [Eine Komponente](#c02-component-definition)
 * CSS-Klassen die gesetzt bzw. entfernt werden sollen
+* Eigenschaften in der Komponente, die wir im Template referenzieren
 * NgClass-Direktive von Angular
 
 ### Lösung 1
@@ -291,8 +292,8 @@ __Erklärung__:
 
 * Zeilen 6-18: Definition der CSS-Klassen die wir benötigen
 * Zeilen 19-20: Zwei div-Tags mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit Hilfe der ngClass-Eigenschaft gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die CSS-Klassen sind die entfernt/hinzugefügt werden
-  * Zeile 22: Durch die input-Eigenschaft "ngClass" wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
-  * Zeile 23: Durch die input-Eigenschaft "ngClass" wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
+  * Zeile 22: Durch die [input-Eigenschaft](#gl-input-property) "ngClass" wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
+  * Zeile 23: Durch die [input-Eigenschaft](#gl-input-property) "ngClass" wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
 * Zeilen 24-27: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
 
 ### Lösung 2
@@ -300,7 +301,7 @@ __Erklärung__:
 Wir haben bereits in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt mit CSS-Klassen als Keys und __true__/__false__ als Werte für die Keys bekommt.
 Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
-{title="Ausschnitt aus der app.component.ts", lang=js}
+{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
 ```
 ...
 
@@ -343,13 +344,13 @@ Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Ve
 Im Github Code-Beispiel wird gezeigt wie wir mittels "click" die CSS-Klassen für unsere div-Tags entfernen und hinzufügen können.
 Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
 
-Wir haben hier eine neue Schreibweise für Templates gesehen und zwar [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
+Wir nutzen hier eine [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
 Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
 Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung dafür nutzen.
 
-I> #### Inline-styles
+I> #### CSS-Styles in einer Komponente
 I>
-I> Wenn wir inline-styles in einer Komponente nutzen, können die definierte CSS-Klassen standardmäßig nur in dieser Komponente verwendet werden in der diese definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Klassen, wenn man Komponente wiederverwendet. Die Kapselung von CSS-Klassen und Komponenten wird in Angular "View Encapsulation" genannt.
+I> Wenn wir CSS-Styles in einer Komponente definieren, können wir diese CSS-Styles standardmäßig nur in der Komponente verwenden in der diese definiert worden sind. Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in CSS-Styles, wenn man z. B. Komponente wiederverwendet. Die Kapselung von CSS-Styles und Komponenten wird in Angular "View Encapsulation" genannt.
 
 ### Code
 
@@ -366,6 +367,7 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 * Offizielle Dokumentation für die [NgClass-Direktive](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html)
 * Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 * Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
+* Zwei weitere Möglichkeiten, um CSS-Styles für eine Komponente zu definieren gibt es in den Rezepten "[Das Template der Komponente von CSS trennen](#c07-styles)" und "[Komponente und CSS trennen](#c07-styleurls)"
 
 ## Teile der View konditional mit NgIf anzeigen {#c03-ngif}
 
@@ -494,7 +496,7 @@ __Erklärung__:
 ### Diskussion
 
 Die NgSwitch-Direktive ist vergleichbar mit eine JavaScript switch-Anweisung.
-Bei der Nutzung im Template bekommt sie über __ngSwitch__ (input-Eigenschaft der NgSwitch-Direktive) einen Angular-Template-Ausdruck der dann ausgewertet wird.
+Bei der Nutzung im Template bekommt sie über __ngSwitch__ ([input-Eigenschaft](#gl-input-property) der NgSwitch-Direktive) einen Angular-Template-Ausdruck der dann ausgewertet wird.
 In unserem Beispiel besteht der Ausdruck aus der color-Eigenschaft.
 Diese Auswertung wird dann mit jedem Ausdruck der NgSwitchWhen-Direktiven verglichen.
 Angular nutzt für den Vergleich __===__.
@@ -531,4 +533,103 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 * Offizielle [NgSwitchWhen](https://angular.io/docs/ts/latest/api/common/NgSwitchWhen-directive.html) Dokumentation auf der Angular 2 Webseite
 * Offizielle [NgSwitchDefault](https://angular.io/docs/ts/latest/api/common/NgSwitchDefault-directive.html) Dokumentation auf der Angular 2 Webseite
 * Weitere Informationen zur Template-Ausdrücke gibt es in [Appendix A: Template-Syntax](#appendix-a)
+
+## Styles eines Elementes dynamisch verändern
+
+### Problem
+
+Ich möchte die Größe (height/width) eines Elementes als Werte in meine Komponente definieren. Eine Änderung der Werte in der Komponente soll auch die Größe des Elements verändern.
+
+### Zutaten
+* [Eine Komponente](#c02-component-definition)
+* Eigenschaften in der Komponente, die wir im Template referenzieren
+* NgStyle-Direktive von Angular
+
+### Lösung 1
+
+{title="app.component.ts", lang=js}
+```
+import {Component} from 'angular2/core';
+
+@Component({
+  selector: 'my-app',
+  template: `
+    <div [ngStyle]="{'width': elemWidth, 'height': elemHeight}" style="background-color: red"></div>
+  `
+})
+class MyApp {
+  elemWidth: string;
+  elemHeight: string;
+  constructor() {
+    this.elemWidth = '100px';
+    this.elemHeight = '100px';
+  }
+}
+
+export default MyApp;
+```
+
+__Erklärung__:
+
+* Zeile 6: div-Tag mit Styles. Statische Styles werden über das style-Attribut gesetzt. Dynamische Styles werden mit Hilfe der ngStyle-Eigenschaft, eine [input-Eigenschaft](#gl-input-property) der NgStyle-Direktive, gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die style-Eigenschaften sind die gesetzt werden (hier width und height). Die Werte für die Styles sind in der Klasse der Komponente definiert (siehe Zeilen 13 und 14)
+* Zeile 13: Der Wert für die Breite des Elements
+* Zeile 14: Der Wert für die Höhe des Elements
+
+### Lösung 2
+
+Wir haben bereits in Lösung 1 gesehen, dass die ngStyle-Eigenschaft ein Objekt mit style-Eigenschaften als Keys und Werte für die Styles als Werte für die Keys bekommt.
+Statt Werte individuell in der Klasse zu definieren, können wir auch direkt das Objekt für die ngStyle-Eigenschaft definieren.
+
+{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+```
+import {Component} from 'angular2/core';
+
+@Component({
+  selector: 'my-app',
+  template: `
+    <div [ngStyle]="dimensions" style="background-color: red"></div>
+  `
+})
+class MyApp {
+  dimensions: {width: string; height: string};
+  constructor() {
+    this.dimensions = {
+      width: '100px',
+      height: '100px'
+    };
+  }
+}
+
+export default MyApp;
+```
+
+__Erklärung__:
+
+* Zeile 6: div-Tag mit ngStyle-Eigenschaft, die auf die dimensions-Eigenschaft der Klasse zugreift
+* Zeilen 12-15: Objekt mit style-Eigenschaften als Keys und Werte, die die Werte für die Styles definieren die gesetzt werden sollen
+
+### Diskussion
+
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der Werte für die style-Eigenschaften verzichtet.
+Im Github Code-Beispiel wird gezeigt wie wir mittels "click" die Werte für die styles-Eigenschaften verändern können.
+Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
+
+Wir nutzen hier eine [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
+Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
+Falls wir nur eine einzige styles-Eigenschaft setzen, können wir auch eine Style-Bindung dafür nutzen.
+
+### Code
+
+Code auf Github für die erste Lösung: [03-Recipes\_to\_Manipulate\_the\_View/07-Dynamic\_Styles/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/07-Dynamic_Styles/Solution-01)
+
+Live Demo für die erste Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-Recipes_to_Manipulate_the_View/07-Dynamic_Styles/Solution-01/index.html)
+
+Code auf Github für die zweite Lösung: [03-Recipes\_to\_Manipulate\_the\_View/07-Dynamic\_Styles/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/07-Dynamic_Styles/Solution-02)
+
+Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-Recipes_to_Manipulate_the_View/07-Dynamic_Styles/Solution-02/index.html)
+
+### Weitere Ressourcen
+
+* Offizielle Dokumentation für die [NgStyle-Direktive](https://angular.io/docs/ts/latest/api/common/NgStyle-directive.html)
+* Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

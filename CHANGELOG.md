@@ -4,6 +4,16 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Deprecated
+
+## [v0.1.0] - 2016-04-07
+
+### Added
+
 * Rezept, um Styles dynamisch zu verändern
 * Rezept, um CSS-Styles und Template zu trennen
 * Rezept, um CSS-Styles und Komponente zu trennen

@@ -7,11 +7,15 @@
 * Rezept, um Styles dynamisch zu verändern
 * Rezept, um CSS-Styles und Template zu trennen
 * Rezept, um CSS-Styles und Komponente zu trennen
+* Rezept, um Server-Anfragen abzubrechen (cancel)
+* Rezept, um Daten an einer Unterkomponente zu übergeben mittels input-Eigenschaft
+* Rezept, um Daten an die Überkomponente zu übergeben mittels output-Eigenschaft
 
 ### Changed
 
 * Angular Version aktualisiert (beta 13)
 * Es gibt eine neue Validierungs-Funktion für Formulare (pattern), diese wird im Rezept "Gültigkeit eines Formulars überprüfen" erwähnt
+* Glossar neue Begriffe: input-/output-Eigenschaft. Weitere Begriffe wurden überarbeitet
 
 ### Removed
 

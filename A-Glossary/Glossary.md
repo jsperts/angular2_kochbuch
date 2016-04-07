@@ -31,7 +31,7 @@ __Interpolation__: Ein Ausdruck in einem Template wird evaluiert und dann in ein
 __Komponente__: Komponenten sind die Haupt-UI-Bausteine einer Angular 2 Anwendung. Sie kombinieren Logik mit einem Angular-Template (View), um die Anwendung anzuzeigen. Zu einer Komponente gehören immer Metadaten für die Komponente (@Component) und eine Klasse (Komponenten-Klasse), die die Logik für die Komponente beinhaltet.
 
 {#gl-output-property}
-__output-Eigenschaft__: Ist eine Eigenschaft einer Komponente/Direktive, die die Komponente/Direktive nutzen kann, um Daten an die Überkomponente zu übergeben. Die Verbindung zwischen output-Eigenschaft und Überkomponente geschieht im Template.
+__output-Eigenschaft__: Ist eine Eigenschaft einer Komponente/Direktive, die die Komponente/Direktive nutzen kann, um Daten an die Überkomponente zu übergeben. Die Verbindung zwischen output-Eigenschaft und Überkomponente geschieht im Template. Genauer gesagt definieren output-Eigenschaften Events auf die eine Überkomponente hören und reagieren kann.
 
 {#gl-pipes}
 __Pipes__: Sind Funktionen die Eingabewerte transformieren, um diese anschließend in eine View anzuzeigen. Ähnliche Funktionen gab es auch in Angular 1.x. Da waren sie unter dem Namen "Filter" bekannt.

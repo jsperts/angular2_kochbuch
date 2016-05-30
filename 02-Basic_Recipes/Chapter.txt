@@ -1,5 +1,5 @@
 00-Introduction.md
-01-Angular_2_App.md
-02-Define_Component.md
-03-Precompile_Angular_App.md
+01-Angular_cli.md
+02-Angular_2_App.md
+03-Define_Component.md
 04-Define_Service.md

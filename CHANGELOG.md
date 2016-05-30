@@ -4,9 +4,14 @@
 
 ### Added
 
+* Rezept für angular-cli (erstes Rezept in Basisrezepte)
+* Neuer Begriff "barrel" im Glossar
+
 ### Changed
 
 * Link fix in Formular mit dem FormBuilder implementieren
+* Rezepte wurden für angular-cli angepasst (WIP)
+* Angular Version aktualisiert (rc.1) (WIP)
 
 ### Removed
 

@@ -61,5 +61,5 @@ Tatsächlich ist eine Angular 2 Anwendung nur ein Baum von Komponenten mit der H
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/02-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Define_Component)
+Code auf Github: [02-Basic\_Recipes/03-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Define_Component)
 

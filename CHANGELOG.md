@@ -12,8 +12,17 @@
 * Link fix in Formular mit dem FormBuilder implementieren
 * Rezepte wurden für angular-cli angepasst (WIP)
 * Angular Version aktualisiert (rc.1) (WIP)
+* Rezept: "Liste von Daten anzeigen" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
+* Rezept: "Mit dem Index von ngFor-Elementen arbeiten" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
+* Rezept: "CSS-Klassen auf Basis von booleschen Werten setzen/entfernen" nutzt die styles-Eigenschaft statt <style></style> im Template
+* Rezept: "Gerade und ungerade ngFor-Elemente unterscheiden" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
+* Rezept: "Das erste und letzte ngFor-Element finden" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
+* Rezept: "Das erste und letzte ngFor-Element finden" nutzt das ngFor-Konstrukt first für das erste Element
+* Die Rezepte nutzten die styles-Eigenschaft statt <style></style> im Template
 
 ### Removed
+
+* Das Rezept "Angular 2 Anwendung vorkompilieren" wird mit angular-cli nicht mehr gebraucht
 
 ### Deprecated
 

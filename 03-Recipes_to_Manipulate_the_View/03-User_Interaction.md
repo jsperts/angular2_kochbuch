@@ -6,27 +6,25 @@ Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Brow
 
 ### Zutaten
 
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Ein Browser-Event, wir nutzten hier "click" als Beispiel
 * Methode die aufgerufen werden soll, wenn der Nutzer auf das Element klickt
 
 ### Lösung 1
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
-  template: '<div (click)="clicked()">Click me!</div>'
+  selector: 'demo-app',
+  template: '<div (click)="clicked()">Click me</div>'
 })
-class MyApp {
-  clicked () {
+export class DemoAppComponent {
+  clicked() {
     console.log('Clicked');
   }
 }
-
-...
 ```
 
 __Erklärung__:
@@ -36,21 +34,19 @@ __Erklärung__:
 
 ### Lösung 2
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
-  template: '<div on-click="clicked()">Click me!</div>'
+  selector: 'demo-app',
+  template: '<div on-click="clicked()">Click me</div>'
 })
-class MyApp {
-  clicked () {
+export class DemoAppComponent {
+  clicked() {
     console.log('Clicked');
   }
 }
-
-...
 ```
 
 __Erklärung__:

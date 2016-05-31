@@ -5,46 +5,45 @@
 Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Kondition erfüllt ist.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Die NgIf-Direktive von Angular
 * Eine Eigenschaft vom Typ "boolean"
 
 ### Lösung
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
-    <div>Hello world!</div>
-    <div *ngIf="isConditionTrue">
-      <p>The condition is true, so I can show myself</p>
+    <div>Hello World!</div>
+    <div *ngIf="showName">
+      <p>My name is Max</p>
     </div>
   `
 })
-class MyApp {
-  isConditionTrue: boolean;
+export class DemoAppComponent {
+  showName: boolean;
+
   constructor() {
-    this.isConditionTrue = true;
+    this.showName = true;
   }
 }
-
-...
 ```
 
 __Erklärung__:
 
-* Zeile 7: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "isConditionTrue" den Wert __true__ hat
-* Zeile 13: Definition der isConditionTrue-Eigenschaft mit Typ "boolean"
-* Zeile 15: Standardmäßig soll die isConditionTrue-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
+* Zeile 7: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "showName" den Wert __true__ hat
+* Zeile 13: Definition der showName-Eigenschaft mit Typ "boolean"
+* Zeile 16: Standardmäßig soll die showName-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die isConditionTrue-Eigenschaft verzichtet.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die showName-Eigenschaft verzichtet.
 Im Github Code-Beispiel wird gezeigt wie wir mittels "click" den Wert verändern können.
-Da können wir auch sehen, wie sich die View verändert je nachdem, ob "isConditionTrue" den Wert __true__ oder __false__ hat.
+Da können wir auch sehen, wie sich die View verändert je nachdem, ob "showName" den Wert __true__ oder __false__ hat.
 
 Es gibt noch weiter mögliche Schreibweisen für das konditionale Anzeigen Teile der View mittels der NgIf-Direktive.
 Die hier ist die kürzeste und vermutlich die einfachste.

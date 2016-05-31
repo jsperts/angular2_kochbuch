@@ -6,30 +6,26 @@ Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungera
 
 ### Zutaten
 * [Liste von Daten anzeigen](#c03-data-list)
-* Anpassungen in der app.component.ts-Datei, die im Rezept "Liste von Daten anzeigen" verwendet wird
+* Anpassungen in der demo.component.ts-Datei, die im Rezept "Liste von Daten anzeigen" verwendet wird
 * [CSS-Klasse dynamisch setzen](#c03-dynamic-classes), um die CSS-Klasse mit der richtigen Farbe zu setzen
 
 ### Lösung
 
-{title="app.component.ts Anpassungen", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
+  styles: [
+    '.red { color: red; }',
+    '.green { color: green; }'
+  ],
   template: `
-    <style>
-      .red {
-        color: red;
-      }
-      .green {
-        color: green;
-      }
-    </style>
     <ul>
-      <li *ngFor="#user of users; #isEven = even; #isOdd = odd"
-      [ngClass]="{red: isOdd, green: isEven}">
-         Name: {{user.firstname}} {{user.lastname}}
+      <li *ngFor="let user of users; let isEven = even; let isOdd = odd"
+          [ngClass]="{red: isOdd, green: isEven}">
+        Name: {{user.firstname}} {{user.lastname}}
       </li>
     </ul>
   `
@@ -42,9 +38,9 @@ __Erklärung__:
 
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
-* Zeilen 6-13: Definition von CSS-Klassen mittels style-Tags.
-* Zeile 15: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
-* Zeile 16: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
+* Zeilen 6-7: Definition von CSS-Klassen
+* Zeile 11: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
+* Zeile 12: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
 
 ### Diskussion
 

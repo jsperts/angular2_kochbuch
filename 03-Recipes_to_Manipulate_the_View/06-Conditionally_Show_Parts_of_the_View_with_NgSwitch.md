@@ -5,19 +5,19 @@
 Ich möchte unterschiedliche Teile der View anzeigen je nach Wert eines Angular-Ausdrucks.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Die NgSwitch-Direktive von Angular
 * Die NgSwitchWhen-Direktive von Angular
 * Die NgSwitchDefault-Direktive von Angular
 
 ### Lösung
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div [ngSwitch]="color">
       <p>What color are you?</p>
@@ -27,15 +27,13 @@ Ich möchte unterschiedliche Teile der View anzeigen je nach Wert eines Angular-
     </div>
   `
 })
-class MyApp {
-  color: string;
+export class DemoAppComponent {
+  color:string;
 
   constructor() {
     this.color = 'blue';
   }
 }
-
-...
 ```
 
 __Erklärung__:

@@ -5,30 +5,29 @@
 Ich möchte Daten, die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer diese sehen kann.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Dummy Daten in der Klasse der Komponente
 
 ### Lösung 1
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div>Hello World!</div>
     <div>My name is {{name}}</div>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   name: string;
 
   constructor() {
     this.name = 'Max';
   }
 }
-
 ...
 ```
 
@@ -45,28 +44,25 @@ Das ermöglicht uns das Template in mehreren Zeilen aufzuspalten ohne mehrere St
 
 ### Lösung 2
 
-
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div>Hello World!</div>
-    <div>My name is {{name}}</div>
+    <div>My last name is {{lastname}}</div>
   `
 })
-class MyApp {
-  name = 'Max';
+export class DemoAppComponent {
+  lastname = 'Mustermann';
 }
-
-...
 ```
 
 __Erklärung__:
 
-In dieser Lösung wird "name" nicht im Konstruktor initialisiert, sondern in der Klasse (Zeile 11).
+In dieser Lösung wird "lastname" nicht im Konstruktor initialisiert, sondern in der Klasse (Zeile 11).
 Siehe auch [TypeScript-Klassen](#c01-classes).
 
 ### Diskussion

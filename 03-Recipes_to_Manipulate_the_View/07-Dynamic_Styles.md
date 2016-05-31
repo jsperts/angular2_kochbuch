@@ -5,23 +5,23 @@
 Ich möchte die Größe (height/width) eines Elementes als Werte in meine Komponente definieren. Eine Änderung der Werte in der Komponente soll auch die Größe des Elements verändern.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * Eigenschaften in der Komponente, die wir im Template referenzieren
 * NgStyle-Direktive von Angular
 
 ### Lösung 1
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div [ngStyle]="{'width': elemWidth, 'height': elemHeight}" style="background-color: red"></div>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   elemWidth: string;
   elemHeight: string;
   constructor() {
@@ -29,8 +29,6 @@ class MyApp {
     this.elemHeight = '100px';
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
@@ -44,18 +42,23 @@ __Erklärung__:
 Wir haben bereits in Lösung 1 gesehen, dass die ngStyle-Eigenschaft ein Objekt mit style-Eigenschaften als Keys und Werte für die Styles als Werte für die Keys bekommt.
 Statt Werte individuell in der Klasse zu definieren, können wir auch direkt das Objekt für die ngStyle-Eigenschaft definieren.
 
-{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
+
+interface IDimensions {
+  width: string;
+  height: string
+}
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div [ngStyle]="dimensions" style="background-color: red"></div>
   `
 })
-class MyApp {
-  dimensions: {width: string; height: string};
+export class DemoAppComponent {
+  dimensions: IDimensions;
   constructor() {
     this.dimensions = {
       width: '100px',
@@ -63,14 +66,12 @@ class MyApp {
     };
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
-* Zeile 6: div-Tag mit ngStyle-Eigenschaft, die auf die dimensions-Eigenschaft der Klasse zugreift
-* Zeilen 12-15: Objekt mit style-Eigenschaften als Keys und Werte, die die Werte für die Styles definieren die gesetzt werden sollen
+* Zeile 11: div-Tag mit ngStyle-Eigenschaft, die auf die dimensions-Eigenschaft der Klasse zugreift
+* Zeilen 17-20: Objekt mit style-Eigenschaften als Keys und Werte, die die Werte für die Styles definieren die gesetzt werden sollen
 
 ### Diskussion
 

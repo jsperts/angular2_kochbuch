@@ -11,9 +11,9 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 
 ### Lösung
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 interface IUser {
   firstname: string,
@@ -23,23 +23,22 @@ interface IUser {
 const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstname: 'John', lastname: 'Doe'}];
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <ul>
-      <li *ngFor="#user of users">
+      <li *ngFor="let user of users">
         Name: {{user.firstname}} {{user.lastname}}
       </li>
     </ul>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   users: Array<IUser>;
+
   constructor() {
     this.users = users;
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
@@ -59,7 +58,7 @@ Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktio
 Der Stern (__\*__) vor dem __ngFor__ ist essentiell und Teil der Syntax.
 Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgFor-Direktive benutzt werden sollen.
 Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert.
-Die Raute (__#__) definiert eine lokale Variable.
+Das Keyword __let__  definiert eine lokale Variable für die Instanz der NgFor-Direktive.
 Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
 
 ### Code

@@ -5,9 +5,9 @@
 Ich möchte einen Service definieren und nutzen, damit ich so Teile meiner Logik und Daten aus der Komponente entfernen kann.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * Eine Datei für unseren Service (data.service.ts)
-* Injectable-Decorator (@Inject)
+* Injectable-Decorator (@Injectable)
 
 ### Lösung
 
@@ -17,12 +17,12 @@ Somit können wir die Methoden und die Daten eines Service in mehreren Komponent
 
 {title="data.service.ts", lang=js}
 ```
-import {Injectable} from 'angular2/core';
+import { Injectable } from '@angular/core';
 
 const data = ['a', 'b', 'c'];
 
 @Injectable()
-class DataService {
+export class DataService {
   data: Array<string>;
   constructor() {
     this.data = data;
@@ -32,42 +32,38 @@ class DataService {
     return this.data;
   }
 }
-
-export default DataService;
 ```
 
 __Erklärung__:
 
 * Zeile 5: Hier nutzen wir den Injectable-Decorator, um den Service als "Injectable" zu definieren
-* Zeilen 6-15: Die Klasse, die unseren Service repräsentiert
-* Zeile 17: Den Service exportieren, so dass wir den in Komponenten und weitere Services nutzen können
+* Zeilen 6-15: Die Klasse, die unseren Service repräsentiert. Diese wird auch exportiert, so dass wir den Service in Komponenten und anderen Services nutzen können
+
 
 Wir haben jetzt einen Service definiert und den werden wir jetzt in unsere Komponente nutzen.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import DataService from './data.service';
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
 
 @Component({
-    selector: 'my-app',
-    providers: [DataService],
-    template: '<div>Hello Data!</div>'
+  selector: 'demo-app',
+  providers: [DataService],
+  template: '<div>Hello World!</div>'
 })
-class MyApp {
-    constructor(dataService: DataService) {
-        console.log(dataService.getData());
-    }
+export class DemoAppComponent {
+  constructor(dataService: DataService) {
+    console.log(dataService.getData());
+  }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
 * Zeile 2: DataService importieren
 * Zeile 6: Die providers-Eigenschaft sagt Angular welche Services der Komponente und ihre Unterkomponenten zur Verfügung stehen. Nur Services die hier definiert sind können als Konstruktorparameter benutzt werden (Siehe auch Zeile 10)
-* Zeile 10: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService bekommen
+* Zeile 10: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService" bekommen
 * Zeile 11: Hier nutzen wir die getData-Methode der dataService-Instanz
 
 ### Diskussion
@@ -108,12 +104,12 @@ Alternativ können wir statt eine Typdefinition auch den Inject-Decorator (@Inje
 ```
 ...
 
-import {Inject} from 'angular2/core';
-import DataService from './data.service';
+import { Inject } from '@angular/core';
+import { DataService } from './data.service';
 
 ...
 
-class MyApp(@Inject(DataService) dataService) { ... }
+class DemoAppComponent(@Inject(DataService) dataService) { ... }
 
 ...
 ```

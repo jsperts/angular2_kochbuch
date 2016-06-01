@@ -1,7 +1,6 @@
 00-Introduction.md
-01-Component_without_View.md
-02-Separation_of_Component_and_Template.md
-03-Separation_of_Template_and_Styles.md
-04-Separation_of_Component_and_Styles.md
-05-Pass_Data_to_Child_with_Inputs.md
-06-Pass_Data_to_Parent_with_Outputs.md
+01-Separation_of_Component_and_Template.md
+02-Separation_of_Template_and_Styles.md
+03-Separation_of_Component_and_Styles.md
+04-Pass_Data_to_Child_with_Inputs.md
+05-Pass_Data_to_Parent_with_Outputs.md

@@ -50,7 +50,7 @@ Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in den CSS-
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/04-Separation\_of\_Component\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Separation_of_Component_and_Styles)
+Code auf Github: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Separation_of_Component_and_Styles)
 
 ### Weitere Ressourcen
 

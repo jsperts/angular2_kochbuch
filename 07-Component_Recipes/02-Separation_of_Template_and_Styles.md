@@ -51,7 +51,7 @@ Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in den CSS-
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/03-Separation\_of\_Template\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Template_and_Styles)
+Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Template\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Template_and_Styles)
 
 ### Weitere Ressourcen
 

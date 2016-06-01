@@ -76,9 +76,9 @@ I> Angular erlaubt es uns zwei Namen für eine input-Eigenschaft zu definieren, 
 
 ### Code
 
-Code auf Github für die Lösung: [07-Component\_Recipes/05-Pass\_Data\_to\_Child\_with\_Inputs/Solution](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Solution)
+Code auf Github für die Lösung: [07-Component\_Recipes/04-Pass\_Data\_to\_Child\_with\_Inputs/Solution](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Solution)
 
-Code auf Github für die Demonstration: [07-Component\_Recipes/05-Pass\_Data\_to\_Child\_with\_Inputs/Demo](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Demo)
+Code auf Github für die Demonstration: [07-Component\_Recipes/04-Pass\_Data\_to\_Child\_with\_Inputs/Demo](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Demo)
 
 Live Demo (Code aus dem Demo-Verzeichnis) auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Demo/index.html).
 

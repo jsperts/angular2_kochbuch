@@ -35,5 +35,5 @@ Die templateUrl-Eigenschaft ist vor allem nützlich, wenn wir HTML haben mit meh
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Component_and_Template)
+Code auf Github: [07-Component\_Recipes/01-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Component_and_Template)
 

@@ -40,68 +40,71 @@ Wir nutzten __http://127.0.0.1:3000/data__ als URL für die Anfrage.
 
 Unser DataService wird um eine neue Methode und ein Import erweitert.
 Der Rest bleibt gleich wie im Rezept "Daten vom Server mit GET holen".
-Damit wir uns besser auf die neue Teilen konzentrieren können, haben wir die gleich bleibende Teile des Codes durch Punkte (...) ersetzt.
 
-{title="Ausschnitt aus data.service.ts", lang=js}
+{title="data.service.ts", lang=js}
 ```
-...
-
-import {Headers, RequestOptions} from 'angular2/http';
+import { Injectable } from '@angular/core';
+import {
+    Http,
+    Headers,
+    RequestOptions
+} from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
-class DataService {
+export class DataService {
 
-  ...
+  constructor(http: Http) {...}
 
-  getData() { ... }
+  getData() {...}
 
   sendData(name) {
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({headers});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers });
 
-    const data = JSON.stringify({name});
+    const data = JSON.stringify({ name });
 
     const observable = this.http.post(this.url, data, options);
     const anotherObservable = observable.map((response) => response.json().data);
     return anotherObservable;
   }
 }
-
-export default DataService;
 ```
 
 __Erklärung__:
 
-* Zeile 3: Hier werden die Klassen Headers und RequestOptions importiert
-* Zeilen 12-21: Methode die wir Aufrufen, um Daten an den Server zu schicken
-  * Zeile 13: Instantiierung eines headers-Objektes mit "Content-Type" __application/json__
-  * Zeile 14: Instantiierung eines Objektes für Request-Optionen. Das headers-Objekt wird dem RequestOptions-Konstruktor übergeben
-  * Zeile 16: Zur Zeit erwartet Angular ein String bei dem Aufruf der post-Methode (Zeile 18). Darum müssen wir unser Objekt in ein String transformieren
-  * Zeile 18: Aufruf der post-Methode mit den Daten als zweiten Parameter und die Optionen für die Anfrage als dritten Parameter
+* Zeilen 4-5: Hier werden die Klassen Headers und RequestOptions importiert
+* Zeilen 16-25: Methode die wir Aufrufen, um Daten an den Server zu schicken
+  * Zeile 17: Instantiierung eines headers-Objektes mit "Content-Type" __application/json__
+  * Zeile 18: Instantiierung eines Objektes für Request-Optionen. Das headers-Objekt wird dem RequestOptions-Konstruktor übergeben
+  * Zeile 20: Zur Zeit erwartet Angular ein String bei dem Aufruf der post-Methode (Zeile 22). Darum müssen wir unser Objekt in ein String transformieren
+  * Zeile 22: Aufruf der post-Methode mit den Daten als zweiten Parameter und die Optionen für die Anfrage als dritten Parameter
+
 
 Auch unsere Komponente wird um eine sendData-Methode erweitert.
-Teile der Komponente die wir nicht geändert haben, werden durch Punkte (...) ersetzt.
 
-{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   providers: [DataService, HTTP_PROVIDERS],
   template: `
     <button (click)="getData()">Get Data</button>
     <button (click)="sendData()">Send Data</button>
     <ul>
-      <li *ngFor="#d of data">ID: {{d.id}} Name: {{d.name}}</li>
+      <li *ngFor="let d of data">ID: {{d.id}} Name: {{d.name}}</li>
     </ul>
   `
 })
-class MyApp {
+export class DemoAppComponent {
 
   ...
 
-  getData() { ... }
+  constructor(dataService:DataService) {...}
+
+  getData() {...}
 
   sendData() {
     const name = 'New Name';
@@ -111,23 +114,21 @@ class MyApp {
         });
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
 * Zeile 8: Neuer Button. Bei Klick wird dir sendData-Methode aufgerufen
-* Zeilen 20-26: Methode die aufgerufen wird, um Daten zu schicken
-  * Zeile 21: Die Daten, die wir schicken wollen
-  * Zeile 22: Aufruf der sendData-Methode des DataService. Diese Methode gibt ein Observable zurück.
-  * Zeile 23: Die Callback-Funktion (Observer) der subscribe-Methode wird aufgerufen, wenn der Server uns eine Antwort geschickt hat. Die data-Variable ist ein Objekt mit "name" und "id" als Eigenschaften
-  * Zeile 24: Das neue Objekt wird der Liste mit den Daten hinzugefügt
+* Zeilen 22-28: Methode die aufgerufen wird, um Daten zu schicken
+  * Zeile 23: Die Daten, die wir schicken wollen
+  * Zeile 24: Aufruf der sendData-Methode des DataService. Diese Methode gibt ein Observable zurück.
+  * Zeile 25: Die Callback-Funktion (Observer) der subscribe-Methode wird aufgerufen, wenn der Server uns eine Antwort geschickt hat. Die data-Variable ist ein Objekt mit "name" und "id" als Eigenschaften
+  * Zeile 26: Das neue Objekt wird der Liste mit den Daten hinzugefügt
 
 ### Diskussion
 
 Einige Serverimplementierungen erwarten __application/json__ als "Content-Type", damit diese eine Anfrage mit JSON-Daten bearbeiten können.
-Aus diesen Grund haben wir extra Optionen der post-Methode übergeben.
+Aus diesem Grund haben wir extra Optionen der post-Methode übergeben.
 Tatsächlich ist der dritte Parameter der post-Methode optional.
 Alle Methoden der Http-Klasse, darunter auch die get-Methode, die wir schon gesehen haben, können als letzten Parameter eine Instanz der RequestOptions-Klasse bekommen.
 Wenn wir also für einzelne Anfragen extra Headers brauchen, können wir diese mit Hilfe der Headers- und der RequestOptions-Klassen definieren.

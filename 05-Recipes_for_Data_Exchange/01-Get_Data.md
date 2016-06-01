@@ -5,7 +5,7 @@
 Ich möchte zur Laufzeit Daten im JSON-Format von einem Server holen.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * [Ein Service](#c02-define-service)
 * Den Http-Service von Angular
 * Die map-Methode für Observables (Ist Teil von RxJS)
@@ -34,12 +34,12 @@ Jetzt implementieren wir einen Service, um die GET-Anfrage zu schicken.
 
 {title="data.service.ts", lang=js}
 ```
-import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-class DataService {
+export class DataService {
   http: Http;
   url: string;
   constructor(http: Http) {
@@ -53,14 +53,12 @@ class DataService {
     return anotherObservable;
   }
 }
-
-export default DataService;
 ```
 
 __Erklärung__:
 
 * Zeile 2: Hier importieren wir den Http-Service von Angular
-* Zeile 3: Durch diesen Import erweitern wir die Instanzen der Observable-Klasse (siehe Zeile 15) um eine Methode namens "map"
+* Zeile 3: Durch diesen Import erweitern wir die Instanzen der Observable-Klasse (siehe Zeile 16) um eine Methode namens "map"
 * Zeile 5: Im Gegensatz zu dem Service im Rezept "Ein Service definieren", ist der Injectable-Decorator hier nicht optional, da unser Service eine Abhängigkeit hat und zwar den Http-Service (siehe Zeile 9)
 * Zeile 9: Hier definieren wir den Http-Service als Abhängigkeit von unserem Service
 * Zeile 15: Hier rufen wir die get-Methode vom Http-Service auf. Als Parameter bekommt diese Methode eine URL. Der Rückgabewert ist ein Observable (Teil von RxJS)
@@ -69,11 +67,11 @@ __Erklärung__:
 Jetzt müssen wir noch unsere Komponente aus "Ein Service definieren" anpassen, so dass diese mit dem Http-Service und Observables arbeiten kann.
 Wir werden die Daten nach einem Klick auf den "Get Data"-Button holen und diese in eine Liste anzeigen.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import DataService from './data.service';
+import { Component } from '@angular/core';
+import { HTTP_PROVIDERS } from '@angular/http';
+import { DataService } from './data.service';
 
 interface IData {
   id: number;
@@ -81,21 +79,22 @@ interface IData {
 }
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   providers: [DataService, HTTP_PROVIDERS],
   template: `
     <button (click)="getData()">Get Data</button>
     <ul>
-      <li *ngFor="#d of data">ID: {{d.id}} Name: {{d.name}}</li>
+      <li *ngFor="let d of data">ID: {{d.id}} Name: {{d.name}}</li>
     </ul>
   `
 })
-class MyApp {
-  dataService:DataService;
+export class DemoAppComponent {
+  dataService: DataService;
   data: Array<IData>;
 
   constructor(dataService:DataService) {
     this.dataService = dataService;
+    this.data = [];
   }
 
   getData() {
@@ -105,8 +104,6 @@ class MyApp {
         });
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
@@ -117,19 +114,62 @@ Wir haben weitere Providers definiert und die Konstruktorfunktion angepasst.
 * Zeile 2: Hier importieren wir die "HTTP\_PROVIDERS" Variable. Diese beinhaltet Providers für verschiedene Services, die mit Server-Anfragen zu tun haben
 * Zeile 12: Damit unser Service den Http-Service nutzen kann, müssen wir dem Injector die HTTP\_PROVIDERS-Variable übergeben
 * Zeile 22: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "IData" (Siehe Zeilen 5-8)
-* Zeilen 28-33: Methode die Aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
-* Zeile 39: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
+* Zeilen 29-34: Methode die Aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
+  * Zeile 31: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
-Da sich der Http-Service in eine eigener JavaScript-Datei befindet, müssen wir diese Datei in unsere index.html-Datei importieren.
+Da sich der Http-Service in einem eigenen Paket befindet, müssen wir dieses Paket auch über npm herunterladen und SystemJS informieren, dass es das Paket importieren soll.
+Wenn wir ein Projekt mit angular-cli initialisieren, ist das @angular/http-Paket schon als Abhängigkeit definiert da müssen wir also keine Änderungen vornehmen um den Http-Service zu nutzen.
 
-{title="Ausschnitt aus der index.html-Datei", lang=js}
+{title="package.json", lang=json}
+```
+{
+
+...
+
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.1",
+    "@angular/compiler": "2.0.0-rc.1",
+    "@angular/core": "2.0.0-rc.1",
+
+    "@angular/http": "2.0.0-rc.1",
+
+    "@angular/platform-browser": "2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "systemjs": "0.19.26",
+    "zone.js": "^0.6.12"
+  },
+
+...
+
+}
+```
+
+{title="system-config.ts", lang=js}
 ```
 ...
 
-<script src="https://code.angularjs.org/2.0.0-beta.13/Rx.js"></script>
-<script src="https://code.angularjs.org/2.0.0-beta.13/angular2-polyfills.js"></script>
-<script src="https://code.angularjs.org/2.0.0-beta.13/angular2.dev.js"></script>
-<script src="https://code.angularjs.org/2.0.0-beta.13/http.dev.js"></script>
+const barrels: string[] = [
+  // Angular specific barrels.
+  '@angular/core',
+  '@angular/common',
+  '@angular/compiler',
+
+  '@angular/http',
+
+  '@angular/platform-browser',
+  '@angular/platform-browser-dynamic',
+
+  // Thirdparty barrels.
+  'rxjs',
+
+  // App specific barrels.
+  'app',
+  'app/shared',
+  /** @cli-barrel */
+];
 
 ...
 ```
@@ -148,7 +188,7 @@ Es ist allgemein ein "Best Practice" unsere Komponenten schlank zu halten und Lo
 
 I> #### Observables
 I>
-I> Observables sind Objekte, die eine Folge von Werten generieren (einen Fluss/stream). Das Generieren der Werte kann synchron oder asynchron erfolgen. Die generierte Werte werden an sogenannten "Observers" übergeben die etwas mit den Daten machen z. B. diese in der View anzeigen. In unserem Beispiel erzeugt die get-Methode des Http-Services ein Observable. Dieses Observable generiert ein Wert, wenn der Server eine Antwort geliefert hat. Die generierte Werte können transformiert werden (z. B. mit der map-Methode) und am Ende werden diese einem Observer übergeben.
+I> Observables sind Objekte, die eine Folge von Werten generieren (einen Fluss/Stream). Das Generieren der Werte kann synchron oder asynchron erfolgen. Die generierte Werte werden an sogenannten "Observers" übergeben die etwas mit den Daten machen z. B. diese in der View anzeigen. In unserem Beispiel erzeugt die get-Methode des Http-Services ein Observable. Dieses Observable generiert ein Wert, wenn der Server eine Antwort geliefert hat. Die generierte Werte können transformiert werden (z. B. mit der map-Methode) und am Ende werden diese einem Observer übergeben.
 
 I> #### Observers
 I>

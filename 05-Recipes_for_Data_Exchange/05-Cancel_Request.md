@@ -7,7 +7,7 @@ Ich möchte dem Nutzer die Möglichkeit anbieten eine Server-Anfrage abzubrechen
 ### Zutaten
 
 * [Daten vom Server mit GET holen](#c05-get-data)
-* Neue URL für die Anfrage, um eine Anfrage zu simulieren die drei Sekunden braucht
+* Neue URL, um eine Anfrage zu simulieren die drei Sekunden braucht
 * Änderungen an der Komponente von "Daten vom Server mit GET holen"
 * Die Subscription-Klasse von RxJS (wird nur für die Typdefinition gebraucht)
 
@@ -15,27 +15,31 @@ Ich möchte dem Nutzer die Möglichkeit anbieten eine Server-Anfrage abzubrechen
 
 In unserem Service (data.service.ts) haben wir nur eine Änderung gemacht und zwar haben wir die url-Eigenschaft angepasst. Diese hat jetzt den Wert __`'`http://127.0.0.1:3000/longrequest`'`__.
 
-{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
+
+...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   providers: [DataService, HTTP_PROVIDERS],
   template: `
     <button (click)="getData()">Get Data</button>
     <button (click)="cancelRequest()">Cancel</button>
     <ul>
-      <li *ngFor="#d of data">ID: {{d.id}} Name: {{d.name}}</li>
+      <li *ngFor="let d of data">ID: {{d.id}} Name: {{d.name}}</li>
     </ul>
   `
 })
-class MyApp {
+export class DemoAppComponent {
+  ...
+
   subscription: Subscription;
 
-  ...
+  constructor(dataService:DataService) {...}
 
   getData() {
     this.subscription = this.dataService.getData()
@@ -50,15 +54,13 @@ class MyApp {
     }
   }
 }
-
-...
 ```
 
 __Erklärung__:
 
 * Zeile 3: Hier importieren wir die Subscription-Klasse von RxJS, die wir in Zeile 17 als Typ nutzen
-* Zeile 22: Hier speichern wir den Rückgabewert der subscribe-Methode in die subscription-Eigenschaft der Komponenteninstanz
-* Zeilen 28-32: Methode die aufgerufen wird, wenn der Nutzer den cancel-Button klickt
+* Zeile 26: Hier speichern wir den Rückgabewert der subscribe-Methode in die subscription-Eigenschaft der Komponenteninstanz
+* Zeilen 32-36: Methode die aufgerufen wird, wenn der Nutzer den cancel-Button klickt
 
 ### Diskussion
 
@@ -71,7 +73,7 @@ Bei Server-Anfrage wird auch die abort-Methode der XMLHttpRequest-Instanz aufger
 
 W> #### Server-Anfragen, wenn die Komponente entfernt wird
 W>
-W> Es gibt verschiedene Situationen, wo eine Komponente entfernt wird. Genauer gibt es Situationen, wo die View der Komponente aus dem DOM entfernt wird. In so einem Fall wird die Komponente meistens von Angular zerstört (destroy), um Ressourcen zu befreien. Aktive Server-Anfragen werden bei der Zerstörung einer Komponente nicht automatisch abgebrochen. Wenn die Antwort zurück kommt, werden alle Callback-Funktionen aufgerufen für eine Komponente die gar keine Daten mehr anzeigen kann. Im schlimmsten Fall kann es zu Fehlern kommen, die wir dem Nutzer nicht oder nicht sinnvoll anzeigen können. Es ist als in den meisten Fällen eine gute Idee die unsubscribe-Methode aufzurufen, wenn die View der Komponente nicht mehr angezeigt wird.
+W> Es gibt verschiedene Situationen, wo eine Komponente entfernt wird. Genauer gibt es Situationen, wo die View der Komponente aus dem DOM entfernt wird. In so einem Fall wird die Komponente meistens von Angular zerstört (destroy), um Ressourcen zu befreien. Aktive Server-Anfragen werden bei der Zerstörung einer Komponente nicht automatisch abgebrochen. Wenn die Antwort zurück kommt, werden alle Callback-Funktionen aufgerufen für eine Komponente die gar keine Daten mehr anzeigen kann. Im schlimmsten Fall kann es zu Fehlern kommen, die wir dem Nutzer nicht oder nicht sinnvoll anzeigen können. Es ist also in den meisten Fällen eine gute Idee die unsubscribe-Methode aufzurufen, wenn die View der Komponente nicht mehr angezeigt wird.
 
 ### Code
 

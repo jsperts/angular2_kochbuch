@@ -24,20 +24,21 @@ Wir nutzen __http://127.0.0.1:3000/error__ als URL für die Anfrage.
 }
 ```
 
-{title="Ausschnitt aus der data.service.ts-Datei", lang=js}
+{title="data.service.ts", lang=js}
 ```
 ...
 
 import 'rxjs/add/operator/catch';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
-class DataService {
+export class DataService {
   ...
+
   constructor(http: Http) {
     this.http = http;
-    this.url = 'http://127.0.0.1:3000/error';
+    this.url = 'http://127.0.0.1:3000/data';
   }
 
   getData() {
@@ -59,8 +60,6 @@ class DataService {
     return Observable.throw(errorString);
   }
 }
-
-export default DataService;
 ```
 
 __Erklärung__:
@@ -68,21 +67,22 @@ __Erklärung__:
 * Zeile 3: Durch diesen Import erweitern wir die Instanzen der Observable-Klasse (siehe Zeile 18) um eine Methode namens "catch"
 * Zeile 4: Hier importieren wir die Observable-Klasse von RxJS
 * Zeile 5: Durch diesen Import erweitern wir die Observable-Klasse (siehe Zeile 31) um eine statische Methode namens "throw"
-* Zeile 12: Die URL, um einen Server-Fehler zu erzwingen
-* Zeilen 18-20: Hier wird die catch-Methode benutzt, um Fehler beim Server-Aufruf zu behandeln
-  * Zeile 19: Wenn ein Fehler auftritt, wird die handleResponseError-Methode aufgerufen
-* Zeilen 24-32: Methode, um Server-Fehler zu behandeln
-  * Zeile 31: Wir geben zurück eine Instanz von Observable mit Fehler, so dass der zweite Parameter der subscribe-Methode aufgerufen wird (siehe Zeile 24 im Ausschnitt aus der app.component.ts-Datei)
+* Zeile 13: Die URL, um einen Server-Fehler zu erzwingen
+* Zeilen 19-21: Hier wird die catch-Methode benutzt, um Fehler beim Server-Aufruf zu behandeln
+  * Zeile 20: Wenn ein Fehler auftritt, wird die handleResponseError-Methode aufgerufen
+* Zeilen 25-33: Methode, um Server-Fehler zu behandeln
+  * Zeile 32: Wir geben zurück eine Instanz von Observable mit Fehler, so dass der zweite Parameter der subscribe-Methode aufgerufen wird (siehe Zeile 24 im Ausschnitt aus der app.component.ts-Datei)
+
 
 Den eigentlichen Server-Fehler haben wir schon im Service behandelt mit Hilfe der catch-Methode.
 Da wir auch dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen wir auch in der Komponente den Fehler behandeln.
 
-{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   providers: [DataService, HTTP_PROVIDERS],
   template: `
     <button (click)="getData()">Get Data</button>
@@ -90,15 +90,16 @@ Da wir auch dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen w
       Error: {{errorText}}
     </p>
     <ul>
-      <li *ngFor="#d of data">ID: {{d.id}} Name: {{d.name}}</li>
+      <li *ngFor="let d of data">ID: {{d.id}} Name: {{d.name}}</li>
     </ul>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   ...
+
   errorText: string;
 
-  ...
+  constructor(dataService:DataService) {... }
 
   getData() {
     this.dataService.getData()
@@ -109,15 +110,13 @@ class MyApp {
         });
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
 * Zeile 9: Fehlermeldung in der View anzeigen
-* Zeilen 26-28: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
-  * Zeile 27: Fehlertext von Zeile 31 des Services als Wert für die errorText-Eigenschaft setzen
+* Zeilen 27-29: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
+  * Zeile 28: Fehlertext von Zeile 31 des Services als Wert für die errorText-Eigenschaft setzen
 
 ### Diskussion
 

@@ -13,15 +13,18 @@ Ich möchte bei der Anfrage Query-Parameter an den Server schicken.
 
 Wir konzentrieren uns in der Lösung auf GET-Anfragen, da diese am häufigsten mit Query-Parameter benutzen werden aber wir können auch z. B. bei POST-Anfragen Query-Parameter mitschicken.
 
-{title="Ausschnitt aus der data.service.ts-Datei", lang=js}
+{title="data.service.ts", lang=js}
 ```
-...
+import { Injectable } from '@angular/core';
+import {
+    Http,
+    RequestOptions,
+    URLSearchParams
+} from '@angular/http';
+import 'rxjs/add/operator/map';
 
-import {RequestOptions, URLSearchParams} from 'angular2/http';
-
-...
-
-class DataService {
+@Injectable()
+export class DataService {
 
   ...
 
@@ -38,17 +41,15 @@ class DataService {
     return anotherObservable;
   }
 }
-
-export default DataService;
 ```
 
 __Erklärung__:
 
-* Zeile 3: Hier werden die Klassen "RequestOptions" und "URLSearchParams" importiert
-* Zeile 14: Erzeugung einer Instanz der URLSearchParams-Klasse
-* Zeile 15: Query-Parameter "limit" definieren mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein)
-* Zeile 17: Erzeugung einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert für die search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter für die Anfrage
-* Zeile 19: Aufruf der get-Methode mit einer URL und Optionen für die Anfrage
+* Zeile 4-5: Hier werden die Klassen "RequestOptions" und "URLSearchParams" importiert
+* Zeile 17: Erzeugung einer Instanz der URLSearchParams-Klasse
+* Zeile 18: Query-Parameter "limit" definieren mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein)
+* Zeile 20: Erzeugung einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert für die search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter für die Anfrage
+* Zeile 22: Aufruf der get-Methode mit einer URL und Optionen für die Anfrage
 
 ### Diskussion
 

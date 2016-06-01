@@ -6,6 +6,7 @@
 
 * Rezept für angular-cli (erstes Rezept in Basisrezepte)
 * Neuer Begriff "barrel" im Glossar
+* Zweite mögliche Lösung für "Komponente und HTML-Template trennen" und "Komponente und CSS trennen"
 
 ### Changed
 
@@ -23,6 +24,7 @@
 ### Removed
 
 * Das Rezept "Angular 2 Anwendung vorkompilieren" wird mit angular-cli nicht mehr gebraucht
+* "Komponente ohne @View-Decorator"
 
 ### Deprecated
 

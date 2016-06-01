@@ -5,18 +5,18 @@
 Ich möchte Daten vom Benutzer bekommen und dafür brauche ich ein einfaches Formular.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * NgModel-Direktive
 * NgForm-Direktive mit dem ngSubmit-Event
 
 ### Lösung
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()">
       <label>Username</label>
@@ -27,7 +27,7 @@ import {Component} from 'angular2/core';
     </form>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   user = {
     username: '',
     password: ''

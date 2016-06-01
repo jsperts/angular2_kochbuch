@@ -14,12 +14,12 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 
 In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf das Control über die lokale Variable für das Formular zugreifen.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -54,12 +54,12 @@ __Erklärung__:
 Hier werden wir lokale Variable für jedes Eingabefeld definieren.
 Über die lokale Variable werden wir Zugriff auf die Gültigkeit des Eingabefeldes bekommen.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>

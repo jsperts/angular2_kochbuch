@@ -13,22 +13,22 @@ Ich möchte überprüfen, ob der gegebene Benutzername schon existiert. Dafür m
 
 Um die Lösung möglichst einfach zu halten, werden wir die Server-Anfrage mit einem Timeout simulieren. Für eine echte Server-Anfrage brauchen wir einen Server, der auf die Anfrage antworten kann und Code, der die Anfrage schicken kann.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 import {
     FormBuilder,
     ControlGroup,
     Validators,
     Control
-} from 'angular2/common';
+} from '@angular/common';
 
 ...
 
-class MyApp {
-  form:ControlGroup;
+export class DemoAppComponent {
+  form: ControlGroup;
 
-  constructor(builder:FormBuilder) {
+  constructor(builder: FormBuilder) {
     this.form = builder.group({
       username: builder.control('', Validators.required,
           function usernameExists(control: Control) {
@@ -54,8 +54,6 @@ class MyApp {
     }
   }
 }
-
-...
 ```
 
 __Erklärung__:

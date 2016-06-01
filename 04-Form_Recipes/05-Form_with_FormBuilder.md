@@ -5,7 +5,7 @@
 Ich möchte, dass sich die Logik für mein Formular in der Klasse der Komponente befindet. Somit ist mein Template nicht überladen und ich kann auch die Logik besser Testen.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * HTML für ein Formular
 * Den FormBuilder-Service von Angular
 * Die NgControlName-Direktive von Angular
@@ -16,13 +16,13 @@ Ich möchte, dass sich die Logik für mein Formular in der Klasse der Komponente
 Wir nutzen hier ein "Model Driven" Formular. Wir definieren das Modell für das Formular und dessen Controls in der Klasse der Komponente.
 Im Template nutzen wir das form-Tag und input-Tags, die wir mit Hilfe von der NgControlName- und der NgFormModel-Direktive mit dem Modell in der Klasse verbinden.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import {FormBuilder, ControlGroup} from 'angular2/common';
+import { Component } from '@angular/core';
+import { FormBuilder, ControlGroup } from '@angular/common';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" [ngFormModel]="form" novalidate>
       <label>Username</label>
@@ -33,7 +33,7 @@ import {FormBuilder, ControlGroup} from 'angular2/common';
     </form>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   form: ControlGroup;
   constructor(builder: FormBuilder) {
     this.form = builder.group({
@@ -46,8 +46,6 @@ class MyApp {
     console.log(this.form.value);
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:

@@ -13,36 +13,39 @@ Ich möchte überprüfen, ob ein Eingabefeld mindestens einen Großbuchstaben be
 
 Wir werden hier die gleiche Validierungs-Funktionen wie im "Formular mit dem FormBuilder und Validierung" Rezept nutzen. Wir werden zusätzlich eine eigene Validierungs-Funktion namens "containsCapital" implementieren.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 import {
     FormBuilder,
     ControlGroup,
     Validators,
     Control
-} from 'angular2/common';
+} from '@angular/common';
 
 ...
 
-class MyApp {
+export class DemoAppComponent {
   form: ControlGroup;
+
   constructor(builder: FormBuilder) {
     this.form = builder.group({
       username: builder.control('', Validators.required),
       password: builder.control('', Validators.compose([
-          Validators.required,
-          Validators.minLength(10),
-          function containsCapital(control: Control) {
-            const reg = /[A-Z]/;
-            if (reg.test(control.value)) {
-              return null;
-            } else {
-              return {containsCapital: true};
-            }
+        Validators.required,
+        Validators.minLength(10),
+        function containsCapital(control: Control) {
+          const reg = /[A-Z]/;
+          if (reg.test(control.value)) {
+            return null;
+          } else {
+            return {
+              containsCapital: true
+            };
           }
+        }
       ]))
-    })
+    });
   }
 
   onSubmit() {
@@ -51,18 +54,16 @@ class MyApp {
     }
   }
 }
-
-...
 ```
 
 __Erklärung__:
 
 * Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 19
-* Zeilen 19-26: Unsere Validierungs-Funktion
-  * Zeile 19: Als Parameter bekommt eine Validierungs-Funktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
-  * Zeile 21: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
-  * Zeile 22: Wenn das Eingabefeld einen gültigen Wert beinhaltet, geben wir __null__ zurück
-  * Zeile 24: Wenn das Eingabefeld einen ungültigen Wert beinhaltet, geben wir ein Objekt zurück
+* Zeilen 20-29: Unsere Validierungs-Funktion
+  * Zeile 20: Als Parameter bekommt eine Validierungs-Funktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
+  * Zeile 22: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
+  * Zeile 23: Wenn das Eingabefeld einen gültigen Wert beinhaltet, geben wir __null__ zurück
+  * Zeile 25: Wenn das Eingabefeld einen ungültigen Wert beinhaltet, geben wir ein Objekt zurück
 
 ### Diskussion
 
@@ -72,7 +73,7 @@ Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felde
 Solang das Passwort-Feld kein Großbuchstabe enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
 Wir hätten auch ein komplexeres Objekt zurückgeben können genau so wie es die minLength-Validierungs-Funktion tut.
 Wenn der Wert im Eingabefeld gültig ist, geben wir __null__ zurück.
-Andere Werte wie z. B. __undefined__ haben den gleichen Effekt, da aber die Angular-Validierungs-Funktionen auch mit __null__ arbeiten tun wir es hier auch.
+Andere Werte wie z. B. __undefined__ haben den gleichen Effekt, da aber die Angular-Validierungs-Funktionen auch __null__ nutzen, um die Ungültigkeit zu kennzeichen tun wir es hier auch.
 
 ### Code
 

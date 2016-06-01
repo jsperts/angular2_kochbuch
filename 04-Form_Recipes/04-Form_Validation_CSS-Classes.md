@@ -7,36 +7,31 @@ Ich möchte ein ungültiges Formular-Feld farblich hervorheben.
 ### Zutaten
 * [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * Styles für die CSS-Klassen, die von Angular gesetzt werden
+  * Siehe auch [Das Template der Komponente vom CSS trennen](#c07-styles)
 
 ### Lösung
 
 Jedes Eingabefeld bekommt von Angular gewisse CSS-Klassen gesetzt.
 Um diese zu nutzen, müssen wir nur entsprechende Styles definieren.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
+  styles: [
+    '.ng-invalid { border-color: red; }',
+    '.ng-valid { border-color: green; }'
+  ],
   template: `
-    <style>
-      .ng-invalid {
-        border-color: red;
-      }
-
-      .ng-valid {
-        border-color: green;
-      }
-    </style>
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
       <input type="text" [(ngModel)]="user.username" required ngControl="username"/>
       <label>Password</label>
       <input type="password" [(ngModel)]="user.password" required minlength="10" ngControl="password"/>
       <button type="submit" [disabled]="!form.valid">Submit</button>
-    </form>
-  `
+    </form>`
 })
 
 ...
@@ -44,7 +39,7 @@ Um diese zu nutzen, müssen wir nur entsprechende Styles definieren.
 
 __Erklärung__:
 
-* Zeilen 6-14: CSS-Styles für die "ng-invalid" und "ng-valid" CSS-Klassen
+* Zeilen 6-7: CSS-Styles für die "ng-invalid" und "ng-valid" CSS-Klassen
 
 ### Diskussion
 

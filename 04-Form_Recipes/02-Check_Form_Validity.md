@@ -17,12 +17,12 @@ In dieser Lösung werden wir sehen wie wir die Gültigkeit des Formulars im Temp
 Wir werden den Submit-Button deaktivieren, wenn das Formular ungültig ist.
 Das wird das Submit-Event unterbinden, wenn nicht alle Formular-Felder gültig sind.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -38,17 +38,6 @@ Das wird das Submit-Event unterbinden, wenn nicht alle Formular-Felder gültig s
     </form>
   `
 })
-class MyApp {
-  user = {
-    username: '',
-    password: ''
-  };
-  constructor() {}
-
-  onSubmit() {
-    console.log(this.user);
-  }
-}
 
 ...
 ```
@@ -71,12 +60,12 @@ In dieser Lösung werden wir sehen wie wir die gültigkeit des Formulars in der 
 Wir nutzen das Formular von der ersten Lösung mit zwei Änderungen:
 Wir übergeben die lokale Variable "form" der onSubmit-Methode und wir nutzen nicht mehr die disabled-Eigenschaft des Buttons.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit(form)" #form="ngForm" novalidate>
       <label>Username</label>
@@ -87,13 +76,11 @@ Wir übergeben die lokale Variable "form" der onSubmit-Methode und wir nutzen ni
     </form>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   user = {
     username: '',
     password: ''
   };
-
-  constructor() {}
 
   onSubmit(form) {
     if (form.valid) {
@@ -101,7 +88,6 @@ class MyApp {
     }
   }
 }
-...
 ```
 
 __Erklärung__:

@@ -6,7 +6,8 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkompon
 
 ### Zutaten
 
-* Zwei [Komponenten](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
+* Eine [Komponente](#c02-component-definition)
 * [Daten einer Komponente in der View anzeigen](#c03-show-data)
 * [Auf Nutzer-Input reagieren](#c03-user-input)
 * Output-Decorator (@Output)
@@ -15,65 +16,63 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkompon
 
 Wir werden uns als erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-
-import ChildComponent from './child.component';
+import { Component } from '@angular/core';
+import { SecondComponent } from './second.component';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <h1>Parent</h1>
     <p>Parent Data: {{parentData}}</p>
-    <child-component (dataChange)="onDataChange($event)"></child-component>
+    <app-second (dataChange)="onDataChange($event)"></app-second>
   `,
-  directives: [ChildComponent]
+  directives: [SecondComponent]
 })
-class MyApp {
+export class DemoAppComponent {
   parentData: string = 'Initial Data';
 
   onDataChange(data) {
     this.parentData = data;
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
-* Zeile 10: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier kein Browser-Event, sondern ein Event, was wir in der Child-Komponente definiert haben (Siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
-* Zeilen 17-19: Methode die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
+* Zeile 9: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier kein Browser-Event, sondern ein Event, was wir in der Child-Komponente definiert haben (Siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
+* Zeilen 16-18: Methode die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
 
-{title="child.component.ts", lang=js}
+{title="second.component.ts", lang=js}
 ```
-import {Component, Output} from 'angular2/core';
-import {EventEmitter} from 'angular2/core';
+import {
+    Component,
+    Output,
+    EventEmitter
+} from '@angular/core';
 
 @Component({
-  selector: 'child-component',
+  selector: 'app-second',
   template: `
     <h1>Child</h1>
     <button (click)="sendData()">Send data to Parent</button>
   `
 })
-class ChildComponent {
+export class SecondComponent {
   @Output() dataChange = new EventEmitter();
 
   sendData() {
     this.dataChange.emit('Child Data');
   }
 }
-
-export default ChildComponent;
 ```
 
 __Erklärung__:
 
-* Zeile 12: Definition eine output-Eigenschaft namens "dataChange". Die output-Eigenschaft hat als Wert eine Instanz der EventEmitter-Klasse
-* Zeilen 14-16: Methode die aufgerufen wird, wenn der Nutzer auf den Button klickt
-  * Zeile 15: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, was übergeben wird (Siehe auch app.component.ts Zeilen 10 und 17)
+* Zeile 11: Definition eine output-Eigenschaft namens "dataChange". Die output-Eigenschaft hat als Wert eine Instanz der EventEmitter-Klasse
+* Zeilen 17-19: Methode die aufgerufen wird, wenn der Nutzer auf den Button klickt
+  * Zeile 16: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, was übergeben wird (Siehe auch demo.component.ts Zeilen 9 und 16)
 
 ### Diskussion
 
@@ -91,7 +90,7 @@ I> Angular erlaubt es uns zwei Namen für eine output-Eigenschaft zu definieren,
 
 ### Code
 
-Code auf Github [07-Component\_Recipes/05-Pass\_Data\_to\_Parent\_with\_Outputs](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/06-Pass_Data_to_Parent_with_Outputs)
+Code auf Github [07-Component\_Recipes/05-Pass\_Data\_to\_Parent\_with\_Outputs](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Parent_with_Outputs)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/06-Pass_Data_to_Parent_with_Outputs/index.html)
 

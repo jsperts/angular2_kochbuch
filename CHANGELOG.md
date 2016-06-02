@@ -20,6 +20,7 @@
 * Rezept: "Das erste und letzte ngFor-Element finden" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
 * Rezept: "Das erste und letzte ngFor-Element finden" nutzt das ngFor-Konstrukt first für das erste Element
 * Die Rezepte nutzten die styles-Eigenschaft statt <style></style> im Template
+* Appendix A: "Template-Syntax" Abschnitt über lokale Variablen wurde aktualisiert, wir unterscheiden jetzt zwischen 2 Arten von lokalen Variablen
 
 ### Removed
 

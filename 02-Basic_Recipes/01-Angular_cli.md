@@ -41,7 +41,7 @@ Dafür gibt es die Kommandos "new" und "init".
 ng new projektName --skip-git
 ```
 
-Dieses Kommando wir ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
+Dieses Kommando wird ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
 Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
 
 Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existierendes Verzeichnis.

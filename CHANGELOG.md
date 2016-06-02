@@ -7,6 +7,7 @@
 * Rezept für angular-cli (erstes Rezept in Basisrezepte)
 * Neuer Begriff "barrel" im Glossar
 * Zweite mögliche Lösung für "Komponente und HTML-Template trennen" und "Komponente und CSS trennen"
+* Rezept für NgFor trackBy "Die Performance mit trackBy verbessern"
 
 ### Changed
 

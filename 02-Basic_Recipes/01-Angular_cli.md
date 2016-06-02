@@ -66,7 +66,7 @@ Um den Server zu starten, müssen wir im Projekt-Verzeichnis (das mit der packag
 ng serve
 ```
 
-In der Konsole steht dann zu welche URL wir navigieren müssen, um die Demo-Anwendung von angular-cli zu sehen (Zeile "Serving on http://...").
+In der Konsole steht dann zu welche URL wir navigieren müssen, um die Demo-Anwendung von angular-cli zu sehen (Zeile: "Serving on http://...").
 Das nette an diesem Webserver ist der Live-Reload-Support.
 Das heißt, wenn wir Änderungen im Code machen werden diese sofort im Browser sichtbar ohne, dass wir das Projekt selbst erneut kompilieren müssen.
 

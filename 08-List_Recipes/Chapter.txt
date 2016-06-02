@@ -2,3 +2,4 @@
 01-ngFor_Element_Index.md
 02-Even_Odd_ngFor_Elements.md
 03-First_Last_ngFor_Element.md
+04-Improve_Performance_with_trackBy.md

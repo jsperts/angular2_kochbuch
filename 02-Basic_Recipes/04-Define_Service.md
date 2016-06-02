@@ -100,7 +100,7 @@ Der Provider ist die Klasse, die den Service repräsentiert und der Injector wei
 Um genau zu wissen welche Klasse zur welcher Instanz gehört, nutzt der Injector die Typdefinition der Konstruktorparameter.
 Alternativ können wir statt eine Typdefinition auch den Inject-Decorator (@Inject) nutzen:
 
-{title="Inject-Decorator statt Typ, lang=js}
+{title="Inject-Decorator statt Typ", lang=js}
 ```
 ...
 

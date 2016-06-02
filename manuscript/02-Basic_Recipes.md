@@ -49,7 +49,7 @@ ng new projektName --skip-git
 ```
 
 Dieses Kommando wir ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
-Falls "--skip-git" nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
+Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
 
 Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existierendes Verzeichnis.
 
@@ -57,7 +57,7 @@ Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existiere
 ng init --name projektName
 ```
 
-Falls "--name projektName" nicht angegeben wird, wird der Name des Verzeichnisses als Projektname benutzt.
+Falls `--name projektName` nicht angegeben wird, wird der Name des Verzeichnisses als Projektname benutzt.
 
 W> #### Namen von Projekten
 W>
@@ -401,7 +401,7 @@ Der Provider ist die Klasse, die den Service repräsentiert und der Injector wei
 Um genau zu wissen welche Klasse zur welcher Instanz gehört, nutzt der Injector die Typdefinition der Konstruktorparameter.
 Alternativ können wir statt eine Typdefinition auch den Inject-Decorator (@Inject) nutzen:
 
-{title="Inject-Decorator statt Typ, lang=js}
+{title="Inject-Decorator statt Typ", lang=js}
 ```
 ...
 

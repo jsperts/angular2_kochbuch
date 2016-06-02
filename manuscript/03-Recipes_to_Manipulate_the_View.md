@@ -12,30 +12,29 @@ Ferner werden wir sehen wie wir auf Nutzer-Input wie z. B. auf Klicks reagieren 
 Ich möchte Daten, die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer diese sehen kann.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Dummy Daten in der Klasse der Komponente
 
 ### Lösung 1
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div>Hello World!</div>
     <div>My name is {{name}}</div>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   name: string;
 
   constructor() {
     this.name = 'Max';
   }
 }
-
 ...
 ```
 
@@ -52,28 +51,25 @@ Das ermöglicht uns das Template in mehreren Zeilen aufzuspalten ohne mehrere St
 
 ### Lösung 2
 
-
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div>Hello World!</div>
-    <div>My name is {{name}}</div>
+    <div>My last name is {{lastname}}</div>
   `
 })
-class MyApp {
-  name = 'Max';
+export class DemoAppComponent {
+  lastname = 'Mustermann';
 }
-
-...
 ```
 
 __Erklärung__:
 
-In dieser Lösung wird "name" nicht im Konstruktor initialisiert, sondern in der Klasse (Zeile 11).
+In dieser Lösung wird "lastname" nicht im Konstruktor initialisiert, sondern in der Klasse (Zeile 11).
 Siehe auch [TypeScript-Klassen](#c01-classes).
 
 ### Diskussion
@@ -105,9 +101,9 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 
 ### Lösung
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 interface IUser {
   firstname: string,
@@ -117,23 +113,22 @@ interface IUser {
 const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstname: 'John', lastname: 'Doe'}];
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <ul>
-      <li *ngFor="#user of users">
+      <li *ngFor="let user of users">
         Name: {{user.firstname}} {{user.lastname}}
       </li>
     </ul>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   users: Array<IUser>;
+
   constructor() {
     this.users = users;
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
@@ -153,7 +148,7 @@ Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktio
 Der Stern (__\*__) vor dem __ngFor__ ist essentiell und Teil der Syntax.
 Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgFor-Direktive benutzt werden sollen.
 Der Teil nach dem __of__, ist der Name der Komponenten-Eigenschaft die unsere Liste referenziert.
-Die Raute (__#__) definiert eine lokale Variable.
+Das Keyword __let__  definiert eine lokale Variable für die Instanz der NgFor-Direktive.
 Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen und hält eine Referenz zum aktuellen Objekt in der Array.
 
 ### Code
@@ -173,27 +168,25 @@ Ich möchte eine Methode in meine Komponente aufrufen, wenn der Nutzer eine Brow
 
 ### Zutaten
 
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Ein Browser-Event, wir nutzten hier "click" als Beispiel
 * Methode die aufgerufen werden soll, wenn der Nutzer auf das Element klickt
 
 ### Lösung 1
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
-  template: '<div (click)="clicked()">Click me!</div>'
+  selector: 'demo-app',
+  template: '<div (click)="clicked()">Click me</div>'
 })
-class MyApp {
-  clicked () {
+export class DemoAppComponent {
+  clicked() {
     console.log('Clicked');
   }
 }
-
-...
 ```
 
 __Erklärung__:
@@ -203,21 +196,19 @@ __Erklärung__:
 
 ### Lösung 2
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
-  template: '<div on-click="clicked()">Click me!</div>'
+  selector: 'demo-app',
+  template: '<div on-click="clicked()">Click me</div>'
 })
-class MyApp {
-  clicked () {
+export class DemoAppComponent {
+  clicked() {
     console.log('Clicked');
   }
 }
-
-...
 ```
 
 __Erklärung__:
@@ -248,95 +239,82 @@ Ich möchte anhand eines booleschen Wertes definieren, wann eine CSS-Klasse gese
 ### Zutaten
 * [Eine Komponente](#c02-component-definition)
 * CSS-Klassen die gesetzt bzw. entfernt werden sollen
+  * Siehe auch [Das Template der Komponente vom CSS trennen](#c07-styles)
 * Eigenschaften in der Komponente, die wir im Template referenzieren
 * NgClass-Direktive von Angular
 
 ### Lösung 1
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
-  template: `
-    <style>
-      .box {
+  selector: 'demo-app',
+  styles: [
+    `.box {
         width: 100px;
         height: 100px;
         border: 1px solid black;
-      }
-      .red {
-        background-color: red;
-      }
-      .green {
-        background-color: green;
-      }
-    </style>
+    }`,
+    '.red { background-color: red; }',
+    '.green { background-color: green; }'
+  ],
+  template: `
     <div class="box" [ngClass]="{red: box.isRed}"></div>
     <div class="box green" [ngClass]="{green: box.isGreen}"></div>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   box = {
     isRed: true,
     isGreen: false
   };
-  constructor() {}
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
-* Zeilen 6-18: Definition der CSS-Klassen die wir benötigen
-* Zeilen 19-20: Zwei div-Tags mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit Hilfe der ngClass-Eigenschaft gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die CSS-Klassen sind die entfernt/hinzugefügt werden
-  * Zeile 22: Durch die [input-Eigenschaft](#gl-input-property) "ngClass" wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
-  * Zeile 23: Durch die [input-Eigenschaft](#gl-input-property) "ngClass" wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
-* Zeilen 24-27: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
+* Zeilen 6-12: Definition der CSS-Klassen die wir benötigen
+* Zeilen 15-16: Zwei div-Tags mit CSS-Klassen. Initiale CSS-Klassen werden über das class-Attribut gesetzt. Dynamische CSS-Klassen werden mit Hilfe der ngClass-Eigenschaft gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die CSS-Klassen sind die entfernt/hinzugefügt werden
+  * Zeile 15: Durch die [input-Eigenschaft](#gl-input-property) "ngClass" wird die CSS-Klasse "red" gesetzt. Die isRed-Eigenschaft des box-Objektes ist __true__
+  * Zeile 16: Durch die [input-Eigenschaft](#gl-input-property) "ngClass" wird die CSS-Klasse "green" entfernt. Die isGreen-Eigenschaft des box-Objektes ist __false__
+* Zeilen 20-23: Objekt mit boolesche Werte die benutzt werden, um CSS-Klassen im Template hinzuzufügen bzw. zu entfernen
 
 ### Lösung 2
 
 Wir haben bereits in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt mit CSS-Klassen als Keys und __true__/__false__ als Werte für die Keys bekommt.
 Statt das Objekt im Template zu definieren, können wir es auch in unsere Klasse definieren.
 
-{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
-  template: `
-    <style>
-      .box {
+  selector: 'demo-app',
+  styles: [
+    `.box {
         width: 100px;
         height: 100px;
         border: 1px solid black;
-      }
-      .red {
-        background-color: red;
-      }
-    </style>
-    <div [ngClass]="classes"></div>
-  `
+    }`,
+    '.red { background-color: red; }'
+  ],
+  template: '<div [ngClass]="classes"></div>'
 })
-class MyApp {
+export class DemoAppComponent {
   classes = {
-    red: true
+    red: true,
     box: true
   };
-  constructor() {}
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
-* Zeilen 6-15: Definition der CSS-Klassen die wir benötigen
-* Zeile 16: div-Tag mit ngClass-Eigenschaft, die auf die classes-Eigenschaft der Klasse zugreift
-* Zeilen 20-23: Objekt mit CSS-Klassen als Keys und boolesche Werte die angeben, ob die CSS-Klasse gesetzt wird oder nicht
+* Zeilen 6-11: Definition der CSS-Klassen die wir benötigen
+* Zeile 13: div-Tag mit ngClass-Eigenschaft, die auf die classes-Eigenschaft der Klasse zugreift
+* Zeilen 16-19: Objekt mit CSS-Klassen als Keys und boolesche Werte die angeben, ob die CSS-Klasse gesetzt wird oder nicht
 
 ### Diskussion
 
@@ -367,7 +345,7 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 * Offizielle Dokumentation für die [NgClass-Direktive](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html)
 * Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 * Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
-* Zwei weitere Möglichkeiten, um CSS-Styles für eine Komponente zu definieren gibt es in den Rezepten "[Das Template der Komponente von CSS trennen](#c07-styles)" und "[Komponente und CSS trennen](#c07-styleurls)"
+* Eine weitere Möglichkeit, um CSS-Styles für eine Komponente zu definieren gibt es im Rezept "[Komponente und CSS trennen](#c07-styleurls)"
 
 ## Teile der View konditional mit NgIf anzeigen {#c03-ngif}
 
@@ -376,46 +354,45 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Kondition erfüllt ist.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Die NgIf-Direktive von Angular
 * Eine Eigenschaft vom Typ "boolean"
 
 ### Lösung
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
-    <div>Hello world!</div>
-    <div *ngIf="isConditionTrue">
-      <p>The condition is true, so I can show myself</p>
+    <div>Hello World!</div>
+    <div *ngIf="showName">
+      <p>My name is Max</p>
     </div>
   `
 })
-class MyApp {
-  isConditionTrue: boolean;
+export class DemoAppComponent {
+  showName: boolean;
+
   constructor() {
-    this.isConditionTrue = true;
+    this.showName = true;
   }
 }
-
-...
 ```
 
 __Erklärung__:
 
-* Zeile 7: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "isConditionTrue" den Wert __true__ hat
-* Zeile 13: Definition der isConditionTrue-Eigenschaft mit Typ "boolean"
-* Zeile 15: Standardmäßig soll die isConditionTrue-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
+* Zeile 7: Nutzung der NgIf-Direktive, um den div-Tag nur dann im DOM zu haben, wenn "showName" den Wert __true__ hat
+* Zeile 13: Definition der showName-Eigenschaft mit Typ "boolean"
+* Zeile 16: Standardmäßig soll die showName-Eigenschaft den Wert __true__ haben (div-Tag ist im DOM)
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die isConditionTrue-Eigenschaft verzichtet.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die showName-Eigenschaft verzichtet.
 Im Github Code-Beispiel wird gezeigt wie wir mittels "click" den Wert verändern können.
-Da können wir auch sehen, wie sich die View verändert je nachdem, ob "isConditionTrue" den Wert __true__ oder __false__ hat.
+Da können wir auch sehen, wie sich die View verändert je nachdem, ob "showName" den Wert __true__ oder __false__ hat.
 
 Es gibt noch weiter mögliche Schreibweisen für das konditionale Anzeigen Teile der View mittels der NgIf-Direktive.
 Die hier ist die kürzeste und vermutlich die einfachste.
@@ -450,19 +427,19 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 Ich möchte unterschiedliche Teile der View anzeigen je nach Wert eines Angular-Ausdrucks.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
+* [Angular 2 Anwendung](#c02-angular-app)
 * Die NgSwitch-Direktive von Angular
 * Die NgSwitchWhen-Direktive von Angular
 * Die NgSwitchDefault-Direktive von Angular
 
 ### Lösung
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div [ngSwitch]="color">
       <p>What color are you?</p>
@@ -472,15 +449,13 @@ Ich möchte unterschiedliche Teile der View anzeigen je nach Wert eines Angular-
     </div>
   `
 })
-class MyApp {
-  color: string;
+export class DemoAppComponent {
+  color:string;
 
   constructor() {
     this.color = 'blue';
   }
 }
-
-...
 ```
 
 __Erklärung__:
@@ -541,23 +516,23 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 Ich möchte die Größe (height/width) eines Elementes als Werte in meine Komponente definieren. Eine Änderung der Werte in der Komponente soll auch die Größe des Elements verändern.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * Eigenschaften in der Komponente, die wir im Template referenzieren
 * NgStyle-Direktive von Angular
 
 ### Lösung 1
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div [ngStyle]="{'width': elemWidth, 'height': elemHeight}" style="background-color: red"></div>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   elemWidth: string;
   elemHeight: string;
   constructor() {
@@ -565,8 +540,6 @@ class MyApp {
     this.elemHeight = '100px';
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
@@ -580,18 +553,23 @@ __Erklärung__:
 Wir haben bereits in Lösung 1 gesehen, dass die ngStyle-Eigenschaft ein Objekt mit style-Eigenschaften als Keys und Werte für die Styles als Werte für die Keys bekommt.
 Statt Werte individuell in der Klasse zu definieren, können wir auch direkt das Objekt für die ngStyle-Eigenschaft definieren.
 
-{title="Ausschnitt aus der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
+
+interface IDimensions {
+  width: string;
+  height: string
+}
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <div [ngStyle]="dimensions" style="background-color: red"></div>
   `
 })
-class MyApp {
-  dimensions: {width: string; height: string};
+export class DemoAppComponent {
+  dimensions: IDimensions;
   constructor() {
     this.dimensions = {
       width: '100px',
@@ -599,14 +577,12 @@ class MyApp {
     };
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
-* Zeile 6: div-Tag mit ngStyle-Eigenschaft, die auf die dimensions-Eigenschaft der Klasse zugreift
-* Zeilen 12-15: Objekt mit style-Eigenschaften als Keys und Werte, die die Werte für die Styles definieren die gesetzt werden sollen
+* Zeile 11: div-Tag mit ngStyle-Eigenschaft, die auf die dimensions-Eigenschaft der Klasse zugreift
+* Zeilen 17-20: Objekt mit style-Eigenschaften als Keys und Werte, die die Werte für die Styles definieren die gesetzt werden sollen
 
 ### Diskussion
 

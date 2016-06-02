@@ -5,6 +5,98 @@ Der Code, der in der Lösung(en) gezeigt wird kann kopiert und angepasst werden,
 Es wird empfohlen dieses Kapitel als Erstes zu lesen, um ein Überblick zu bekommen und sich erst dann mit weiteren Rezepten zu beschäftigen.
 Es ist das Ziel des Kapitels den schnellen Einstieg in die Grundlagen und die Hauptbauteile von Angular 2 Anwendungen zu ermöglichen.
 
+## Entwicklungs-Prozess für Angular 2 Projekte {#c02-angular-cli}
+
+### Problem
+
+Ich möchte ein möglichst einfachen Weg haben, um ein Angular 2 Projekt zu initialisieren, bauen und das Resultat im Browser anzuschauen.
+
+### Zutaten
+
+* Node.js
+* npm
+* angular-cli
+
+### Lösung
+
+Der derzeit einfachste Weg, um ein Angular 2 Projekt zu starten, bauen und sich das Resultat im Browser anzuschauen ist ein Tool namens "angular-cli".
+Das Tool ist noch im beta-Stadium nicht desto trotz werden wir es nutzten, da die alternative (alles selbst einzurichten) sehr aufwendig ist.
+
+Als Erstes müssen wir __Node.js__ und __npm__ installieren, damit wir im zweiten Schritt __angular-cli__ installieren können.
+Am einfachsten können wir Node.js installieren, indem wir es von der [offizielle Webseite](https://nodejs.org/en/download/) herunterladen.
+Bei der Installation von Node.js, wird npm mit installiert.
+Jetzt können wir angular-cli installieren mit:
+
+```bash
+npm install -g angular-cli@1.0.0-beta.5
+```
+
+Wir installieren angular-cli global und können es in jedem Angular 2 Projekt nutzen.
+
+I> #### Node.js/npm Versionen
+I>
+I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 5.3.0 von Node.js und npm Version 3.3.12 getestet.
+
+I> #### Fehler bei der Installation/Projekt-Initialisierung
+I>
+I> Bei Fehler hilft es angular-cli zu löschen und neu zu installieren. Fehler können vor allem auftreten, wenn eine alte Version von angular-cli schon installiert ist.
+
+Jetzt können wir ein Projekt initialisieren.
+Dafür gibt es die Kommandos "new" und "init".
+
+```bash
+ng new projektName --skip-git
+```
+
+Dieses Kommando wir ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
+Falls "--skip-git" nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
+
+Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existierendes Verzeichnis.
+
+```bash
+ng init --name projektName
+```
+
+Falls "--name projektName" nicht angegeben wird, wird der Name des Verzeichnisses als Projektname benutzt.
+
+W> #### Namen von Projekten
+W>
+W> Derzeit wird nicht jeder beliebige Name als Projektname unterstützt. Z. B. ist "test" kein gültiger Projektname. Das Tool wird eine Fehlermeldung ausgeben, falls der Projektname nicht zulässig ist.
+
+#### Anwendung starten
+
+Nach dem alle Abhängigkeiten installiert worden sind, können wir die Anwendung starten.
+Angular-cli hat ein eingebauten HTTP-Server den wir dafür nutzen können.
+Um den Server zu starten, müssen wir im Projekt-Verzeichnis (das mit der package.json-Datei) folgendes Kommando aufrufen:
+
+```bash
+ng serve
+```
+
+In der Konsole steht dann zu welche URL wir navigieren müssen, um die Demo-Anwendung von angular-cli zu sehen (Zeile "Serving on http://...").
+Das nette an diesem Webserver ist der Live-Reload-Support.
+Das heißt, wenn wir Änderungen im Code machen werden diese sofort im Browser sichtbar ohne, dass wir das Projekt selbst erneut kompilieren müssen.
+
+### Diskussion
+
+Alle Rezepte in diesem Buch wurden mit `angular-cli` initialisiert.
+Es ist also nicht nötig `ng init` oder `ng new` aufzurufen.
+Es reicht, wenn `npm install` aufgerufen wird, um die Abhängigkeiten zu installieren.
+Danach können wir wie oben gezeigt mit `ng serve` die Anwendung starten.
+
+Da das Tool eine eigene Meinung hat wie die Verzeichnisstruktur, eine Komponente usw. auszusehen hat, wurden aus den Code-Beispielen ein paar Verzeichnisse/Dateien gelöscht bzw. angepasst.
+Wir wollen nicht, dass überflüssige Verzeichnisse, Dateien und Code-Zeilen uns vom eigentlichen Thema eines Rezeptes ablenken.
+Wir schauen uns also nur die relevanten Dateien für ein Rezept an und ignorieren den Rest.
+Auch gewisse Abhängigkeiten wurden aus der package.json-Datei entfernt, um die Installationszeit zu verkürzen.
+Es ist also möglich, dass nicht alle angular-cli Kommandos mit jedem Rezept funktionieren.
+Für die meisten Rezepte ist das src-Verzeichnis am wichtigsten.
+Darin befindet sich der Code für eine Angular 2 Anwendung.
+
+### Weitere Ressourcen
+
+* Offizielle Webseite von [angular-cli](https://cli.angular.io/)
+* Github von [angular-cli](https://github.com/angular/angular-cli)
+
 ## Angular 2 Anwendung {#c02-angular-app}
 
 ### Problem
@@ -12,134 +104,98 @@ Es ist das Ziel des Kapitels den schnellen Einstieg in die Grundlagen und die Ha
 Ich möchte von Null auf eine Angular 2 Anwendung implementieren.
 
 ### Zutaten
-* Leeres Verzeichnis für unsere Anwendung
-* Unterverzeichnis für die TypeScript-Dateien. Wir werden das Verzeichnis "app" benennen
-* index.html-Datei, um die nötigen Bibliotheken zu laden und die Anwendung zu starten
-* app.component.ts-Datei mit einer [Komponenten](#gl-component)
+
+* [angular-cli](#c02-angular-cli)
+* demo.component.ts-Datei, die die Haupt-[Komponente](#gl-component) der Anwendung definiert
 * Component-Decorator für die Komponentendefinition (@Component)
 * main.ts-Datei. Diese Datei initialisiert (bootstrap) die Angular 2 Anwendung
-* Webserver, um die index.html-Datei und die Angular Anwendung zu laden
+* index.html-Datei, um die nötigen Bibliotheken zu laden und die Anwendung zu starten
 
 ### Lösung
 
-Als Erstes werden wir uns die app.component.ts-Datei anschauen. Diese Datei befindet sich im Unterverzeichnis "app".
+Als Erstes werden wir uns die demo.component.ts-Datei anschauen. Diese Datei befindet sich im Unterverzeichnis "src/app".
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: '<div>Hello World!</div>'
 })
-class MyApp {}
-
-export default MyApp;
+export class DemoAppComponent {}
 ```
 
 __Erklärung__:
 
 Diese Datei definiert die Haupt- und in diesem Fall einzige Komponente unserer Anwendung.
 Sie ist ein ECMAScript-Modul (ESM).
-Jede Datei die das Keyword __import__ bzw. das Keyword __export__ beinhaltet ist ein ESM.
+Jede Datei, die das Keyword __import__ bzw. das Keyword __export__ beinhaltet ist ein ESM.
 
-* Zeile 1: Hier importieren wir die nötigen Abhängigkeiten aus dem angular2/core-Paket. Dafür nutzen wir eine ESM [import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* Zeile 1: Hier importieren wir die nötigen Abhängigkeiten aus dem @angular/core-Paket. Dafür nutzen wir eine ESM [import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 * Zeilen 3-6: Hier definieren wir eine Komponente mittels [TypeScript-Decorator](#gl-decorator)
-  * Zeile 4: Die selector-Eigenschaft definiert den Tag in dem die Komponente gerendert werden soll. Hier wird die Komponente im Tag __<my-app>__ gerendert
-  * Zeile 5: Der Wert der template-Eigenschaft ist ein Angular-Template und wird später von Angular kompiliert und zwischen __<my-tag>__ und __</my-tag>__ hinzugefügt. Das kompilierte Angular-Template wird als die "View" der Komponente bezeichnet
+  * Zeile 4: Die selector-Eigenschaft definiert das Tag in dem die Komponente gerendert werden soll. Hier wird die Komponente im Tag __<demo-app>__ gerendert
+  * Zeile 5: Der Wert der template-Eigenschaft ist ein Angular-Template und wird später von Angular kompiliert und zwischen __<demo-app>__ und __</demo-app>__ hinzugefügt. Das kompilierte Angular-Template wird als die "View" der Komponente bezeichnet
 * Zeile 7: Definiert eine TypeScript-Klasse, die die Logik für die Komponente beinhaltet. In diesem Fall ist die Klasse leer, da wir keine Logik benötigen
-* Zeile 9: Hier exportieren wir die Komponente. Dafür nutzen wir eine ESM [export-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+  * Gleichzeitig wird die Klasse exportiert (und somit die Komponente) mit einer ESM [export-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
-Als nächstes werden wir uns die main.ts-Datei anschauen. Diese Datei befindet sich ebenfalls im Unterverzeichnis "app".
+
+Als nächstes werden wir uns die main.ts-Datei anschauen. Diese befindet sich im Unterverzeichnis "app".
 
 {title="main.ts", lang="js"}
 ```
-import {bootstrap} from 'angular2/platform/browser';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { DemoAppComponent } from './app/index';
 
-import MyApp from './app.component';
-
-bootstrap(MyApp);
+bootstrap(DemoAppComponent);
 ```
 
 __Erklärung__:
 
 * Zeile 1: Importiert die Initialisierungsfunktion die wir brauchen, um die Anwendung im Browser zu initialisieren
-* Zeile 3: Importiert unsere Hauptkomponente
-* Zeile 5: Die Hauptkomponente wird der Initialisierungsfunktion (bootstrap) übergeben und die Anwendung wird initialisiert. Die Hauptkomponente erkennt man dadurch, dass diese der bootstrap-Funktion als Parameter übergeben wird
+* Zeile 2: Importiert unsere Hauptkomponente. Die index.ts-Datei ist ein sogenanntes [barrel](#gl-barrel). Die Datei wurde von angular-cli automatisch angelegt
+* Zeile 4: Die Hauptkomponente wird der Initialisierungsfunktion (bootstrap) übergeben und die Anwendung wird initialisiert. Die Hauptkomponente erkennt man dadurch, dass diese der bootstrap-Funktion als Parameter übergeben wird
 
-Als letztes schauen wir uns die index.html-Datei an. Diese Datei befindet sich im Hauptverzeichnis unserer Anwendung.
+
+Als letztes schauen wir uns die index.html-Datei an. Diese Datei befindet sich ebenfalls im Unterverzeichnis "app".
 
 {title="index.html", lang=html}
 ```
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Angular 2 Hello World</title>
-  <script src="https://code.angularjs.org/tools/system.js"></script>
-  <script src="https://code.angularjs.org/tools/typescript.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.13/Rx.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.13/angular2-polyfills.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.13/angular2.dev.js"></script>
-  <script>
-    System.config({
-      transpiler: 'typescript',
-        typescriptOptions: {
-        emitDecoratorMetadata: true
-      }
-      package: {app: {defaultExtension: 'ts'}}
-    });
-    System.import('./app/main');
-  </script>
-</head>
+...
+
 <body>
-  <my-app>Loading...</my-app>
+  <demo-app>Loading...</demo-app>
+
+  ...
+
 </body>
-</html>
 ```
 
 __Erklärung__:
 
-In dieser Datei laden wir unsere Abhängigkeiten und laden mittels SystemJS das Hauptmodul unserer Anwendung (main.ts).
+Wir schauen uns nur ein Ausschnitt aus der Datei an und zwar den Teil in dem unsere Anwendung gerendert wird (Zeile 4).
+Initial wird "Loading..." angezeigt bis Angular initialisiert wird.
+Der restliche Inhalt befasst sich größtenteils mit dem Laden der Abhängigkeiten, das Laden unserer Hauptdatei (main.ts) und das Definieren des HTML-head-Tags.
+Die Abhängigkeiten werden von [SystemJS](https://github.com/systemjs/systemjs) geladen.
 
-* Zeile 6: Lade SystemJS. Wird benötigt, um das Hauptmodul und weitere Module wie z. B. Angular 2 zu laden.
-* Zeile 7: Lade den TypeScript-Compiler. Der wird benötigt, um on-the-fly die main.ts-Datei in JavaScript umzuwandeln
-* Zeilen 8-9: RxJS und angular2-polyfills sind Abhängigkeiten von Angular 2
-* Zeile 10: Lade die Entwicklungsversion von Angular 2
-* Zeilen 11-20: Konfiguriere SystemJS, so dass es TypeScript-Dateien on-the-fly umwandeln kann
-* Zeile 19: Die Hauptdatei unserer Anwendung laden. Diese Datei initialisiert unsere Anwendung (bootstrap)
-* Zeile 23: Hier wird unsere Hauptkomponente gerendert. Initial wird "Loading..." angezeigt bis Angular initialisiert wird
-
-Jetzt brauchen wir noch einen Webserver, um unsere Anwendung zu testen.
-Das Angular-Team empfiehlt den [live-server](https://www.npmjs.com/package/live-server), der automatisch bei Änderungen die Seite im Browser Neuladen kann.
-Wer kein live-reload mag kann auch den [http-server](https://www.npmjs.com/package/http-server) nutzen. Beide Webserver sind über npm installierbar.
-
-Nach der Installation und Start des Webservers, können wir unsere Anwendung testen.
-Wenn im Browser Fenster "Hello World!" steht, ist alles gut gelaufen.
-Wenn das nicht der Fall ist, muss man wahrscheinlich noch das [es6-shim](https://www.npmjs.com/package/es6-shim) installieren und in der index.html-Datei einbinden.
-Angular 2 braucht gewisse ES6-Features, die in ältere Browser darunter auch Internet Explorer 11, nicht vorhanden sind.
+Um den Beispiel-Code aus Github im Browser anzuzeigen, müssen wir mittels `npm install` die Abhängigkeiten installieren und dann mit `ng serve` den Server starten.
 
 ### Diskussion
 
-Wie schon im Abschnitt "[TypeScript-Dateien vorkompilieren](#c01-precompile)" erwähnt, ist TypeScript on-the-fly in JavaScript umzuwandeln auf Dauer keine Option.
-Wir könnten die TypeScript-Dateien wie im Abschnitt "[TypeScript-Dateien vorkompilieren](#c01-precompile)" gezeigt kompilieren aber der Compiler wird Warnungen anzeigen.
-Trotz Warnungen werden die Dateien kompiliert.
-Die Warnungen werden angezeigt, weil TypeScript keine Typinformationen über Angular hat und auch nicht weiß, wo sich die Module "angular2/core" bzw. "angular2/platform/browser" befinden.
-Im Abschnitt "[Angular 2 Anwendung vorkompilieren](#c02-precompile-angular-app)" werden wir sehen, wie wir dieses Problem lösen können.
-Um den schnellen Einstieg zu ermöglichen, ohne Abhängigkeiten installieren zu müssen, werden die meiste Code-Beispiele die on-the-fly Variante für das Kompilieren nutzen.
+Unser Code-Beispiel nutzt Angular im Entwicklungsmodus.
+Darüber informiert uns auch Angular, wenn wir im Browser die Konsole offen haben.
+Wir werden in einem weiteren Rezept sehen wie wir Angular 2 in Produktion nutzen können.
 
 #### Komponentendefinition
 
 Bei der Definition einer Komponente, darf sich kein Code zwischen @Component() und der Klasse befinden.
 Da sind nur Kommentare und/oder Leerzeilen erlaubt.
-Falls sich da Code befindet, werden wir folgenden Fehler in der Konsole sehen:
+Falls sich da Code befindet, wird es beim Aufrufen von `ng serve` ein Fehler geben.
 
 {linenos=off}
 ```text
-No Directive annotation found on MyApp
+Decorators are not valid here
 ```
-
-Wobei "MyApp" der Namen der Komponenten ist. Das gilt für alle Komponenten unabhängig davon, ob sie Haupt- oder normale Komponenten sind.
 
 #### Bootstrap
 
@@ -147,7 +203,7 @@ Der/die eine oder andere Leser/Lesering mag sich jetzt fragen, warum wir nicht e
 Natürlich hätten wir das auch machen können aber die Aufspaltung in zwei Dateien bringt ein paar Vorteile mit sich.
 Zum einen vermischen wir nicht die Komponentendefinition und die Initialisierung der Anwendung.
 Die Komponentendefinition ist allgemein und könnte auf unterschiedlichen Plattformen verwendet werden.
-Die bootstrap-Funktion ist Browser spezifisch, daher auch der Import von "angular2/platform/browser" und nicht "angular2/core".
+Die bootstrap-Funktion ist Browser spezifisch, daher auch der Import von "@angular/platform-browser-dynamic" und nicht "@angular/core".
 Das heißt, dass wir theoretisch mehrere Initialisierungsdateien haben könnten z. B. eine für den Browser und eine für den Server, die die gleiche Hauptkomponente verwenden.
 Die Aufspaltung erhöht also die Wiederverwendbarkeit unserer Hauptkomponente.
 Ein weiterer Vorteil ist die Erhöhung der Testbarkeit unserer Hauptkomponente.
@@ -155,7 +211,7 @@ Wenn sich der bootstrap-Aufruf in der gleichen Datei befindet wie unsere Hauptko
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/01-Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/01-Angular_App)
+Code auf Github: [02-Basic\_Recipes/02-Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Angular_App)
 
 ### Weitere Ressourcen
 
@@ -173,170 +229,75 @@ Ich möchte weitere Komponenten nutzen, um meine Anwendung modularer zu gestalte
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
 * Datei für die neue Komponente (second.component.ts)
-* Anpassungen an der Hauptkomponente (app.component.ts), die wir im Rezepte "Angular 2 Anwendung" definiert haben
+* Anpassungen an der Hauptkomponente (demo.component.ts), die wir im Rezepte "Angular 2 Anwendung" definiert haben
 
 ### Lösung
 
 {title="second.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-component',
+    selector: 'app-second',
     template: '<div>My Name is ...</div>'
 })
-class MyComponent {}
-
-export default MyComponent;
+export class SecondComponent {}
 ```
 
 __Erklärung__:
 
-Diese Datei ist auch ein ESM und beinhaltet die Komponentendefinition für eine Komponente namens "MyComponent".
+Diese Datei ist auch ein ESM und beinhaltet die Komponentendefinition für eine Komponente namens "SecondComponent".
 Genau wie unsere Hauptkomponente, definiert diese die selector- und die template-Eigenschaften.
 
-{title="Anpassungen ad der app.component.ts-Datei", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
-import MyComponent from './component.ts';
+import { SecondComponent } from './second.component';
 
 @Component({
-  selector: 'my-app',
-  template: '<div>Hello World!</div> <my-component></my-component>',
-  directives: [MyComponent]
+  selector: 'demo-app',
+  template: '<div>Hello World!</div><app-second></app-second>',
+  directives: [SecondComponent]
 })
-class MyApp {}
-
-export default MyApp;
+export class DemoAppComponent {}
 ```
 
 __Erklärung__:
 
-* Zeile 3: Hier importieren wir unsere Komponente
-* Zeile 7: Wir haben den Tag __<my-component></my-component>__ in das Angular-Template hinzugefügt. Zu beachten ist, dass der Tag-Namen gleich dem Selektor in Zeile 4 in der second.component.ts-Datei sein muss
+* Zeile 3: Hier importieren wir unsere zweite Komponente
+* Zeile 7: Wir haben den Tag __<app-second></app-second>__ in das Angular-Template hinzugefügt. Zu beachten ist, dass der Tag-Namen gleich dem Selektor in Zeile 4 in der second.component.ts-Datei sein muss
 * Zeile 8: Mit der directives-Eigenschaft definieren wir welche Direktiven bzw. Komponenten im Template benutzt werden können
 
 ### Diskussion
 
-Es ist sehr wichtig, dass wir alle Komponenten die wir im Angular-Template nutzen auch in dem directives-Array definieren. Tags die zu keiner Komponente gehören werden von Angular ignoriert und bleiben leer.
+Es ist sehr wichtig, dass wir alle Komponenten, die wir im Angular-Template nutzen auch in dem directives-Array definieren.
+Tags die zu keiner Komponente gehören werden von Angular ignoriert und bleiben leer.
 
-Die Komponente "MyComponent" ist jetzt eine Unterkomponente (auf Englisch child component) von unsere Hauptkomponente.
+Die Komponente "SecondComponent" ist jetzt eine Unterkomponente (auf Englisch child component) von unsere Hauptkomponente.
 Indem wir Komponenten importieren und dann im Template nutzen, können wir beliebig große Komponentenbäume erzeugen.
 Tatsächlich ist eine Angular 2 Anwendung nur ein Baum von Komponenten mit der Hauptkomponente an der Spitze und beliebig viele Unterkomponenten.
 
-### Code
+#### Selektoren
 
-Code auf Github: [02-Basic\_Recipes/02-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Define_Component)
+Es wird empfohlen ein Präfix für den Selektor von Komponenten zu nutzen.
+Deshalb ist der Selektor der "SecondComponent" nicht nur "second", sondern "app-second".
+Der Präfix hat zwei Funktionen:
 
-## Angular 2 Anwendung vorkompilieren {#c02-precompile-angular-app}
+* Einerseits zeigt dieser, dass eine Komponente von uns implementiert worden ist und nicht von externe Quellen importiert wird
+* Anderseits wird der Präfix benutzt, um anzugeben zu welchem Teil unserer Anwendung eine Komponente gehört
 
-### Problem
-
-Ich möchte meine Angular 2 Anwendung vorkompilieren, so dass die im Browser schneller lädt.
-Zusätzlich sollen alle Abhängigkeiten lokal installiert sein.
-
-### Zutaten
-* Node.js, npm und TypeScript-Compiler. Siehe [TypeScript-Dateien vorkompilieren](#c01-precompile)
-* [Angular 2 Anwendung](#c02-angular-app)
-* package.json, um die Abhängigkeiten zu definieren
-* Anpassungen an der main.ts-Datei von der Angular 2 Anwendung
-* Anpassungen an der index.html-Datei von der Angular 2 Anwendung
-
-### Lösung
-
-{title="package.json", lang=json}
-```
-{
-  "name": "Angular2Kochbuch",
-  "dependencies": {
-    "angular2": "2.0.0-beta.13",
-    "es6-shim": "^0.35.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "systemjs": "0.19.21",
-    "zone.js": "^0.6.6"
-  },
-  "private": true
-}
-```
-
-__Erklärung__:
-
-Wir haben hier eine minimale package.json-Datei die wir benutzen, um Abhängigkeiten für unser Anwendung zu definieren.
-
-* Zeile 2: Der Namen unserer Anwendung
-* Zeilen 3-10: Abhängigkeiten die wir entweder direkt in unserer Anwendung brauchen oder die wir installieren damit der TypeScript-Compiler die Typen für die verschiedene Klassen, Methoden usw. finden kann
-* Zeile 11: Mit der Eigenschaft "private" verhindern wir, dass unser Anwendung aus Versehen in das npm-Registery hoch geladen werden kann
-
-Die Abhängigkeiten können jetzt installiert werden mit:
-
-{lang=bash}
-```
-npm install
-```
-
-{title="Anpassungen an der main.ts-Datei", lang=js}
-```
-///<reference path="../node_modules/angular2/typings/browser.d.ts"/>
-
-...
-```
-
-__Erklärung__:
-
-Die hinzugefügte Zeile wird gebraucht, um dem TypeScript-Compiler zu sagen, wo er Typinformationen für gewisse Konstrukte wie z. B. Promise, Map und Set finden kann.
-Wir können unseren Code auch ohne diese Zeile kompilieren aber der Compiler wird Warnungen ausgeben, da ihm Typinformationen fehlen.
-
-{title="Anpassungen an der index.html-Datei", lang=html}
-```
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Angular 2 Precompiled</title>
-  <script src="node_modules/systemjs/dist/system.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script>
-    System.config({
-      packages: {'app': {defaultExtension: 'js'}}
-    });
-    System.import('./app/main');
-  </script>
-</head>
-<body>
-  <my-app>Loading...</my-app>
-</body>
-</html>
-```
-
-__Erklärung__:
-
-* Zeilen 6-9: SystemJS, Angular und weitere Abhängigkeiten aus dem node\_modules-Verzeichnis laden
-
-Nachdem wir die index.html-Datei angepasst und die Abhängigkeiten mittels npm installiert haben, können wir die Anwendung mit dem TypeScript-Compiler so wie im Rezept "[TypeScript-Dateien vorkompilieren](#c01-precompile)" kompilieren.
-Im Beispiel-Code auf Github befindet sich auch eine tsconfig.json-Datei, die das Kompilieren erleichtert.
-
-### Diskussion
-
-Statt der angular2-polyfills.js-Datei (index.html-Datei Zeile 8), hätten wir auch "reflect-metadata" und "zone.js" (packege.json-Datei Zeilen 6 und 7) einzeln laden können.
-Es ist aber einfacher die Abhängigkeiten direkt über die angular2-polyfills.js-Datei zu laden.
-Es ist auch sicherer, dass die Versionen von "reflect-metadata" und "zone.js" kompatible zu der Version von Angular sind.
-Trotzdem müssen wir beide Module über npm laden, damit der TypeScript-Compiler keine Typ-Fehler meldet.
-
-I> #### On-the-fly Kompilierung
-I>
-I> Die meisten Rezepte in diesem Buch nutzen die on-the-fly Kompilierung wie diese im Rezept "[Angular 2 Anwendung](#c02-angular-app)" zu sehen ist. Der Grund dafür, ist dass wir damit schneller starten können ohne erst Abhängigkeiten zu installieren und Dateien zu kompilieren. Natürlich funktionieren alle Rezepte auch mit der index.html-Datei die hier zu sehen ist und mit der tsconfig.json-Datei die im Beispiel-Code für dieses Rezept zu finden ist. Damit der Compiler ohne Warnungen kompilieren kann, müssen wir in der main.ts-Datei jedes Rezeptes die Typinformationen hinzufügen wie wir es hier für in der main.ts-Datei getan haben.
+Bei größeren Anwendungen ist es nicht ungewöhnlich die Anwendung in mehreren Unterverzeichnissen aufzuteilen wobei jedes Verzeichnis ein Feature bezeichnet.
+Z. B. kann eine große Anwendung ein Nutzerbereich und ein Adminbereich haben.
+In so einem Fall können alle Komponenten des Nutzerbereichs das Präfix "user" haben und alle Komponenten des Adminbereichs das Präfix "admin".
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/03-Precompile\_Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Precompile_Angular_App)
+Code auf Github: [02-Basic\_Recipes/03-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Define_Component)
 
 ### Weitere Ressourcen
 
-* Weitere Eigenschaften der package.json-Datei werden in der [Online-Doku](https://docs.npmjs.com/files/package.json) erwähnt
+* Der [Angular Styleguide](https://angular.io/styleguide) gibt Hintergrundinformationen über Namenskonventionen, die Verzeichnisstruktur von Angular 2 Anwendungen und über andere Best Practices
 
 ## Ein Service definieren {#c02-define-service}
 
@@ -345,9 +306,9 @@ Code auf Github: [02-Basic\_Recipes/03-Precompile\_Angular\_App](https://github.
 Ich möchte einen Service definieren und nutzen, damit ich so Teile meiner Logik und Daten aus der Komponente entfernen kann.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * Eine Datei für unseren Service (data.service.ts)
-* Injectable-Decorator (@Inject)
+* Injectable-Decorator (@Injectable)
 
 ### Lösung
 
@@ -357,12 +318,12 @@ Somit können wir die Methoden und die Daten eines Service in mehreren Komponent
 
 {title="data.service.ts", lang=js}
 ```
-import {Injectable} from 'angular2/core';
+import { Injectable } from '@angular/core';
 
 const data = ['a', 'b', 'c'];
 
 @Injectable()
-class DataService {
+export class DataService {
   data: Array<string>;
   constructor() {
     this.data = data;
@@ -372,42 +333,38 @@ class DataService {
     return this.data;
   }
 }
-
-export default DataService;
 ```
 
 __Erklärung__:
 
 * Zeile 5: Hier nutzen wir den Injectable-Decorator, um den Service als "Injectable" zu definieren
-* Zeilen 6-15: Die Klasse, die unseren Service repräsentiert
-* Zeile 17: Den Service exportieren, so dass wir den in Komponenten und weitere Services nutzen können
+* Zeilen 6-15: Die Klasse, die unseren Service repräsentiert. Diese wird auch exportiert, so dass wir den Service in Komponenten und anderen Services nutzen können
+
 
 Wir haben jetzt einen Service definiert und den werden wir jetzt in unsere Komponente nutzen.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import DataService from './data.service';
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
 
 @Component({
-    selector: 'my-app',
-    providers: [DataService],
-    template: '<div>Hello Data!</div>'
+  selector: 'demo-app',
+  providers: [DataService],
+  template: '<div>Hello World!</div>'
 })
-class MyApp {
-    constructor(dataService: DataService) {
-        console.log(dataService.getData());
-    }
+export class DemoAppComponent {
+  constructor(dataService: DataService) {
+    console.log(dataService.getData());
+  }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
 * Zeile 2: DataService importieren
 * Zeile 6: Die providers-Eigenschaft sagt Angular welche Services der Komponente und ihre Unterkomponenten zur Verfügung stehen. Nur Services die hier definiert sind können als Konstruktorparameter benutzt werden (Siehe auch Zeile 10)
-* Zeile 10: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService bekommen
+* Zeile 10: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService" bekommen
 * Zeile 11: Hier nutzen wir die getData-Methode der dataService-Instanz
 
 ### Diskussion
@@ -448,12 +405,12 @@ Alternativ können wir statt eine Typdefinition auch den Inject-Decorator (@Inje
 ```
 ...
 
-import {Inject} from 'angular2/core';
-import DataService from './data.service';
+import { Inject } from '@angular/core';
+import { DataService } from './data.service';
 
 ...
 
-class MyApp(@Inject(DataService) dataService) { ... }
+class DemoAppComponent(@Inject(DataService) dataService) { ... }
 
 ...
 ```

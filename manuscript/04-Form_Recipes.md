@@ -27,18 +27,18 @@ Wir werden jetzt mit einem einfachen "Template Driven" Formular anfangen und wer
 Ich möchte Daten vom Benutzer bekommen und dafür brauche ich ein einfaches Formular.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * NgModel-Direktive
 * NgForm-Direktive mit dem ngSubmit-Event
 
 ### Lösung
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()">
       <label>Username</label>
@@ -49,7 +49,7 @@ import {Component} from 'angular2/core';
     </form>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   user = {
     username: '',
     password: ''
@@ -116,12 +116,12 @@ In dieser Lösung werden wir sehen wie wir die Gültigkeit des Formulars im Temp
 Wir werden den Submit-Button deaktivieren, wenn das Formular ungültig ist.
 Das wird das Submit-Event unterbinden, wenn nicht alle Formular-Felder gültig sind.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -137,17 +137,6 @@ Das wird das Submit-Event unterbinden, wenn nicht alle Formular-Felder gültig s
     </form>
   `
 })
-class MyApp {
-  user = {
-    username: '',
-    password: ''
-  };
-  constructor() {}
-
-  onSubmit() {
-    console.log(this.user);
-  }
-}
 
 ...
 ```
@@ -170,12 +159,12 @@ In dieser Lösung werden wir sehen wie wir die gültigkeit des Formulars in der 
 Wir nutzen das Formular von der ersten Lösung mit zwei Änderungen:
 Wir übergeben die lokale Variable "form" der onSubmit-Methode und wir nutzen nicht mehr die disabled-Eigenschaft des Buttons.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit(form)" #form="ngForm" novalidate>
       <label>Username</label>
@@ -186,13 +175,11 @@ Wir übergeben die lokale Variable "form" der onSubmit-Methode und wir nutzen ni
     </form>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   user = {
     username: '',
     password: ''
   };
-
-  constructor() {}
 
   onSubmit(form) {
     if (form.valid) {
@@ -200,7 +187,6 @@ class MyApp {
     }
   }
 }
-...
 ```
 
 __Erklärung__:
@@ -267,12 +253,12 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 
 In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf das Control über die lokale Variable für das Formular zugreifen.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -307,12 +293,12 @@ __Erklärung__:
 Hier werden wir lokale Variable für jedes Eingabefeld definieren.
 Über die lokale Variable werden wir Zugriff auf die Gültigkeit des Eingabefeldes bekommen.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
@@ -406,36 +392,31 @@ Ich möchte ein ungültiges Formular-Feld farblich hervorheben.
 ### Zutaten
 * [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * Styles für die CSS-Klassen, die von Angular gesetzt werden
+  * Siehe auch [Das Template der Komponente vom CSS trennen](#c07-styles)
 
 ### Lösung
 
 Jedes Eingabefeld bekommt von Angular gewisse CSS-Klassen gesetzt.
 Um diese zu nutzen, müssen wir nur entsprechende Styles definieren.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
+  styles: [
+    '.ng-invalid { border-color: red; }',
+    '.ng-valid { border-color: green; }'
+  ],
   template: `
-    <style>
-      .ng-invalid {
-        border-color: red;
-      }
-
-      .ng-valid {
-        border-color: green;
-      }
-    </style>
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
       <label>Username</label>
       <input type="text" [(ngModel)]="user.username" required ngControl="username"/>
       <label>Password</label>
       <input type="password" [(ngModel)]="user.password" required minlength="10" ngControl="password"/>
       <button type="submit" [disabled]="!form.valid">Submit</button>
-    </form>
-  `
+    </form>`
 })
 
 ...
@@ -443,7 +424,7 @@ Um diese zu nutzen, müssen wir nur entsprechende Styles definieren.
 
 __Erklärung__:
 
-* Zeilen 6-14: CSS-Styles für die "ng-invalid" und "ng-valid" CSS-Klassen
+* Zeilen 6-7: CSS-Styles für die "ng-invalid" und "ng-valid" CSS-Klassen
 
 ### Diskussion
 
@@ -476,7 +457,7 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-
 Ich möchte, dass sich die Logik für mein Formular in der Klasse der Komponente befindet. Somit ist mein Template nicht überladen und ich kann auch die Logik besser Testen.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * HTML für ein Formular
 * Den FormBuilder-Service von Angular
 * Die NgControlName-Direktive von Angular
@@ -487,13 +468,13 @@ Ich möchte, dass sich die Logik für mein Formular in der Klasse der Komponente
 Wir nutzen hier ein "Model Driven" Formular. Wir definieren das Modell für das Formular und dessen Controls in der Klasse der Komponente.
 Im Template nutzen wir das form-Tag und input-Tags, die wir mit Hilfe von der NgControlName- und der NgFormModel-Direktive mit dem Modell in der Klasse verbinden.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import {FormBuilder, ControlGroup} from 'angular2/common';
+import { Component } from '@angular/core';
+import { FormBuilder, ControlGroup } from '@angular/common';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <form (ngSubmit)="onSubmit()" [ngFormModel]="form" novalidate>
       <label>Username</label>
@@ -504,7 +485,7 @@ import {FormBuilder, ControlGroup} from 'angular2/common';
     </form>
   `
 })
-class MyApp {
+export class DemoAppComponent {
   form: ControlGroup;
   constructor(builder: FormBuilder) {
     this.form = builder.group({
@@ -517,8 +498,6 @@ class MyApp {
     console.log(this.form.value);
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
@@ -588,7 +567,7 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-
 * Offizielle [ControlGroup](https://angular.io/docs/ts/latest/api/common/ControlGroup-class.html) Dokumentation auf der Angular 2 Webseite
 * Offizielle [NgFormModel](https://angular.io/docs/ts/latest/api/common/NgFormModel-directive.html) Dokumentation auf der Angular 2 Webseite
 * Offizielle [NgControlName](https://angular.io/docs/ts/latest/api/common/NgControlName-directive.html) Dokumentation auf der Angular 2 Webseite
-* Eine kurze Diskussion über Dependency Injection gibt es im Rezept [Service definieren](#02-define-service)
+* Eine kurze Diskussion über Dependency Injection gibt es im Rezept [Service definieren](#c02-define-service)
 * Weiter Informationen zur [Dependency Injection](https://angular.io/docs/ts/latest/guide/dependency-injection.html) gibt es auf der Angular 2 Webseite
 
 ## Formular mit dem FormBuilder und Validierung {#c04-formbuilder-validation}
@@ -607,24 +586,28 @@ Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich a
 In dieser Lösung werden wir dasselbe Problem lösen wie im Rezept "[Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
 Nur werden wir hier mit Validierungs-Funktionen statt mit Validierungs-Attribute arbeiten.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import {FormBuilder, ControlGroup} from 'angular2/common';
-import {Validators} from 'angular2/common';
+import { Component } from '@angular/core';
+import {
+    FormBuilder,
+    ControlGroup,
+    Validators
+} from '@angular/common';
 
 ...
 
-class MyApp {
+export class DemoAppComponent {
   form: ControlGroup;
+
   constructor(builder: FormBuilder) {
     this.form = builder.group({
       username: builder.control('', Validators.required),
       password: builder.control('', Validators.compose([
-          Validators.required,
-          Validators.minLength(10)
+        Validators.required,
+        Validators.minLength(10)
       ]))
-    })
+    });
   }
 
   onSubmit() {
@@ -633,17 +616,15 @@ class MyApp {
     }
   }
 }
-
-...
 ```
 
 __Erklärung__:
 
-* Zeile 3: Hier importieren wir alle Validatoren, die uns Angular zur Verfügung stellt
-* Zeile 11: Control für das Benutzername-Feld definieren. Mit __Validators.required__ definieren wir das Eingabefeld als Pflichtfeld
-* Zeile 12: Ein Control erwartet als zweiten Parameter eine Validierungs-Funktion. Wenn wir mehrere Funktionen gleichzeitig nutzen möchten, müssen wir die compose-Funktion nutzen
-* Zeile 13: Hier definieren wir das Passwort-Feld als Pflichtfeld
-* Zeile 14: Das Feld muss mindestens zehn Zeichen beinhalten, damit es gültig ist
+* Zeile 5: Hier importieren wir alle Validatoren, die uns Angular zur Verfügung stellt
+* Zeile 15: Control für das Benutzername-Feld definieren. Mit __Validators.required__ definieren wir das Eingabefeld als Pflichtfeld
+* Zeile 16: Ein Control erwartet als zweiten Parameter eine Validierungs-Funktion. Wenn wir mehrere Funktionen gleichzeitig nutzen möchten, müssen wir die compose-Funktion nutzen
+* Zeile 17: Hier definieren wir das Passwort-Feld als Pflichtfeld
+* Zeile 18: Das Feld muss mindestens zehn Zeichen beinhalten, damit es gültig ist
 
 ### Code
 
@@ -670,36 +651,39 @@ Ich möchte überprüfen, ob ein Eingabefeld mindestens einen Großbuchstaben be
 
 Wir werden hier die gleiche Validierungs-Funktionen wie im "Formular mit dem FormBuilder und Validierung" Rezept nutzen. Wir werden zusätzlich eine eigene Validierungs-Funktion namens "containsCapital" implementieren.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 import {
     FormBuilder,
     ControlGroup,
     Validators,
     Control
-} from 'angular2/common';
+} from '@angular/common';
 
 ...
 
-class MyApp {
+export class DemoAppComponent {
   form: ControlGroup;
+
   constructor(builder: FormBuilder) {
     this.form = builder.group({
       username: builder.control('', Validators.required),
       password: builder.control('', Validators.compose([
-          Validators.required,
-          Validators.minLength(10),
-          function containsCapital(control: Control) {
-            const reg = /[A-Z]/;
-            if (reg.test(control.value)) {
-              return null;
-            } else {
-              return {containsCapital: true};
-            }
+        Validators.required,
+        Validators.minLength(10),
+        function containsCapital(control: Control) {
+          const reg = /[A-Z]/;
+          if (reg.test(control.value)) {
+            return null;
+          } else {
+            return {
+              containsCapital: true
+            };
           }
+        }
       ]))
-    })
+    });
   }
 
   onSubmit() {
@@ -708,18 +692,16 @@ class MyApp {
     }
   }
 }
-
-...
 ```
 
 __Erklärung__:
 
 * Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 19
-* Zeilen 19-26: Unsere Validierungs-Funktion
-  * Zeile 19: Als Parameter bekommt eine Validierungs-Funktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
-  * Zeile 21: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
-  * Zeile 22: Wenn das Eingabefeld einen gültigen Wert beinhaltet, geben wir __null__ zurück
-  * Zeile 24: Wenn das Eingabefeld einen ungültigen Wert beinhaltet, geben wir ein Objekt zurück
+* Zeilen 20-29: Unsere Validierungs-Funktion
+  * Zeile 20: Als Parameter bekommt eine Validierungs-Funktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
+  * Zeile 22: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
+  * Zeile 23: Wenn das Eingabefeld einen gültigen Wert beinhaltet, geben wir __null__ zurück
+  * Zeile 25: Wenn das Eingabefeld einen ungültigen Wert beinhaltet, geben wir ein Objekt zurück
 
 ### Diskussion
 
@@ -729,7 +711,7 @@ Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felde
 Solang das Passwort-Feld kein Großbuchstabe enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
 Wir hätten auch ein komplexeres Objekt zurückgeben können genau so wie es die minLength-Validierungs-Funktion tut.
 Wenn der Wert im Eingabefeld gültig ist, geben wir __null__ zurück.
-Andere Werte wie z. B. __undefined__ haben den gleichen Effekt, da aber die Angular-Validierungs-Funktionen auch mit __null__ arbeiten tun wir es hier auch.
+Andere Werte wie z. B. __undefined__ haben den gleichen Effekt, da aber die Angular-Validierungs-Funktionen auch __null__ nutzen, um die Ungültigkeit zu kennzeichen tun wir es hier auch.
 
 ### Code
 
@@ -752,22 +734,22 @@ Ich möchte überprüfen, ob der gegebene Benutzername schon existiert. Dafür m
 
 Um die Lösung möglichst einfach zu halten, werden wir die Server-Anfrage mit einem Timeout simulieren. Für eine echte Server-Anfrage brauchen wir einen Server, der auf die Anfrage antworten kann und Code, der die Anfrage schicken kann.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 import {
     FormBuilder,
     ControlGroup,
     Validators,
     Control
-} from 'angular2/common';
+} from '@angular/common';
 
 ...
 
-class MyApp {
-  form:ControlGroup;
+export class DemoAppComponent {
+  form: ControlGroup;
 
-  constructor(builder:FormBuilder) {
+  constructor(builder: FormBuilder) {
     this.form = builder.group({
       username: builder.control('', Validators.required,
           function usernameExists(control: Control) {
@@ -793,8 +775,6 @@ class MyApp {
     }
   }
 }
-
-...
 ```
 
 __Erklärung__:

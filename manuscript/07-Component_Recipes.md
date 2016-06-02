@@ -4,78 +4,27 @@ In diesem Kapitel befinden sich verschiedene Rezepte, die hauptsächlich Kompone
 Manche von den Rezepten können auch bei Direktiven angewendet werden.
 Sachen wie z. B. die Kommunikation zwischen Komponenten, werden in diesem Kapitel behandelt.
 
-## Komponente ohne @View-Decorator
-
-### Warnung
-
-Der View-Decorator (@View) wird in eine spätere Version von Angular entfernt. Alle Rezepte wurden angepasst und der View-Decorator wurde entfernt, dadurch ist dieses Rezept nicht mehr nützlich und wird in eine spätere Version des Buches entfernt.
-
-### Problem
-
-Mir gefällt es nicht, dass ich zwei Decorators nutzen muss, um eine Komponente zu definieren. Ich möchte eine alternative Schreibeweise nutzen ohne den @View-Decorator.
-
-### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
-
-### Lösung
-
-Angular bietet uns die Möglichkeit alle Attribute die wir normalerweise im @View-Decorator definieren auch direkt in dem @Component-Decorator zu definieren.
-
-{title="Ausschnitt aus einer Komponente", lang=js}
-```
-...
-
-@Component({
-  selector: 'my-app',
-  template: '<div>Hello World!</div>'
-})
-
-...
-```
-
-Erklärung:
-
-Statt @View zu nutzen, haben wir die View-Eigenschaften die wir brauchen direkt im @Component-Decorator definiert.
-
-### Diskussion
-
-Der @View-Decorator kann folgende Attribute haben:
-
-* templateUrl
-* template
-* directives
-* pipes
-* encapsulation
-* styles
-* styleUrls
-
-Sobald wir auch nur eins von diesen Attributen im @Component-Decorator nutzen, dürfen wir den @View-Decorator nicht mehr benutzen. Falls man das tut, wird eine Exception geworfen. Technisch gesehen besteht keine Unterschied zwischen den @View-Decorator und die Nutzung von @View-Attributen im @Component-Decorator. Es ist Geschmackssache.
-
-### Code
-
-Code auf Github: [07-Component\_Recipes/01-Component\_without\_View](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Component_without_View)
-
-## Komponente und HTML-Template trennen
+## Komponente und HTML-Template trennen {#c07-split-html-template}
 
 ### Problem
 
 Ich hab ein langes Angular-Template und ich möchte das HTML getrennt von meine Komponente halten.
 
 ### Zutaten
-* [Eine Komponente](#c02-component-definition), kann auch die Hauptkomponente einer [Angular 2 Anwendung](#c02-angular-app) sein
-* Eine Datei für das HTML. Hier my\_app.html
+* [Angular 2 Anwendung](#c02-angular-app)
+* Eine Datei für das HTML. Hier demo.component.html
 
-### Lösung
+### Lösung 1
 
 Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben, wo unsere HTML-Datei sich befindet.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app/my_app.html'
+  selector: 'demo-app',
+  templateUrl: './app/demo.component.html'
 })
 
 ...
@@ -83,16 +32,90 @@ Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen un
 
 __Erklärung__:
 
-* Zeile 5: Pfad zu der my\_app.html-Datei. Hier ist der Pfad relativ zu der index.html-Datei der Anwendung. Wer möchte kann auch ein absoluten Pfad angeben
+* Zeile 5: Pfad zu der demo.component.html-Datei. Hier ist der Pfad relativ zu der index.html-Datei der Anwendung. Wir können aber auch einen absoluten Pfad angeben
+
+### Lösung 2
+
+In der ersten Lösung hatten wir den Pfad relativ zu der index.html-Datei angegeben.
+Es gibt auch die Möglichkeit den Pfad relativ zu der demo.component.ts-Datei zu definieren.
+
+{title="demo.component.ts", lang=js}
+```
+...
+
+@Component({
+  moduleId: module.id,
+  selector: 'demo-app',
+  templateUrl: 'demo.component.html'
+})
+
+...
+```
+
+__Erklärung__:
+
+* Zeile 4: "module.id" wird von commonjs und dem Modul-Loader zur Verfügung gestellt. Diese Lösung funktioniert nur mit commonjs Module und wird standardmäßig von angular-cli benutzt, wenn wir damit eine Komponente generieren
+* Zeile 6: Der Pfad zu der demo.component.html-Datei ist jetzt relative zu der demo.component.ts-Datei
 
 ### Diskussion
 
-Wichtig zu beachten ist, dass wir entweder die template-Eigenschaft oder die templateUrl-Eigenschaft verwenden können. Beide gleichzeitig geht nicht.
-Die templateUrl-Eigenschaft ist vor allem nützlich, wenn wir HTML haben mit mehr als 5-10 Zeilen. Wenn man weniger als 10 Zeilen hat, kann man überlegen, ob man lieber [ES6 Template literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings) mit der template-Eigenschaft nutzt. Dadurch kann man sich die Serveranfrage für die HTML-Datei sparen.
+Wichtig zu beachten ist, dass wir entweder die template-Eigenschaft oder die templateUrl-Eigenschaft verwenden können.
+Beide gleichzeitig geht nicht.
+Zur Laufzeit wird mittels XMLHttpRequest die Datei von Server geholt und der Inhalt der Datei wird kompiliert und in den DOM gesetzt.
+
+#### templateUrl- vs. template-Eigenschaft
+
+Beide Ansätze haben Vor- und Nachteile.
+Wir werden uns diese kurz anschauen.
+
+__templateUrl-Eigenschaft__
+
+| Vorteile                  | Nachteile                              |
+|---------------------------|----------------------------------------|
+| Übersichtlicher           | Extra Server-Aufruf                    |
+|---------------------------|----------------------------------------|
+| Logik und Markup sind     | Zwei offene Dateien                    |
+| getrennt                  | um eine Komponente zu implementieren   |
+|---------------------------|----------------------------------------|
+| Code-Highlighting         | Das Angeben von Pfaden hat eigene      |
+|                           | Nachteile (siehe Lösung 1 vs. Lösung 2 |
+|---------------------------|----------------------------------------|
+| Auto-Vervollständigung    |                                        |
+
+__template-Eigenschaft__
+
+| Vorteile                     | Nachteile                        |
+|------------------------------|----------------------------------|
+| Die gesamte Komponente wird  | Unübersichtlich, wenn wir viel   |
+| in eine Datei definiert      | HTML haben                       |
+|------------------------------|----------------------------------|
+| Kein extra Server-Aufruf     | Code-Highlighting und            |
+|                              | Auto-Vervollständigung sind      |
+|                              | Editor abhängig                  |
+|------------------------------|----------------------------------|
+| Keine Probleme mit Pfade     |                                  |
+
+Ich persönlich versuche immer kleine Komponenten mit wenig HTML (10-15 Zeilen) zu schreiben und nutze dabei die template-Eigenschaft.
+
+#### Lösung 1 vs. Lösung 2
+
+Beide Lösungen sind nicht wirklich geeignet, um Komponenten zu schreiben die in mehrere Anwendungen benutzt werden.
+Für die erste Lösung müssen wir immer wieder den Pfad anpassen, da vermutlich die Komponente nicht immer im gleichen Verzeichnis sein wird.
+Das ist auch problematisch, wenn wir unsere Anwendung umstrukturieren möchten.
+
+Es ist vielleicht auf den ersten Blick nicht zu erkennen weshalb die zweite Lösung nicht geeignet ist um wiederverwendbare Komponenten zu schreiben.
+Diese Lösung ist wegen "module.id" an commonjs und eine Modul-Loader, der diese Eigenschaft nutzt gebunden.
+Es gibt zwar Möglichkeiten diese Lösung auch mit andere Modul-System/-Loader zu nutzen aber auch da werden wir an einem bestimmten Modul-System/-Loader gebunden sein.
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Component_and_Template)
+Code auf Github für die erste Lösung: [07-Component\_Recipes/01-Separation\_of\_Component\_and\_Template/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Separation_of_Component_and_Template/Solution-01)
+
+Code auf Github für die zweite Lösung: [07-Component\_Recipes/01-Separation\_of\_Component\_and\_Template/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Separation_of_Component_and_Template/Solution-02)
+
+### Weitere Ressourcen
+
+* Eine ausführlichere Diskussion zu Komponent-relative Pfade gibt es in [Component-Relative Paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html)
 
 ## Das Template der Komponente vom CSS trennen {#c07-styles}
 
@@ -102,19 +125,19 @@ Ich möchte meine CSS-Styles getrennt von meinem Template halten und nicht in ei
 
 ### Zutaten
 
-* [Eine Komponente](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
 * CSS-Klassen, die im Template verwendet werden
 
 ### Lösung
 
 Statt die CSS-Klassen im Template zu haben, können wir dafür die styles-Eigenschaft der Komponente nutzen.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   styles: [
     '.box {width: 100px; height: 100px; background-color: red; margin: 10px}',
     '.box-blue {background-color: blue;}'
@@ -126,8 +149,7 @@ Statt die CSS-Klassen im Template zu haben, können wir dafür die styles-Eigens
     <div class="box"></div>
   `
 })
-
-...
+export class DemoAppComponent {}
 ```
 
 __Erklärung__:
@@ -142,12 +164,12 @@ Jeder String wird dann zur Laufzeit als style-Tag in den DOM gesetzt.
 In unserem Beispiel werden zwei style-Tags in den Head des Dokuments hinzugefügt.
 
 Wenn wir in Komponenten CSS-Styles definieren, können die definierte CSS-Styles standardmäßig nur in der Komponente verwendet werden in der diese definiert worden sind.
-Es ist dabei egal, ob wir die CSS-Styles als inline-styles mittels style-Tag, über die styles-Eigenschaft der Komponente oder über die styleUrls-Eigenschaft der Komponente definieren.
+Es ist dabei egal, ob wir die CSS-Styles als inline-styles mittels style-Tag, über die styles-Eigenschaft oder über die styleUrls-Eigenschaft der Komponente definieren.
 Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View Encapsulation" genannt.
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/03-Separation\_of\_Template\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Template_and_Styles)
+Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Template\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Template_and_Styles)
 
 ### Weitere Ressourcen
 
@@ -162,20 +184,20 @@ Ich hab viele CSS-Klassen und ich möchte diese nicht in der Komponente haben, s
 
 ### Zutaten
 
-* [Eine Komponente](#c02-component-definition)
-* Eine Datei für das CSS. Hier my\_app.css
+* [Angular 2 Anwendung](#c02-angular-app)
+* Eine Datei für das CSS. Hier demo.component.css
 
-### Lösung
+### Lösung 1
 
 Statt die CSS-Klassen in der Komponente zu haben, können wir diese in eine separate CSS-Datei aufbewahren.
 
-{title="Ausschnitt aus einer Komponente", lang=js}
+{title="demo.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'my-app',
-  styleUrls: ['./app/my_app.css'],
+  selector: 'demo-app',
+  styleUrls: ['./app/demo.component.css'],
   template: `
     <div class="box"></div>
     <div class="box"></div>
@@ -189,24 +211,55 @@ Statt die CSS-Klassen in der Komponente zu haben, können wir diese in eine sepa
 
 __Erklärung__:
 
-* Zeile 5: Wir nutzen die styleUrls-Eigenschaft, um Angular zu sagen, wo sich die Datei mit dem CSS befindet
+* Zeile 5: Wir nutzen die styleUrls-Eigenschaft, um Angular zu sagen, wo sich die Datei mit dem CSS befindet. Der Pfad zu der CSS-Dateien ist relativ zu der index.html-Datei der Anwendung. Absolute Pfade sind zumindest derzeit nicht zulässig (siehe [#6905](https://github.com/angular/angular/issues/6905)).
+
+### Lösung 2
+
+In der ersten Lösung hatten wir den Pfad relativ zu der index.html-Datei angegeben.
+Es gibt auch die Möglichkeit den Pfad relativ zu der demo.component.ts-Datei zu definieren.
+
+{title="demo.component.ts", lang=js}
+```
+...
+
+@Component({
+  moduleId: module.id,
+  selector: 'demo-app',
+  styleUrls: ['demo.component.ts'],
+  template: `
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box box-blue"></div>
+    <div class="box"></div>
+  `
+})
+
+...
+```
+
+__Erklärung__:
+
+* Zeile 4: "module.id" wird von commonjs und dem Modul-Loader zur Verfügung gestellt. Diese Lösung funktioniert nur mit commonjs Module und wird standardmäßig von angular-cli benutzt, wenn wir damit eine Komponente generieren
+* Zeile 6: Der Pfad zu der demo.component.css-Datei ist jetzt relative zu der demo.component.ts-Datei
 
 ### Diskussion
 
 Die styleUrls-Eigenschaft einer Komponente erwartet ein Array von Strings.
-Jeder String ist ein relativer Pfad zur einer CSS-Datei.
-Absolute Pfade werden derzeit nicht unterstützt (siehe [#6905](https://github.com/angular/angular/issues/6905)).
-Relativ bedeutet in diesem Fall: relativ zu der index.html-Datei der Anwendung.
-Zur Laufzeit wird mittels XMLHttpRequest die Datei von Server geholt und der Inhalt der Datei wird als style-Tag in den DOM gesetzt.
+Zur Laufzeit wird mittels XMLHttpRequest die Datei vom Server geholt und der Inhalt der Datei wird als style-Tag in den DOM gesetzt.
 In unserem Beispiel wird ein style-Tag in den Head des Dokuments hinzugefügt.
 
 Wenn wir in Komponenten CSS-Styles definieren, können die definierte CSS-Styles standardmäßig nur in der Komponente verwendet werden in der diese definiert worden sind.
 Es ist dabei egal, ob wir die CSS-Styles als inline-styles mittels style-Tag, über die styles-Eigenschaft der Komponente oder über die styleUrls-Eigenschaft der Komponente definieren.
 Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View Encapsulation" genannt.
 
+Die Diskussion styles- vs. stuleUrls-Eigenschaft ist analog zu der template- vs. templateUrl-Eigenschaft Diskussion in [Komponente und HTML-Template trennen](#c07-split-html-template).
+Ebenfalls analog ist die Diskussion Lösung 1 vs. Lösung 2 und die darin beschriebene Probleme.
+
 ### Code
 
-Code auf Github: [07-Component\_Recipes/04-Separation\_of\_Component\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Separation_of_Component_and_Styles)
+Code auf Github für die erste Lösung: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles/Solution-01)
+
+Code auf Github für die zweite Lösung: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles/Solution-02)
 
 ### Weitere Ressourcen
 
@@ -221,7 +274,8 @@ Ich möchte Daten, die sich in der Überkomponente befinden an einer Unterkompon
 
 ### Zutaten
 
-* Zwei [Komponenten](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
+* Eine [Komponente](#c02-component-definition)
 * [Daten einer Komponente in der View anzeigen](#c03-show-data)
 * Input-Decorator (@Input)
 
@@ -229,48 +283,44 @@ Ich möchte Daten, die sich in der Überkomponente befinden an einer Unterkompon
 
 Wir werden uns als erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-import ChildComponent from './child.component';
+import { Component } from '@angular/core';
+import { SecondComponent } from './second.component';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <p>Parent Data: {{parentData}}</p>
-    <child-component [childData]="parentData"></child-component>
+    <app-second [childData]="parentData"></app-second>
   `,
-  directives: [ChildComponent]
+  directives: [SecondComponent]
 })
-class MyApp {
+export class DemoAppComponent {
   parentData: string = 'Hello World!';
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
 * Zeile 8: Hier nutzen wir eine Eigenschafts-Bindung, um den Wert der parentData-Eigenschaft an die childData-Eigenschaft der Unterkomponente zu übergeben
 
-{title="child.component.ts", lang=js}
+{title="second.component.ts", lang=js}
 ```
-import {Component, Input} from 'angular2/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'child-component',
+  selector: 'app-second',
   template: '<p>Child Data: {{childData}}</p>'
 })
-class ChildComponent {
+export class SecondComponent {
   @Input() childData: string;
 }
-
-export default ChildComponent;
 ```
 
 __Erklärung__:
 
-* Zeile 8: Mit Hilfe des Input-Decorators (@Input) definieren wir die childData-Eigenschaft als input-Eigenschaft. Zu beachten ist, dass die input-Eigenschaft den gleichen Namen haben muss wie der Namen zwischen den eckigen Klammern in der app.component.ts Zeile 8
+* Zeile 8: Mit Hilfe des Input-Decorators (@Input) definieren wir die childData-Eigenschaft als input-Eigenschaft. Zu beachten ist, dass die input-Eigenschaft den gleichen Namen haben muss wie der Namen zwischen den eckigen Klammern in der demo.component.ts Zeile 8
 
 ### Diskussion
 
@@ -291,9 +341,9 @@ I> Angular erlaubt es uns zwei Namen für eine input-Eigenschaft zu definieren, 
 
 ### Code
 
-Code auf Github für die Lösung: [07-Component\_Recipes/05-Pass\_Data\_to\_Child\_with\_Inputs/Solution](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Solution)
+Code auf Github für die Lösung: [07-Component\_Recipes/04-Pass\_Data\_to\_Child\_with\_Inputs/Solution](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Solution)
 
-Code auf Github für die Demonstration: [07-Component\_Recipes/05-Pass\_Data\_to\_Child\_with\_Inputs/Demo](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Demo)
+Code auf Github für die Demonstration: [07-Component\_Recipes/04-Pass\_Data\_to\_Child\_with\_Inputs/Demo](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Demo)
 
 Live Demo (Code aus dem Demo-Verzeichnis) auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/05-Pass_Data_to_Child_with_Inputs/Demo/index.html).
 
@@ -305,7 +355,8 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkompon
 
 ### Zutaten
 
-* Zwei [Komponenten](#c02-component-definition)
+* [Angular 2 Anwendung](#c02-angular-app)
+* Eine [Komponente](#c02-component-definition)
 * [Daten einer Komponente in der View anzeigen](#c03-show-data)
 * [Auf Nutzer-Input reagieren](#c03-user-input)
 * Output-Decorator (@Output)
@@ -314,65 +365,63 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkompon
 
 Wir werden uns als erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
 
-{title="app.component.ts", lang=js}
+{title="demo.component.ts", lang=js}
 ```
-import {Component} from 'angular2/core';
-
-import ChildComponent from './child.component';
+import { Component } from '@angular/core';
+import { SecondComponent } from './second.component';
 
 @Component({
-  selector: 'my-app',
+  selector: 'demo-app',
   template: `
     <h1>Parent</h1>
     <p>Parent Data: {{parentData}}</p>
-    <child-component (dataChange)="onDataChange($event)"></child-component>
+    <app-second (dataChange)="onDataChange($event)"></app-second>
   `,
-  directives: [ChildComponent]
+  directives: [SecondComponent]
 })
-class MyApp {
+export class DemoAppComponent {
   parentData: string = 'Initial Data';
 
   onDataChange(data) {
     this.parentData = data;
   }
 }
-
-export default MyApp;
 ```
 
 __Erklärung__:
 
-* Zeile 10: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier kein Browser-Event, sondern ein Event, was wir in der Child-Komponente definiert haben (Siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
-* Zeilen 17-19: Methode die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
+* Zeile 9: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier kein Browser-Event, sondern ein Event, was wir in der Child-Komponente definiert haben (Siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
+* Zeilen 16-18: Methode die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
 
-{title="child.component.ts", lang=js}
+{title="second.component.ts", lang=js}
 ```
-import {Component, Output} from 'angular2/core';
-import {EventEmitter} from 'angular2/core';
+import {
+    Component,
+    Output,
+    EventEmitter
+} from '@angular/core';
 
 @Component({
-  selector: 'child-component',
+  selector: 'app-second',
   template: `
     <h1>Child</h1>
     <button (click)="sendData()">Send data to Parent</button>
   `
 })
-class ChildComponent {
+export class SecondComponent {
   @Output() dataChange = new EventEmitter();
 
   sendData() {
     this.dataChange.emit('Child Data');
   }
 }
-
-export default ChildComponent;
 ```
 
 __Erklärung__:
 
-* Zeile 12: Definition eine output-Eigenschaft namens "dataChange". Die output-Eigenschaft hat als Wert eine Instanz der EventEmitter-Klasse
-* Zeilen 14-16: Methode die aufgerufen wird, wenn der Nutzer auf den Button klickt
-  * Zeile 15: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, was übergeben wird (Siehe auch app.component.ts Zeilen 10 und 17)
+* Zeile 11: Definition eine output-Eigenschaft namens "dataChange". Die output-Eigenschaft hat als Wert eine Instanz der EventEmitter-Klasse
+* Zeilen 17-19: Methode die aufgerufen wird, wenn der Nutzer auf den Button klickt
+  * Zeile 16: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, was übergeben wird (Siehe auch demo.component.ts Zeilen 9 und 16)
 
 ### Diskussion
 
@@ -390,7 +439,7 @@ I> Angular erlaubt es uns zwei Namen für eine output-Eigenschaft zu definieren,
 
 ### Code
 
-Code auf Github [07-Component\_Recipes/06-Pass\_Data\_to\_Parent\_with\_Outputs](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/06-Pass_Data_to_Parent_with_Outputs)
+Code auf Github [07-Component\_Recipes/05-Pass\_Data\_to\_Parent\_with\_Outputs](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Parent_with_Outputs)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/06-Pass_Data_to_Parent_with_Outputs/index.html)
 

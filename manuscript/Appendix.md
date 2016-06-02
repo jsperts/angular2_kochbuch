@@ -287,68 +287,79 @@ Falls es __false__ ist, wird die Breite __50px__ sein.
 ## Lokale Variablen
 
 Wie schon erwähnt, können wir in Templates lokale Variablen definieren und nutzen.
-Um eine lokale Variable zu definieren, nutzen wir eine Raute (#).
+Das Wort "lokal" bedeutet in diesem Fall, dass wir die Variablen nur im Template nutzen können.
+Wir haben z. B. in der Klasse der Komponente keinen direkten Zugriff darauf.
+Es zwei Arten von lokalen Variablen: Template Referenz-Variablen (template reference variables) und Template Eingabe-Variablen (template input variables).
+Diese unterscheiden sich in der Syntax und den Wert der Variable.
+
+### Template Referenz-Variablen
+
+Diese lokalen Variablen haben als Wert eine Referenz zu einem DOM-Element oder eine Direktive (zur erinnerung, Komponenten sind auch Direktiven).
+Um Template Referenz-Variablen zu definieren, können wir eine Raute (#) nutzen.
 Hier ein Beispiel:
 
-{line-numbers=off, lang=html}
+{line-numbers=off, lang=html, title="DOM-Element Referenz"}
 ```
 <div #local></div>
 ```
 
-In diesem Fall ist der Wert von "local" das div-Element.
-Alternativ können wir lokale Variablen auch mit dem "var-" Präfix definieren.
+Alternativ können wir template Referenz-Variablen auch mit dem "ref-" Präfix definieren.
 Hier ein Beispiel:
 
-{line-numbers=off, lang=html}
+{line-numbers=off, lang=html, title="DOM-Element Referenz mit ref-"}
 ```
-<div var-local></div>
-```
-
-Lokale Variable können genau so wie Komponenten-Eigenschaften genutzt werden z. B. mittels Interpolation.
-
-### Wert der Variable
-
-Der Wert der Variable hängt vom Kontext ab.
-Oben haben wir eine lokale Variable ohne Zuweisung definiert und das Element besitze auch keine Direktive.
-In so einem Fall ist der Wert immer das DOM-Element.
-Bei Elementen mit Direktiven ist das ganze ein bisschen komplizierter.
-Da gibt es verschiedene Möglichkeiten für den Wert der Variable:
-
-1. Wir nutzen keine Zuweisung und die Direktive setzt kein Wert, dann ist der Wert der Variable das DOM-Element
-2. Wir nutzen keine Zuweisung aber die Direktive setzt ein Wert, dann hängt der Wert von der Direktive ab. Hier wird der Wert implizit gesetzt
-3. Wir nutzen eine Zuweisung und die Direktive nutzt "exportAs", dann ist der Wert der Variable die Direktive. Allerdings muss in so einem Fall die rechte Seite der Zuweisung der Namen sein, der bei "exportAs" definiert wurde
-4. Wir nutzen eine Zuweisung und die Direktive setzt ein Wert mit einem bestimmten Namen, dann hängt der Wert der Variable von dem gesetzten Wert ab. Hier wird der Wert explizit gesetzt und die rechte Seite der Zuweisung muss den richtigen Namen haben. Der Namen wird von der Direktiven definiert
-
-Von der Fallunterscheidung sehen wir, dass es nicht immer einfach ist den Wert einer lokalen Variablen zu bestimmen. Ob die Direktive ein Wert setzt oder "exportAs" nutzt, steht in der Regel in der Dokumentation.
-Damit das ganze verständlicher wird, zeigen wir noch ein paar Beispielen mit eingebaute Angular-Direktiven.
-In den Beispielen beschäftigen wir uns nur mit den Werten von lokalen Variablen.
-Wie die einzelnen Direktiven funktionieren ist in den Rezepten beschrieben.
-
-{line-numbers=off, title="Beispiel für Fall 1", lang=html}
-```
-<div #local [ngClass]="{bla: true}"></div>
+<div ref-local></div>
 ```
 
-Hier hat "local" das DOM-Div-Element als Wert.
+In beiden Fällen ist der Wert von "local" das div-Element.
+Wie oben erwähnt kann eine Template Referenz-Variable auch eine Referenz zu eine Direktive sein.
+Damit die lokale Variable eine Referenz zu eine Direktive sein kann, müssen wir eine Zuweisung nutzen und die Direktive muss die exportAs-Eigenschaft setzen.
+Natürlich muss auf dem Tag auch eine entsprechende Direktive definiert sein.
+Hier ein Beispiel:
 
-{line-numbers=off, title="Beispiel für Fall 2", lang=html}
-```
-<li *ngFor="#local of objects"></li>
-```
-
-Hier nutzen wir die NgFor-Direktive mit eine Liste von Objekten namens "objects". In diesem Fall ist der Wert von "local" das aktuelle Listenelement. Der Wert von "local" wird von der NgFor-Direktive gesetzt.
-
-{line-numbers=off, title="Beispiel für Fall 3", lang=html}
+{line-numbers=off, lang=html, title="Direktive Referenz}
 ```
 <form #local="ngForm"></form>
 ```
 
-Hier hat "local" die NgForm-Direktive als Wert. Wichtig zu beachten: NgForm nutzt "exportAs" mit __`'`ngForm`'`__ (ein String) als Wert und wir nutzen den Namen "ngForm" bei der Zuweisung. Ein anderer Name würde zu einem Fehler führen.
+Hier hat "local" eine Referenz zu der NgForm-Direktive als Wert. Wichtig zu beachten: NgForm nutzt "exportAs" mit __`'`ngForm`'`__ (ein String) als Wert und wir nutzen den Namen "ngForm" bei der Zuweisung. Ein anderer Name würde zu einem Fehler führen.
+Ob eine Direktive einen Wert für die exportAs-Eigenschaft setzt, können wir in der Regel in der Dokumentation nachlesen.
+Auch hier können wir das "ref-" Präfix nutzen:
 
-{line-numbers=off, title="Beispiel für Fall 4", lang=html}
+{line-numbers=off, lang=html, title="Direktive Referenz mit ref-"}
 ```
-<li *ngFor="#l of objects; #local = index"></li>
+<form ref-local="ngForm"></form>
 ```
 
-Die Variable "local" hat den aktuellen Index als Wert. Die NgFor-Direktive definiert intern eine lokale Variable namens "index" die wir an unsere locale Variable "local" zuweisen.
+### Template Eingabe-Variablen
+
+Der Wert von Template Eingabe-Variablen wird von Direktiven gesetzt.
+Diese Art von lokalen Variablen funktioniert nur mit strukturellen Direktiven, sprich Direktiven die ein Template nutzen wie z. B. NgFor.
+In diesem Fall hat das Wort "lokal" eine leicht veränderte Bedeutung.
+Diese Variable können nicht im gesamten Angular-Template benutzt werden, sondern nur im Template der Direktive, die die Variablen definiert.
+Hier ein Beispiel:
+
+{line-numbers=off, title="Implizite Eingabe-Variable mit NgFor", lang=html}
+```
+<li *ngFor="let local of objectsArray"></li>
+```
+
+Das li-Element definiert das Template für die NgFor-Direktive.
+In diesem Fall ist der Wert von "local" eine Referenz auf das aktuelle Element im Array und kann nur innerhalb des li-Elements benutzt werden.
+Die Eingabe-Variable ist implizit da wir für "local" keine Zuweisung nutzen.
+Eine Direktive kann auch mehrere Template Eingabe-Variablen definieren.
+Hier noch ein Beispiel mit NgFor und eine weitere Variable:
+
+{line-numbers=off, title="Explizite Eingabe-Variable mit NgFor", lang=html}
+```
+<li *ngFor="let l of objects; let local = index"></li>
+```
+
+Hier ist der Wert von "local" der Index des aktuellen Elements. Wie oben ist "l" das aktuelle Element.
+Auch hier kann "local" nur innerhalb des li-Elementes benutzt werden.
+Die Variable ist explizit da wir für "local" eine Zuweisung nutzen.
+Die rechte Seite der Zuweisung ist der Namen einer Eigenschaft.
+Die Direktive ist dafür zuständig diesen Namen als Eingabe-Variable zu definieren.
+Wir können nur Namen nutzen, die die Eigenschaft in den Kontext des Templates setzt (das macht diese zu Eingabe-Variablen).
+Wir können also nicht beliebige Eigenschaften einer Direktive bei der Zuweisung nutzen.
 

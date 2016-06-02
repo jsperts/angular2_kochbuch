@@ -3,6 +3,9 @@
 {#gl-angular-app}
 __Angular 2 Anwendung__: Eine Angular 2 Anwendung ist ein Baum von Komponenten und hat immer mindestens eine Komponente. Die Komponente die immer vorhanden ist, ist die Hauptkomponente und diese wird bei der Initialisierung der Anwendung benutzt und bildet die Wurzel des Baums.
 
+{#gl-barrel}
+__barrel__: Ein barrel in Angular 2 ist eine Datei die mehrere Module importiert und gewisse Teile der Module exportiert. Es ist eine einfache Möglichkeit mit möglichst wenige Import-Zeilen, viel Funktionalität zu importieren. In der Regel importieren wir Klassen, Methoden usw. aus einem barrel wie z. B. @angular/core statt die Abhängigkeiten direkt aus der Datei, die diese definiert zu importieren.
+
 {#gl-bootstrap}
 __bootstrap__: Das initialisieren einer Angular 2 Anwendung. Der Initialisierungsprozess beginnt in dem wir die bootstrap-Funktion aufrufen und die Hauptkomponente als Parameter übergeben.
 

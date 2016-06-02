@@ -13,8 +13,9 @@ Hier ein kurzer Überblick, was Sie lernen können:
 
 ## Angular Version
 
-Angular 2 befindet sich im Beta-Stadium und wird ständig aktualisiert. Teilweise wird auch die API verändert.
+Angular 2 befindet sich im Release-Candidate-Stadium und wird ständig aktualisiert. Teilweise wird auch die API verändert.
 Ich versuche das Buch möglichst aktuell zu halten und bitte um Entschuldigung, falls die Rezepte mit der aktuellsten Version von Angular nicht funktionieren.
+Aktuell wird die Version 2.0.0-rc.1 von Angular und 1.0.0-beta.5 von angular-cli benutzt.
 
 ## Wo kann ich das Buch lesen/kaufen
 

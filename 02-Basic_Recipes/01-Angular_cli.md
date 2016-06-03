@@ -84,9 +84,11 @@ Auch gewisse Abhängigkeiten wurden aus der package.json-Datei entfernt, um die 
 Es ist also möglich, dass nicht alle angular-cli Kommandos mit jedem Rezept funktionieren.
 Für die meisten Rezepte ist das src-Verzeichnis am wichtigsten.
 Darin befindet sich der Code für eine Angular 2 Anwendung.
+Mehr Informationen über die Verzeichnisstruktur gibt es in [Appendix-B: angular-cli](#appendix-b).
 
 ### Weitere Ressourcen
 
 * Offizielle Webseite von [angular-cli](https://cli.angular.io/)
 * Github von [angular-cli](https://github.com/angular/angular-cli)
+* [Appendix-B: angular-cli](#appendix-b)
 

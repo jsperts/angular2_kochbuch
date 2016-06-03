@@ -76,4 +76,5 @@ Code auf Github: [02-Basic\_Recipes/03-Define\_Component](https://github.com/jsp
 ### Weitere Ressourcen
 
 * Der [Angular Styleguide](https://angular.io/styleguide) gibt Hintergrundinformationen über Namenskonventionen, die Verzeichnisstruktur von Angular 2 Anwendungen und über andere Best Practices
+* Neue Komponente können wir auch mit Hilfe des generate-Kommandos von angular-cli generieren. Mehr Informationen gibt es im [Appendix-B: angular-cli](#appendix-b)
 

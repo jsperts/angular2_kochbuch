@@ -2,10 +2,12 @@
 
 In den Rezepten nutzen wir angular-cli hauptsächlich, um ein Webserver zu starten für den Beispiel-Code aber das Tool kann noch einiges mehr.
 Wir wollen uns hier angular-cli ein bisschen genauer anschauen.
-Konkreter werden wir uns die wichtigsten Kommandos anschauen und wir verschafen uns ein groben Überblick über die Verzeichnisstruktur die angular-cli generiert.
+Konkreter werden wir uns die wichtigsten Kommandos anschauen und wir verschaffen uns einen groben Überblick über die Verzeichnisstruktur die angular-cli generiert.
 
-Der Hauptvorteil von angular-cli ist, dass es uns erlaubt mit wenig aufwand ein Entwicklungs-Prozess für Angular 2 Anwendungen aufzubauen komplette mit linting, Konfigurationsdateien für Tests, ein Webserver mit Live-Reload, ein Build-Prozess um die TypeScript-Dateien zu kompilieren und mehr.
+Der Hauptvorteil von angular-cli ist, dass es uns erlaubt mit wenig Aufwand ein Entwicklungs-Prozess für Angular 2 Anwendungen aufzubauen komplette mit linting, Konfigurationsdateien für Tests, ein Webserver mit Live-Reload, ein Build-Prozess um die TypeScript-Dateien zu kompilieren und mehr.
 Hätten wir das alles manuell gemacht, wären wir sicherlich mehrere Stunden damit beschäftigt.
+
+I> angular-cli basiert auf [ember-cli](http://ember-cli.com/) es kann also sein, dass hier und da noch "ember-cli" statt "angular-cli" steht.
 
 ## Installation
 
@@ -42,7 +44,7 @@ Folgende Kommandos werden wir uns detaillierter anschauen:
 * test
 * generate
 
-Das sind zwar nicht alle, sollten aber für die meiste Projekten reichen.
+Das sind zwar nicht alle, sollten aber für die meisten Projekten reichen.
 Mit dem help-Kommando, können wir uns alle Kommandos von angular-cli anschauen und welche Optionen diese Unterstützen.
 
 ```bash
@@ -127,7 +129,7 @@ Es gibt aber auch spezielle Regel für Angular 2, diese werden von [codelyzer](h
 ng lint
 ```
 
-Falls nöttig, können wir die Regeln für tslint und codelyzer in der tslint.json-Datei anpassen bzw. ergänzen.
+Falls nötig, können wir die Regeln für tslint und codelyzer in der tslint.json-Datei anpassen bzw. ergänzen.
 Beide Tools haben noch weitere Regel die nicht in der tslint.json-Datei sind.
 Es ist ggf. lohnenswert sich die Webseiten von den Tools anzuschauen, um zu sehen was es sonst noch an Regeln gibt und, ob es sinnvoll wäre diese zu nutzen.
 
@@ -161,7 +163,7 @@ ersetzt werden. Für den Code in diesem Buch wurde das schon gemacht.
 ### test
 
 Das test-Kommando startet die Unit-Tests für das Projekt.
-Bei der Initialisierung wurden schon die nötige Konfigurations-Dateien angelegt und die Abhängigkeiten installiert.
+Bei der Initialisierung wurden schon die nötigen Konfigurationsdateien angelegt und die Abhängigkeiten installiert.
 Wir brauchen also nur Tests zu schreiben und dann:
 
 ```bash

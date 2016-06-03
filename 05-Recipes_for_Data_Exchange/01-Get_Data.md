@@ -92,7 +92,7 @@ export class DemoAppComponent {
   dataService: DataService;
   data: Array<IData>;
 
-  constructor(dataService:DataService) {
+  constructor(dataService: DataService) {
     this.dataService = dataService;
     this.data = [];
   }

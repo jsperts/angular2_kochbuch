@@ -16,11 +16,14 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 import { Component } from '@angular/core';
 
 interface IUser {
-  firstname: string,
-  lastname: string
+  firstname: string;
+  lastname: string;
 }
 
-const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstname: 'John', lastname: 'Doe'}];
+const users: Array<IUser> = [
+  { firstname: 'Max', lastname: 'Mustermann' },
+  { firstname: 'John', lastname: 'Doe' }
+];
 
 @Component({
   selector: 'demo-app',
@@ -44,8 +47,8 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeilen 3-6: Interface Definition für ein User-Objekt
-* Zeile 14: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
-* Zeile 15: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept "[Daten einer Komponente in der View anzeigen](#c03-show-data)" getan haben
+* Zeile 17: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
+* Zeile 18: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept "[Daten einer Komponente in der View anzeigen](#c03-show-data)" getan haben
 
 ### Diskussion
 

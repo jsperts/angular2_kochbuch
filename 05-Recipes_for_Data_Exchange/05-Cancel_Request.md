@@ -39,7 +39,7 @@ export class DemoAppComponent {
 
   subscription: Subscription;
 
-  constructor(dataService:DataService) {...}
+  constructor(dataService: DataService) {...}
 
   getData() {
     this.subscription = this.dataService.getData()

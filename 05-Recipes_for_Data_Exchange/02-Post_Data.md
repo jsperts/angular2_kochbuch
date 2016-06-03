@@ -102,7 +102,7 @@ export class DemoAppComponent {
 
   ...
 
-  constructor(dataService:DataService) {...}
+  constructor(dataService: DataService) {...}
 
   getData() {...}
 

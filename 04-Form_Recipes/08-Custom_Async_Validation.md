@@ -50,7 +50,7 @@ export class DemoAppComponent {
 
   onSubmit() {
     if (!this.form.pending && this.form.valid) {
-      console.log(this.form.value)
+      console.log(this.form.value);
     }
   }
 }

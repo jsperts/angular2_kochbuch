@@ -55,7 +55,7 @@ export class DataService {
     if (response.status === 500) {
       errorString = `Server error: ${response.json().error}`;
     } else {
-      errorString = 'Some error occurred'
+      errorString = 'Some error occurred';
     }
     return Observable.throw(errorString);
   }
@@ -99,7 +99,7 @@ export class DemoAppComponent {
 
   errorText: string;
 
-  constructor(dataService:DataService) {... }
+  constructor(dataService: DataService) {... }
 
   getData() {
     this.dataService.getData()

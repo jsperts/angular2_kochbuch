@@ -1,6 +1,16 @@
 # Change Log
 
-## [Unreleased]
+## [unreleased]
+
+### Added
+
+### Changed
+
+### Removed
+
+### Deprecated
+
+## [v0.2.0] - 2016-06-03
 
 ### Added
 
@@ -13,8 +23,8 @@
 ### Changed
 
 * Link fix in Formular mit dem FormBuilder implementieren
-* Rezepte wurden für angular-cli angepasst (WIP)
-* Angular Version aktualisiert (rc.1) (WIP)
+* Rezepte wurden für angular-cli angepasst
+* Angular Version aktualisiert (rc.1)
 * Rezept: "Liste von Daten anzeigen" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
 * Rezept: "Mit dem Index von ngFor-Elementen arbeiten" Syntax für lokale ngFor-Variable wurde aktualisiert (angular Version beta.17)
 * Rezept: "CSS-Klassen auf Basis von booleschen Werten setzen/entfernen" nutzt die styles-Eigenschaft statt <style></style> im Template

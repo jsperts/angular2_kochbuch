@@ -98,7 +98,7 @@ export class DemoAppComponent {
   dataService: DataService;
   data: Array<IData>;
 
-  constructor(dataService:DataService) {
+  constructor(dataService: DataService) {
     this.dataService = dataService;
     this.data = [];
   }
@@ -319,7 +319,7 @@ export class DemoAppComponent {
 
   ...
 
-  constructor(dataService:DataService) {...}
+  constructor(dataService: DataService) {...}
 
   getData() {...}
 
@@ -428,7 +428,7 @@ export class DataService {
     if (response.status === 500) {
       errorString = `Server error: ${response.json().error}`;
     } else {
-      errorString = 'Some error occurred'
+      errorString = 'Some error occurred';
     }
     return Observable.throw(errorString);
   }
@@ -472,7 +472,7 @@ export class DemoAppComponent {
 
   errorText: string;
 
-  constructor(dataService:DataService) {... }
+  constructor(dataService: DataService) {... }
 
   getData() {
     this.dataService.getData()
@@ -640,7 +640,7 @@ export class DemoAppComponent {
 
   subscription: Subscription;
 
-  constructor(dataService:DataService) {...}
+  constructor(dataService: DataService) {...}
 
   getData() {
     this.subscription = this.dataService.getData()

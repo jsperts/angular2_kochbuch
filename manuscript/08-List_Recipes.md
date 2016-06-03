@@ -249,3 +249,5 @@ In den Varianten ohne "trackBy" wird sich die komplette Liste ändern und in den
 Code auf Github: [08-List\_Recipes/04-Improve\_Performance\_with\_trackBy](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/04-Improve_Performance_with_trackBy).
 Da werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit trackBy gezeigt.
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/04-Improve_Performance_with_trackBy/index.html
+

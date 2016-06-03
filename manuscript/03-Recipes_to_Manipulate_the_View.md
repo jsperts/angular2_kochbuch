@@ -106,11 +106,14 @@ Ich hab eine Liste von Benutzerdaten und ich möchte diese in meine View anzeige
 import { Component } from '@angular/core';
 
 interface IUser {
-  firstname: string,
-  lastname: string
+  firstname: string;
+  lastname: string;
 }
 
-const users: Array<IUser> = [{firstname: 'Max', lastname: 'Mustermann'}, {firstname: 'John', lastname: 'Doe'}];
+const users: Array<IUser> = [
+  { firstname: 'Max', lastname: 'Mustermann' },
+  { firstname: 'John', lastname: 'Doe' }
+];
 
 @Component({
   selector: 'demo-app',
@@ -134,8 +137,8 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeilen 3-6: Interface Definition für ein User-Objekt
-* Zeile 14: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
-* Zeile 15: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept "[Daten einer Komponente in der View anzeigen](#c03-show-data)" getan haben
+* Zeile 17: Nutzung der NgFor-Direktive, um eine Liste anzuzeigen
+* Zeile 18: Hier nutzen wir die lokale Variable "user", um Informationen anzuzeigen wie wir es im Rezept "[Daten einer Komponente in der View anzeigen](#c03-show-data)" getan haben
 
 ### Diskussion
 
@@ -450,7 +453,7 @@ import { Component } from '@angular/core';
   `
 })
 export class DemoAppComponent {
-  color:string;
+  color: string;
 
   constructor() {
     this.color = 'blue';
@@ -529,7 +532,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-app',
   template: `
-    <div [ngStyle]="{'width': elemWidth, 'height': elemHeight}" style="background-color: red"></div>
+    <div [ngStyle]="{'width': elemWidth, 'height': elemHeight}"
+        style="background-color: red"></div>
   `
 })
 export class DemoAppComponent {
@@ -544,9 +548,9 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 6: div-Tag mit Styles. Statische Styles werden über das style-Attribut gesetzt. Dynamische Styles werden mit Hilfe der ngStyle-Eigenschaft, eine [input-Eigenschaft](#gl-input-property) der NgStyle-Direktive, gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die style-Eigenschaften sind die gesetzt werden (hier width und height). Die Werte für die Styles sind in der Klasse der Komponente definiert (siehe Zeilen 13 und 14)
-* Zeile 13: Der Wert für die Breite des Elements
-* Zeile 14: Der Wert für die Höhe des Elements
+* Zeilen 6-7: div-Tag mit Styles. Statische Styles werden über das style-Attribut gesetzt. Dynamische Styles werden mit Hilfe der ngStyle-Eigenschaft, eine [input-Eigenschaft](#gl-input-property) der NgStyle-Direktive, gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die style-Eigenschaften sind die gesetzt werden (hier width und height). Die Werte für die Styles sind in der Klasse der Komponente definiert (siehe Zeilen 14 und 15)
+* Zeile 14: Der Wert für die Breite des Elements
+* Zeile 15: Der Wert für die Höhe des Elements
 
 ### Lösung 2
 
@@ -559,7 +563,7 @@ import { Component } from '@angular/core';
 
 interface IDimensions {
   width: string;
-  height: string
+  height: string;
 }
 
 @Component({

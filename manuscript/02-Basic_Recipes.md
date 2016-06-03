@@ -48,7 +48,7 @@ Dafür gibt es die Kommandos "new" und "init".
 ng new projektName --skip-git
 ```
 
-Dieses Kommando wir ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
+Dieses Kommando wird ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
 Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
 
 Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existierendes Verzeichnis.
@@ -91,11 +91,13 @@ Auch gewisse Abhängigkeiten wurden aus der package.json-Datei entfernt, um die 
 Es ist also möglich, dass nicht alle angular-cli Kommandos mit jedem Rezept funktionieren.
 Für die meisten Rezepte ist das src-Verzeichnis am wichtigsten.
 Darin befindet sich der Code für eine Angular 2 Anwendung.
+Mehr Informationen über die Verzeichnisstruktur gibt es in [Appendix-B: angular-cli](#appendix-b).
 
 ### Weitere Ressourcen
 
 * Offizielle Webseite von [angular-cli](https://cli.angular.io/)
 * Github von [angular-cli](https://github.com/angular/angular-cli)
+* [Appendix-B: angular-cli](#appendix-b)
 
 ## Angular 2 Anwendung {#c02-angular-app}
 
@@ -298,6 +300,7 @@ Code auf Github: [02-Basic\_Recipes/03-Define\_Component](https://github.com/jsp
 ### Weitere Ressourcen
 
 * Der [Angular Styleguide](https://angular.io/styleguide) gibt Hintergrundinformationen über Namenskonventionen, die Verzeichnisstruktur von Angular 2 Anwendungen und über andere Best Practices
+* Neue Komponente können wir auch mit Hilfe des generate-Kommandos von angular-cli generieren. Mehr Informationen gibt es im [Appendix-B: angular-cli](#appendix-b)
 
 ## Ein Service definieren {#c02-define-service}
 
@@ -423,4 +426,8 @@ Da wird auch beschrieben wie wir komplexere Provider-Rezepte nutzen können und 
 ### Code
 
 Code auf Github: [02-Basic\_Recipes/04-Define\_Service](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/04-Define_Service)
+
+### Weitere Ressourcen
+
+* Neue Services können wir auch mit Hilfe des generate-Kommandos von angular-cli generieren. Mehr Informationen gibt es im [Appendix-B: angular-cli](#appendix-b)
 

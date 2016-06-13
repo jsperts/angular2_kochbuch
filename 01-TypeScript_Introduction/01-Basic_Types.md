@@ -77,7 +77,7 @@ var x: [string, number] = ['bla', 10];
 
 __Erklärung__:
 
-Hier definieren wir eine Variable namens "x" als Listen, wobei das erste Element der Liste ein String sein muss und das zweite eine Zahl.
+Hier definieren wir eine Variable namens "x" als Liste, wobei das erste Element der Liste ein String sein muss und das zweite eine Zahl.
 Wir haben nur die erste und zweite Positionen der Liste mit einem Typ versehen.
 Die weiteren Positionen der Liste können entweder Werte vom Typ "string" oder vom Typ "number" beinhalten.
 Dieses "entweder ... oder ..." für Typen nennt man eine Vereinigung von Typen, auf Englisch "Union Type".

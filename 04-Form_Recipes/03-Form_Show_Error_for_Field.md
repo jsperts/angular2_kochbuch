@@ -107,7 +107,7 @@ Darum haben wir in beiden Lösungen den Elvis-Operator bei der Überprüfung der
 
 In beiden Lösungen haben wir das errors-Objekt benutzt, um Konditionen für die NgIf-Direktive zu definieren.
 Dieses beinhaltet die Gründe weshalb ein Eingabefeld ungültig ist.
-Wenn z. B. das required-Attribut eines Eingabefeldes definiert ist und das Feld leer ist, beinhaltet das errors-Objekt die Eigenschaft "required" mit dem Wert __true__.
+Wenn z. B. das required-Attribut eines Eingabefeldes definiert ist und das Feld leer ist, beinhaltet das errors-Objekt die Eigenschaft "required" mit dem Wert __true__.
 Der Namen der Eigenschaft, in unserem Beispiel "required" zeigt an welche Validierung fehlschlägt.
 Dieser Fehlschlag ist der Grund für die Ungültigkeit des Eingabefeldes.
 Als zweite Kondition für das Passwort-Feld, haben wir "minlength" benutzt.
@@ -121,7 +121,7 @@ In der Lösung die wir oben gezeigt haben wäre der Wert für die requiredLength
 #### Lösung 2
 
 Genau so wie die NgForm-Direktive, hat auch die NgControlName-Direktive die exportAs-Eigenschaft mit dem Wert __`'`ngForm`'`__.
-Somit können wir im Template Zugriff auf das Control und dessen Eigenschaften wie z. B. "valid" und "errors" bekommen.
+Somit können wir im Template Zugriff auf das Control und dessen Eigenschaften wie z. B. "valid" und "errors" bekommen.
 Im übrigen können wir diese Lösung auch ohne Formular und __ngControl__ anwenden.
 Die NgModel-Direktive hat auch __`'`ngForm`'`__ als exportAs-Eigenschaft und gibt uns auch Zugriff auf das Control.
 Vom Interface her ist das Control von der NgControlName- und der NgModel-Direktive gleich nur, dass wir für die NgModel-Direktive und deren Control kein Formular benötigen.

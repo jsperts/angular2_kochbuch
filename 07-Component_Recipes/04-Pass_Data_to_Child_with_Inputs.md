@@ -13,7 +13,7 @@ Ich möchte Daten, die sich in der Überkomponente befinden an einer Unterkompon
 
 ### Lösung
 
-Wir werden uns als erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
+Wir werden uns als Erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -57,7 +57,7 @@ __Erklärung__:
 ### Diskussion
 
 Änderungen in der parentData-Eigenschaft werden zur Laufzeit in die childData-Eigenschaft propagiert.
-Wir müssen also nichts tun, wenn sich z. B. durch Nutzer-Interaktion der Wert der parentData-Eigenschaft ändert.
+Wir müssen also nichts tun, wenn sich z. B. durch Nutzer-Interaktion der Wert der parentData-Eigenschaft ändert.
 Wenn wir einen neuen Wert für die childData-Eigenschaft setzen, wird dieser Wert in der Parent-Komponente nicht sichtbar sein.
 Wir haben also hier eine einweg-Datenbindung zwischen der Parent- und Child-Komponente.
 Allerdings müssen wir aufpassen, wenn wir mit Objekten arbeiten.

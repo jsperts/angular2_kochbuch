@@ -141,7 +141,7 @@ Der Komponente reicht es Daten bzw. Fehlermeldungen zu bekommen, die direkt ange
 I> #### Fehler bei einer Server-Anfrage
 I>
 I> Grob können wir bei Server-Anfragen mittels des Http-Services, zwei Fehlerquellen unterscheiden:
-I> (1) Die Anfrage kann nicht geschickt werden z. B., wenn der Server nicht verfügbar ist
+I> (1) Die Anfrage kann nicht geschickt werden z. B., wenn der Server nicht verfügbar ist
 I> (2) Der Status der Antwort (response.status) ist nicht zwischen __200__ und __299__
 
 ### Code

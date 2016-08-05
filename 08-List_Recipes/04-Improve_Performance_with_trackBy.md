@@ -65,7 +65,7 @@ Ohne trackBy müsste Angular die komplete Liste im DOM neu generieren, da es nic
 Damit Angular erkennen kann welche Elemente sich geändert haben, müssen wir eine trackBy-Methode (hier "trackById") definieren.
 Diese bekommt den Index und ein Listen-Element als Parameter und gibt zurück den Wert der eindeutigen Eigenschaft (hier "user.id").
 Wenn jetzt die Liste ersetzt wird, wird Angular durch die neue Liste gehen und für jedes Element wird die trackBy-Methode aufgerufen.
-Falls der zurückgegebene Wert schon bekannt ist (z. B. das Element mit ID 1 war schon in der alten Liste), wird Angular das Element mit dem schon bekannten Element vergleichen.
+Falls der zurückgegebene Wert schon bekannt ist (z. B. das Element mit ID 1 war schon in der alten Liste), wird Angular das Element mit dem schon bekannten Element vergleichen.
 Wenn das alte sich vom neuem Element unterscheidet, wird das DOM aktualisiert.
 Falls diese gleich sind, bleibt das DOM so wie es ist.
 Elemente die noch nicht bekannt sind, werden hinzugefügt und alte Elemente die nicht mehr in der Liste sind, werden aus dem DOM entfernt.

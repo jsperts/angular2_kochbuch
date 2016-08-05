@@ -75,7 +75,7 @@ I> CommonJS ist ein Modul-Standard der hauptsächlich in Node.js verwendet wird.
 
 I> #### Die target-Option
 I>
-I> Standardmäßig nutzt der TypeScript-Compiler ECMAScript 3 als "target". Der generierter JavaScript-Code ist also ES3 kompatibel. ES3 zu nutzen ist nur sinnvoll wenn wir alte Browser wie z. B. Internet Explorer 8 unterstützen möchten. Da Angular 2 nur neuere Browser (ab Internet Explorer 9) unterstützt, können wir ruhig ES5 nutzen. Ein weiterer Grund um ES5 zu nutzen ist, dass manche TypeScript-Features wie z. B. [getter/setters](https://www.typescriptlang.org/docs/handbook/classes.html#accessors) für Klassen, in ES3 nicht unterstützt werden.
+I> Standardmäßig nutzt der TypeScript-Compiler ECMAScript 3 als "target". Der generierter JavaScript-Code ist also ES3 kompatibel. ES3 zu nutzen ist nur sinnvoll wenn wir alte Browser wie z. B. Internet Explorer 8 unterstützen möchten. Da Angular 2 nur neuere Browser (ab Internet Explorer 9) unterstützt, können wir ruhig ES5 nutzen. Ein weiterer Grund um ES5 zu nutzen ist, dass manche TypeScript-Features wie z. B. [getter/setters](https://www.typescriptlang.org/docs/handbook/classes.html#accessors) für Klassen, in ES3 nicht unterstützt werden.
 
 ### Dateien automatisch kompilieren mit "watch"
 
@@ -94,7 +94,7 @@ Mit der watch-Option werden unsere Dateien bei jede Änderung automatisch neukom
 ### Sourcemaps generieren
 
 Nach dem Kompilieren stimmen meistens die Zeilennummern in der JavaScript- und der TypeScript-Dateien nicht mehr überein.
-Das kann das Debugging erschweren, wenn z. B. der Browser ein Fehler in der JavaScript-Datei findet und wir diesen in der TypeScript-Datei finden und korrigieren möchten.
+Das kann das Debugging erschweren, wenn z. B. der Browser ein Fehler in der JavaScript-Datei findet und wir diesen in der TypeScript-Datei finden und korrigieren möchten.
 Für genau solche Fälle gibt es Sourcemaps, die uns die richtige Zeile in der TypeScript-Datei anzeigen.
 Um Sourcemaps zu erzeugen, nutzen wir eine weitere Option des Compilers.
 

@@ -58,7 +58,7 @@ Nach __\*ngIf=__ kommt ein Angular-Template-Ausdruck, der die Kondition angibt.
 Wenn die Evaluation des Ausdruckes __true__ zurückgibt, ist die Kondition wahr und das Template wird angezeigt.
 Andernfalls wird das Template aus dem DOM entfernt.
 Wir haben hier einen sehr einfachen Ausdruck benutzt.
-Wir hätten auch einen komplexeren Ausdruck nutzen können z. B. einen der ein Vergleich mit __===__ beinhaltet.
+Wir hätten auch einen komplexeren Ausdruck nutzen können z. B. einen der ein Vergleich mit __===__ beinhaltet.
 
 ### Code
 

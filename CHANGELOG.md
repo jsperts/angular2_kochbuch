@@ -6,6 +6,8 @@
 
 ### Changed
 
+* Schreib-/Grammatikfehler Korrekturen
+
 ### Removed
 
 ### Deprecated

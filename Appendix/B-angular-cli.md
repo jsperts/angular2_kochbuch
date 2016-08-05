@@ -287,7 +287,7 @@ Hier befinden sich alle Abhängigkeiten die mittels npm installiert worden sind.
 
 ### public/
 
-In dieses Verzeichnis gehören alle Ressourcen die wir für unsere Anwendung brauchen, die aber nicht Teil des Build-Prozesses sind wie z. B. Bilder und Fonts.
+In dieses Verzeichnis gehören alle Ressourcen die wir für unsere Anwendung brauchen, die aber nicht Teil des Build-Prozesses sind wie z. B. Bilder und Fonts.
 
 ### src/
 

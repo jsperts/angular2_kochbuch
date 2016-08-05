@@ -14,7 +14,7 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkompon
 
 ### Lösung
 
-Wir werden uns als erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
+Wir werden uns als Erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
 
 {title="demo.component.ts", lang=js}
 ```

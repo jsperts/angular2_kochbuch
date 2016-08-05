@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte von Null auf eine Angular 2 Anwendung implementieren.
+Ich möchte von null auf eine Angular 2 Anwendung implementieren.
 
 ### Zutaten
 
@@ -105,7 +105,7 @@ Natürlich hätten wir das auch machen können aber die Aufspaltung in zwei Date
 Zum einen vermischen wir nicht die Komponentendefinition und die Initialisierung der Anwendung.
 Die Komponentendefinition ist allgemein und könnte auf unterschiedlichen Plattformen verwendet werden.
 Die bootstrap-Funktion ist Browser spezifisch, daher auch der Import von "@angular/platform-browser-dynamic" und nicht "@angular/core".
-Das heißt, dass wir theoretisch mehrere Initialisierungsdateien haben könnten z. B. eine für den Browser und eine für den Server, die die gleiche Hauptkomponente verwenden.
+Das heißt, dass wir theoretisch mehrere Initialisierungsdateien haben könnten z. B. eine für den Browser und eine für den Server, die die gleiche Hauptkomponente verwenden.
 Die Aufspaltung erhöht also die Wiederverwendbarkeit unserer Hauptkomponente.
 Ein weiterer Vorteil ist die Erhöhung der Testbarkeit unserer Hauptkomponente.
 Wenn sich der bootstrap-Aufruf in der gleichen Datei befindet wie unsere Hauptkomponente, wird es bei einem Unit-Test Fehlermeldungen geben, da wir nicht nur die Komponente testen, sondern auch die Anwendung initialisieren.

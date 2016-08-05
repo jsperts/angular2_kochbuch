@@ -4,19 +4,19 @@
 __Angular 2 Anwendung__: Eine Angular 2 Anwendung ist ein Baum von Komponenten und hat immer mindestens eine Komponente. Die Komponente die immer vorhanden ist, ist die Hauptkomponente und diese wird bei der Initialisierung der Anwendung benutzt und bildet die Wurzel des Baums.
 
 {#gl-barrel}
-__barrel__: Ein barrel in Angular 2 ist eine Datei die mehrere Module importiert und gewisse Teile der Module exportiert. Es ist eine einfache Möglichkeit mit möglichst wenige Import-Zeilen, viel Funktionalität zu importieren. In der Regel importieren wir Klassen, Methoden usw. aus einem barrel wie z. B. @angular/core statt die Abhängigkeiten direkt aus der Datei, die diese definiert zu importieren.
+__barrel__: Ein barrel in Angular 2 ist eine Datei die mehrere Module importiert und gewisse Teile der Module exportiert. Es ist eine einfache Möglichkeit mit möglichst wenige Import-Zeilen, viel Funktionalität zu importieren. In der Regel importieren wir Klassen, Methoden usw. aus einem barrel wie z. B. @angular/core statt die Abhängigkeiten direkt aus der Datei, die diese definiert zu importieren.
 
 {#gl-bootstrap}
 __bootstrap__: Das initialisieren einer Angular 2 Anwendung. Der Initialisierungsprozess beginnt in dem wir die bootstrap-Funktion aufrufen und die Hauptkomponente als Parameter übergeben.
 
 {#gl-data-binding}
-__Daten-Bindung__: Auf Englisch "data binding" ist die Verbindung zwischen Daten in einem Angular-Template und entsprechende Daten in einer Komponente oder Direktive. Daten-Bindungen können auf verschiedenen Weisen entstehen z. B. durch Interpolation, Event-Bindung mittels Klammern (...) oder Eigenschaft-Bindung mittels eckigen Klammern [...].
+__Daten-Bindung__: Auf Englisch "data binding" ist die Verbindung zwischen Daten in einem Angular-Template und entsprechende Daten in einer Komponente oder Direktive. Daten-Bindungen können auf verschiedenen Weisen entstehen z. B. durch Interpolation, Event-Bindung mittels Klammern (...) oder Eigenschaft-Bindung mittels eckigen Klammern [...].
 
 {#gl-decorator}
 __Decorator__: Ist eine Funktion die Metadaten zu einer Klasse, deren Methoden und Eigenschaften und Methodenparameter hinzufügen kann. Decorators sind ein TypeScript Feature und fangen immer mit einem "@" an.
 
 {#gl-di}
-__Dependency Injection (DI)__: Ist ein Design Pattern, um Abhängigkeiten zu verwalten. Angular nutzt DI, um Abhängigkeiten wie z. B. Services zu instantiieren und der Komponente zu übergeben.
+__Dependency Injection (DI)__: Ist ein Design Pattern, um Abhängigkeiten zu verwalten. Angular nutzt DI, um Abhängigkeiten wie z. B. Services zu instantiieren und der Komponente zu übergeben.
 
 {#gl-directiv}
 __Direktive__: Eine Direktive in Angular 2 ist ein UI-Baustein, den wir nutzen können um HTML-Elemente zu definieren, zu ändern und deren Verhalten zu beeinflussen. Sie sind die wesentlichen Bausteine von Angular. Direktiven gehören zu eine von drei Kategorien: Komponenten, Attribut-Direktive und strukturelle-Direktive.

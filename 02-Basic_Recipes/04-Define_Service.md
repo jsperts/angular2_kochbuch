@@ -78,7 +78,7 @@ Wir werden jetzt diese Fragen beantworten.
 #### Dependency Injection
 
 Angular nutzt Dependency Injection (DI), um Abhängigkeiten zu verwalten.
-Alle Providers von Komponenten werden mit dem sogenannten "Injector" registriert und dieser weiß dann zur Laufzeit was er tun muss, wenn z. B. eine Komponente ein Service im Konstruktor als Abhängigkeit definiert hat.
+Alle Providers von Komponenten werden mit dem sogenannten "Injector" registriert und dieser weiß dann zur Laufzeit was er tun muss, wenn z. B. eine Komponente ein Service im Konstruktor als Abhängigkeit definiert hat.
 Die Information, dass die Komponente einen Service braucht wird in den Metadaten der Komponente gespeichert.
 Bei der Komponentendefinition stehen uns diese Metadaten zur Verfügung, da wir den Component-Decorator nutzten.
 

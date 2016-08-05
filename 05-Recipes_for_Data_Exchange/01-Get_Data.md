@@ -182,13 +182,13 @@ Der Grund dafür ist, dass wir die Logik für den Aufruf nicht in unsere Kompone
 Die Komponente interessiert sich nicht wie wir die Daten bekommen.
 Diese braucht nur ein Array mit Daten.
 Woher dieses Array stammt ist der Komponente egal.
-Mit dem extra Service ist es einfacher z. B. die URL zu ändern ohne, dass wir die Komponente anpassen müssen.
+Mit dem extra Service ist es einfacher z. B. die URL zu ändern ohne, dass wir die Komponente anpassen müssen.
 Wir passen nur den Service an und alle Komponenten die diesen Service benutzen werden weiterhin funktionieren.
-Es ist allgemein ein "Best Practice" unsere Komponenten schlank zu halten und Logik wie z. B. "Wie hole ich Daten?" einem Service zu überlassen.
+Es ist allgemein ein "Best Practice" unsere Komponenten schlank zu halten und Logik wie z. B. "Wie hole ich Daten?" einem Service zu überlassen.
 
 I> #### Observables
 I>
-I> Observables sind Objekte, die eine Folge von Werten generieren (einen Fluss/Stream). Das Generieren der Werte kann synchron oder asynchron erfolgen. Die generierte Werte werden an sogenannten "Observers" übergeben die etwas mit den Daten machen z. B. diese in der View anzeigen. In unserem Beispiel erzeugt die get-Methode des Http-Services ein Observable. Dieses Observable generiert ein Wert, wenn der Server eine Antwort geliefert hat. Die generierte Werte können transformiert werden (z. B. mit der map-Methode) und am Ende werden diese einem Observer übergeben.
+I> Observables sind Objekte, die eine Folge von Werten generieren (einen Fluss/Stream). Das Generieren der Werte kann synchron oder asynchron erfolgen. Die generierte Werte werden an sogenannten "Observers" übergeben die etwas mit den Daten machen z. B. diese in der View anzeigen. In unserem Beispiel erzeugt die get-Methode des Http-Services ein Observable. Dieses Observable generiert ein Wert, wenn der Server eine Antwort geliefert hat. Die generierte Werte können transformiert werden (z. B. mit der map-Methode) und am Ende werden diese einem Observer übergeben.
 
 I> #### Observers
 I>

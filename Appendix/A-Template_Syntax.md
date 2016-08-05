@@ -1,7 +1,7 @@
 # Appendix A: Template-Syntax {#appendix-a}
 
 Angular 2 nutzt Templates die uns erlauben die View von Komponenten zu definieren.
-Diese Templates unterstützen den Großteil der HTML-Syntax und sie unterstützen auch eine spezielle Syntax die uns z. B. ermöglicht Daten, die sich in Komponenten befinden dem Nutzer anzuzeigen.
+Diese Templates unterstützen den Großteil der HTML-Syntax und sie unterstützen auch eine spezielle Syntax die uns z. B. ermöglicht Daten, die sich in Komponenten befinden dem Nutzer anzuzeigen.
 Wir werden gleich sehen wie die spezielle Angular-Syntax für Templates aussieht und, was wir damit machen können.
 Hier handelt es sich nur um eine Kurzfassung mit den wichtigsten Informationen.
 Die offizielle Angular Dokumentation gibt weitere Details über die [Template-Syntax](https://angular.io/docs/ts/latest/guide/template-syntax.html).
@@ -26,7 +26,7 @@ Wir können nur Eigenschaften der Komponente zu, der die View gehört und lokale
 
 Template-Anweisungen erlauben uns das Aktualisieren des Zustands unserer Anwendung.
 Sie werden bei Event-Bindungen benutzt und können Nebeneffekte haben.
-Sie sind also eine Reaktion auf Events, die durch den Nutzer ausgelöst werden z. B. click-Event.
+Sie sind also eine Reaktion auf Events, die durch den Nutzer ausgelöst werden z. B. click-Event.
 Wie auch Template-Ausdrücken, nutzen Template-Anweisungen in eine JavaScript-ähnliche Syntax.
 Aber auch hier ist nicht alles erlaubt, was in eine JavaScript-Anweisung erlaubt ist.
 Z. B. sind "new" "++" und bit-Operationen nicht erlaubt.
@@ -115,7 +115,7 @@ Es ist also Geschmackssache, ob man Klammern oder "bind-" nutzt.
 
 W> #### HTML-Attribut vs. DOM-Eigenschaft
 W>
-W> Wir müssen hier zwischen HTML-Attribute und DOM-Eigenschaften unterscheiden. Oft gibt es Attribute die den gleichen Namen haben wie DOM-Eigenschaften z. B. "src". In Angular werden Attribute benutzt, um initiale Werte zu setzen und diese Werte sind statisch. Sobald wir Daten-Bindungen nutzen, nutzen wir automatisch DOM-Eigenschaften. Streng genommen haben wir also bei der Interpolation die src- und die textContent-Eigenschaft der Elemente gesetzt. Da es gewisse Attribute gibt, die zu keiner DOM-Eigenschaft gehören, bietet Angular auch eine spezielle Syntax an, um Attribute zu binden. Diese werden wir später sehen.
+W> Wir müssen hier zwischen HTML-Attribute und DOM-Eigenschaften unterscheiden. Oft gibt es Attribute die den gleichen Namen haben wie DOM-Eigenschaften z. B. "src". In Angular werden Attribute benutzt, um initiale Werte zu setzen und diese Werte sind statisch. Sobald wir Daten-Bindungen nutzen, nutzen wir automatisch DOM-Eigenschaften. Streng genommen haben wir also bei der Interpolation die src- und die textContent-Eigenschaft der Elemente gesetzt. Da es gewisse Attribute gibt, die zu keiner DOM-Eigenschaft gehören, bietet Angular auch eine spezielle Syntax an, um Attribute zu binden. Diese werden wir später sehen.
 
 ### Event-Bindung
 
@@ -124,7 +124,7 @@ Jetzt geht es um eine Art der Bindung, die zwar auch eine einweg-Bindung ist, di
 Hier fließen Daten von der View in die Komponente.
 Dafür nutzen wir eine spezielle Syntax mit Klammern __(...)__.
 Zwischen den Klammern kommt der Name eines Events.
-Wir können DOM-Events nutzen wie z. B. "click", "change", etc. oder wir können eigene Events definieren.
+Wir können DOM-Events nutzen wie z. B. "click", "change", etc. oder wir können eigene Events definieren.
 Eigene Events werden in Komponenten und Direktiven definiert.
 Hier ein Beispiel für das click-Event:
 
@@ -219,7 +219,7 @@ Wir können also die beidseitige-Bindung auch aufspalten, wenn wir das möchten:
 
 I> #### Eigene Direktive mit beidseitige-Bindung
 I>
-I> Wenn wir eine eigene Direktive mit beidseitige-Bindung schreiben möchten, müssen wir auf die Namen der Eigenschaft und des Events achten. Wenn wir z. B. eine input-Eigenschaft namens "x" haben, muss die output-Eigenschaft (das Event) den Namen "xChange" haben.
+I> Wenn wir eine eigene Direktive mit beidseitige-Bindung schreiben möchten, müssen wir auf die Namen der Eigenschaft und des Events achten. Wenn wir z. B. eine input-Eigenschaft namens "x" haben, muss die output-Eigenschaft (das Event) den Namen "xChange" haben.
 
 ### Attributs-Bindung
 
@@ -273,7 +273,7 @@ Hier ein Beispiel:
 
 Falls "isRed" __true__ ist, wird das color-Style den Wert __red__ haben.
 Falls es __false__ ist, wird das color-Style den Wert __black__ haben.
-Mache Styles haben auch eine Maßeinheit z. B. "px", "em" usw.
+Mache Styles haben auch eine Maßeinheit z. B. "px", "em" usw.
 So können wir auch die Maßeinheit mit definieren:
 
 {line-numbers=off, lang=html}
@@ -288,7 +288,7 @@ Falls es __false__ ist, wird die Breite __50px__ sein.
 
 Wie schon erwähnt, können wir in Templates lokale Variablen definieren und nutzen.
 Das Wort "lokal" bedeutet in diesem Fall, dass wir die Variablen nur im Template nutzen können.
-Wir haben z. B. in der Klasse der Komponente keinen direkten Zugriff darauf.
+Wir haben z. B. in der Klasse der Komponente keinen direkten Zugriff darauf.
 Es zwei Arten von lokalen Variablen: Template Referenz-Variablen (template reference variables) und Template Eingabe-Variablen (template input variables).
 Diese unterscheiden sich in der Syntax und den Wert der Variable.
 
@@ -334,7 +334,7 @@ Auch hier können wir das "ref-" Präfix nutzen:
 ### Template Eingabe-Variablen
 
 Der Wert von Template Eingabe-Variablen wird von Direktiven gesetzt.
-Diese Art von lokalen Variablen funktioniert nur mit strukturellen Direktiven, sprich Direktiven die ein Template nutzen wie z. B. NgFor.
+Diese Art von lokalen Variablen funktioniert nur mit strukturellen Direktiven, sprich Direktiven die ein Template nutzen wie z. B. NgFor.
 In diesem Fall hat das Wort "lokal" eine leicht veränderte Bedeutung.
 Diese Variable können nicht im gesamten Angular-Template benutzt werden, sondern nur im Template der Direktive, die die Variablen definiert.
 Hier ein Beispiel:

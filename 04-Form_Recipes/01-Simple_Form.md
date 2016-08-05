@@ -47,7 +47,7 @@ __Erklärung__:
   * Zeile 8: Eingabefeld für den Benutzernamen. Hier nutzen wir die NgModel-Direktive, um die View mit den Daten (dem Modell) der Komponente zu verbinden. Konkreter, reden wir hier von einer beidseitige-Bindung zwischen den Wert des Eingabefeldes und der username-Eigenschaft des user-Objekts (siehe Zeilen 16-19)
   * Zeile 10: Ähnlich wie Zeile 8 aber für das Passwort-Feld
 * Zeilen 16-19: Ein Objekt, wo die Daten, die der Nutzer in das Formular eingibt gespeichert werden. Die leere Strings für die Eigenschaften "username" und "password", sind die Default-Werte für die Eingabefelder
-* Zeilen 22-24: Methode die Aufgerufen wird, wenn der Nutzer ein submit-Event auslöst z. B. durch ein Klick auf den Button (siehe auch Zeile 6)
+* Zeilen 22-24: Methode die Aufgerufen wird, wenn der Nutzer ein submit-Event auslöst z. B. durch ein Klick auf den Button (siehe auch Zeile 6)
 
 ### Diskussion
 

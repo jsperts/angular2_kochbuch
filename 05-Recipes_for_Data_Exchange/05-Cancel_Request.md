@@ -67,7 +67,7 @@ __Erklärung__:
 Die subscribe-Methode von Instanzen der Observables-Klasse gibt eine Instanz der Subscription-Klasse zurück.
 Wir können auf diese Instanz die unsubscribe-Methode aufrufen, um die dazugehörige Observables wegzuschmeisen.
 Nach dem Aufruf der unsubscribe-Methode werden die Observables gelöscht und deren Callback-Funktionen werden nicht mehr aufgerufen.
-Auch z. B. die Callback-Funktion der map-Methode (diese wird in der data.service.ts benutzt) wird nicht mehr aufgerufen.
+Auch z. B. die Callback-Funktion der map-Methode (diese wird in der data.service.ts benutzt) wird nicht mehr aufgerufen.
 Also erzeugen die Observables keine neuen Werte mehr und der Fluss (stream) wird unterbrochen.
 Bei Server-Anfrage wird auch die abort-Methode der XMLHttpRequest-Instanz aufgerufen und die Anfrage wird abgebrochen.
 

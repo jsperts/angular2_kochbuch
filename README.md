@@ -13,9 +13,8 @@ Hier ein kurzer Überblick, was Sie lernen können:
 
 ## Angular Version
 
-Angular 2 befindet sich im Release-Candidate-Stadium und wird ständig aktualisiert. Teilweise wird auch die API verändert.
-Ich versuche das Buch möglichst aktuell zu halten und bitte um Entschuldigung, falls die Rezepte mit der aktuellsten Version von Angular nicht funktionieren.
-Aktuell wird die Version 2.0.0-rc.1 von Angular und 1.0.0-beta.5 von angular-cli benutzt.
+m 14.09.2016 wurde die 2.0.0 Version von Angular veröffentlicht und hat mitsich einige Änderungen gebracht. Diese Änderungen erfordern eine Überarbeitung von allen Rezepten, die sich in diesem Buch befinden. Da ich momentan wenig Zeit habe, wird es eine Weile dauern bis ich alle Rezepte auf den neusten stand gebracht hab. Dafür bitte ich um Entschuldigung.
+Aktuell wird die Version 2.0.0-rc.1 von Angular und 1.0.0-beta.5 von angular-cli benutzt. Aktuelle Code-Beispiele für Angular 2.0.0 und angular-cli 1.0.0-beta.14, gibt es im [next-Branch](https://github.com/jsperts/angular2_kochbuch_code/tree/next).
 
 ## Wo kann ich das Buch lesen/kaufen
 

@@ -8,14 +8,14 @@ Ich möchte, dass ein Submit nur dann möglich ist, wenn das Formular gültig is
 * [Ein Formular](#c04-simple-form)
 * NgControlName-Direktive von Angular
 * Validierungs-Attribute
-* Anpassungen an dem Formular
+* Anpassungen am Formular
 * Lokale (Template-) Variable, die das Formular referenziert
 
 ### Lösung 1
 
-In dieser Lösung werden wir sehen wie wir die Gültigkeit des Formulars im Template überprüfen können.
+In dieser Lösung werden wir sehen, wie wir die Gültigkeit des Formulars im Template überprüfen können.
 Wir werden den Submit-Button deaktivieren, wenn das Formular ungültig ist.
-Das wird das Submit-Event unterbinden, wenn nicht alle Formular-Felder gültig sind.
+Dadurch wird das Submit-Event unterbunden, wenn nicht alle Formular-Felder gültig sind.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -44,7 +44,7 @@ import { Component } from '@angular/core';
 
 __Erklärung__:
 
-* Zeile 6: Mit __#form=`"`ngForm`"`__ definieren wir eine lokale Variable namens "form". Die Variable ist eine Referenz auf die Instanz der NgForm-Direktive für unser Formular. Wir nutzen auch das novalidate-Attribut, damit der Browser keine Fehlermeldungen für ungültige Eingabefelder anzeigt. Dies ist kein Angular-spezifisches Attribut
+* Zeile 6: Mit __#form=`"`ngForm`"`__ definieren wir eine lokale Variable namens "form". Die Variable ist eine Referenz auf die Instanz der NgForm-Direktive unseres Formulars. Wir nutzen auch das novalidate-Attribut, damit der Browser keine Fehlermeldungen für ungültige Eingabefelder anzeigt. Dies ist kein Angular-spezifisches Attribut
 * Zeilen 8-10: Eingabefeld für den Benutzernamen
   * Zeile 9: Mittels __ngControl=`"`username`"`__ definieren wir ein Control namens "username"
   * Zeile 10: Mittels __required__ definieren wir das Eingabefeld als Pflichtfeld
@@ -56,9 +56,9 @@ __Erklärung__:
 
 ### Lösung 2
 
-In dieser Lösung werden wir sehen wie wir die gültigkeit des Formulars in der Klasse überprüfen können.
-Wir nutzen das Formular von der ersten Lösung mit zwei Änderungen:
-Wir übergeben die lokale Variable "form" der onSubmit-Methode und wir nutzen nicht mehr die disabled-Eigenschaft des Buttons.
+In dieser Lösung werden wir sehen wie wir die Gültigkeit des Formulars in der Klasse überprüfen können.
+Wir nutzen das Formular aus der ersten Lösung mit zwei Änderungen:
+Wir übergeben der onSubmit-Methode die lokale Variable "form" und wir nutzen nicht mehr die disabled-Eigenschaft des Buttons.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -92,13 +92,13 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 6: Die lokale Variable "form" wird bei dem Aufruf der onSubmit-Methode übergeben
-* Zeile 23: Die onSubmit-Methode hat jetzt ein Parameter namens "form"
+* Zeile 6: Die lokale Variable "form" wird beim Aufruf der onSubmit-Methode übergeben
+* Zeile 23: Die onSubmit-Methode hat jetzt einen Parameter namens "form"
 * Zeile 24: Wir nutzen __form.valid__, um zu überprüfen, ob das Formular gültig ist
 
 ### Diskussion
 
-Wie schon im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" erwähnt, bekommt jedes form-Tag eine Instanz der NgForm-Direktive.
+Wie schon im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" erwähnt, erhält jedes form-Tag eine Instanz der NgForm-Direktive.
 Diese Instanz beinhaltet verschiedene Informationen über das Formular wie z. B. dessen Gültigkeitsstatus, dessen Controls und die Werte der Eingabefelder des Formulars.
 Die Direktive hat eine exportAs-Eigenschaft mit dem Wert __`'`ngForm`'`__ (ein String).
 Den Wert der exportAs-Eigenschaft können wir im Template nutzen, um die Instanz der Direktive im Template zu referenzieren.
@@ -106,11 +106,11 @@ Den Wert der exportAs-Eigenschaft können wir im Template nutzen, um die Instanz
 Ein Formular ist nur dann gültig, wenn alle seine Eingabefelder gültig sind.
 Die NgForm-Direktive überprüft also die einzelnen Eingabefelder und setzt die valid-Eigenschaft auf __true__, wenn jedes Eingabefeld gültig ist.
 Damit die NgForm-Direktive weiß welche Eingabefelder überprüft werden müssen, müssen die Eingabefelder als Controls definiert sein.
-Wir definieren, dass ein Eingabefeld zu dem Formular gehört, indem man __ngControl=`"`controlName`"`__ nutzen.
+Wir definieren, dass ein Eingabefeld zum Formular gehört, indem wir __ngControl=`"`controlName`"`__ nutzen.
 Im Hintergrund wird von Angular eine neue Instanz der NgControlName-Direktive erzeugt.
-Diese Instanz registriert sich dann mit dem gegebenen Namen als Control für das Formular.
+Diese Instanz registriert sich dann mit dem angegebenen Namen als Control am Formular.
 Die NgForm-Direktive wird dann für unser Control eine Instanz der Control-Klasse erzeugen.
-Wir können auch Eingabefelder haben die kein __ngControl__ nutzen.
+Wir können auch Eingabefelder definieren, die kein __ngControl__ nutzen.
 Diese werden allerdings bei der Validierung des Formulars nicht mit einbezogen.
 
 Von Haus aus unterstützt Angular derzeit vier Validierungs-Attribute:
@@ -126,15 +126,15 @@ Vermutlich wird es mit der Zeit noch mehr eingebaute Validierungs-Attribute bzw.
 
 Code auf Github für die erste Lösung: [04-Form\_Recipes/04-Check\_Form\_Validity\_in\_Template/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-01)
 
-Live Demo für die erste Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-01/index.html)
+Live Demo der ersten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-01/index.html)
 
 Code auf Github für die zweite Lösung: [04-Form\_Recipes/04-Check\_Form\_Validity\_in\_Template/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-02)
 
-Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-02/index.html)
+Live Demo der zweiten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-02/index.html)
 
 ### Weitere Ressourcen
 
-* Offizielle [NgControlName](https://angular.io/docs/ts/latest/api/common/NgControlName-directive.html) Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgControlName](https://angular.io/docs/ts/latest/api/common/NgControlName-directive.html)-Dokumentation auf der Angular 2 Webseite
 * Eine Instanz der NgForm-Direktive beinhaltet auch die Eigenschaften der [AbstractControlDirective](https://angular.io/docs/ts/latest/api/common/AbstractControlDirective-class.html)
-* Weitere Informationen zu lokale Variablen und die exportAs-Eigenschaft gibt es im [Appendix A: Template-Syntax](#appendix-a)
+* Weitere Informationen zu lokalen Variablen und zur exportAs-Eigenschaft gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

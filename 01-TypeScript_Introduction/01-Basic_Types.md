@@ -1,6 +1,6 @@
 ## Basistypen {#c01-basic-types}
 
-TypeScript bringt von sich aus eine Anzahl von Basistypen wie z. B. "string", "boolean" und "number" mit, aber es erlaubt es uns auch, eigene Typen zu definieren.
+TypeScript bringt von sich aus eine Anzahl von Basistypen wie z. B. "string", "boolean" und "number" mit, aber es erlaubt es uns auch eigene Typen zu definieren.
 Es ist zwar nicht erforderlich, dass wir mit dem Typ-System arbeiten, es kann aber manchmal ganz nützlich sein. Darum werden wir in den verschiedenen Rezepten immer wieder auf Typen stoßen.
 
 Insgesamt hat TypeScript acht Typen, die immer vorhanden sind:
@@ -17,7 +17,7 @@ Insgesamt hat TypeScript acht Typen, die immer vorhanden sind:
 Typdefinitionen kommen immer nach einem Doppelpunkt (:).
 Wenn wir z. B. nach einem Variablennamen, Funktionsnamen oder Funktionsparameter einen Doppelpunkt sehen, dann handelt es sich um eine Typdefinition.
 Der Wert nach dem Doppelpunkt gibt den Typ an.
-Beim Kompilieren werden die Typinformationen benutzt, um sicherzustellen, dass wir der Variable nur Werte vom richtigen Typ zuweisen.
+Beim Kompilieren werden die Typinformationen benutzt, um sicherzustellen, dass wir der Variable nur Werte des richtigen Typs zuweisen.
 Der kompilierte JavaScript-Code enthält diese Informationen nicht mehr.
 Auf dem [TypeScript Playground](https://www.typescriptlang.org/play/index.html) können wir TypeScript-Code schreiben und sehen wie der dazugehörige JavaScript-Code aussieht.
 

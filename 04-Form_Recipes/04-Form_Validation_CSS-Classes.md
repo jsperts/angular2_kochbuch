@@ -43,7 +43,7 @@ __Erklärung__:
 
 ### Diskussion
 
-Beim Laden der Anwendung sieht Angular die Attribute "required" und "minlength" und setzt die CSS-Klasse "ng-invalid", da die Eingabefelder leer und somit ungültig sind.
+Beim Laden der Anwendung sieht Angular die Attribute "required" und "minlength" und setzt dann die CSS-Klasse "ng-invalid", da die Eingabefelder leer und somit ungültig sind.
 Sobald wir mindestens einen Buchstaben in das Benutzername-Eingabefeld eingeben, wird das Eingabefeld gültig und Angular entfernt die ng-invalid-Klasse und setzt stattdessen die ng-valid-Klasse.
 Beim Eingabefeld für das Passwort wird die ng-valid-Klasse erst dann gesetzt, wenn wir mindestens zehn Zeichen eingeben.
 

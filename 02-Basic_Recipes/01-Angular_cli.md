@@ -1,8 +1,8 @@
-## Entwicklungs-Prozess für Angular 2 Projekte {#c02-angular-cli}
+## Entwicklungsprozess für Angular 2 Projekte {#c02-angular-cli}
 
 ### Problem
 
-Ich möchte ein möglichst einfachen Weg haben, um ein Angular 2 Projekt zu initialisieren, bauen und das Resultat im Browser anzuschauen.
+Ich möchte einen möglichst einfachen Weg haben, ein Angular 2 Projekt zu initialisieren, zu bauen und das Resultat im Browser anzuschauen.
 
 ### Zutaten
 
@@ -12,27 +12,27 @@ Ich möchte ein möglichst einfachen Weg haben, um ein Angular 2 Projekt zu init
 
 ### Lösung
 
-Der derzeit einfachste Weg, um ein Angular 2 Projekt zu starten, bauen und sich das Resultat im Browser anzuschauen ist ein Tool namens "angular-cli".
-Das Tool ist noch im beta-Stadium nicht desto trotz werden wir es nutzten, da die alternative (alles selbst einzurichten) sehr aufwendig ist.
+Der derzeit einfachste Weg, ein Angular 2 Projekt zu starten, zu bauen und sich das Resultat im Browser anzuschauen, ist ein Tool namens "angular-cli".
+Das Tool befindet sich noch im beta-Stadium. Nichtsdestotrotz werden wir es nutzen, da die Alternative (alles selbst einzurichten) sehr aufwändig ist.
 
 Als Erstes müssen wir __Node.js__ und __npm__ installieren, damit wir im zweiten Schritt __angular-cli__ installieren können.
-Am einfachsten können wir Node.js installieren, indem wir es von der [offizielle Webseite](https://nodejs.org/en/download/) herunterladen.
-Bei der Installation von Node.js, wird npm mit installiert.
+Am einfachsten können wir Node.js installieren, indem wir es von der [offiziellen Webseite](https://nodejs.org/en/download/) herunterladen.
+Bei der Installation von Node.js, wird npm mitinstalliert.
 Jetzt können wir angular-cli installieren mit:
 
 ```bash
 npm install -g angular-cli@1.0.0-beta.5
 ```
 
-Wir installieren angular-cli global und können es in jedem Angular 2 Projekt nutzen.
+Wir installieren angular-cli global und können es daher in jedem Angular 2 Projekt nutzen.
 
 I> #### Node.js/npm Versionen
 I>
-I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 5.3.0 von Node.js und npm Version 3.3.12 getestet.
+I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 5.3.0 von Node.js und Version 3.3.12 von npm getestet.
 
 I> #### Fehler bei der Installation/Projekt-Initialisierung
 I>
-I> Bei Fehler hilft es angular-cli zu löschen und neu zu installieren. Fehler können vor allem auftreten, wenn eine alte Version von angular-cli schon installiert ist.
+I> Bei Fehlern hilft es, angular-cli zu löschen und neu zu installieren. Fehler können vor allem auftreten, wenn eine alte Version von angular-cli schon installiert ist.
 
 Jetzt können wir ein Projekt initialisieren.
 Dafür gibt es die Kommandos "new" und "init".
@@ -41,8 +41,8 @@ Dafür gibt es die Kommandos "new" und "init".
 ng new projektName --skip-git
 ```
 
-Dieses Kommando wird ein Verzeichnis erzeugen mit Namen "projektName" und wird darin die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
-Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
+Dieses Kommando wird ein Verzeichnis mit dem Namen "projektName" erzeugen. Darin wird es die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
+Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen,  vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
 
 Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existierendes Verzeichnis.
 
@@ -58,31 +58,31 @@ W> Derzeit wird nicht jeder beliebige Name als Projektname unterstützt. Z. B. 
 
 #### Anwendung starten
 
-Nach dem alle Abhängigkeiten installiert worden sind, können wir die Anwendung starten.
-Angular-cli hat ein eingebauten HTTP-Server den wir dafür nutzen können.
+Nachdem alle Abhängigkeiten installiert worden sind, können wir die Anwendung starten.
+Angular-cli hat einen eingebauten HTTP-Server, den wir dafür nutzen können.
 Um den Server zu starten, müssen wir im Projekt-Verzeichnis (das mit der package.json-Datei) folgendes Kommando aufrufen:
 
 ```bash
 ng serve
 ```
 
-In der Konsole steht dann zu welche URL wir navigieren müssen, um die Demo-Anwendung von angular-cli zu sehen (Zeile: "Serving on http://...").
-Das nette an diesem Webserver ist der Live-Reload-Support.
-Das heißt, wenn wir Änderungen im Code machen werden diese sofort im Browser sichtbar ohne, dass wir das Projekt selbst erneut kompilieren müssen.
+In der Konsole steht dann, zu welcher URL wir navigieren müssen, um die Demo-Anwendung von angular-cli zu sehen (Zeile: "Serving on http://...").
+Das Nette an diesem Webserver ist der Live-Reload-Support.
+Das heißt, wenn wir Änderungen im Code machen, werden diese sofort im Browser sichtbar, ohne dass wir das Projekt selbst erneut kompilieren müssen.
 
 ### Diskussion
 
 Alle Rezepte in diesem Buch wurden mit `angular-cli` initialisiert.
 Es ist also nicht nötig `ng init` oder `ng new` aufzurufen.
 Es reicht, wenn `npm install` aufgerufen wird, um die Abhängigkeiten zu installieren.
-Danach können wir wie oben gezeigt mit `ng serve` die Anwendung starten.
+Danach können wir, wie oben gezeigt, mit `ng serve` die Anwendung starten.
 
-Da das Tool eine eigene Meinung hat wie die Verzeichnisstruktur, eine Komponente usw. auszusehen hat, wurden aus den Code-Beispielen ein paar Verzeichnisse/Dateien gelöscht bzw. angepasst.
+Da das Tool eine eigene Meinung hat, wie die Verzeichnisstruktur, eine Komponente usw. auszusehen hat, wurden aus den Code-Beispielen ein paar Verzeichnisse/Dateien, die nicht für das jeweilige Beispiel relevant sind, gelöscht bzw. angepasst.
 Wir wollen nicht, dass überflüssige Verzeichnisse, Dateien und Code-Zeilen uns vom eigentlichen Thema eines Rezeptes ablenken.
 Wir schauen uns also nur die relevanten Dateien für ein Rezept an und ignorieren den Rest.
 Auch gewisse Abhängigkeiten wurden aus der package.json-Datei entfernt, um die Installationszeit zu verkürzen.
 Es ist also möglich, dass nicht alle angular-cli Kommandos mit jedem Rezept funktionieren.
-Für die meisten Rezepte ist das src-Verzeichnis am wichtigsten.
+Für die meisten Rezepte ist das src-Verzeichnis am Wichtigsten.
 Darin befindet sich der Code für eine Angular 2 Anwendung.
 Mehr Informationen über die Verzeichnisstruktur gibt es in [Appendix-B: angular-cli](#appendix-b).
 

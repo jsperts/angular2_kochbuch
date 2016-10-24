@@ -1,15 +1,15 @@
 # Einleitung
 
 Angular 2 ist eine von null auf neu geschriebene Version des populären Google Frameworks AngularJS.
-Die neue Version des Frameworks wurde im März 2014 in einem Blog Artikel angekündigt. Anfangs war es geplant das Framework in einer neuen Sprache names AtScript zu schreiben.
-Letztendlich wurde aber entschieden es in Microsofts [TypeScript](http://www.typescriptlang.org/) zu schreiben und es dann in JavaScript zu kompilieren.
+Die neue Version des Frameworks wurde im März 2014 in einem Blog Artikel angekündigt. Anfangs war es geplant, das Framework in einer neuen Sprache names AtScript zu schreiben.
+Letztendlich wurde aber entschieden, es in Microsofts [TypeScript](http://www.typescriptlang.org/) zu schreiben und es dann in JavaScript zu kompilieren.
 Wir als Entwickler haben die Möglichkeit, Angular 2 Anwendungen in TypeScript, ECMAScript 6 (ES6) / ECMAScript 2015 (ES2015), ECMAScript 5 (ES5) oder Dart zu schreiben.
 In diesem Buch werden wir uns auf TypeScript konzentrieren, da diese vermutlich die am häufigsten verwendete Sprache sein wird, um Projekte mit Angular 2 zu schreiben.
 
 ## Angular 1.x. vs. 2
 
 Wie schon bei der Ankündigung zu lesen war, gibt es teilweise große Unterschiede zwischen Angular 2 und 1.x.
-Diese Unterschiede haben dafür gesorgt, dass die Community die Entscheidung des Angular-Teams das Framework neu zu schreiben, mit gemischten Gefühlen aufgenommen hat.
+Diese Unterschiede haben dafür gesorgt, dass die Community die Entscheidung des Angular-Teams, das Framework neu zu schreiben, mit gemischten Gefühlen aufgenommen hat.
 Die templating-Sprache wurde geändert und alle Event-Direktiven wie z. B. ng-click und ng-keyup wurden von eine neue Schreibweise für Events ersetzt.
 Controllers und $scope wurden aus dem Framework entfernt und durch Komponenten ersetzt.
 Die Definition von Services wurde vereinfacht.
@@ -21,7 +21,7 @@ Die meiste Begriffen die wir aus Angular 1.x. kennen, können weiterhin verwende
 ## Ziel des Buches
 
 Ziel des Buches ist es dem/r Leser/in fertige Lösungen für häufige Probleme bereitzustellen, die er/sie mit wenig Aufwand in neue oder existierende Angular 2 Anwendungen einbauen kann.
-Es ist nicht die Absicht dieses Buches in die Tiefen von Angular 2 vorzudringen und den/die Leser/in über die gesamte Funktionalität und Implementierung von Angular 2 zu informieren.
+Es ist nicht die Absicht dieses Buches, in die Tiefen von Angular 2 vorzudringen und den/die Leser/in über die gesamte Funktionalität und Implementierung von Angular 2 zu informieren.
 
 ## Für wen ist dieses Buch
 
@@ -61,7 +61,7 @@ __Kapitel 8: Rezepte für ngFor-Listen__ enthält Lösungsvorschläge, die uns b
 
 ## Hilfe und Support
 
-Bei Fragen und Anregungen zum Buch und/oder dem Beispiel-Code gibt es die Möglichkeit Issues bzw. Pull-Request über Github zu öffnen.
+Bei Fragen und Anregungen zum Buch und/oder dem Beispiel-Code gibt es die Möglichkeit, Issues bzw. Pull-Request über Github zu öffnen.
 
 * [Github für das Buch](https://github.com/jsperts/angular2_kochbuch)
 * [Github für den Beispiel-Code](https://github.com/jsperts/angular2_kochbuch_code)

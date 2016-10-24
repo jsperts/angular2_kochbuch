@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte unterschiedliche Teile der View anzeigen je nach Wert eines Angular-Ausdrucks.
+Ich möchte unterschiedliche Teile der View anzeigen, je nach Wert eines Angular-Ausdrucks.
 
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
@@ -39,37 +39,37 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeile 6: Nutzung der NgSwitch-Direktive mit der color-Eigenschaft der Komponente
-* Zeilen 7-10: Inhalt der NgSwitch-Direktive
-  * Zeile 7: Wird immer angezeigt egal was der Wert von "color" ist
+* Zeilen 7-10: Inhalt der NgSwitch-Direktiven
+  * Zeile 7: Wird immer angezeigt unabhängig vom Wert von "color"
   * Zeile 8: Wird nur dann angezeigt, wenn "color" den Wert __`'`blue`'`__ hat
   * Zeile 9: Wird nur dann angezeigt, wenn "color" den Wert __`'`red`'`__ hat
-  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgend ein Wert außer __`'`blue`'`__ und __`'`red`'`__ hat
+  * Zeile 10: Wird nur dann angezeigt, wenn "color" irgendeinen Wert außer __`'`blue`'`__ und __`'`red`'`__ hat
 * Zeile 18: Standardmäßig ist der Wert von "color" __`'`blue`'`__
 
 ### Diskussion
 
-Die NgSwitch-Direktive ist vergleichbar mit eine JavaScript switch-Anweisung.
-Bei der Nutzung im Template bekommt sie über __ngSwitch__ ([input-Eigenschaft](#gl-input-property) der NgSwitch-Direktive) einen Angular-Template-Ausdruck der dann ausgewertet wird.
+Die NgSwitch-Direktive ist vergleichbar mit einer JavaScript switch-Anweisung.
+Bei der Nutzung im Template erhält sie über __ngSwitch__ ([input-Eigenschaft](#gl-input-property) der NgSwitch-Direktive) einen Angular-Template-Ausdruck, der dann ausgewertet wird.
 In unserem Beispiel besteht der Ausdruck aus der color-Eigenschaft.
 Diese Auswertung wird dann mit jedem Ausdruck der NgSwitchWhen-Direktiven verglichen.
 Angular nutzt für den Vergleich __===__.
 In unserem Beispiel haben wir __`'`blue`'`__ und __`'`red`'`__ als Ausdrücke für NgSwitchWhen benutzt.
-Wenn der Vergleich den Wert __true__ zurück gibt, wird der Tag mit der Direktive und dessen Inhalt angezeigt.
-Wenn kein Vergleich __true__ zurück gibt, wird der Tag mit der NgSwitchDefault-Direktive und dessen Inhalt angezeigt.
-Tags die weder eine NgSwitchWhen- noch eine NgSwitchDefault-Direktive nutzen werden immer angezeigt.
+Wenn der Vergleich den Wert __true__ zurück gibt, wird der Tag mit der Direktiven und dessen Inhalt angezeigt.
+Wenn kein Vergleich __true__ zurück gibt, wird der Tag mit der NgSwitchDefault-Direktiven und dessen Inhalt angezeigt.
+Tags, die weder eine NgSwitchWhen- noch eine NgSwitchDefault-Direktive nutzen, werden immer angezeigt.
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes für die color-Eigenschaft verzichtet.
-Im Github Code-Beispiel wird gezeigt wie wir mittels "click" den Wert verändern können.
-Da können wir auch sehen wie sich die View verändert je nachdem, was für ein Wert die color-Eigenschaft hat.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes der color-Eigenschaft verzichtet.
+Im Github Code-Beispiel wird gezeigt, wie wir mittels "click" den Wert verändern können.
+Dort können wir auch sehen, wie sich die View in Abhängigkeit des Wertes der color-Eigenschaft verändert.
 
-Es gibt noch eine weitere mögliche Schreibweise für die NgSwitchWhen- und NgSwitchDefault-Direktiven. Die hier ist die kürzeste und vermutlich die einfachste. Die zweite Schreibweise ist im Github Code-Beispiel zu finden. Von der Funktionalität her sind beide Schreibweisen gleich.
+Es gibt noch eine weitere mögliche Schreibweise für die NgSwitchWhen- und NgSwitchDefault-Direktiven. Diese hier ist die kürzeste und vermutlich die einfachste. Die zweite Schreibweise ist im Github Code-Beispiel zu finden. Von der Funktionalität her sind beide Schreibweisen gleich.
 
-#### Erklärung zu der ngSwitchWhen- und ngSwitchDefault-Syntax
+#### Erklärung zur ngSwitchWhen- und ngSwitchDefault-Syntax
 
 Der Stern (__\*__) vor dem __ngSwitchWhen__ und __ngSwitchDefault__ ist essentiell und Teil der Syntax.
 Er zeigt an, dass die p-Tags und alle Elemente, die die Tags beinhalten, als Template für die jeweilige Instanz der NgSwitchWhen bzw. der NgSwitchDefault-Direktiven benutzt werden sollen.
 Nach __\*ngSwitchWhen=__ kommt ein Angular-Template-Ausdruck.
-Dieser Ausdruck verglichen mit der Auswertung des NgSwitch-Ausdruckes gibt an, wann das Template angezeigt werden soll.
+Dieser Ausdruck verglichen mit der Auswertung des NgSwitch-Ausdrucks gibt an, wann das Template angezeigt werden soll.
 Wenn der Vergleich __true__ ergibt, wird das Template angezeigt.
 Wenn der __false__ ergibt, wird das Template aus dem DOM entfernt.
 Das NgSwitchDefault-Template wird nur dann angezeigt, wenn alle Vergleiche __false__ ergeben.
@@ -82,8 +82,8 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 
 ### Weitere Ressourcen
 
-* Offizielle [NgSwitch](https://angular.io/docs/ts/latest/api/common/NgSwitch-directive.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle [NgSwitchWhen](https://angular.io/docs/ts/latest/api/common/NgSwitchWhen-directive.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle [NgSwitchDefault](https://angular.io/docs/ts/latest/api/common/NgSwitchDefault-directive.html) Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgSwitch](https://angular.io/docs/ts/latest/api/common/NgSwitch-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgSwitchWhen](https://angular.io/docs/ts/latest/api/common/NgSwitchWhen-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgSwitchDefault](https://angular.io/docs/ts/latest/api/common/NgSwitchDefault-directive.html)-Dokumentation auf der Angular 2 Webseite
 * Weitere Informationen zur Template-Ausdrücke gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

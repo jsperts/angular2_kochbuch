@@ -1,15 +1,15 @@
 # Rezepte für Formulare
 
-Angular bietet uns mehrere Möglichkeiten, um Formulare zu implementieren.
+Angular bietet uns mehrere Möglichkeiten, Formulare zu implementieren.
 Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template Driven Forms" und "Model Driven Forms".
 
-Bei den "Template Driven Forms" ist ein Großteil der Logik wie z. B. die Validierung im Template.
+Bei den "Template Driven Forms" befindet sich ein Großteil der Logik, wie z. B. die Validierung, im Template.
 Auch die Synchronisation zwischen den Daten, die der Nutzer sieht und den Daten in der Klasse der Komponente (dem Modell) wird im Template definiert.
-So werden Formulare in Angular 1.x implementiert, wo wir direkt im Template z. B. mit dem required-Attribut definieren, dass das Feld ein Pflichtfeld ist.
-Da "Template Driven Forms" einfacher und in der Regel mit weniger Code zu implementieren sind, werden wir uns zuerst damit beschäftigen.
+So werden Formulare auch bereits in Angular 1.x implementiert, wo wir direkt im Template z. B. mit dem required-Attribut definieren, dass das Feld ein Pflichtfeld ist.
+Da "Template Driven Forms" einfacher und in der Regel mit weniger Code zu implementieren sind, werden wir uns zuerst mit diesen beschäftigen.
 Allerdings haben diese Formulare auch Nachteile.
-Da die Logik im Template ist, ist es schwer bis unmöglich diese in Unit-Tests zu testen.
-Des Weiteren kann das Template bei Formulare mit komplexe Validierung sehr schnell unübersichtlich werden.
+Da sich die Logik im Template befindet, ist es schwer bis unmöglich, diese in Unit-Tests zu testen.
+Des Weiteren kann das Template bei Formularen mit komplexer Validierung sehr schnell unübersichtlich werden.
 
 Bei den "Model Driven Forms" befindet sich die meiste Logik in der Klasse der Komponente.
 Das Template hat nur die nötigen Informationen, um die Formular-Felder mit dem Formular-Modell zu verbinden.

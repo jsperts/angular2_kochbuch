@@ -6,12 +6,12 @@ Ich möchte überprüfen, ob ein Eingabefeld mindestens einen Großbuchstaben be
 
 ### Zutaten
 * [Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
-* Validierungs-Funktion die überprüft, ob ein Eingabefeld mindestens einen Großbuchstaben beinhaltet
-* Anpassungen an der Komponente von "Formular mit dem FormBuilder und Validierung"
+* Validierungsfunktion, die überprüft, ob ein Eingabefeld mindestens einen Großbuchstaben beinhaltet
+* Anpassungen an der Komponente aus "Formular mit dem FormBuilder und Validierung"
 
 ### Lösung
 
-Wir werden hier die gleiche Validierungs-Funktionen wie im "Formular mit dem FormBuilder und Validierung" Rezept nutzen. Wir werden zusätzlich eine eigene Validierungs-Funktion namens "containsCapital" implementieren.
+Wir werden hier die gleichen Validierungsfunktionen wie im Rezept "Formular mit dem FormBuilder und Validierung" nutzen. Wir werden zusätzlich eine eigene Validierungsfunktion namens "containsCapital" implementieren.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -59,21 +59,21 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 19
-* Zeilen 20-29: Unsere Validierungs-Funktion
-  * Zeile 20: Als Parameter bekommt eine Validierungs-Funktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
+* Zeilen 20-29: Unsere Validierungsfunktion
+  * Zeile 20: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
   * Zeile 22: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
-  * Zeile 23: Wenn das Eingabefeld einen gültigen Wert beinhaltet, geben wir __null__ zurück
-  * Zeile 25: Wenn das Eingabefeld einen ungültigen Wert beinhaltet, geben wir ein Objekt zurück
+  * Zeile 23: Wenn das Eingabefeld einen gültigen Wert besitzt, geben wir __null__ zurück
+  * Zeile 25: Wenn das Eingabefeld einen ungültigen Wert besitzt, geben wir ein Objekt zurück
 
 ### Diskussion
 
-Wenn die Validierung fehlschlägt, muss die Validierungs-Funktion ein Objekt zurück geben.
-Wir bekommen Zugriff auf dieses Objekt über das errors-Objekt des Controls.
+Wenn die Validierung fehlschlägt, muss die Validierungsfunktion ein Objekt zurückgeben.
+Wir erhalten auf dieses Objekt über das errors-Objekt des Controls Zugriff.
 Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors)" gesehen.
-Solang das Passwort-Feld kein Großbuchstabe enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
-Wir hätten auch ein komplexeres Objekt zurückgeben können genau so wie es die minLength-Validierungs-Funktion tut.
-Wenn der Wert im Eingabefeld gültig ist, geben wir __null__ zurück.
-Andere Werte wie z. B. __undefined__ haben den gleichen Effekt, da aber die Angular-Validierungs-Funktionen auch __null__ nutzen, um die Ungültigkeit zu kennzeichen tun wir es hier auch.
+Solange das Passwort-Feld keinen Großbuchstaben enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
+Wir hätten auch ein komplexeres Objekt zurückgeben können, genauso wie es die minLength-Validierungsfunktion tut.
+Wenn der Wert des Eingabefelds gültig ist, geben wir __null__ zurück.
+Andere Werte wie z. B. __undefined__ haben den gleichen Effekt. Da aber die Angular-Validierungsfunktionen auch __null__ nutzen, um die Ungültigkeit zu kennzeichen, tun wir es hier auch.
 
 ### Code
 

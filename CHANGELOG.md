@@ -57,7 +57,7 @@
 ### Changed
 
 * Angular Version aktualisiert (beta 13)
-* Es gibt eine neue Validierungs-Funktion für Formulare (pattern), diese wird im Rezept "Gültigkeit eines Formulars überprüfen" erwähnt
+* Es gibt eine neue Validierungsfunktion für Formulare (pattern), diese wird im Rezept "Gültigkeit eines Formulars überprüfen" erwähnt
 * Glossar neue Begriffe: input-/output-Eigenschaft. Weitere Begriffe wurden überarbeitet
 
 ### Removed

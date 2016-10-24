@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte Daten vom Benutzer bekommen und dafür brauche ich ein einfaches Formular.
+Ich möchte Daten vom Benutzer bekommen und brauche dafür ein einfaches Formular.
 
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
@@ -44,10 +44,10 @@ __Erklärung__:
 
 * Zeilen 6-12: Das Formular
   * Zeile 6: Wir binden das ngSubmit-Event des Formulars an unsere onSubmit-Methode
-  * Zeile 8: Eingabefeld für den Benutzernamen. Hier nutzen wir die NgModel-Direktive, um die View mit den Daten (dem Modell) der Komponente zu verbinden. Konkreter, reden wir hier von einer beidseitige-Bindung zwischen den Wert des Eingabefeldes und der username-Eigenschaft des user-Objekts (siehe Zeilen 16-19)
-  * Zeile 10: Ähnlich wie Zeile 8 aber für das Passwort-Feld
-* Zeilen 16-19: Ein Objekt, wo die Daten, die der Nutzer in das Formular eingibt gespeichert werden. Die leere Strings für die Eigenschaften "username" und "password", sind die Default-Werte für die Eingabefelder
-* Zeilen 22-24: Methode die Aufgerufen wird, wenn der Nutzer ein submit-Event auslöst z. B. durch ein Klick auf den Button (siehe auch Zeile 6)
+  * Zeile 8: Eingabefeld für den Benutzernamen. Hier nutzen wir die NgModel-Direktive, um die View mit den Daten (dem Modell) der Komponente zu verbinden. Konkreter reden wir hier von einer beidseitigen Bindung zwischen dem Wert des Eingabefeldes und der username-Eigenschaft des user-Objekts (siehe Zeilen 16-19)
+  * Zeile 10: Ähnlich wie Zeile 8, aber für das Passwort-Feld
+* Zeilen 16-19: Ein Objekt, in welchem die Daten, die der Nutzer in das Formular eingibt, gespeichert werden. Die leeren Strings für die Eigenschaften "username" und "password" sind die Default-Werte für die Eingabefelder
+* Zeilen 22-24: Methode, die aufgerufen wird, wenn der Nutzer ein submit-Event auslöst, z. B. durch ein Klick auf den Button (siehe auch Zeile 6)
 
 ### Diskussion
 
@@ -58,10 +58,10 @@ Das ngSubmit-Event ist also eine [output-Eigenschaft](#gl-output-property) der N
 Im Grunde genommen bindet die NgForm-Direktive das submit-Event des Formulars und leitet es an das ngSubmit-Event weiter.
 Wir hätten in unserem Code auch direkt das submit-Event nutzen können.
 
-Wie schon erwähnt nutzen wir in den Zeilen 8 und 10 eine beidseitige-Bindung.
-Wir hätten die beidseitige-Bindung auch in eine Eigenschafts- und eine Event-Bindung aufspalten können.
+Wie schon erwähnt, nutzen wir in den Zeilen 8 und 10 eine beidseitige Bindung.
+Wir hätten die beidseitige Bindung auch in eine Eigenschafts- und eine Event-Bindung aufspalten können.
 Wie das aussieht wird in "[Appendix A](#appendix-a)" gezeigt.
-Da die Nutzung der beidseitige-Bindung einfacher ist, werden wir sie auch in weiteren Formular-Rezepten nutzen.
+Da die Nutzung der beidseitigen Bindung einfacher ist, werden wir sie auch in weiteren Formular-Rezepten nutzen.
 
 ### Code
 
@@ -71,7 +71,7 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-
 
 ### Weitere Ressourcen
 
-* Offizielle [NgModel](https://angular.io/docs/ts/latest/api/common/NgModel-directive.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle [NgForm](https://angular.io/docs/ts/latest/api/common/NgForm-directive.html) Dokumentation auf der Angular 2 Webseite
-* Weitere Informationen zu Event-, Eigenschafts- und beidseitige-Bindung gibt es im [Appendix A: Template-Syntax](#appendix-a)
+* Offizielle [NgModel](https://angular.io/docs/ts/latest/api/common/NgModel-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgForm](https://angular.io/docs/ts/latest/api/common/NgForm-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Weitere Informationen zu Event-, Eigenschafts- und beidseitigen Bindungen gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

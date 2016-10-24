@@ -169,7 +169,7 @@ Modul/Klasse für die Todo-Liste. Unsere Klasse hat drei Methoden, "render", "ad
 ### Die Anwendung im Browser laden
 
 Da SystemJS Ajax nutzt, um die einzelnen Module asynchron zu laden, brauchen wir einen Webserver, um unsere Todo-Anwendung im Browser zu laden.
-Das Angular-Team empfiehlt den [live-server](https://www.npmjs.com/package/live-server), der automatisch die Seite bei Änderungen neu laden kann.
+Das Angular-Team empfiehlt den [live-server](https://www.npmjs.com/package/live-server), der die Seite bei Änderungen automatisch neu laden kann.
 Wer kein live-reload mag, kann auch den [http-server](https://www.npmjs.com/package/http-server) nutzen.
 Beide Webserver sind über npm installierbar.
 Natürlich kann man auch andere Webserver nutzen, wie z. B. Apache, nginx oder Webserver, die in einer IDE integriert sind.

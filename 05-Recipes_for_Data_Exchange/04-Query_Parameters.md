@@ -1,4 +1,4 @@
-## Server-Anfrage mit Query-Parameter
+## Server-Anfrage mit Query-Parametern
 
 ### Problem
 
@@ -11,7 +11,7 @@ Ich möchte bei der Anfrage Query-Parameter an den Server schicken.
 
 ### Lösung
 
-Wir konzentrieren uns in der Lösung auf GET-Anfragen, da diese am häufigsten mit Query-Parameter benutzen werden aber wir können auch z. B. bei POST-Anfragen Query-Parameter mitschicken.
+Wir konzentrieren uns in der Lösung auf GET-Anfragen, da diese am Häufigsten mit Query-Parametern benutzen werden. Wir können aber auch z. B. bei POST-Anfragen Query-Parameter mitschicken.
 
 {title="data.service.ts", lang=js}
 ```
@@ -46,22 +46,22 @@ export class DataService {
 __Erklärung__:
 
 * Zeile 4-5: Hier werden die Klassen "RequestOptions" und "URLSearchParams" importiert
-* Zeile 17: Erzeugung einer Instanz der URLSearchParams-Klasse
-* Zeile 18: Query-Parameter "limit" definieren mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein)
-* Zeile 20: Erzeugung einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert für die search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter für die Anfrage
+* Zeile 17: Erzeugen einer Instanz der URLSearchParams-Klasse
+* Zeile 18: Query-Parameter "limit" mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein) definieren
+* Zeile 20: Erzeugen einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert der search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter der Anfrage
 * Zeile 22: Aufruf der get-Methode mit einer URL und Optionen für die Anfrage
 
 ### Diskussion
 
-Wir können die Query-Parameter auch mittels String-Konkatenierung definieren, indem wir selbst ein Query-String zusammen setzen und diesen mit der URL konkatenieren.
-Für ein, zwei Parameter können wir dies auch tun aber für viele Parameter ist diese Lösung nicht wirklich geeignet.
-Die Nutzung der URLSearchParams-Klasse hat in dem Fall zwei Vorteile.
-Zum einen wird der Code lesbarer, wenn wir pro Parameter eine Zeile Code haben.
-Zum anderen kümmert sich Angular um das richtige Format für den String der später als Teil der URL mitgeschickt wird.
+Wir können die Query-Parameter auch mittels String-Konkatenierung definieren, indem wir selbst einen Query-String zusammensetzen und diesen mit der URL konkatenieren.
+Für ein bis zwei Parameter können wir dies auch tun, aber für viele Parameter ist diese Lösung nicht wirklich geeignet.
+Die Nutzung der URLSearchParams-Klasse hat in diesem Fall zwei Vorteile.
+Zum Einen wird der Code lesbarer, wenn wir pro Parameter eine Zeile Code haben.
+Zum Anderen kümmert sich Angular um das richtige Format für den String, der später als Teil der URL mitgeschickt wird.
 
 W> #### URL-Encoding
 W>
-W> Derzeit werden die Query-Parameter nicht automatisch encodiert vor diese an den Server geschickt werden. Wenn also Zeichen wie z. B. "=" und "&" in den Parametern vorhanden sind (als Teil des Keys oder Wertes), müssen wir diese selbst transformieren. Siehe auch [#4948](https://github.com/angular/angular/issues/4948).
+W> Derzeit werden die Query-Parameter nicht automatisch encodiert bevor diese an den Server geschickt werden. Wenn also Zeichen wie z. B. "=" und "&" in den Parametern vorhanden sind (als Teil des Keys oder Wertes), müssen wir diese selbst transformieren. Siehe auch [#4948](https://github.com/angular/angular/issues/4948).
 
 ### Code
 
@@ -71,6 +71,6 @@ Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_c
 
 ### Weitere Ressourcen
 
-* Offizielle [URLSearchParams](https://angular.io/docs/ts/latest/api/http/URLSearchParams-class.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/RequestOptions-class.html) Dokumentation auf der Angular 2 Webseite
+* Offizielle [URLSearchParams](https://angular.io/docs/ts/latest/api/http/URLSearchParams-class.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/RequestOptions-class.html)-Dokumentation auf der Angular 2 Webseite
 

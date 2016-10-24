@@ -1,8 +1,8 @@
-## Daten an die Überkomponente übergeben mittels output-Eigenschaft
+## Daten an die Überkomponente mittels output-Eigenschaft übergeben
 
 ### Problem
 
-Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkomponente übergeben.
+Ich möchte Daten, die sich in einer Unterkomponente befinden, an die Überkomponente übergeben.
 
 ### Zutaten
 
@@ -14,7 +14,7 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden an die Überkompon
 
 ### Lösung
 
-Wir werden uns als Erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
+Wir werden uns als Erstes die Überkomponente (Parent) und als Zweites die Unterkomponente (Child) anschauen.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -41,8 +41,8 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 9: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier kein Browser-Event, sondern ein Event, was wir in der Child-Komponente definiert haben (Siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
-* Zeilen 16-18: Methode die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
+* Zeile 9: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier keinen Browser-Event, sondern einen Event, den wir in der Child-Komponente definiert haben (siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
+* Zeilen 16-18: Methode, die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
 
 {title="second.component.ts", lang=js}
 ```
@@ -70,23 +70,23 @@ export class SecondComponent {
 
 __Erklärung__:
 
-* Zeile 11: Definition eine output-Eigenschaft namens "dataChange". Die output-Eigenschaft hat als Wert eine Instanz der EventEmitter-Klasse
-* Zeilen 17-19: Methode die aufgerufen wird, wenn der Nutzer auf den Button klickt
-  * Zeile 16: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, was übergeben wird (Siehe auch demo.component.ts Zeilen 9 und 16)
+* Zeile 11: Definition einer output-Eigenschaft namens "dataChange". Die output-Eigenschaft besitzt als Wert eine Instanz der EventEmitter-Klasse
+* Zeilen 17-19: Methode, die aufgerufen wird, wenn der Nutzer auf den Button klickt
+  * Zeile 16: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, das übergeben wird (siehe auch demo.component.ts Zeilen 9 und 16)
 
 ### Diskussion
 
 Wir können die EventEmitter-Klasse nutzen, um eigene Events zu definieren.
-Diese Events können mittels der emit-Methode getriggert werden, um deren Listeners zu informieren, dass das Event ausgelöst worden ist.
-Das machen wir uns zu nutzen und definieren immer unsere output-Eigenschaften als Events auf die eine Parent-Komponente hören kann, indem diese eine Event-Bindung nutzt.
+Diese Events können mittels der emit-Methode getriggert werden, um deren Listener zu informieren, dass das Event ausgelöst worden ist.
+Das machen wir uns zunutze und definieren immer unsere Output-Eigenschaften als Events, auf die eine Parent-Komponente hören kann, indem diese eine Event-Bindung nutzt.
 
 W> #### $event
 W>
-W> Wenn wir in einer Überkomponente einen Listener definieren für ein Event und wir Zugriff auf das Event-Objekt brauchen, müssen wir für die Listenerfunktion im Template den Parameternamen "$event" nutzen. Falls uns das Event-Objekt nicht interessiert, brauchen wir keinen Parameter zu definieren. Dies gilt nicht nur für eigene Events, sondern auch für Browser-Events.
+W> Wenn wir in einer Überkomponente einen Listener für einen Event definieren und wir Zugriff auf das Event-Objekt benötigen, müssen wir für die Listenerfunktion im Template den Parameternamen "$event" nutzen. Falls uns das Event-Objekt nicht interessiert, brauchen wir keinen Parameter zu definieren. Dies gilt nicht nur für eigene Events, sondern auch für Browser-Events.
 
 I> #### Unterschiedliche Namen für die output-Eigenschaft in Parent und Child
 I>
-I> Angular erlaubt es uns zwei Namen für eine output-Eigenschaft zu definieren, indem wir beim Aufruf des Output-Decorators einen Parameter übergeben. Z. B. `@Output('externalName') internalName = new EventEmitter()`. In diesem Beispiel wird "externalName" in der Parent-Komponente benutzt und "internalName" in der Child-Komponente. Wenn der Output-Decorator keinen Parameter bekommt, wird in der Parent- und der Child-Komponente der gleiche Name benutzt.
+I> Angular erlaubt es uns, zwei Namen für eine output-Eigenschaft zu definieren, indem wir beim Aufruf des Output-Decorators einen Parameter übergeben, z. B. `@Output('externalName') internalName = new EventEmitter()`. In diesem Beispiel wird "externalName" in der Parent-Komponente und "internalName" in der Child-Komponente verwendet. Wenn der Output-Decorator keinen Parameter erhält, wird in der Parent- und der Child-Komponente der selbe Name benutzt.
 
 ### Code
 
@@ -96,5 +96,5 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-
 
 ### Weitere Ressourcen
 
-* Offizielle Dokumentation für die [EventEmitter-Klasse](https://angular.io/docs/ts/latest/api/core/EventEmitter-class.html) auf der Angular 2 Webseite
+* Offizielle Dokumentation der [EventEmitter-Klasse](https://angular.io/docs/ts/latest/api/core/EventEmitter-class.html) auf der Angular 2 Webseite
 

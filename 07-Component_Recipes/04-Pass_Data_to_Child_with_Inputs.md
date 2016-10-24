@@ -1,8 +1,8 @@
-## Daten an einer Unterkomponente übergeben mittels input-Eigenschaft
+## Daten an eine Unterkomponente mittels input-Eigenschaft übergeben
 
 ### Problem
 
-Ich möchte Daten, die sich in der Überkomponente befinden an einer Unterkomponente übergeben.
+Ich möchte Daten, die sich in der Überkomponente befinden, an eine Unterkomponente übergeben.
 
 ### Zutaten
 
@@ -13,7 +13,7 @@ Ich möchte Daten, die sich in der Überkomponente befinden an einer Unterkompon
 
 ### Lösung
 
-Wir werden uns als Erstes die Überkomponente (Parent) und dann die Unterkomponente (Child) anschauen.
+Wir werden uns als Erstes die Überkomponente (Parent) und als Zweites die Unterkomponente (Child) anschauen.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -35,7 +35,7 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 8: Hier nutzen wir eine Eigenschafts-Bindung, um den Wert der parentData-Eigenschaft an die childData-Eigenschaft der Unterkomponente zu übergeben
+* Zeile 8: Hier nutzen wir eine Eigenschaftsbindung, um den Wert der parentData-Eigenschaft an die childData-Eigenschaft der Unterkomponente zu übergeben
 
 {title="second.component.ts", lang=js}
 ```
@@ -52,24 +52,24 @@ export class SecondComponent {
 
 __Erklärung__:
 
-* Zeile 8: Mit Hilfe des Input-Decorators (@Input) definieren wir die childData-Eigenschaft als input-Eigenschaft. Zu beachten ist, dass die input-Eigenschaft den gleichen Namen haben muss wie der Namen zwischen den eckigen Klammern in der demo.component.ts Zeile 8
+* Zeile 8: Mit Hilfe des Input-Decorators (@Input) definieren wir die childData-Eigenschaft als input-Eigenschaft. Zu beachten ist, dass die input-Eigenschaft den gleichen Namen wie der Name zwischen den eckigen Klammern in der demo.component.ts Zeile 8 haben muss
 
 ### Diskussion
 
 Änderungen in der parentData-Eigenschaft werden zur Laufzeit in die childData-Eigenschaft propagiert.
 Wir müssen also nichts tun, wenn sich z. B. durch Nutzer-Interaktion der Wert der parentData-Eigenschaft ändert.
 Wenn wir einen neuen Wert für die childData-Eigenschaft setzen, wird dieser Wert in der Parent-Komponente nicht sichtbar sein.
-Wir haben also hier eine einweg-Datenbindung zwischen der Parent- und Child-Komponente.
+Wir haben also hier eine Einweg-Datenbindung zwischen der Parent- und der Child-Komponente.
 Allerdings müssen wir aufpassen, wenn wir mit Objekten arbeiten.
-Falls die parentData-Eigenschaft ein Objekt ist und wir eine Eigenschaft dieses Objekts in der Child-Komponente ändern würden, wird die Änderung auch in der Parent-Komponente sichtbar sein.
-Der Grund dafür ist, dass Angular keine Kopie für das Objekt erstellt, sondern die Referenz weiter gibt.
-Wir haben für dieses Rezept zwei Beispiel-Anwendungen auf Github.
-Der Code im Solution-Verzeichnis ist dieser den wir hier gezeigt haben.
-Das Demo-Verzeichnis beinhaltet eine Anwendung, die demonstrieren soll, welche Daten-Änderungen, wo sichtbar sind.
+Falls die parentData-Eigenschaft ein Objekt ist und wir eine Eigenschaft dieses Objekts in der Child-Komponente ändern, ist die Änderung auch in der Parent-Komponente sichtbar.
+Der Grund dafür ist, dass Angular keine Kopie des Objekts erstellt, sondern die Referenz weitergibt.
+Wir haben für dieses Rezept zwei Beispielanwendungen auf Github.
+Der Code im Solution-Verzeichnis ist dieser, den wir hier gezeigt haben.
+Das Demo-Verzeichnis beinhaltet eine Anwendung, die demonstrieren soll, welche Datenänderungen wo sichtbar sind.
 
 I> #### Unterschiedliche Namen für die input-Eigenschaft in Parent und Child
 I>
-I> Angular erlaubt es uns zwei Namen für eine input-Eigenschaft zu definieren, indem wir beim Aufruf des Input-Decorators einen Parameter übergeben. Z. B. `@Input('externalName') internalName: string`. In diesem Beispiel wird "externalName" in der Parent-Komponente benutzt und "internalName" in der Child-Komponente. Wenn der Input-Decorator keinen Parameter bekommt, wird in der Parent- und der Child-Komponente der gleiche Name benutzt.
+I> Angular erlaubt es uns, zwei Namen für eine input-Eigenschaft zu definieren, indem wir beim Aufruf des Input-Decorators einen Parameter übergeben, z. B. `@Input('externalName') internalName: string`. In diesem Beispiel wird "externalName" in der Parent-Komponente und "internalName" in der Child-Komponente verwendet. Wenn der Input-Decorator keinen Parameter erhält, wird in der Parent- und der Child-Komponente der selbe Name benutzt.
 
 ### Code
 

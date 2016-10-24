@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte Daten, die sich in meinem TypeScript-Code befinden in der View anzeigen, damit der Nutzer diese sehen kann.
+Ich möchte Daten, die sich in meinem TypeScript-Code befinden, in der View anzeigen, damit der Nutzer diese sehen kann.
 
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
@@ -33,14 +33,14 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-Um Daten anzuzeigen, müssen wir zwei Sachen machen.
-Erstens müssen wir dem Angular-Template sagen welche Variablen es anzeigen soll und zweitens müssen wir diese Variablen in unsere Klasse als Eigenschaften definieren.
-Um den Code übersichtlicher zu gestalten, nutzen wir hier Backticks (`` ` ``) für die template-Eigenschaft statt Anführungszeichen (`'`).
-Das ermöglicht uns das Template in mehreren Zeilen aufzuspalten ohne mehrere Strings mit Hilfe von Pluszeichen konkatenieren zu müssen.
+Um Daten anzuzeigen, müssen wir zwei Sachen machen:
+Erstens müssen wir dem Angular-Template sagen, welche Variablen es anzeigen soll. Zweitens müssen wir diese Variablen in unserer Klasse als Eigenschaften definieren.
+Um den Code übersichtlicher zu gestalten, nutzen wir hier für die template-Eigenschaft Backticks (`` ` ``) statt Anführungszeichen (`'`).
+Das ermöglicht uns, das Template in mehrere Zeilen aufzuspalten, ohne mehrere Strings mittels Pluszeichen konkatenieren zu müssen.
 
-* Zeile 7: Hier sagen wir Angular das "name" [interpoliert](#gl-interpolation) werden soll
-* Zeile 11: [Typdefinition](#c01-basic-types) für die Komponenten-Eigenschaft
-* Zeile 14: Wert Zuweisung für die name-Eigenschaft. Wichtig ist, dass der Name der Eigenschaft genau so im Template geschrieben wird wie in der Klasse
+* Zeile 7: Hier teilen wir Angular mit, das "name" [interpoliert](#gl-interpolation) werden soll
+* Zeile 11: [Typdefinition](#c01-basic-types) der Komponenten-Eigenschaft
+* Zeile 14: Wertzuweisung der name-Eigenschaft. Wichtig ist, dass der Name der Eigenschaft im Template genauso wie in der Klasse geschrieben wird
 
 ### Lösung 2
 
@@ -68,9 +68,9 @@ Siehe auch [TypeScript-Klassen](#c01-classes).
 ### Diskussion
 
 Das Beispiel ist sehr einfach gehalten.
-Die zweite Lösung braucht weniger Code aber es ist Geschmackssache welche von den beiden Varianten wir benutzen.
+Die zweite Lösung benötigt weniger Code aber es ist Geschmackssache welche der beiden Varianten wir benutzen.
 Von der Funktionalität her sind beide gleich.
-Ein Beispiel mit beide Schreibweisen gibt es im Code-Beispiel auf Github.
+Ein Beispiel mit beiden Schreibweisen gibt es im Code-Beispiel auf Github.
 
 ### Code
 
@@ -79,5 +79,5 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/01-Displaying\_Data](htt
 ### Weitere Ressourcen
 
 * Backticks statt Anführungszeichen für Strings: ECMAScript 6 (2015) [Template Strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings)
-* Weitere Informationen zu Interpolation und der Template-Syntax, befinden sich im [Appendix-A: Template-Syntax](#appendix-a)
+* Weitere Informationen zur Interpolation und der Template-Syntax befinden sich in [Appendix-A: Template-Syntax](#appendix-a)
 

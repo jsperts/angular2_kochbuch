@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte meine CSS-Styles getrennt von meinem Template halten und nicht in einem style-Tag im Template.
+Ich möchte meine CSS-Styles getrennt von meinem Template und nicht in einem style-Tag im Template halten.
 
 ### Zutaten
 
@@ -11,7 +11,7 @@ Ich möchte meine CSS-Styles getrennt von meinem Template halten und nicht in ei
 
 ### Lösung
 
-Statt die CSS-Klassen im Template zu haben, können wir dafür die styles-Eigenschaft der Komponente nutzen.
+Statt die CSS-Klassen im Template zu halten, können wir die styles-Eigenschaft der Komponente nutzen.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -42,11 +42,11 @@ __Erklärung__:
 Die styles-Eigenschaft einer Komponente erwartet ein Array von Strings.
 Ein String kann CSS-Styles für eine oder mehrere Klassen, Tags, etc. beinhalten.
 Jeder String wird dann zur Laufzeit als style-Tag in den DOM gesetzt.
-In unserem Beispiel werden zwei style-Tags in den Head des Dokuments hinzugefügt.
+In unserem Beispiel werden zwei style-Tags im Head des Dokuments hinzugefügt.
 
-Wenn wir in Komponenten CSS-Styles definieren, können die definierte CSS-Styles standardmäßig nur in der Komponente verwendet werden in der diese definiert worden sind.
+Wenn wir in Komponenten CSS-Styles definieren, können die definierten CSS-Styles standardmäßig nur in der Komponente verwendet werden, in der diese definiert worden sind.
 Es ist dabei egal, ob wir die CSS-Styles als inline-styles mittels style-Tag, über die styles-Eigenschaft oder über die styleUrls-Eigenschaft der Komponente definieren.
-Dieses Verhalten kann uns von Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View Encapsulation" genannt.
+Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View Encapsulation" genannt.
 
 ### Code
 

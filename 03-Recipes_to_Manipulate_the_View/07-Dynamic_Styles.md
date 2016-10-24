@@ -1,8 +1,8 @@
-## Styles eines Elementes dynamisch verändern
+## Styles eines Elements dynamisch verändern
 
 ### Problem
 
-Ich möchte die Größe (height/width) eines Elementes als Werte in meine Komponente definieren. Eine Änderung der Werte in der Komponente soll auch die Größe des Elements verändern.
+Ich möchte die Größe (height/width) eines Elements durch Werte in meiner Komponente definieren. Eine Änderung der Werte in der Komponente soll auch die Größe des Elements verändern.
 
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
@@ -34,13 +34,13 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeilen 6-7: div-Tag mit Styles. Statische Styles werden über das style-Attribut gesetzt. Dynamische Styles werden mit Hilfe der ngStyle-Eigenschaft, eine [input-Eigenschaft](#gl-input-property) der NgStyle-Direktive, gesetzt. Die Eigenschaft bekommt als Wert ein Objekt dessen Keys die style-Eigenschaften sind die gesetzt werden (hier width und height). Die Werte für die Styles sind in der Klasse der Komponente definiert (siehe Zeilen 14 und 15)
+* Zeilen 6-7: div-Tag mit Styles. Statische Styles werden über das style-Attribut gesetzt. Dynamische Styles werden mit Hilfe der ngStyle-Eigenschaft, einer [input-Eigenschaft](#gl-input-property) der NgStyle-Direktive, gesetzt. Die Eigenschaft erhält als Wert ein Objekt dessen Keys die style-Eigenschaften sind, die gesetzt werden (hier width und height). Die Werte für die Styles sind in der Klasse der Komponente definiert (siehe Zeilen 14 und 15)
 * Zeile 14: Der Wert für die Breite des Elements
 * Zeile 15: Der Wert für die Höhe des Elements
 
 ### Lösung 2
 
-Wir haben bereits in Lösung 1 gesehen, dass die ngStyle-Eigenschaft ein Objekt mit style-Eigenschaften als Keys und Werte für die Styles als Werte für die Keys bekommt.
+Wir haben bereits in Lösung 1 gesehen, dass die ngStyle-Eigenschaft ein Objekt mit style-Eigenschaften als Keys und Werten für die Styles als Werte für die Keys bekommt.
 Statt Werte individuell in der Klasse zu definieren, können wir auch direkt das Objekt für die ngStyle-Eigenschaft definieren.
 
 {title="demo.component.ts", lang=js}
@@ -72,13 +72,13 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeile 11: div-Tag mit ngStyle-Eigenschaft, die auf die dimensions-Eigenschaft der Klasse zugreift
-* Zeilen 17-20: Objekt mit style-Eigenschaften als Keys und Werte, die die Werte für die Styles definieren die gesetzt werden sollen
+* Zeilen 17-20: Objekt mit style-Eigenschaften als Keys und Werten, die die Werte für die Styles definieren
 
 ### Diskussion
 
-Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der Werte für die style-Eigenschaften verzichtet.
-Im Github Code-Beispiel wird gezeigt wie wir mittels "click" die Werte für die styles-Eigenschaften verändern können.
-Um das Code-Beispiel zu verstehen wird das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" auch benötigt.
+Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern der Werte der style-Eigenschaften verzichtet.
+Im Github-Code-Beispiel wird gezeigt, wie wir mittels "click" die Werte der styles-Eigenschaften verändern können.
+Um das Code-Beispiel zu verstehen, wird auch das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" benötigt.
 
 Wir nutzen hier eine [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
 Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
@@ -96,6 +96,6 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 
 ### Weitere Ressourcen
 
-* Offizielle Dokumentation für die [NgStyle-Direktive](https://angular.io/docs/ts/latest/api/common/NgStyle-directive.html)
-* Weitere Informationen zu Eigenschafts- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
+* Offizielle Dokumentation der [NgStyle-Direktiven](https://angular.io/docs/ts/latest/api/common/NgStyle-directive.html)
+* Weitere Informationen zur Eigenschaften- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

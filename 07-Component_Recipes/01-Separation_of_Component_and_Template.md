@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich hab ein langes Angular-Template und ich möchte das HTML getrennt von meine Komponente halten.
+Ich hab ein langes Angular-Template und ich möchte das HTML getrennt von meiner Komponente halten.
 
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
@@ -10,7 +10,7 @@ Ich hab ein langes Angular-Template und ich möchte das HTML getrennt von meine 
 
 ### Lösung 1
 
-Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben, wo unsere HTML-Datei sich befindet.
+Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen und dort angeben, wo sich unsere HTML-Datei befindet.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -26,12 +26,12 @@ Statt der template-Eigenschaft können wir die templateUrl-Eigenschaft nutzen un
 
 __Erklärung__:
 
-* Zeile 5: Pfad zu der demo.component.html-Datei. Hier ist der Pfad relativ zu der index.html-Datei der Anwendung. Wir können aber auch einen absoluten Pfad angeben
+* Zeile 5: Pfad zur demo.component.html-Datei. Hier ist der Pfad relativ zur index.html-Datei der Anwendung angegeben. Wir können aber auch einen absoluten Pfad angeben
 
 ### Lösung 2
 
-In der ersten Lösung hatten wir den Pfad relativ zu der index.html-Datei angegeben.
-Es gibt auch die Möglichkeit den Pfad relativ zu der demo.component.ts-Datei zu definieren.
+In der ersten Lösung hatten wir den Pfad relativ zur index.html-Datei angegeben.
+Es gibt auch die Möglichkeit den Pfad relativ zur demo.component.ts-Datei zu definieren.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -48,14 +48,14 @@ Es gibt auch die Möglichkeit den Pfad relativ zu der demo.component.ts-Datei zu
 
 __Erklärung__:
 
-* Zeile 4: "module.id" wird von commonjs und dem Modul-Loader zur Verfügung gestellt. Diese Lösung funktioniert nur mit commonjs Module und wird standardmäßig von angular-cli benutzt, wenn wir damit eine Komponente generieren
-* Zeile 6: Der Pfad zu der demo.component.html-Datei ist jetzt relative zu der demo.component.ts-Datei
+* Zeile 4: "module.id" wird von commonjs und dem Modul-Loader zur Verfügung gestellt. Diese Lösung funktioniert nur mit commonjs Modulen und wird standardmäßig von angular-cli benutzt, wenn wir darüber eine Komponente generieren
+* Zeile 6: Der Pfad zur demo.component.html-Datei ist jetzt relativ zur demo.component.ts-Datei
 
 ### Diskussion
 
-Wichtig zu beachten ist, dass wir entweder die template-Eigenschaft oder die templateUrl-Eigenschaft verwenden können.
-Beide gleichzeitig geht nicht.
-Zur Laufzeit wird mittels XMLHttpRequest die Datei von Server geholt und der Inhalt der Datei wird kompiliert und in den DOM gesetzt.
+Wichtig zu beachten ist, dass wir nur entweder die template-Eigenschaft oder die templateUrl-Eigenschaft verwenden können.
+Beide gleichzeitig gehen nicht.
+Zur Laufzeit wird die Datei mittels XMLHttpRequest vom Server geholt und der Inhalt der Datei kompiliert und in den DOM gesetzt.
 
 #### templateUrl- vs. template-Eigenschaft
 
@@ -81,25 +81,25 @@ __template-Eigenschaft__
 | Vorteile                     | Nachteile                        |
 |------------------------------|----------------------------------|
 | Die gesamte Komponente wird  | Unübersichtlich, wenn wir viel   |
-| in eine Datei definiert      | HTML haben                       |
+| in einer Datei definiert     | HTML haben                       |
 |------------------------------|----------------------------------|
-| Kein extra Server-Aufruf     | Code-Highlighting und            |
-|                              | Auto-Vervollständigung sind      |
-|                              | Editor abhängig                  |
+| Kein extra Server-Aufruf     | Codehighlighting und             |
+|                              | Autovervollständigung sind       |
+|                              | editorabhängig                   |
 |------------------------------|----------------------------------|
-| Keine Probleme mit Pfade     |                                  |
+| Keine Probleme mit Pfaden    |                                  |
 
 Ich persönlich versuche immer kleine Komponenten mit wenig HTML (10-15 Zeilen) zu schreiben und nutze dabei die template-Eigenschaft.
 
 #### Lösung 1 vs. Lösung 2
 
-Beide Lösungen sind nicht wirklich geeignet, um Komponenten zu schreiben die in mehrere Anwendungen benutzt werden.
-Für die erste Lösung müssen wir immer wieder den Pfad anpassen, da vermutlich die Komponente nicht immer im gleichen Verzeichnis sein wird.
+Beide Lösungen sind nicht wirklich dazu geeignet, Komponenten zu schreiben, die in mehreren Anwendungen verwendet werden.
+Für die erste Lösung müssen wir immer wieder den Pfad anpassen, da sich die Komponente vermutlich nicht immer im gleichen Verzeichnis befinden wird.
 Das ist auch problematisch, wenn wir unsere Anwendung umstrukturieren möchten.
 
-Es ist vielleicht auf den ersten Blick nicht zu erkennen weshalb die zweite Lösung nicht geeignet ist um wiederverwendbare Komponenten zu schreiben.
-Diese Lösung ist wegen "module.id" an commonjs und eine Modul-Loader, der diese Eigenschaft nutzt gebunden.
-Es gibt zwar Möglichkeiten diese Lösung auch mit andere Modul-System/-Loader zu nutzen aber auch da werden wir an einem bestimmten Modul-System/-Loader gebunden sein.
+Es ist vielleicht auf den ersten Blick nicht zu erkennen, weshalb die zweite Lösung nicht dazu geeignet ist, wiederverwendbare Komponenten zu schreiben.
+Diese Lösung ist wegen "module.id" an commonjs und einen Modul-Loader, der diese Eigenschaft nutzt, gebunden.
+Es gibt zwar Möglichkeiten diese Lösung auch mit anderen Modul-Systemen/-Loadern zu nutzen aber auch dort werden wir an ein bestimmtes Modul-System/einen bestimmten Modul-Loader gebunden sein.
 
 ### Code
 
@@ -109,5 +109,5 @@ Code auf Github für die zweite Lösung: [07-Component\_Recipes/01-Separation\_o
 
 ### Weitere Ressourcen
 
-* Eine ausführlichere Diskussion zu Komponent-relative Pfade gibt es in [Component-Relative Paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html)
+* Eine ausführlichere Diskussion zu komponentenrelativen Pfaden gibt es in [Component-Relative Paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html)
 

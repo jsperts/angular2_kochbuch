@@ -71,11 +71,11 @@ __Erklärung__:
 * Zeilen 19-21: Hier wird die catch-Methode benutzt, um Fehler beim Server-Aufruf zu behandeln
   * Zeile 20: Wenn ein Fehler auftritt, wird die handleResponseError-Methode aufgerufen
 * Zeilen 25-33: Methode, um Server-Fehler zu behandeln
-  * Zeile 32: Wir geben zurück eine Instanz von Observable mit Fehler, so dass der zweite Parameter der subscribe-Methode aufgerufen wird (siehe Zeile 24 im Ausschnitt aus der app.component.ts-Datei)
+  * Zeile 32: Wir geben eine Observable-Instanz mit Fehler zurück, so dass der zweite Parameter der subscribe-Methode aufgerufen wird (siehe Zeile 24 im Ausschnitt aus der app.component.ts-Datei)
 
 
-Den eigentlichen Server-Fehler haben wir schon im Service behandelt mit Hilfe der catch-Methode.
-Da wir auch dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen wir auch in der Komponente den Fehler behandeln.
+Den eigentlichen Server-Fehler haben wir schon im Service mit Hilfe der catch-Methode behandelt.
+Da wir zusätzlich dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen wir den Fehler auch in der Komponente behandeln.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -116,32 +116,32 @@ __Erklärung__:
 
 * Zeile 9: Fehlermeldung in der View anzeigen
 * Zeilen 27-29: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
-  * Zeile 28: Fehlertext von Zeile 31 des Services als Wert für die errorText-Eigenschaft setzen
+  * Zeile 28: Fehlertext von Zeile 31 des Services als Wert der errorText-Eigenschaft setzen
 
 ### Diskussion
 
-Die catch-Methode von Instanzen der Observable-Klasse ist vergleichbar zu der catch-Methode einer Promise-Kette oder dem catch-Block einer __try__/__catch__-Anweisung.
-Jeder Fehler in der Kette von Observables, der vor der catch-Methode auftritt, kann in der catch-Methode behandelt werden.
+Die catch-Methode von Instanzen der Observable-Klasse ist vergleichbar mit der catch-Methode einer Promise-Kette oder dem catch-Block einer __try__/__catch__-Anweisung.
+Jeder Fehler in der Kette der Observables, der vor der catch-Methode auftritt, kann in der catch-Methode behandelt werden.
 Ähnlich wie bei einem __try__/__catch__ und bei Promises wird bei einen Fehler die Ausführungs-Kette "unterbrochen" und wir springen direkt zu der catch-Methode.
-Bei der Fehlerbehandlung in der catch-Methode können wir eine Instanz von Observable mit Fehler zurück geben, um erneut ein Fehler zu erzeugen.
-Das ist ähnlich wie, wenn wir bei einer try/catch-Anweisung ein throw-Anweisung im catch-Block nutzen.
+Bei der Fehlerbehandlung in der catch-Methode können wir eine Instanz eines Observable mit Fehler zurückgeben, um erneut einen Fehler zu erzeugen.
+Das ist ähnlich zu einer throw-Anweisung in einem catch-Block einer try/catch-Anweisung.
 
-Wie wir in diesem Rezept gesehen haben, kann die subscribe-Methode nicht nur eine Callback-Funktion als Parameter haben, sondern zwei (genauer gesagt sind es drei aber der dritte Parameter ist für uns vorerst nicht relevant).
+Wie wir in diesem Rezept gesehen haben, kann die subscribe-Methode nicht nur eine Callback-Funktion als Parameter erhalten, sondern zwei (genauer gesagt sind es drei aber der dritte Parameter ist für uns vorerst nicht relevant).
 Wir wissen schon, dass die erste Callback-Funktion aufgerufen wird, wenn die Server-Anfrage erfolgreich ist.
 Die zweite Callback-Funktion wird im Falle eines Fehlers aufgerufen.
-Diese Callback-Funktion ist unsere zweite Möglichkeit einen Fehler in eine Observables-Kette zu behandeln.
-Wir haben also den Fehler an zwei verschiedenen Orten behandelt.
-Einmal in unserem Service mittels catch-Methode und einmal in unsere Komponente mit Hilfe des zweiten Parameters der subscribe-Methode.
-Prinzipiell wäre es möglich den Fehler entweder im Service oder in der Komponente zu behandeln.
+Diese Callback-Funktion ist unsere zweite Möglichkeit, einen Fehler in einer Observables-Kette zu behandeln.
+Wir haben also den Fehler an zwei verschiedenen Orten behandelt:
+Einmal in unserem Service mittels catch-Methode und einmal in unserer Komponente mit Hilfe des zweiten Parameters der subscribe-Methode.
+Prinzipiell wäre es möglich, den Fehler entweder im Service oder in der Komponente zu behandeln.
 Der zweite Parameter der subscribe-Methode ist optional und optional ist auch die Nutzung der catch-Methode.
-Der Grund weshalb wir den Fehler an zwei Stellen behandeln ist ganz einfach.
-Wir wollen nicht, dass unsere Komponente wissen muss wie die Server-Antwort aussieht im Falle eines Fehlers genau so wie wir nicht wollten, dass die Komponente weiß was mit einer erfolgreiche Server-Antwort zu tun ist bevor Daten angezeigt werden können.
-Der Komponente reicht es Daten bzw. Fehlermeldungen zu bekommen, die direkt angezeigt werden können.
+Der Grund, weshalb wir den Fehler an zwei Stellen behandeln, ist ganz einfach.
+Wir wollen nicht, dass unsere Komponente wissen muss, wie die Server-Antwort im Falle eines Fehlers aussieht, genauso, wie wir nicht wollten, dass die Komponente weiß, was mit einer erfolgreichen Server-Antwort zu tun ist, bevor Daten angezeigt werden können.
+Der Komponente reicht es, Daten bzw. Fehlermeldungen zu erhalten, die direkt angezeigt werden können.
 
 I> #### Fehler bei einer Server-Anfrage
 I>
 I> Grob können wir bei Server-Anfragen mittels des Http-Services, zwei Fehlerquellen unterscheiden:
-I> (1) Die Anfrage kann nicht geschickt werden z. B., wenn der Server nicht verfügbar ist
+I> (1) Die Anfrage kann nicht geschickt werden, z. B., wenn der Server nicht verfügbar ist
 I> (2) Der Status der Antwort (response.status) ist nicht zwischen __200__ und __299__
 
 ### Code

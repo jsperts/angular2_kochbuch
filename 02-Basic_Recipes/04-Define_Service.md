@@ -1,8 +1,8 @@
-## Ein Service definieren {#c02-define-service}
+## Einen Service definieren {#c02-define-service}
 
 ### Problem
 
-Ich möchte einen Service definieren und nutzen, damit ich so Teile meiner Logik und Daten aus der Komponente entfernen kann.
+Ich möchte einen Service definieren und nutzen, damit ich Teile meiner Logik und Daten aus der Komponente entfernen kann.
 
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
@@ -11,9 +11,9 @@ Ich möchte einen Service definieren und nutzen, damit ich so Teile meiner Logik
 
 ### Lösung
 
-Was wir in der Angular-Welt ein Service nennen, ist im Grunde genommen nur eine TypeScript-Klasse.
-Services werden benutzt, um Daten und Logik außerhalb von Komponenten zu bewahren.
-Somit können wir die Methoden und die Daten eines Service in mehreren Komponenten wiederverwenden.
+Was wir in der Angular-Welt einen Service nennen, ist im Grunde genommen nur eine TypeScript-Klasse.
+Services werden benutzt, um Daten und Logik außerhalb von Komponenten zu halten.
+Somit können wir die Methoden und die Daten eines Services in mehreren Komponenten wiederverwenden.
 
 {title="data.service.ts", lang=js}
 ```
@@ -37,10 +37,10 @@ export class DataService {
 __Erklärung__:
 
 * Zeile 5: Hier nutzen wir den Injectable-Decorator, um den Service als "Injectable" zu definieren
-* Zeilen 6-15: Die Klasse, die unseren Service repräsentiert. Diese wird auch exportiert, so dass wir den Service in Komponenten und anderen Services nutzen können
+* Zeilen 6-15: Diese Klasse repräsentiert unseren Service. Sie wird auch exportiert, so dass wir den Service in Komponenten und anderen Services nutzen können
 
 
-Wir haben jetzt einen Service definiert und den werden wir jetzt in unsere Komponente nutzen.
+Wir haben jetzt einen Service definiert und werden ihn nun in unserer Komponente nutzen.
 
 {title="demo.component.ts", lang=js}
 ```
@@ -62,43 +62,43 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeile 2: DataService importieren
-* Zeile 6: Die providers-Eigenschaft sagt Angular welche Services der Komponente und ihre Unterkomponenten zur Verfügung stehen. Nur Services die hier definiert sind können als Konstruktorparameter benutzt werden (Siehe auch Zeile 10)
-* Zeile 10: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService" bekommen
+* Zeile 6: Die providers-Eigenschaft teilt Angular mit, welche Services der Komponente und ihren Unterkomponenten zur Verfügung stehen. Nur Services, die hier definiert sind, können als Konstruktorparameter benutzt werden (Siehe auch Zeile 10)
+* Zeile 10: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService" erhalten
 * Zeile 11: Hier nutzen wir die getData-Methode der dataService-Instanz
 
 ### Diskussion
 
-Es ist anzunehmen, dass nach unsere kurze Erklärung in der Lösung noch einige Fragen offen sind.
+Nach unserer kurzen Erklärung ist anzunehmen, dass zur Lösung noch einige Fragen offen sind.
 Wir haben erwähnt, dass wir den Service als "Injectable" definieren.
 Aber was heißt das?
 Warum brauchen wir kein "new", um den DataService zu instantiieren?
 Was genau sind "providers"?
-Wir werden jetzt diese Fragen beantworten.
+Diese Fragen werden wir jetzt beantworten.
 
 #### Dependency Injection
 
 Angular nutzt Dependency Injection (DI), um Abhängigkeiten zu verwalten.
-Alle Providers von Komponenten werden mit dem sogenannten "Injector" registriert und dieser weiß dann zur Laufzeit was er tun muss, wenn z. B. eine Komponente ein Service im Konstruktor als Abhängigkeit definiert hat.
-Die Information, dass die Komponente einen Service braucht wird in den Metadaten der Komponente gespeichert.
+Alle Provider von Komponenten werden mit dem sogenannten "Injector" registriert Dieser weiß dann zur Laufzeit, was er tun muss, wenn z. B. eine Komponente im Konstruktor einen Service als Abhängigkeit definiert.
+Die Information, dass die Komponente einen Service braucht, wird in den Metadaten der Komponente gespeichert.
 Bei der Komponentendefinition stehen uns diese Metadaten zur Verfügung, da wir den Component-Decorator nutzten.
 
-Da Services keine Metadaten besitzen müssen wir den Service mit Hilfe vom Injectable-Decorator als "Injectable" definieren.
-Somit bekommt auch unserer Service Metadaten und kann dann auch Abhängigkeiten haben, die in diese Metadaten gespeichert werden.
+Da Services keine Metadaten besitzen, müssen wir den Service mit Hilfe des Injectable-Decorators als "Injectable" definieren.
+Somit erhält auch unserer Service Metadaten und kann dann Abhängigkeiten haben, die in diese Metadaten angegeben werden.
 Wir brauchen also den Injectable-Decorator nur, wenn wir für einen Service einen weiteren Service im Konstruktor als Abhängigkeit definieren wollen.
-Kurz gesagt ist ein "Injectable" Service, ein Service der Abhängigkeiten als Konstruktorparameter haben kann.
-Obwohl unser Service keine Abhängigkeiten hat, haben wir den Decorator benutzt, damit alle Services einheitlich sind und, um Fehler zu vermeiden falls wir später doch eine Abhängigkeit brauchen.
-Wir wissen jetzt also was es bedeutet ein Service als "Injectable" zu definieren und warum wir das machen.
+Kurz gesagt ist ein "Injectable" Service ein Service, der Abhängigkeiten als Konstruktorparameter besitzen kann.
+Obwohl unser Service keine Abhängigkeiten hat, haben wir den Decorator verwendet, damit zum Einen alle Services einheitlich sind und zum Anderen Fehler vermieden werden, falls wir später doch eine Abhängigkeit brauchen.
+Wir wissen jetzt also, was es bedeutet, einen Service als "Injectable" zu definieren und warum wir das machen.
 
 Die Frage "Warum brauchen wir kein 'new', um den DataService zu instantiieren?" ist einfach zu beantworten.
 Der Injector übernimmt die Instantiierung für uns.
-Das hat den Vorteil, dass wir als Nutzer des Services gar nicht wissen müssen wie wir diesen instantiieren müssen.
+Das hat den Vorteil, dass wir als Nutzer des Services nicht wissen müssen, wie wir diesen instantiieren müssen.
 
 Jetzt wollen wir noch die letzte Frage beantworten.
-Kurz gesagt ist ein "Provider" ein Rezept, um ein Service zu instantiieren.
-Unsere Komponente hat nur eine Abhängigkeit und braucht deshalb auch nur ein Provider.
-Der Provider ist die Klasse, die den Service repräsentiert und der Injector weiß, dass eine Klasse mit "new" zu instantiieren ist und die Instanz als Konstruktorparameter zu übergeben ist.
-Um genau zu wissen welche Klasse zur welcher Instanz gehört, nutzt der Injector die Typdefinition der Konstruktorparameter.
-Alternativ können wir statt eine Typdefinition auch den Inject-Decorator (@Inject) nutzen:
+Kurz gesagt ist ein "Provider" ein Rezept, einen Service zu instantiieren.
+Unsere Komponente besitzt nur eine Abhängigkeit und benötigt deshalb auch nur einen Provider.
+Der Provider ist die Klasse, die den Service repräsentiert. Der Injector weiß, dass eine Klasse mit "new" zu instantiieren und die Instanz als Konstruktorparameter zu übergeben ist.
+Um genau zu wissen, welche Klasse zur welcher Instanz gehört, nutzt der Injector die Typdefinitionen der Konstruktorparameter.
+Alternativ können wir statt einer Typdefinition auch den Inject-Decorator (@Inject) nutzen:
 
 {title="Inject-Decorator statt Typ", lang=js}
 ```
@@ -115,9 +115,9 @@ class DemoAppComponent(@Inject(DataService) dataService) { ... }
 ```
 
 Wir haben unsere Diskussion möglichst kurz gehalten.
-Eine ausführlichere Erklärung wie Dependency Injection in Angular funktioniert würde den Rahmen eines Rezepts sprenden.
-Eine vollständige Erklärung wie Dependency Injection funktioniert und was wir alles damit machen können gibt es auf der Angular 2 Webseite: [Dependency Injection](https://angular.io/docs/ts/latest/guide/dependency-injection.html).
-Da wird auch beschrieben wie wir komplexere Provider-Rezepte nutzen können und was wir außer Services als Abhängigkeiten definieren können.
+Eine ausführlichere Erklärung, wie Dependency Injection in Angular funktioniert, würde den Rahmen eines Rezepts sprengen.
+Eine vollständige Erklärung, wie Dependency Injection funktioniert und was wir alles damit machen können, gibt es auf der Angular 2 Webseite: [Dependency Injection](https://angular.io/docs/ts/latest/guide/dependency-injection.html).
+Dort wird auch beschrieben, wie wir komplexere Provider-Rezepte nutzen können und was wir außer Services noch als Abhängigkeiten definieren können.
 
 ### Code
 
@@ -125,5 +125,5 @@ Code auf Github: [02-Basic\_Recipes/04-Define\_Service](https://github.com/jsper
 
 ### Weitere Ressourcen
 
-* Neue Services können wir auch mit Hilfe des generate-Kommandos von angular-cli generieren. Mehr Informationen gibt es im [Appendix-B: angular-cli](#appendix-b)
+* Neue Services können wir auch mit Hilfe des generate-Kommandos von angular-cli generieren. Mehr Informationen gibt es in [Appendix-B: angular-cli](#appendix-b)
 

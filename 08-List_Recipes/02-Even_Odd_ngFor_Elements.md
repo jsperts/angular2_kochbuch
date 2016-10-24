@@ -2,7 +2,7 @@
 
 ### Problem
 
-Ich möchte, dass gerade Elementen meiner Liste eine andere Farbe als die ungeraden haben.
+Ich möchte, dass gerade Elemente meiner Liste eine andere Farbe als ungerade erhalten.
 
 ### Zutaten
 * [Liste von Daten anzeigen](#c03-data-list)
@@ -39,19 +39,19 @@ __Erklärung__:
 Die Anpassungen betreffen nur die template-Eigenschaft der Komponente. Der Rest bleibt gleich.
 
 * Zeilen 6-7: Definition von CSS-Klassen
-* Zeile 11: Definiert lokale Variablen "isEven" und "isOdd" die __true__ oder __false__ sind je nachdem, ob das aktuelle Element gerade oder ungerade ist. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
-* Zeile 12: Hier werden die Klassen "green" oder "red" gesetzt je nachdem, ob das aktuelle Element gerade oder ungerade ist
+* Zeile 11: Definiert lokale Variablen "isEven" und "isOdd" die, je nachdem ob das aktuelle Element gerade oder ungerade ist, __true__ oder __false__ sind. In diesem Fall sind __even__ und __odd__ spezielle ngFor-Konstrukte
+* Zeile 12: Hier werden, je nachdem, ob das aktuelle Element gerade oder ungerade ist, die Klassen "green" oder "red" gesetzt
 
 ### Diskussion
 
-Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich können wir die lokalen Variablen "isOdd" und "isEven" auch einer Methode übergeben oder diese nutzen, um z. B. nur gerade oder nur ungerade Elementen anzuzeigen.
+Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade ist, um die richtige CSS-Klasse zu setzen. Natürlich können wir die lokalen Variablen "isOdd" und "isEven" auch einer Methode übergeben oder diese nutzen, um z. B. nur gerade oder nur ungerade Elemente anzuzeigen.
 
 ### Code
 
 Code auf Github: [08-List\_Recipes/02-Even\_Odd\_ngFor\_Elements](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/02-Even_Odd_ngFor_Elements).
-Da werden auch die weiteren mögliche Schreibweisen der NgFor-Direktive mit even/odd gezeigt.
+Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit even/odd gezeigt.
 
 ### Weitere Ressourcen
 
-* Weitere Informationen zur lokalen Variablen gibt es im [Appendix A: Template-Syntax](#appendix-a)
+* Weitere Informationen zu lokalen Variablen gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

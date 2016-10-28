@@ -27,7 +27,7 @@ var user = new User('Max');
 __Erklärung__:
 
 * Zeile 2: Nach dem class-Keyword steht der Name der Klasse, in unserem Fall "User"
-* Zeilen 3-5: Die Klasse hat eine (optionale) Konstruktorfunktion mit dem Parameter "name". Diese wird aufgerufen, wenn wir, wie in Zeile 12, "new" benutzen
+* Zeilen 3-5: Die Klasse hat eine (optionale) Konstruktorfunktion mit dem Parameter "name". Diese wird aufgerufen, wenn wir, wie in Zeile 12, __new__ benutzen
 * Zeile 6: Methode namens "print"
 
 {title="Die User-Klasse in ES5-Schreibweise", lang=js}
@@ -39,7 +39,7 @@ function User(name) {
 // Prototypmethoden
 User.prototype.print = function() {
   console.log(this.name);
-}
+};
 
 var user = new User('Max');
 ```
@@ -96,7 +96,8 @@ class User {
   }
 }
 
-var user: User = new User('Max');
+var user: User;
+user = new User('Max');
 ```
 
 __Erklärung__:

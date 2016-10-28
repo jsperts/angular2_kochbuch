@@ -1,13 +1,11 @@
 ## Interfaces {#c01-ifaces}
 
-Nachdem wir uns die Basistypen von TypeScript angeschaut haben, werden wir jetzt betrachten, wie wir eigene Typen mit Hilfe von Interfaces definieren können.
-Abgesehen von Arrays haben wir bisher keinen Basistyp für Objekte gesehen.
-Mit Interfaces können wir den Typ von Objekten definieren.
-Genauer gesagt definieren wir die Struktur eines Objekts.
+Nachdem wir uns die Basistypen von TypeScript angeschaut haben, werden wir jetzt sehen, wie wir den Typ von Objekten mit Hilfe von Interfaces definieren können.
+Genauer gesagt definieren wir mit Interfaces die Struktur eines Objekts.
 Wir geben Typen für dessen Eigenschaften und Methoden an.
 
 Wir haben zwei Möglichkeiten, ein Interface zu definieren.
-Einmal als anonymes interface z. B. bei einer Variablendefinition oder als benanntes Interface mit dem Keyword __interface__.
+Einmal als anonymes Interface (inline annotation) z. B. bei einer Variablendefinition oder als benanntes Interface mit dem Keyword __interface__.
 In beiden Fällen wird der kompilierte JavaScript-Code den Code für das Interface nicht beinhalten.
 Zuerst schauen wir uns anonyme Interfaces an.
 
@@ -43,7 +41,7 @@ var user: User;
 user = {
   name: 'Max',
   age: 23
-}
+};
 ```
 
 __Erklärung__:

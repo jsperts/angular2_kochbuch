@@ -25,9 +25,6 @@ Im app-Verzeichnis gibt es drei Dateien namens "main.ts", "todo\_item.ts" und "t
   <script>
     System.config({
       transpiler: 'typescript',
-      typescriptOptions: {
-        emitDecoratorMetadata: true
-      },
       packages: {'app': {defaultExtension: 'ts'}}
     });
     System.import('./app/main');
@@ -47,11 +44,10 @@ __Erklärung__:
 
 * Zeile 6: Laden von SystemJS
 * Zeile 7: Laden des TypeScript-Compilers
-* Zeilen 8-17: Konfiguration von SystemJS und Laden der Anwendung
+* Zeilen 8-14: Konfiguration von SystemJS und Laden der Anwendung
   * Zeile 10: Hier teilen wir SystemJS mit, dass unsere TypeScript-Dateien on-the-fly kompiliert werden sollen
-  * Zeilen 11-13: Optionen für den TypeScript-Compiler, die angegebene Option ist für die Beispiel-Anwendung nicht erforderlich, wird aber später bei unseren Rezepten gebraucht, um [Decorators](#gl-decorator) richtig anwenden zu können
-  * Zeile 14: Hier sagen wir SystemJS, dass alle Dateien im Verzeichnis "app" eine ".ts" Endung haben. Somit brauchen wir beim Importieren eines Moduls die Endung nicht anzugeben
-  * Zeile 16: Laden der main.ts-Datei, das Hauptmodul unserer Anwendung
+  * Zeile 11: Hier sagen wir SystemJS, dass alle Dateien im Verzeichnis "app" eine ".ts" Endung haben. Somit brauchen wir beim Importieren eines Moduls die Endung nicht anzugeben
+  * Zeile 13: Laden der main.ts-Datei, das Hauptmodul unserer Anwendung
 
 W> #### Achtung
 W>
@@ -59,7 +55,7 @@ W> Wichtig zu beachten ist, dass wir hier TypeScript on-the-fly, sprich im Brows
 
 I> #### SystemJS
 I>
-I> SystemJS ist ein Modullader, der verschiedene Arten von Modulen wie z. B. CommonJS, AMD und ESM unterstützt. Strenggenommen müssen wir SystemJS nicht nutzen. Es gibt auch andere Möglichkeiten. Aber da es vom Angular-Team empfohlen wird, nutzen wir SystemJS hier und in den Rezepten. Wer mehr über SystemJS erfahren möchte kann [hier](https://github.com/systemjs/systemjs) mehr darüber lesen.
+I> SystemJS ist ein Modullader, der verschiedene Arten von Modulen wie z. B. CommonJS, AMD und ESM unterstützt. Wer mehr über SystemJS erfahren möchte kann [hier](https://github.com/systemjs/systemjs) mehr darüber lesen.
 
 {title="app/main.ts", lang=js}
 ```
@@ -131,7 +127,8 @@ __Erklärung__:
 
 Modul und Klassendefinition für ein Todo-Element.
 Unsere Klasse erzeugt Instanzen vom Typ "TodoItem".
-In der letzten Zeile nutzen wir eine [ESM export-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), um die Klasse zu exportieren, damit wir diese in anderen Modulen importieren und nutzen können.
+In der letzten Zeile nutzen wir eine [ESM export-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), um die Klasse zu exportieren.
+Somit können wir diese in anderen Modulen importieren und nutzen.
 
 {title="app/todo_list.ts", lang=js}
 ```

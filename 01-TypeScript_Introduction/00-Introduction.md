@@ -16,3 +16,5 @@ Wer aber größere JavaScript-Anwendungen geschrieben hat, weiß, wie schwer es 
 Mit Hilfe von Typinformationen können wir solche Probleme vermeiden.
 Da Typen ein so wichtiger Aspekt von TypeScript sind, werden wir uns zuerst damit befassen.
 
+I> Im Buch wird TypeScript Version 2 benutzt. Ggf. wird es Beispiele geben, die nicht mit eine ältere Version von TypeScript funktionieren.
+

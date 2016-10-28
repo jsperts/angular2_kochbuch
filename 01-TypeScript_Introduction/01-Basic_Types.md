@@ -3,16 +3,18 @@
 TypeScript bringt von sich aus eine Anzahl von Basistypen wie z. B. "string", "boolean" und "number" mit, aber es erlaubt es uns auch eigene Typen zu definieren.
 Es ist zwar nicht erforderlich, dass wir mit dem Typ-System arbeiten, es kann aber manchmal ganz nützlich sein. Darum werden wir in den verschiedenen Rezepten immer wieder auf Typen stoßen.
 
-Insgesamt hat TypeScript acht Typen, die immer vorhanden sind:
+Insgesamt hat TypeScript zehn Typen, die immer vorhanden sind:
 
-* Boolean
-* Number
-* String
-* Array
-* Tuple
-* Enum
-* Any
-* Void
+* boolean
+* number
+* string
+* array
+* tuple
+* enum
+* any
+* void
+* undefined und null
+* never
 
 Typdefinitionen kommen immer nach einem Doppelpunkt (:).
 Wenn wir z. B. nach einem Variablennamen, Funktionsnamen oder Funktionsparameter einen Doppelpunkt sehen, dann handelt es sich um eine Typdefinition.
@@ -52,7 +54,7 @@ aString = `yet another string`;
 
 ### Array
 
-Der Typ "Array" wird für Listen verwendet. Damit die Typdefinition einen Sinn ergibt, müssen wir auch den Typ der Elemente der Liste angeben.
+Der Typ "array" wird für Listen verwendet. Damit die Typdefinition einen Sinn ergibt, müssen wir auch den Typ der Elemente der Liste angeben.
 Unten werden die zwei Möglichkeiten gezeigt, die es gibt, um den Typ einer Liste zu definieren.
 
 ```js
@@ -67,7 +69,7 @@ __Erklärung__:
 
 ### Tuple
 
-Der Typ "Tuple" wird auch für Listen verwendet.
+Der Typ "tuple" wird auch für Listen verwendet.
 Mit Hilfe dieses Typs, können wir Listen definieren, bei welchen die Elemente an verschiedenen Positionen unterschiedliche Typen besitzen.
 Hier ein kleines Beispiel:
 
@@ -121,4 +123,42 @@ function test(): void {
   console.log('test');
 }
 ```
+
+### Undefined und Null
+
+In TypeScript haben die Werte __null__ und __undefined__ einen eigenen Typ der "null" bzw. "undefined" heißt.
+
+```js
+var foo: undefined = undefined;
+var bar: null = null;
+```
+
+Im Regelfall sind die Typen "undefined" und "null" Subtypen von jedem anderen Typ.
+Das bedeutet, dass wir z. B. eine Variable vom Typ "number" haben können die als Wert eine Zahl, __undefined__ oder __null__ haben kann.
+
+```js
+var num: number = 1;
+num = undefined;
+num = null;
+```
+
+Wenn wir aber __strictNullChecks__ nutzen, sind die Werte __null__ und __undefined__ nicht in jedem Typ enthalten.
+Die Zeilen 2 und 3 im Beispiel oben währen dann keine gültige Zuweisung im Sinne von TypeScript.
+Mit __stringNullChecks__, können wir __null__ an Variablen vom Typ "void" und "null" zuweisen.
+Entsprechend können wir den Wert __undefined__ nur an Variablen vom Typ "void" und "undefined" zuweisen.
+Diese zwei Typen können nur dann sinnvoll eingesetzt werden, wenn wir __strictNullChecks__ nutzen.
+
+### Never
+
+Der "never"-Typ ist ein Typ ohne Wert und repräsentiert etwas was nie passieren kann.
+Z. B. eine Funktion die immer eine Exception schmeisst, kann als Rückgabetyp "never" haben, da in so einem Fall die Funktion nie ein Rückgabewert haben kann.
+
+```js
+function throwError(): never {
+  throw Error('Some error');
+}
+```
+
+Wir werden uns in diesem Buch mit dem "never"-Typ nicht weiter beschäftigen.
+Dieser wird nur in speziellen Situationen benutzt wie z. B. in Type Guards.
 

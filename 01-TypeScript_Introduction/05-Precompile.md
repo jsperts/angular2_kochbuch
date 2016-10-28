@@ -46,19 +46,23 @@ Der Code für die Anwendung mit angepasster index.html-Datei befindet sich in [0
 
 __Erklärung__:
 
-TypeScript wird jetzt nicht mehr in der index.html-Datei geladen. In der SystemJS-Konfiguration haben wir die transpiler-Eigenschaft und die Optionen für den Compiler entfernt. Einen weiteren Unterschied sehen wir in Zeile 9, wo wir jetzt ".js" als Endung nutzen und nicht mehr ".ts". Der Grund dafür ist, dass wir nun die kompilierten JavaScript-Dateien laden möchten. Jetzt müssen wir nur noch die TypeScript-Dateien kompilieren. Weitere Anpassungen sind nicht nötig.
+Der TypeScript-Compiler wird jetzt nicht mehr in der index.html-Datei geladen.
+In der SystemJS-Konfiguration haben wir die transpiler-Eigenschaft entfernt.
+Einen weiteren Unterschied sehen wir in Zeile 9, wo wir jetzt ".js" als Endung nutzen und nicht mehr ".ts".
+Der Grund dafür ist, dass wir nun die kompilierten JavaScript-Dateien laden möchten.
+Jetzt müssen wir nur noch die TypeScript-Dateien kompilieren.
+Weitere Anpassungen sind nicht nötig.
 
 {title="Dateien kompilieren", lang=bash}
 ```
-tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commonjs app/main.ts
+tsc --target ES5 --module commonjs app/main.ts
 ```
 
 __Erklärung__:
 
-tsc ist der TypeScript-Compiler. Die Optionen "emitDecoratorMetadata" und "experimentalDecorators" sind in unserem Beispiel optional.
-Diese werden später für die Angular-Rezepte gebraucht.
+tsc ist der TypeScript-Compiler.
 Die Option "module" gibt an, dass die ESM, die wir nutzen, in CommonJS-Module umgewandelt werden sollen.
-Die Option "target" gibt, welcher ECMAScript-Version unser JavaScript entsprechen soll.
+Die Option "target" gibt an, welcher ECMAScript-Version unser JavaScript entsprechen soll.
 Hier nutzen wir ECMAScript 5.
 Als Letztes geben wir die main.ts-Datei an.
 Die weiteren Module, die die main.ts-Datei importiert, werden automatisch mit kompiliert.
@@ -84,7 +88,7 @@ Es gibt eine Option namens "watch". Mit dieser Option werden die Dateien automat
 
 {title="Kommando mit watch", lang=bash}
 ```
-tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commonjs --watch app/main.ts
+tsc --target ES5 --module commonjs --watch app/main.ts
 ```
 
 __Erklärung__:
@@ -100,7 +104,7 @@ Um Sourcemaps zu erzeugen, nutzen wir eine weitere Option des Compilers.
 
 {title="Sourcemaps generieren", lang=bash}
 ```
-tsc --emitDecoratorMetadata --experimentalDecorators --target ES5 --module commonjs --sourceMap app/main.ts
+tsc --target ES5 --module commonjs --sourceMap app/main.ts
 ```
 
 __Erklärung__:
@@ -118,8 +122,6 @@ Eine Alternative hierfür bietet die tsconfig.json-Datei. Darin können wir alle
   "compilerOptions": {
     "module": "commonjs",
     "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "target": "ES5"
   }
 }
@@ -141,5 +143,5 @@ tsc -p Hauptverzeichnis
 ```
 
 aufrufen, wobei __Hauptverzeichnis__ der Pfad zu dem Verzeichnis ist, in dem die tsconfig.json-Datei liegt.
-Da unsere config-Datei die files-Eigenschaft nicht setzt, werden alle \*.ts-Dateien kompiliert, die sich im Haupt- und in den Unterverzeichnissen befinden. Das TypeScript-Handbuch bietet weitere Informationen über die [tsconfig.json-Datei](http://www.typescriptlang.org/docs/handbook/tsconfig.json.html) und die Eigenschaften, die diese enthalten kann.
+Da unsere config-Datei die files-Eigenschaft nicht setzt, werden alle \*.ts-Dateien kompiliert, die sich im Haupt- und in den Unterverzeichnissen befinden. Das TypeScript-Handbuch bietet weitere Informationen über die [tsconfig.json-Datei](http://www.typescriptlang.org/docs/handbook/tsconfig.json.html) an und die Eigenschaften, die diese enthalten kann.
 

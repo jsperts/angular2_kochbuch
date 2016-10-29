@@ -17,22 +17,22 @@ Das Tool befindet sich noch im beta-Stadium. Nichtsdestotrotz werden wir es nutz
 
 Als Erstes müssen wir __Node.js__ und __npm__ installieren, damit wir im zweiten Schritt __angular-cli__ installieren können.
 Am einfachsten können wir Node.js installieren, indem wir es von der [offiziellen Webseite](https://nodejs.org/en/download/) herunterladen.
-Bei der Installation von Node.js, wird npm mitinstalliert.
+Bei der Installation von Node.js, wird npm mit installiert.
 Jetzt können wir angular-cli installieren mit:
 
 ```bash
-npm install -g angular-cli@1.0.0-beta.5
+npm install -g angular-cli@1.0.0-beta.18
 ```
 
 Wir installieren angular-cli global und können es daher in jedem Angular 2 Projekt nutzen.
 
 I> #### Node.js/npm Versionen
 I>
-I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 5.3.0 von Node.js und Version 3.3.12 von npm getestet.
+I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 6.9.1 von Node.js und Version 3.10.8 von npm getestet.
 
 I> #### Fehler bei der Installation/Projekt-Initialisierung
 I>
-I> Bei Fehlern hilft es, angular-cli zu löschen und neu zu installieren. Fehler können vor allem auftreten, wenn eine alte Version von angular-cli schon installiert ist.
+I> Bei Fehlern hilft es, angular-cli zu löschen und neu zu installieren. Fehler können vor allem auftreten, wenn eine alte Version von angular-cli schon installiert ist. Die Github-Seite von angular-cli beinhaltet Informationen, wie angular-cli [aktualisiert](https://github.com/angular/angular-cli#updating-angular-cli) werden kann.
 
 Jetzt können wir ein Projekt initialisieren.
 Dafür gibt es die Kommandos "new" und "init".
@@ -41,8 +41,8 @@ Dafür gibt es die Kommandos "new" und "init".
 ng new projektName --skip-git
 ```
 
-Dieses Kommando wird ein Verzeichnis mit dem Namen "projektName" erzeugen. Darin wird es die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
-Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen,  vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
+Dieses Kommando wird ein Verzeichnis mit dem Namen "projektName" erzeugen. Darin wird das Tool die nötigen Verzeichnisse/Dateien anlegen und alle Abhängigkeiten mittels npm installieren.
+Falls `--skip-git` nicht angegeben wird, wird angular-cli auch ein git-Repository anlegen, vorausgesetzt, dass wir nicht schon in einem git-Repository sind.
 
 Das init-Kommando macht das gleiche wie das new-Kommando aber für ein existierendes Verzeichnis.
 

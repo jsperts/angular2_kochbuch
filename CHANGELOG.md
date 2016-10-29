@@ -4,9 +4,12 @@
 
 ### Added
 
+* Neue TypeScript-Typen undefined, null und never
+
 ### Changed
 
 * Schreib-/Grammatikfehler Korrekturen
+* Die Rezepte wurden für Angular 2.x aktualisiert
 
 ### Removed
 

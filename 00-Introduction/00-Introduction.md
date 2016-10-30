@@ -14,7 +14,7 @@ Die templating-Sprache wurde geändert und alle Event-Direktiven wie z. B. ng-
 Controllers und $scope wurden aus dem Framework entfernt und durch Komponenten ersetzt.
 Die Definition von Services wurde vereinfacht.
 In den meisten Fällen ist ein Service einfach eine Klasse.
-Außer den Unterschieden die uns als Entwickler bei der Implementierung von Angular 2 Anwendungen direkt betreffen wie z. B. die neue Syntax für Templates, gibt es auch jede Menge technische Unterschiede mit denen wir uns in den meisten Fällen nicht beschäftigen brauchen wie z. B. hierarchische Dependency Incjection und hierarchische Change Detection.
+Außer den Unterschieden die uns als Entwickler bei der Implementierung von Angular 2 Anwendungen direkt betreffen wie z. B. die neue Syntax für Templates, gibt es auch jede Menge technische Unterschiede mit denen wir uns in den meisten Fällen nicht beschäftigen brauchen wie z. B. hierarchische Dependency Incjection und hierarchische Change-Detection.
 Trotz den Unterschieden sind die 1.x. und 2 Versionen von der Vogelperspektive betrachtet sehr ähnlich.
 Die meiste Begriffen die wir aus Angular 1.x. kennen, können weiterhin verwendet werden.
 

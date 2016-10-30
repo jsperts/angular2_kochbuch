@@ -75,7 +75,7 @@ __Erklärung__:
 
 Wir können die EventEmitter-Klasse nutzen, um eigene Events zu definieren.
 Diese Events können mittels der emit-Methode getriggert werden, um deren Listener zu informieren, dass das Event ausgelöst worden ist.
-Das machen wir uns zunutze und definieren immer unsere Output-Eigenschaften als Events, auf die eine Parent-Komponente hören kann, indem diese eine Event-Bindung nutzt.
+Das machen wir uns zunutze und definieren immer unsere Output-Eigenschaften als Events, auf die eine Parent-Component hören kann, indem diese eine Event-Bindung nutzt.
 
 W> #### $event
 W>
@@ -83,7 +83,7 @@ W> Wenn wir in einer Überkomponente einen Listener für einen Event definieren 
 
 I> #### Unterschiedliche Namen für die output-Eigenschaft in Parent und Child
 I>
-I> Angular erlaubt es uns, zwei Namen für eine output-Eigenschaft zu definieren, indem wir beim Aufruf des Output-Decorators einen Parameter übergeben, z. B. `@Output('externalName') internalName = new EventEmitter()`. In diesem Beispiel wird "externalName" in der Parent-Komponente und "internalName" in der Child-Komponente verwendet. Wenn der Output-Decorator keinen Parameter erhält, wird in der Parent- und der Child-Komponente der selbe Name benutzt.
+I> Angular erlaubt es uns, zwei Namen für eine output-Eigenschaft zu definieren, indem wir beim Aufruf des Output-Decorators einen Parameter übergeben, z. B. `@Output('externalName') internalName = new EventEmitter()`. In diesem Beispiel wird "externalName" in der Parent-Component und "internalName" in der Child-Component verwendet. Wenn der Output-Decorator keinen Parameter erhält, wird in der Parent- und der Child-Component der selbe Name benutzt.
 
 ### Code
 

@@ -13,7 +13,7 @@ Ich möchte, dass sich die Logik für mein Formular in der Klasse der Komponente
 
 ### Lösung
 
-Wir nutzen hier ein "Model Driven" Formular. Wir definieren das Modell für das Formular und dessen Controls in der Klasse der Komponente.
+Wir nutzen hier ein "Model-Driven" Formular. Wir definieren das Modell für das Formular und dessen Controls in der Klasse der Komponente.
 Im Template nutzen wir das form-Tag und mehrere input-Tags, die wir mit Hilfe der NgControlName- und der NgFormModel-Direktiven mit dem Modell in der Klasse verbinden.
 
 {title="demo.component.ts", lang=js}
@@ -67,7 +67,7 @@ __Erklärung__:
 
 FormBuilder ist ein [Service](#gl-service), den Angular uns zur Verfügung stellt.
 Dieser Service erlaubt es uns, mit relativ wenig Code komplexe Formulare zu definieren.
-Wie schon erwähnt, arbeiten wir hier mit "Model Driven Forms".
+Wie schon erwähnt, arbeiten wir hier mit "Model-Driven Forms".
 Das Modell für das Formular wird in der Klasse definiert und dann an das DOM gebunden.
 Mit __[ngFormModel]=`"`form`"`__ binden wir das Modell an das DOM-Formular an.
 Ohne diese Bindung würde Angular für das Formular eine neue Instanz der NgForm-Direktive erzeugen und wir hätten keine Verbindung zu unserem Modell.

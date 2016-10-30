@@ -39,9 +39,9 @@ Angular bietet verschiedene Möglichkeiten, Daten, die sich in einer Komponente 
 Damit man die Daten nutzen kann, müssen diese als Eigenschaften der Komponente definiert sein.
 Das heißt für uns, sie müssen Eigenschaften des this-Wertes der Komponenten-Klasse sein.
 
-Wir unterscheiden zwischen "Einweg-Datenbindung" und "beidseitiger Datenbindung".
-Bei der Einweg-Datenbindung fließen die Daten entweder von der View in die Komponente oder von der Komponente in die View.
-Bei der beidseitigen Datenbindung fließen die Daten mit nur einem Bindungskonstrukt in beide Richtungen.
+Wir unterscheiden zwischen "Einweg-Daten-Bindung" und "beidseitiger Daten-Bindung".
+Bei der Einweg-Daten-Bindung fließen die Daten entweder von der View in die Komponente oder von der Komponente in die View.
+Bei der beidseitigen Daten-Bindung fließen die Daten mit nur einem Bindungskonstrukt in beide Richtungen.
 Unter Bindungskonstrukt verstehen wir die Syntax, die wir brauchen, um Angular zu signalisieren, dass hier Daten gebunden werden sollen.
 Jetzt werden wir sehen, wie wir die verschiedenen Bindungskonstrukte nutzen können und was diese bewirken.
 
@@ -91,8 +91,8 @@ W> #### Bindungs-Ziel
 W>
 W> Wichtig zu beachten ist, dass wir bei Direktiven und Komponenten nicht jede Eigenschaft als Ziel einer Bindung nutzen können. Wir können nur spezielle Eigenschaften, die als "inputs" definiert worden sind, binden. Solche Eigenschaften sind auch als input-Eigenschaften bekannt.
 
-Bei der Eigenschaftsbindung reden wir von einer Einwegbindung. Hierbei fließen die Daten aus einem Template-Ausdruck in das Ziel der Bindung.
-Eigenschaftsbindungen können wir mit eckigen Klammern __[...]__ definieren.
+Bei der Eigenschaft-Bindung reden wir von einer Einwegbindung. Hierbei fließen die Daten aus einem Template-Ausdruck in das Ziel der Bindung.
+Eigenschaft-Bindungen können wir mit eckigen Klammern __[...]__ definieren.
 Hier ein Beispiel:
 
 {line-numbers=off, lang=html}
@@ -101,8 +101,8 @@ Hier ein Beispiel:
 ```
 
 Der Namen zwischen der Klammern (hier "src") ist das Ziel der Bindung.
-Auf der rechten Seite der Eigenschaftsbindung befindet sich ein Template-Ausdruck, der evaluiert und dann als Wert der src-Eigenschaft gesetzt wird.
-Alternativ können wir auch die Eigenschaftsbindung mit der bind-Syntax realisieren:
+Auf der rechten Seite der Eigenschaft-Bindung befindet sich ein Template-Ausdruck, der evaluiert und dann als Wert der src-Eigenschaft gesetzt wird.
+Alternativ können wir auch die Eigenschaft-Bindung mit der bind-Syntax realisieren:
 
 {line-numbers=off, lang=html}
 ```
@@ -115,7 +115,7 @@ Es ist also Geschmackssache, ob man Klammern oder "bind-" nutzt.
 
 W> #### HTML-Attribut vs. DOM-Eigenschaft
 W>
-W> Wir müssen hier zwischen HTML-Attributen und DOM-Eigenschaften unterscheiden. Oft gibt es Attribute, die den gleichen Namen wie DOM-Eigenschaften besitzen, z. B. "src". In Angular werden Attribute benutzt, um initiale Werte zu setzen. Diese Werte sind statisch. Sobald wir Datenbindungen nutzen, nutzen wir automatisch DOM-Eigenschaften. Streng genommen haben wir also bei der Interpolation die src- und die textContent-Eigenschaft der Elemente gesetzt. Da es gewisse Attribute gibt, die zu keiner DOM-Eigenschaft gehören, bietet Angular auch eine spezielle Syntax an, um Attribute zu binden. Diese werden wir später sehen.
+W> Wir müssen hier zwischen HTML-Attributen und DOM-Eigenschaften unterscheiden. Oft gibt es Attribute, die den gleichen Namen wie DOM-Eigenschaften besitzen, z. B. "src". In Angular werden Attribute benutzt, um initiale Werte zu setzen. Diese Werte sind statisch. Sobald wir Daten-Bindungen nutzen, nutzen wir automatisch DOM-Eigenschaften. Streng genommen haben wir also bei der Interpolation die src- und die textContent-Eigenschaft der Elemente gesetzt. Da es gewisse Attribute gibt, die zu keiner DOM-Eigenschaft gehören, bietet Angular auch eine spezielle Syntax an, um Attribute zu binden. Diese werden wir später sehen.
 
 ### Event-Bindung
 
@@ -186,12 +186,12 @@ Statt des __$event__, können wir auch direkt einen Wert zuweisen oder der doSom
 Jetzt beinhaltet die name-Eigenschaft den Wert __`'`Max`'`__ und die doSomething-Methode bekommt __`'`Max`'`__ als Wert übergeben.
 Natürlich können auch lokale Variablen oder Eigenschaften als Wert übergeben bzw. zugewiesen werden.
 
-### Beidseitige Datenbindung
+### Beidseitige Daten-Bindung
 
-Um eine beidseitige Datenbindung nutzen zu können, benötigen wir spezielle Direktiven und ein weiteres Bindungskonstrukt.
+Um eine beidseitige Daten-Bindung nutzen zu können, benötigen wir spezielle Direktiven und ein weiteres Bindungskonstrukt.
 Angular bietet von Haus aus eine solche Direktive, und zwar die NgModel-Direktive.
 Das Bindungskonstrukt sind Klammern umgeben von eckigen Klammern __[(...)]__.
-Wie man vermutlich aus der Syntax schon erkennen kann ist eine beidseitige Datenbindung eine Kombination einer Eigenschafts- und einer Event-Bindung.
+Wie man vermutlich aus der Syntax schon erkennen kann ist eine beidseitige Daten-Bindung eine Kombination einer Eigenschaft- und einer Event-Bindung.
 Beidseitige Bindungen funktionieren nur mit Eigenschaften von Komponenten und Direktiven aber nicht mit DOM-Eigenschaften.
 Hier ein Beispiel mit einem Eingabefeld und der NgModel-Direktive:
 
@@ -221,11 +221,11 @@ I> #### Eigene Direktive mit beidseitiger Bindung
 I>
 I> Wenn wir eine eigene Direktive mit beidseitiger Bindung schreiben möchten, müssen wir auf den Namen der Eigenschaft und den Namen des Events achten. Wenn wir z. B. eine Input-Eigenschaft namens "x" haben, muss die Output-Eigenschaft (das Event) den Namen "xChange" besitzen.
 
-### Attributsbindung
+### Attribut-Bindung
 
 Es gibt HTML-Attribute, die keine dazugehörige DOM-Eigenschaft besitzen.
-Für solche Fälle bietet Angular die Attributsbindung an.
-Eine Attributsbindung ist ähnlich einer Eigenschaftsbindung, sprich in beiden Fällen nutzen wir eckige Klammern.
+Für solche Fälle bietet Angular die Attribut-Bindung an.
+Eine Attribut-Bindung ist ähnlich einer Eigenschaft-Bindung, sprich in beiden Fällen nutzen wir eckige Klammern.
 Der Unterschied ist, dass wir hier keinen Eigenschaftsnamen haben, sondern ein Keyword __attr__ und dann den Namen des Attributs.
 Als Beispiel nutzen wir das colspan-Attribut:
 
@@ -239,13 +239,13 @@ Als Beispiel nutzen wir das colspan-Attribut:
 ```
 
 Diese Schreibweise müssen wir für alle Attribute nutzen, die keine dazugehörige DOM-Eigenschaft besitzen.
-Es wird empfohlen immer die Eigenschaftsbindung zu nutzen, außer es gibt keine andere Wahl.
+Es wird empfohlen immer die Eigenschaft-Bindung zu nutzen, außer es gibt keine andere Wahl.
 Bei Unsicherheit können wir versuchen eine Eigenschaft zu binden. Falls diese nicht existiert, wird Angular eine Exception werfen.
-Dann wissen wir, dass wir eine Attributsbindung nutzen müssen.
+Dann wissen wir, dass wir eine Attribut-Bindung nutzen müssen.
 
 ### Klassenbindung
 
-Eine Klassenbindung ist ähnlich einer Attributsbindung.
+Eine Klassenbindung ist ähnlich einer Attribut-Bindung.
 Der Unterschied: hier wird das Keyword __class__ statt __attr__ benutzt und nach dem Keyword kommt ein Klassenname.
 Hier ein Beispiel:
 

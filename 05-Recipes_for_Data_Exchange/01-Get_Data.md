@@ -11,6 +11,7 @@ Ich möchte zur Laufzeit Daten im JSON-Format von einem Server holen.
 * Die map-Methode für Observables (Ist Teil von RxJS)
 * [Auf Nutzer-Input reagieren](#c03-user-input) (Wir holen Daten nach einem Klick auf einen Button)
 * [Liste von Daten anzeigen](#c03-data-list)
+* Anpassungen an der app.module.ts-Datei
 
 ### Lösung
 

@@ -6,17 +6,17 @@ Ich möchte das erste und das letzte Element meiner Liste farblich hervorheben.
 
 ### Zutaten
 * [Liste von Daten anzeigen](#c03-data-list)
-* Anpassungen in der demo.component.ts-Datei, die in "Liste von Daten anzeigen" verwendet wird
+* Anpassungen in der app.component.ts-Datei, die in "Liste von Daten anzeigen" verwendet wird
 * [CSS-Klasse dynamisch setzen](#c03-dynamic-classes), um die CSS-Klasse mit der richtigen Farbe zu setzen
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   styles: [
       '.first { background-color: red; }',
       '.last { background-color: green; }'

@@ -6,17 +6,17 @@ Ich möchte, dass gerade Elemente meiner Liste eine andere Farbe als ungerade er
 
 ### Zutaten
 * [Liste von Daten anzeigen](#c03-data-list)
-* Anpassungen in der demo.component.ts-Datei, die im Rezept "Liste von Daten anzeigen" verwendet wird
+* Anpassungen in der app.component.ts-Datei, die im Rezept "Liste von Daten anzeigen" verwendet wird
 * [CSS-Klasse dynamisch setzen](#c03-dynamic-classes), um die CSS-Klasse mit der richtigen Farbe zu setzen
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   styles: [
     '.red { color: red; }',
     '.green { color: green; }'

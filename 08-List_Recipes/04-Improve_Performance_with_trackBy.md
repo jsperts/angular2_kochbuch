@@ -7,27 +7,27 @@ Ich habe eine große Liste von Objekten, die ich mit NgFor anzeige und ich möch
 ### Zutaten
 
 * [Liste von Daten anzeigen](#c03-data-list)
-* Anpassungen in der demo.component.ts-Datei
+* Anpassungen in der app.component.ts-Datei
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
-interface IUser {
+interface User {
   firstname: string,
   lastname: string,
   id: number
 }
 
-const users: Array<IUser> = [
+const users: Array<User> = [
   {firstname: 'Max', lastname: 'Mustermann', id: 0},
   {firstname: 'John', lastname: 'Doe', id: 1}
 ];
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <ul>
       <li *ngFor="let user of users; trackBy:trackById">
@@ -36,12 +36,12 @@ const users: Array<IUser> = [
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   users = users;
 
   constructor() {...}
 
-  trackById(index: number, user: IUser) {
+  trackById(index: number, user: User) {
     return user.id;
   }
 }
@@ -52,7 +52,7 @@ __Erklärung__:
 Damit wir "trackBy" effizient nutzen können, müssen die Objekte in unserem Array eine Eigenschaft, deren Wert für jedes Objekt eindeutig ist, besitzen.
 Wir haben hier eine Eigenschaft namens "id" benutzt.
 
-* Zeilen 9-12: Array mit IUser-Objekten die einen eindeutigen Wert für die id-Eigenschaft besitzen
+* Zeilen 9-12: Array mit User-Objekten die einen eindeutigen Wert für die id-Eigenschaft besitzen
 * Zeile 18: Hier nutzen wir die spezielle Eigenschaft "trackBy" der NgFor-Direktive mit der trackById-Methode der Klasse (siehe Zeilen 29-31)
 * Zeilen 29-31: Methode, die wir in Kombination mit der trackBy-Eigenschaft in Zeile 18 nutzen
 

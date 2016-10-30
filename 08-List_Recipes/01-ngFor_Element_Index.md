@@ -6,16 +6,16 @@ Ich möchte den Index der ngFor-Elemente in der View anzeigen.
 
 ### Zutaten
 * [Liste von Daten anzeigen](#c03-data-list)
-* Anpassungen in der demo.component.ts-Datei
+* Anpassungen in der app.component.ts-Datei
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <ul>
       <li *ngFor="let user of users; let i = index">

@@ -17,18 +17,18 @@ Bei der Installation von Node.js wird npm mitinstalliert.
 Jetzt können wir angular-cli installieren mit:
 
 ```bash
-npm install -g angular-cli@1.0.0-beta.5
+npm install -g angular-cli@1.0.0-beta.19
 ```
 
 Wir installieren angular-cli global und können es in jedem Angular 2 Projekt nutzen.
 
 I> #### Node.js/npm Versionen
 I>
-I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 5.3.0 von Node.js und npm Version 3.3.12 getestet.
+I> angular-cli braucht eine relativ neue Version von Node.js und npm. Laut der Dokumentation soll die Version von Node.js ≥ 4 sein. Für das Buch wurde angular-cli mit der Version 6.9.1 von Node.js und Version 3.10.8 von npm getestet.
 
 I> #### Fehler bei der Installation/Projekt-Initialisierung
 I>
-I> Bei Fehlern hilft es, angular-cli zu löschen und neu zu installieren. Fehler können vor Allem auftreten, wenn bereits eine alte Version von angular-cli installiert ist.
+I> Bei Fehlern hilft es, angular-cli zu löschen und neu zu installieren. Fehler können vor allem auftreten, wenn eine alte Version von angular-cli schon installiert ist. Die Github-Seite von angular-cli beinhaltet Informationen, wie angular-cli [aktualisiert](https://github.com/angular/angular-cli#updating-angular-cli) werden kann.
 
 Jetzt können wir das Tool für unsere Projekte nutzen.
 
@@ -54,7 +54,7 @@ ng help
 Um mehr Informationen über ein Kommando zu bekommen, können wir die `--help` Option nutzen:
 
 ```bash
-ng kommandoName --help
+ng --help kommandoName
 ```
 
 Wir werden uns nicht jede Option für jedes Kommando anschauen.
@@ -98,13 +98,10 @@ Die gebaute Version der Anwendung ist für die Entwicklung gedacht.
 Diese ist also nicht minimiert.
 
 ```bash
-ng build -prod
+ng build --prod
 ```
 
 Baut eine minimierte Version der Anwendung, die wir später auch für das Produktivsystem nutzen können.
-Einige Dateien werden dabei auch konkateniert.
-Z. B. wird unser Code in eine Datei namens "index.js" unter "dist/app/" geschrieben.
-Templates und Stylesheets werden derzeit nicht minimiert.
 
 ### serve
 
@@ -116,8 +113,6 @@ ng serve
 
 Standardmäßig nutzt der Webserver Port 4200 und hört auf alle Interfaces.
 Mit den Optionen `--port` und `--host` können wir das ändern.
-Auch "serve" unterstützt die `-prod` Option, um eine minimierte Version der Anwendung zu bauen.
-In der Regel wird Live-Reload nicht unterstützt, wenn wir `-prod` nutzen.
 
 ### lint
 
@@ -133,33 +128,6 @@ Falls nötig, können wir die Regeln für tslint und codelyzer in der tslint.jso
 Beide Tools unterstützen noch weitere Regeln, die sich nicht in der tslint.json-Datei befinden.
 Es ist ggf. lohnenswert, sich die Webseiten der Tools anzuschauen, um zu sehen was es sonst noch an Regeln gibt und ob es sinnvoll wäre, diese zu nutzen.
 
-W> #### Aktuelle Version (1.0.0-beta.5) funktioniert nicht
-W>
-W> Die tslint Konfigurationsdatei, die mit angular-cli geliefert wird, nutzt noch alte Namen für die codelyzer-Regeln. Diese müssen wir anpassen, um `ng lint` nutzen zu können
-
-Die Regeln in der tslint.json-Datei:
-
-```json
-"host-parameter-decorator": true,
-"input-parameter-decorator": true,
-"output-parameter-decorator": true,
-"attribute-parameter-decorator": true,
-"input-property-directive": true,
-"output-property-directive": true
-```
-
-Müssen durch:
-
-```json
-"use-host-property-decorator": true,
-"use-input-property-decorator": true,
-"use-output-property-decorator": true,
-"no-attribute-parameter-decorator": true,
-"no-input-rename": true,
-"no-output-rename": true
-```
-ersetzt werden. Für den Code in diesem Buch wurde das schon gemacht.
-
 ### test
 
 Das test-Kommando startet die Unit-Tests für das Projekt.
@@ -173,7 +141,7 @@ ng test
 aufzurufen.
 
 Bevor die Tests aufgerufen werden, wird die Anwendung gebaut.
-Nach dem Bauen startet [karma](https://karma-runner.github.io/0.13/index.html) Chrome und führt die Unit-Tests aus.
+Nach dem Bauen startet [karma](https://karma-runner.github.io/1.0/index.html) Chrome und führt die Unit-Tests aus.
 Diese werden standardmäßig mit [Jasmine](http://jasmine.github.io/) geschrieben.
 Wenn die Tests durchgelaufen sind, bleibt der Browser offen und wartet auf Änderungen.
 Bei jeder Änderung führt karma die Tests erneut aus.
@@ -187,16 +155,17 @@ Dabei erzeugt angular-cli alle nötige Dateien mit dem angegebenen Namen und bef
 Um eine neue Komponente zu generieren, können wir folgenden Befehl nutzen:
 
 ```bash
-ng generate component komponentenName
+ng generate component komponenten-name
 ```
 
 Standardmäßig wird für jede Komponente ein Verzeichnis angelegt.
 Mit der `--flat` Option können wir das verhindern.
-Die Komponente wird in dem Verzeichnis generiert, in dem wir den Befehl aufrufen.
+Die Komponente wird in dem Verzeichnis generiert, in dem wir den Befehl aufrufen oder in "./src/app", falls der Befehl außerhalb des app-Verzeichnises ausgeführt wird.
 
 Für die Komponente wird eine .ts-, eine .spec.ts-, eine .css- und eine .html-Datei generiert.
 Wenn wir lieber inline-HTML bzw. -CSS nutzen möchten, können wir die Optionen `--inline-template` bzw. `--inline-style` nutzen.
 Dann werden die .html- und .css-Dateien nicht generiert.
+Die neu generierte Komponente wird auch automatisch im AppModule deklariert.
 
 Im Allgemeinen sieht das Kommando so aus:
 
@@ -210,6 +179,10 @@ Um es kurz zu halten, werden wir uns diese hier nicht anschauen.
 Der Aufruf für die weiteren Blueprints ist ähnlich zu dem für die Komponenten, allerdings haben die meisten anderen Blueprints weniger Optionen.
 Am besten ist es, ein Dummy-Projekt zu initialisieren und die verschiedenen Kommandos von angular-cli zu testen.
 
+W> #### Namen
+W>
+W> Derzeit wird nicht jeder beliebige Name vom generate-Kommando unterstützt. Namen mit Unterstriche und camelCase Namen werden durch Bindestriche ersetzt was in manchen Fällen zu Fehlern führen kann.
+
 ## Verzeichnisstruktur
 
 Die Verzeichnisstruktur, die von angular-cli generiert wird, folgt den Best Practices aus dem [Angular Style Guide](https://angular.io/styleguide).
@@ -217,61 +190,40 @@ Wir verschaffen uns jetzt eine grobe Übersicht.
 
 {title="angular-cli Verzeichnisstruktur", lang=js}
 ```
-|- config/
-|----- environment.dev.ts
-|----- environment.js
-|----- environment.prod.ts
-|----- karma-test-shim.js
-|----- karma.conf.js
-|----- protractor.conf.js
 |- dist/
 |- e2e/
-|----- app.e2e.ts
-|----- app.po.ts
-|----- tsconfig.json
-|----- typings.d.ts
 |- node_modules/
-|- public/
-|----- .npmignore
 |- src/
 |----- app/
-            |----- shared/
-                        |----- index.ts
-            |----- environment.ts
-            |----- index.ts
-            |----- projektName.component.css|html|spec.ts|ts
+|---------- shared/
+|---------------- index.ts
+|---------- index.ts
+|---------- app.component.css|html|spec.ts|ts
+|---------- app.module.ts
+|----- assets/
+|----- environments/
 |----- favicon.ico
 |----- index.html
 |----- main.ts
-|----- system-config.ts
+|----- polyfills.ts
+|----- styles.css
+|----- test.ts
 |----- tsconfig.json
 |----- typings.d.ts
-|- tmp/
-|- typings/
-|- .clang-format
 |- .editorconfig
 |- .gitignore
-|- angular-cli-build.js
 |- angular-cli.json
+|- karma.conf.js
 |- package.json
+|- protractor.conf.js
+|- README.md
 |- tslint.json
-|- typings.json
 ```
 
 ### /
 
 Das Hauptverzeichnis für das Angular 2 Projekt.
-Außer Verzeichnissen beinhaltet es Konfigurationsdateien für verschiedene Tools wie angular-cli, typings, tslint und npm.
-
-### config/
-
-Konfigurationsdateien für den Build-Prozess und Tests.
-Die environment.\*-Dateien werden für den Build-Prozess benötigt.
-Wenn wir die `-prod` Option nutzen, wird die environment.prod.ts-Datei mit der environment.js-Datei benutzt.
-Diese ersetzt dann die environment.ts-Datei im Verzeichnis "src/app/".
-Standardmäßig werden die Dateien environment.dev.ts- und die environment.js benutzt.
-Die karma-test-shim.js-Datei wird von karma benutzt, um die Testdateien zu laden.
-Die karma.conf.js- und die protractor.conf.js-Dateien konfigurieren karma und protractor.
+Außer Verzeichnissen beinhaltet es Konfigurationsdateien für verschiedene Tools wie angular-cli, tslint und npm.
 
 ### dist/
 
@@ -285,29 +237,27 @@ Verzeichnis für die End-to-End-Tests.
 
 Hier befinden sich alle Abhängigkeiten, die mittels npm installiert worden sind.
 
-### public/
-
-In dieses Verzeichnis gehören alle Ressourcen, die wir für unsere Anwendung brauchen, die aber nicht Teil des Build-Prozesses sind, wie z. B. Bilder und Fonts.
-
 ### src/
 
-In diesem Verzeichnis befindet sich der Code für unsere Anwendung und Konfigurationsdateien, die von SystemJS (system-config.ts) und dem TypeScript-Compiler (tsconfig.json, typings.d.ts) gebraucht werden.
+In diesem Verzeichnis befindet sich der Code für unsere Anwendung und Konfigurationsdateien, die vom TypeScript-Compiler (tsconfig.json, typings.d.ts) gebraucht werden.
 
 #### src/app/
 
 Das Verzeichnis für unseren Code. Hier werden wir bei der Entwicklung die meiste Zeit verbringen.
-Standardmäßig wird eine Komponente mit dem Namen des Projekts und ein Verzeichnis namens "shared" generiert.
+Standardmäßig wird eine Komponente und ein Verzeichnis namens "shared" generiert.
 In dieses Verzeichnis gehört Code, den wir in mehreren Komponenten nutzen wollen.
-Die environment.ts-Datei wird nur benötigt, damit wir bei der Entwicklung keine Fehler bei den Imports sehen.
-Beim Bauen wird diese durch die entsprechende Datei aus dem config-Verzeichnis ersetzt.
 
-### tmp/
+#### src/assets
 
-Wird beim Bauen und vom Webserver benötigt.
-Wenn der Webserver nicht gestartet ist, ist das Verzeichnis in der Regel leer.
+In dieses Verzeichnis gehören alle Ressourcen, die wir für unsere Anwendung brauchen, die aber nicht Teil des Build-Prozesses sind, wie z. B. Bilder und Fonts.
 
-### typings/
+#### src/environments
 
-Hier werden Dateien mit Typinformationen gespeichert.
-Diese werden hauptsächlich vom Compiler beim Bauen benutzt.
+Die Dateien in diesem Verzeichnis werden für den Build-Prozess benötigt.
+Wenn wir die `--prod` Option nutzen, wird die environment.prod.ts-Datei mit der environment.js-Datei benutzt.
+Standardmäßig wird die environment.ts-Datei benutzt.
+
+#### src/styles.css
+
+In dieser Datei können wir globale Styles für die Anwendung definieren.
 

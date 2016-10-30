@@ -77,13 +77,12 @@ __Erklärung__:
 Den eigentlichen Server-Fehler haben wir schon im Service mit Hilfe der catch-Methode behandelt.
 Da wir zusätzlich dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen wir den Fehler auch in der Komponente behandeln.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <p>
@@ -94,7 +93,7 @@ Da wir zusätzlich dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, m�
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   ...
 
   errorText: string;
@@ -114,9 +113,9 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 9: Fehlermeldung in der View anzeigen
-* Zeilen 27-29: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
-  * Zeile 28: Fehlertext von Zeile 31 des Services als Wert der errorText-Eigenschaft setzen
+* Zeile 8: Fehlermeldung in der View anzeigen
+* Zeilen 26-28: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
+  * Zeile 27: Fehlertext von Zeile 31 des Services als Wert der errorText-Eigenschaft setzen
 
 ### Diskussion
 

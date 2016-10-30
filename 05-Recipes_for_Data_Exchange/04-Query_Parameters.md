@@ -45,7 +45,6 @@ export class DataService {
 
 __Erklärung__:
 
-* Zeile 4-5: Hier werden die Klassen "RequestOptions" und "URLSearchParams" importiert
 * Zeile 17: Erzeugen einer Instanz der URLSearchParams-Klasse
 * Zeile 18: Query-Parameter "limit" mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein) definieren
 * Zeile 20: Erzeugen einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert der search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter der Anfrage
@@ -59,10 +58,6 @@ Die Nutzung der URLSearchParams-Klasse hat in diesem Fall zwei Vorteile.
 Zum Einen wird der Code lesbarer, wenn wir pro Parameter eine Zeile Code haben.
 Zum Anderen kümmert sich Angular um das richtige Format für den String, der später als Teil der URL mitgeschickt wird.
 
-W> #### URL-Encoding
-W>
-W> Derzeit werden die Query-Parameter nicht automatisch encodiert bevor diese an den Server geschickt werden. Wenn also Zeichen wie z. B. "=" und "&" in den Parametern vorhanden sind (als Teil des Keys oder Wertes), müssen wir diese selbst transformieren. Siehe auch [#4948](https://github.com/angular/angular/issues/4948).
-
 ### Code
 
 Code auf Github: [05-Recipes\_for\_Data\_Exchange/04-Query\_Parameters](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/04-Query_Parameters)
@@ -71,6 +66,6 @@ Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_c
 
 ### Weitere Ressourcen
 
-* Offizielle [URLSearchParams](https://angular.io/docs/ts/latest/api/http/URLSearchParams-class.html)-Dokumentation auf der Angular 2 Webseite
-* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/RequestOptions-class.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [URLSearchParams](https://angular.io/docs/ts/latest/api/http/index/URLSearchParams-class.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html)-Dokumentation auf der Angular 2 Webseite
 

@@ -15,7 +15,7 @@ Ich möchte dem Nutzer die Möglichkeit anbieten, eine Server-Anfrage abzubreche
 
 In unserem Service (data.service.ts) haben wir nur eine Änderung durchgeführt. Und zwar haben wir die url-Eigenschaft angepasst. Diese besitzt jetzt den Wert __`'`http://127.0.0.1:3000/longrequest`'`__.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
@@ -24,8 +24,7 @@ import { Subscription } from 'rxjs/Subscription';
 ...
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <button (click)="cancelRequest()">Cancel</button>
@@ -34,7 +33,7 @@ import { Subscription } from 'rxjs/Subscription';
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   ...
 
   subscription: Subscription;
@@ -59,8 +58,8 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeile 3: Hier importieren wir die Subscription-Klasse von RxJS, die wir in Zeile 17 als Typ nutzen
-* Zeile 26: Hier speichern wir den Rückgabewert der subscribe-Methode in die subscription-Eigenschaft der Komponenteninstanz
-* Zeilen 32-36: Methode, die aufgerufen wird, wenn der Nutzer den cancel-Button klickt
+* Zeile 25: Hier speichern wir den Rückgabewert der subscribe-Methode in die subscription-Eigenschaft der Komponenteninstanz
+* Zeilen 31-35: Methode, die aufgerufen wird, wenn der Nutzer den cancel-Button klickt
 
 ### Diskussion
 

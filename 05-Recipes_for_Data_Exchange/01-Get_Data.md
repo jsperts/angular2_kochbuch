@@ -5,8 +5,8 @@
 Ich möchte zur Laufzeit Daten im JSON-Format von einem Server holen.
 
 ### Zutaten
-* [Angular 2 Anwendung](#c02-angular-app)
-* [Ein Service](#c02-define-service)
+* [Ein Service](#c02-define-service), um die Daten zu holen
+* Das Http-Modul von Angular
 * Der Http-Service von Angular
 * Die map-Methode für Observables (Ist Teil von RxJS)
 * [Auf Nutzer-Input reagieren](#c03-user-input) (Wir holen Daten nach einem Klick auf einen Button)
@@ -67,20 +67,19 @@ __Erklärung__:
 Jetzt müssen wir noch unsere Komponente aus "Ein Service definieren" anpassen, so dass diese mit dem Http-Service und Observables arbeiten kann.
 Wir werden die Daten nach einem Klick auf den "Get Data"-Button holen und diese in einer Liste anzeigen.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
+
 import { DataService } from './data.service';
 
-interface IData {
+interface Data {
   id: number;
   name: string;
 }
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <ul>
@@ -88,9 +87,9 @@ interface IData {
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   dataService: DataService;
-  data: Array<IData>;
+  data: Array<Data>;
 
   constructor(dataService: DataService) {
     this.dataService = dataService;
@@ -108,71 +107,37 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-Verglichen mit der Komponente aus "Ein Service definieren" wurden zwei Änderungen vorgenommen.
-Wir haben weitere Providers definiert und die Konstruktorfunktion angepasst.
+* Zeile 21: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "Data" (Siehe Zeilen 5-8)
+* Zeilen 28-33: Methode, die aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
+  * Zeile 30: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
-* Zeile 2: Hier importieren wir die "HTTP\_PROVIDERS"-Variable. Diese beinhaltet Provider für verschiedene Services, die mit Server-Anfragen zu tun haben
-* Zeile 12: Damit unser Service den Http-Service nutzen kann, müssen wir dem Injector die HTTP\_PROVIDERS-Variable übergeben
-* Zeile 22: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "IData" (Siehe Zeilen 5-8)
-* Zeilen 29-34: Methode, die aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
-  * Zeile 31: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
-Da sich der Http-Service in einem eigenen Paket befindet, müssen wir dieses Paket über npm herunterladen und SystemJS informieren, dass es das Paket importieren soll.
-Wenn wir ein Projekt mit angular-cli initialisieren, ist das @angular/http-Paket schon als Abhängigkeit definiert. In diesem Fall müssten wir also keine Änderungen vornehmen, um den Http-Service zu nutzen.
+Da sich der Http-Service in einem eigenen Angular-Modul befindet, müssen wir diese Modul in unser "AppModule" importieren.
 
-{title="package.json", lang=json}
+{title="app.module.ts", lang=js}
 ```
-{
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
-...
+import { AppComponent } from './app.component';
+import { DataService } from './data.service';
 
-  "dependencies": {
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-
-    "@angular/http": "2.0.0-rc.1",
-
-    "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-    "es6-shim": "^0.35.0",
-    "reflect-metadata": "0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "systemjs": "0.19.26",
-    "zone.js": "^0.6.12"
-  },
-
-...
-
-}
+@NgModule({
+  imports: [ BrowserModule, HttpModule ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+  providers: [ DataService ]
+})
+export class AppModule { }
 ```
 
-{title="system-config.ts", lang=js}
-```
-...
+__Erklärung__:
 
-const barrels: string[] = [
-  // Angular specific barrels.
-  '@angular/core',
-  '@angular/common',
-  '@angular/compiler',
+* Zeile 8: Hier importieren wir das "HttpModule" in unser Modul. Jetzt können wir alle Services, die dieses Modul definiert in unserem Code nutzen
 
-  '@angular/http',
-
-  '@angular/platform-browser',
-  '@angular/platform-browser-dynamic',
-
-  // Thirdparty barrels.
-  'rxjs',
-
-  // App specific barrels.
-  'app',
-  'app/shared',
-  /** @cli-barrel */
-];
-
-...
-```
+Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "HttpModule" automatisch von angular-cli importiert.
+In so einem Fall, müssten wir nicht das "HttpModule" selbst importieren.
 
 ### Diskussion
 
@@ -204,8 +169,7 @@ Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_c
 
 ### Weitere Ressourcen
 
-* Offizielle [HTTP\_PROVIDERS](https://angular.io/docs/ts/latest/api/http/HTTP_PROVIDERS-let.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle Dokumentation für das [response-Objekt](https://angular.io/docs/ts/latest/api/http/Response-class.html) auf der Angular 2 Webseite
-* Offizielle [Http-Service](https://angular.io/docs/ts/latest/api/http/Http-class.html) Dokumentation auf der Angular 2 Webseite
+* Offizielle Dokumentation für das [response-Objekt](https://angular.io/docs/ts/latest/api/http/index/Response-class.html) auf der Angular 2 Webseite
+* Offizielle [Http-Service](https://angular.io/docs/ts/latest/api/http/index/Http-class.html) Dokumentation auf der Angular 2 Webseite
 * Die RxJS-Dokumentation bietet weitere Informationen über [Observables](https://github.com/ReactiveX/RxJS/blob/master/doc/observable.md) und [Observer](https://github.com/ReactiveX/rxjs/blob/master/doc/observer.md)
 

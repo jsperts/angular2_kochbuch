@@ -13,12 +13,12 @@ Ich möchte meine CSS-Styles getrennt von meinem Template und nicht in einem sty
 
 Statt die CSS-Klassen im Template zu halten, können wir die styles-Eigenschaft der Komponente nutzen.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   styles: [
     '.box {width: 100px; height: 100px; background-color: red; margin: 10px}',
     '.box-blue {background-color: blue;}'
@@ -30,7 +30,7 @@ import { Component } from '@angular/core';
     <div class="box"></div>
   `
 })
-export class DemoAppComponent {}
+export class AppComponent {}
 ```
 
 __Erklärung__:

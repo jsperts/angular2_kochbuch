@@ -7,47 +7,20 @@ Ich hab viele CSS-Klassen und ich möchte diese nicht in der Komponente halten, 
 ### Zutaten
 
 * [Angular 2 Anwendung](#c02-angular-app)
-* Eine Datei für das CSS. Hier: demo.component.css
+* Eine Datei für das CSS. Hier: app.component.css
 
-### Lösung 1
-
-Statt die CSS-Klassen in der Komponente zu halten, können wir diese in einer separaten CSS-Datei aufbewahren.
-
-{title="demo.component.ts", lang=js}
-```
-...
-
-@Component({
-  selector: 'demo-app',
-  styleUrls: ['./app/demo.component.css'],
-  template: `
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box box-blue"></div>
-    <div class="box"></div>
-  `
-})
-
-...
-```
-
-__Erklärung__:
-
-* Zeile 5: Wir nutzen die styleUrls-Eigenschaft, um Angular mitzuteilen, wo sich die Datei mit dem CSS befindet. Der Pfad zu den CSS-Dateien ist relativ zur index.html-Datei der Anwendung. Absolute Pfade sind zumindest derzeit nicht zulässig (siehe [#6905](https://github.com/angular/angular/issues/6905)).
-
-### Lösung 2
+### Lösung
 
 In der ersten Lösung hatten wir den Pfad relativ zur index.html-Datei angegeben.
-Es gibt auch die Möglichkeit, den Pfad relativ zur demo.component.ts-Datei zu definieren.
+Es gibt auch die Möglichkeit, den Pfad relativ zur app.component.ts-Datei zu definieren.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  moduleId: module.id,
-  selector: 'demo-app',
-  styleUrls: ['demo.component.ts'],
+  selector: 'app-root',
+  styleUrls: ['./app.component.ts'],
   template: `
     <div class="box"></div>
     <div class="box"></div>
@@ -61,21 +34,21 @@ Es gibt auch die Möglichkeit, den Pfad relativ zur demo.component.ts-Datei zu d
 
 __Erklärung__:
 
-* Zeile 4: "module.id" wird von commonjs und dem Modul-Loader zur Verfügung gestellt. Diese Lösung funktioniert nur mit commonjs-Modulen und wird standardmäßig von angular-cli benutzt, wenn wir darüber eine Komponente generieren
-* Zeile 6: Der Pfad zur demo.component.css-Datei ist jetzt relativ zur demo.component.ts-Datei
+* Zeile 5: Statt der styles-Eigenschaft, die wir in anderen Rezepten benutzt haben, nutzen wir jetzt die styleUrls-Eigenschaft. Der angegebene Pfad ist relativ zu der app.component.ts-Datei
 
 ### Diskussion
 
 Die styleUrls-Eigenschaft einer Komponente erwartet ein Array von Strings.
-Zur Laufzeit wird mittels XMLHttpRequest die Datei vom Server geholt und der Inhalt der Datei wird als style-Tag in den DOM gesetzt.
-In unserem Beispiel wird ein style-Tag im Head des Dokuments hinzugefügt.
+Da wir in diesem Buch angular-cli mit Webpack nutzen wird die Zeile 5 oben beim Kompilieren durch `styles: [require('./app.component.css')]` ersetzt und Angular wird sich zur Laufzeit so verhalten als ob wir selbst die Styles in der Komponente geschrieben haben.
+Falls andere Build-Tools benutzt werden, die die styleUrls-Eigenschaft nicht ersetzen, wird zur Laufzeit die Datei von Angular mittels XMLHttpRequest vom Server geholt und der Inhalt der Datei wird als style-Tag in das DOM gesetzt.
+Im allgemeinen ist es Toolabhängig, ob wir einen relativen Pfaden angeben können und wie dieser genau aussieht.
+Wer mehr über relative Pfade für Styles erfahren möchte, kann den Artikel [Component-Relative Paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html) lesen.
 
 Wenn wir in Komponenten CSS-Styles definieren, können die definierten CSS-Styles standardmäßig nur in der Komponente verwendet werden, in der diese definiert worden sind.
 Es ist dabei egal, ob wir die CSS-Styles als inline-styles mittels style-Tag, über die styles-Eigenschaft der Komponente oder über die styleUrls-Eigenschaft der Komponente definieren.
 Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View Encapsulation" genannt.
 
 Die Diskussion styles- vs. stuleUrls-Eigenschaft ist analog zur template- vs. templateUrl-Eigenschaft Diskussion in [Komponente und HTML-Template trennen](#c07-split-html-template).
-Ebenfalls analog ist die Diskussion Lösung 1 vs. Lösung 2 mit den darin beschriebenen Problemen.
 
 ### Code
 

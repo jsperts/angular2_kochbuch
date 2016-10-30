@@ -6,7 +6,6 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden, an die Überkompo
 
 ### Zutaten
 
-* [Angular 2 Anwendung](#c02-angular-app)
 * Eine [Komponente](#c02-component-definition)
 * [Daten einer Komponente in der View anzeigen](#c03-show-data)
 * [Auf Nutzer-Input reagieren](#c03-user-input)
@@ -16,21 +15,19 @@ Ich möchte Daten, die sich in einer Unterkomponente befinden, an die Überkompo
 
 Wir werden uns als Erstes die Überkomponente (Parent) und als Zweites die Unterkomponente (Child) anschauen.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
-import { SecondComponent } from './second.component';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <h1>Parent</h1>
     <p>Parent Data: {{parentData}}</p>
     <app-second (dataChange)="onDataChange($event)"></app-second>
-  `,
-  directives: [SecondComponent]
+  `
 })
-export class DemoAppComponent {
+export class AppComponent {
   parentData: string = 'Initial Data';
 
   onDataChange(data) {
@@ -41,8 +38,8 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 9: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier keinen Browser-Event, sondern einen Event, den wir in der Child-Komponente definiert haben (siehe child.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
-* Zeilen 16-18: Methode, die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
+* Zeile 8: Die Syntax mit den Klammern für eine Event-Bindung kennen wir schon. Nur nutzen wir hier keinen Browser-Event, sondern einen Event, den wir in der Child-Component definiert haben (siehe second.component.ts Zeile 12). Wenn das Event ausgelöst wird, rufen wir die onDataChange-Methode auf und übergeben das Event-Objekt
+* Zeilen 14-16: Methode, die aufgerufen wird, wenn das dataChange-Event ausgelöst wird
 
 {title="second.component.ts", lang=js}
 ```
@@ -72,7 +69,7 @@ __Erklärung__:
 
 * Zeile 11: Definition einer output-Eigenschaft namens "dataChange". Die output-Eigenschaft besitzt als Wert eine Instanz der EventEmitter-Klasse
 * Zeilen 17-19: Methode, die aufgerufen wird, wenn der Nutzer auf den Button klickt
-  * Zeile 16: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, das übergeben wird (siehe auch demo.component.ts Zeilen 9 und 16)
+  * Zeile 16: Die emit-Methode triggert das dataChange-Event. Der Parameter der Methode ist das Event-Objekt, das übergeben wird (siehe auch app.component.ts Zeilen 9 und 16)
 
 ### Diskussion
 
@@ -96,5 +93,5 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-
 
 ### Weitere Ressourcen
 
-* Offizielle Dokumentation der [EventEmitter-Klasse](https://angular.io/docs/ts/latest/api/core/EventEmitter-class.html) auf der Angular 2 Webseite
+* Offizielle Dokumentation der [EventEmitter-Klasse](https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html) auf der Angular 2 Webseite
 

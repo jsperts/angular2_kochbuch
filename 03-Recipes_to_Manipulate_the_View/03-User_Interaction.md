@@ -12,15 +12,15 @@ Ich möchte in meiner Komponente eine Methode aufrufen, wenn der Nutzer einen Br
 
 ### Lösung 1
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: '<div (click)="clicked()">Click me</div>'
 })
-export class DemoAppComponent {
+export class AppComponent {
   clicked() {
     console.log('Clicked');
   }
@@ -34,15 +34,15 @@ __Erklärung__:
 
 ### Lösung 2
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: '<div on-click="clicked()">Click me</div>'
 })
-export class DemoAppComponent {
+export class AppComponent {
   clicked() {
     console.log('Clicked');
   }

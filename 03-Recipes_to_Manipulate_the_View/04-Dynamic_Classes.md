@@ -13,12 +13,12 @@ Ich möchte anhand eines booleschen Wertes definieren, wann eine CSS-Klasse gese
 
 ### Lösung 1
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   styles: [
     `.box {
         width: 100px;
@@ -33,7 +33,7 @@ import { Component } from '@angular/core';
     <div class="box green" [ngClass]="{green: box.isGreen}"></div>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   box = {
     isRed: true,
     isGreen: false
@@ -54,12 +54,12 @@ __Erklärung__:
 Wir haben bereits in Lösung 1 gesehen, dass die ngClass-Eigenschaft ein Objekt mit CSS-Klassen als Keys und __true__/__false__ als Werten bekommt.
 Statt das Objekt im Template zu definieren, können wir es auch in unserer Klasse definieren.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   styles: [
     `.box {
         width: 100px;
@@ -70,7 +70,7 @@ import { Component } from '@angular/core';
   ],
   template: '<div [ngClass]="classes"></div>'
 })
-export class DemoAppComponent {
+export class AppComponent {
   classes = {
     red: true,
     box: true
@@ -110,7 +110,7 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 
 ### Weitere Ressourcen
 
-* Offizielle Dokumentation der [NgClass-Direktiven](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html)
+* Offizielle Dokumentation der [NgClass-Direktiven](https://angular.io/docs/ts/latest/api/common/index/NgClass-directive.html)
 * Weitere Informationen zur Eigenschaften- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 * Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
 * Eine weitere Möglichkeit, CSS-Styles für eine Komponente zu definieren, gibt es im Rezept "[Komponente und CSS trennen](#c07-styleurls)"

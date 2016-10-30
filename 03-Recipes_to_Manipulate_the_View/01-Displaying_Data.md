@@ -10,18 +10,18 @@ Ich möchte Daten, die sich in meinem TypeScript-Code befinden, in der View anze
 
 ### Lösung 1
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <div>Hello World!</div>
     <div>My name is {{name}}</div>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   name: string;
 
   constructor() {
@@ -44,18 +44,18 @@ Das ermöglicht uns, das Template in mehrere Zeilen aufzuspalten, ohne mehrere S
 
 ### Lösung 2
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <div>Hello World!</div>
     <div>My last name is {{lastname}}</div>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   lastname = 'Mustermann';
 }
 ```

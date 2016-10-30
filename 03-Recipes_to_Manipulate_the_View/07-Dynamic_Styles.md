@@ -11,18 +11,18 @@ Ich möchte die Größe (height/width) eines Elements durch Werte in meiner Komp
 
 ### Lösung 1
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <div [ngStyle]="{'width': elemWidth, 'height': elemHeight}"
         style="background-color: red"></div>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   elemWidth: string;
   elemHeight: string;
   constructor() {
@@ -43,23 +43,23 @@ __Erklärung__:
 Wir haben bereits in Lösung 1 gesehen, dass die ngStyle-Eigenschaft ein Objekt mit style-Eigenschaften als Keys und Werten für die Styles als Werte für die Keys bekommt.
 Statt Werte individuell in der Klasse zu definieren, können wir auch direkt das Objekt für die ngStyle-Eigenschaft definieren.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
-interface IDimensions {
+interface Dimensions {
   width: string;
   height: string;
 }
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <div [ngStyle]="dimensions" style="background-color: red"></div>
   `
 })
-export class DemoAppComponent {
-  dimensions: IDimensions;
+export class AppComponent {
+  dimensions: Dimensions;
   constructor() {
     this.dimensions = {
       width: '100px',
@@ -96,6 +96,6 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 
 ### Weitere Ressourcen
 
-* Offizielle Dokumentation der [NgStyle-Direktiven](https://angular.io/docs/ts/latest/api/common/NgStyle-directive.html)
+* Offizielle Dokumentation der [NgStyle-Direktiven](https://angular.io/docs/ts/latest/api/common/index/NgStyle-directive.html)
 * Weitere Informationen zur Eigenschaften- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

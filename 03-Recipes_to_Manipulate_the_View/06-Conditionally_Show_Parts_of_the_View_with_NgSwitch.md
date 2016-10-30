@@ -7,27 +7,27 @@ Ich möchte unterschiedliche Teile der View anzeigen, je nach Wert eines Angular
 ### Zutaten
 * [Angular 2 Anwendung](#c02-angular-app)
 * Die NgSwitch-Direktive von Angular
-* Die NgSwitchWhen-Direktive von Angular
+* Die NgSwitchCase-Direktive von Angular
 * Die NgSwitchDefault-Direktive von Angular
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <div [ngSwitch]="color">
       <p>What color are you?</p>
-      <p *ngSwitchWhen="'blue'">I am blue</p>
-      <p *ngSwitchWhen="'red'">I am red</p>
+      <p *ngSwitchCase="'blue'">I am blue</p>
+      <p *ngSwitchCase="'red'">I am red</p>
       <p *ngSwitchDefault>Color not known</p>
     </div>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   color: string;
 
   constructor() {
@@ -53,22 +53,22 @@ Bei der Nutzung im Template erhält sie über __ngSwitch__ ([input-Eigenschaft](
 In unserem Beispiel besteht der Ausdruck aus der color-Eigenschaft.
 Diese Auswertung wird dann mit jedem Ausdruck der NgSwitchWhen-Direktiven verglichen.
 Angular nutzt für den Vergleich __===__.
-In unserem Beispiel haben wir __`'`blue`'`__ und __`'`red`'`__ als Ausdrücke für NgSwitchWhen benutzt.
+In unserem Beispiel haben wir __`'`blue`'`__ und __`'`red`'`__ als Ausdrücke für NgSwitchCase benutzt.
 Wenn der Vergleich den Wert __true__ zurück gibt, wird der Tag mit der Direktiven und dessen Inhalt angezeigt.
 Wenn kein Vergleich __true__ zurück gibt, wird der Tag mit der NgSwitchDefault-Direktiven und dessen Inhalt angezeigt.
-Tags, die weder eine NgSwitchWhen- noch eine NgSwitchDefault-Direktive nutzen, werden immer angezeigt.
+Tags, die weder eine NgSwitchCase- noch eine NgSwitchDefault-Direktive nutzen, werden immer angezeigt.
 
 Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Verändern des Wertes der color-Eigenschaft verzichtet.
 Im Github Code-Beispiel wird gezeigt, wie wir mittels "click" den Wert verändern können.
 Dort können wir auch sehen, wie sich die View in Abhängigkeit des Wertes der color-Eigenschaft verändert.
 
-Es gibt noch eine weitere mögliche Schreibweise für die NgSwitchWhen- und NgSwitchDefault-Direktiven. Diese hier ist die kürzeste und vermutlich die einfachste. Die zweite Schreibweise ist im Github Code-Beispiel zu finden. Von der Funktionalität her sind beide Schreibweisen gleich.
+Es gibt noch eine weitere mögliche Schreibweise für die NgSwitchCase- und NgSwitchDefault-Direktiven. Diese hier ist die kürzeste und vermutlich die einfachste. Die zweite Schreibweise ist im Github Code-Beispiel zu finden. Von der Funktionalität her sind beide Schreibweisen gleich.
 
 #### Erklärung zur ngSwitchWhen- und ngSwitchDefault-Syntax
 
 Der Stern (__\*__) vor dem __ngSwitchWhen__ und __ngSwitchDefault__ ist essentiell und Teil der Syntax.
-Er zeigt an, dass die p-Tags und alle Elemente, die die Tags beinhalten, als Template für die jeweilige Instanz der NgSwitchWhen bzw. der NgSwitchDefault-Direktiven benutzt werden sollen.
-Nach __\*ngSwitchWhen=__ kommt ein Angular-Template-Ausdruck.
+Er zeigt an, dass die p-Tags und alle Elemente, die die Tags beinhalten, als Template für die jeweilige Instanz der NgSwitchCase- bzw. der NgSwitchDefault-Direktiven benutzt werden sollen.
+Nach __\*ngSwitchCase=__ kommt ein Angular-Template-Ausdruck.
 Dieser Ausdruck verglichen mit der Auswertung des NgSwitch-Ausdrucks gibt an, wann das Template angezeigt werden soll.
 Wenn der Vergleich __true__ ergibt, wird das Template angezeigt.
 Wenn der __false__ ergibt, wird das Template aus dem DOM entfernt.
@@ -82,8 +82,8 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 
 ### Weitere Ressourcen
 
-* Offizielle [NgSwitch](https://angular.io/docs/ts/latest/api/common/NgSwitch-directive.html)-Dokumentation auf der Angular 2 Webseite
-* Offizielle [NgSwitchWhen](https://angular.io/docs/ts/latest/api/common/NgSwitchWhen-directive.html)-Dokumentation auf der Angular 2 Webseite
-* Offizielle [NgSwitchDefault](https://angular.io/docs/ts/latest/api/common/NgSwitchDefault-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgSwitch](https://angular.io/docs/ts/latest/api/common/index/NgSwitch-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgSwitchCase](https://angular.io/docs/ts/latest/api/common/index/NgSwitchCase-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgSwitchDefault](https://angular.io/docs/ts/latest/api/common/index/NgSwitchDefault-directive.html)-Dokumentation auf der Angular 2 Webseite
 * Weitere Informationen zur Template-Ausdrücke gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

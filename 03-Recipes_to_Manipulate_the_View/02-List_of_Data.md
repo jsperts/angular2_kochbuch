@@ -11,22 +11,22 @@ Ich hab eine Liste von Benutzerdaten und möchte diese in meine View anzeigen.
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
-interface IUser {
+interface User {
   firstname: string;
   lastname: string;
 }
 
-const users: Array<IUser> = [
+const users: Array<User> = [
   { firstname: 'Max', lastname: 'Mustermann' },
   { firstname: 'John', lastname: 'Doe' }
 ];
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <ul>
       <li *ngFor="let user of users">
@@ -35,8 +35,8 @@ const users: Array<IUser> = [
     </ul>
   `
 })
-export class DemoAppComponent {
-  users: Array<IUser>;
+export class AppComponent {
+  users: Array<User>;
 
   constructor() {
     this.users = users;
@@ -61,7 +61,7 @@ Die restlichen Varianten sind im Github Code-Beispiel zu finden. Von der Funktio
 Der Stern (__\*__) vor dem __ngFor__ ist essentiell und Teil der Syntax.
 Er zeigt an, dass der li-Tag und alle Elemente, die der Tag beinhaltet, als Template für die Instanz der NgFor-Direktive benutzt werden sollen.
 Der Teil nach dem __of__ ist der Name der Komponenten-Eigenschaft, die unsere Liste referenziert.
-Das Keyword __let__  definiert eine lokale Variable für die Instanz der NgFor-Direktive.
+Das Keyword __let__  definiert eine lokale Template-Eingabevariable für die Instanz der NgFor-Direktive.
 Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen. Sie hält eine Referenz auf das aktuelle Objekt in der Array.
 
 ### Code
@@ -70,6 +70,6 @@ Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/02-List\_of\_Data](https
 
 ### Weitere Ressourcen
 
-* Offizielle [NgFor](https://angular.io/docs/ts/latest/api/common/NgFor-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html)-Dokumentation auf der Angular 2 Webseite
 * Weitere Informationen zu lokalen Variablen und der Template-Syntax gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

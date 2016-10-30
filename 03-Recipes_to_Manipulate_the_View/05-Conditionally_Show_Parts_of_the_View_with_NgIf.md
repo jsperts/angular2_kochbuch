@@ -11,12 +11,12 @@ Ich möchte Teile der View nur dann anzeigen, wenn eine bestimmte Bedingung erf�
 
 ### Lösung
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <div>Hello World!</div>
     <div *ngIf="showName">
@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   showName: boolean;
 
   constructor() {
@@ -68,6 +68,6 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-
 
 ### Weitere Ressourcen
 
-* Offizielle [NgIf](https://angular.io/docs/ts/latest/api/common/NgIf-directive.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [NgIf](https://angular.io/docs/ts/latest/api/common/index/NgIf-directive.html)-Dokumentation auf der Angular 2 Webseite
 * Weitere Informationen zu Template-Ausdrücken gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

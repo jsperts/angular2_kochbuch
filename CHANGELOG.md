@@ -9,9 +9,11 @@
 ### Changed
 
 * Schreib-/Grammatikfehler Korrekturen
-* Die Rezepte wurden für Angular 2.x aktualisiert
+* Die Rezepte wurden für Angular 2.x und angular-cli mit Webpack aktualisiert
 
 ### Removed
+
+* Lösung 1 für die Rezepte "Komponente und HTML-Template trennen" und "Komponente und CSS trennen". Diese funktioniert mit angular-cli und webpack nicht mehr
 
 ### Deprecated
 

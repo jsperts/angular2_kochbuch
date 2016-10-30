@@ -21,7 +21,7 @@ Bei der Installation von Node.js, wird npm mit installiert.
 Jetzt können wir angular-cli installieren mit:
 
 ```bash
-npm install -g angular-cli@1.0.0-beta.18
+npm install -g angular-cli@1.0.0-beta.19
 ```
 
 Wir installieren angular-cli global und können es daher in jedem Angular 2 Projekt nutzen.

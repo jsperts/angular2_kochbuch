@@ -13,25 +13,25 @@ Ich möchte überprüfen, ob der angegebene Benutzername bereits existiert. Daf�
 
 Um die Lösung möglichst einfach zu halten, werden wir die Server-Anfrage mit einem Timeout simulieren. Für eine echte Server-Anfrage brauchen wir einen Server, der auf die Anfrage antworten kann und Code, der die Anfrage schicken kann.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 import {
     FormBuilder,
-    ControlGroup,
+    FormGroup,
     Validators,
-    Control
-} from '@angular/common';
+    FormControl
+} from '@angular/forms';
 
 ...
 
-export class DemoAppComponent {
-  form: ControlGroup;
+export class AppComponent {
+  form: FormGroup;
 
   constructor(builder: FormBuilder) {
-    this.form = builder.group({
+    this.myForm = builder.group({
       username: builder.control('', Validators.required,
-          function usernameExists(control: Control) {
+          function usernameExists(control: FormControl) {
             return new Promise((resolve) => {
               setTimeout(() => {
                 if (control.value === 'Max') {
@@ -49,8 +49,8 @@ export class DemoAppComponent {
   }
 
   onSubmit() {
-    if (!this.form.pending && this.form.valid) {
-      console.log(this.form.value);
+    if (!this.myForm.pending && this.myForm.valid) {
+      console.log(this.myForm.value);
     }
   }
 }
@@ -58,20 +58,19 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 17
 * Zeilen 17-29: Unsere asynchrone Validierungsfunktion
-  * Zeile 17: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser username-Control
+  * Zeile 17: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der FormControl-Klasse. In diesem Fall ist die Instanz unser username-Control
   * Zeile 18: Asynchrone Validierungsfunktionen liefern Promises als Rückgabewert zurück
   * Zeile 19: Wir simulieren mit der setTimeout-Funktion eine Server-Anfrage
   * Zeile 20: Überprüfung, ob der Wert (__control.value__) des Controls gleich dem String __Max__ ist
   * Zeilen 21-23: Wenn der Wert gleich __Max__ ist, ist das Eingabefeld ungültig. Eir teilen Angular dies mit, indem wir der resolve-Funktion ein Objekt übergeben
   * Zeile 25: Wenn der Wert ungleich __Max__ ist, ist das Eingabefeld gültig. Wir teilen Angular dies mit, indem wir der resolve-Funktion __null__ übergeben
-* Zeile 35: Hier wird überprüft (__this.form.pending__), ob alle asynchronen Validierungsfunktionen eine Antwort erhalten haben
+* Zeile 35: Hier wird überprüft (__this.myForm.pending__), ob alle asynchronen Validierungsfunktionen eine Antwort erhalten haben
 
 ### Diskussion
 
 Eine asynchrone Validierungsfunktion ist sehr ähnlich zu einer synchronen Validierungsfunktion, wie wir sie im Rezept "[Eigene Validatoren definieren](#c04-custom-validation)" gesehen haben.
-Beide Funktionen erhalten eine Instanz der Control-Klasse als Funktionsparameter.
+Beide Funktionen erhalten eine Instanz der FormControl-Klasse als Funktionsparameter.
 Beide signalisieren die Gültigkeit des Eingabefelds, indem sie __null__ und die Ungültigkeit des Eingabefelds, indem sie ein Objekt zurückgeben.
 Zwischen synchronen und asynchronen Validierungsfunktionen gibt es aber auch Unterschiede.
 Wir nutzen den dritten Parameter der control-Methode für asynchrone Validierungsfunktionen.
@@ -79,8 +78,9 @@ Um mehrere asynchrone Validierungsfunktionen für ein Control zu definieren, mü
 Asynchrone Validierungsfunktionen liefern ein Promise als Rückgabewert zurück. Die Gültigkeit wird durch den Aufruf der resolve-Funktion angegeben.
 
 Asynchrone Validierungsfunktionen besitzen noch weitere Besonderheiten.
-Sie werden nur dann aufgerufen, wenn das Eingabefeld nach dem Aufruf der synchronen Validierungsfunktionen gültig ist. Wenn es ungültig ist, werden die asynchronen Validierungsfunktionen nicht aufgerufen.
-Da wir auf die asynchronen Funktionen warten müssen, bevor wir die Gültigkeit des Eingabefelds und des Formulars prüfen können, wird von Angular die pending-Eigenschaft des Controls und des Formulars auf __true__ gesetzt, bis wir eine Antwort erhalten haben.
+Sie werden nur dann aufgerufen, wenn das Eingabefeld nach dem Aufruf der synchronen Validierungsfunktionen gültig ist.
+Wenn es ungültig ist, werden die asynchronen Validierungsfunktionen nicht aufgerufen.
+Da wir auf die asynchronen Funktionen warten müssen, bevor wir die Gültigkeit des Eingabefelds und des Formulars prüfen können, wird von Angular die pending-Eigenschaft des FormControls und des Formulars auf __true__ gesetzt, bis wir eine Antwort erhalten haben.
 Wir haben im Code bereits gesehen (Zeile 35), wie wir die pending-Eigenschaft nutzen können.
 
 Es ist vermutlich bekannt, dass Promises zwei Funktionen besitzen:

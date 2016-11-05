@@ -13,28 +13,28 @@ Ich möchte überprüfen, ob ein Eingabefeld mindestens einen Großbuchstaben be
 
 Wir werden hier die gleichen Validierungsfunktionen wie im Rezept "Formular mit dem FormBuilder und Validierung" nutzen. Wir werden zusätzlich eine eigene Validierungsfunktion namens "containsCapital" implementieren.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 import {
     FormBuilder,
-    ControlGroup,
+    FormGroup,
     Validators,
-    Control
-} from '@angular/common';
+    FormControl
+} from '@angular/forms';
 
 ...
 
-export class DemoAppComponent {
-  form: ControlGroup;
+export class AppComponent {
+  form: FormGroup;
 
   constructor(builder: FormBuilder) {
-    this.form = builder.group({
+    this.myForm = builder.group({
       username: builder.control('', Validators.required),
       password: builder.control('', Validators.compose([
         Validators.required,
         Validators.minLength(10),
-        function containsCapital(control: Control) {
+        function containsCapital(control: FormControl) {
           const reg = /[A-Z]/;
           if (reg.test(control.value)) {
             return null;
@@ -49,8 +49,8 @@ export class DemoAppComponent {
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log(this.form.value)
+    if (this.myForm.valid) {
+      console.log(this.myForm.value)
     }
   }
 }
@@ -58,7 +58,6 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 6: Hier importieren wir die Control-Klasse. Wir nutzen diese für die Typdefinition in Zeile 19
 * Zeilen 20-29: Unsere Validierungsfunktion
   * Zeile 20: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
   * Zeile 22: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
@@ -67,8 +66,8 @@ __Erklärung__:
 
 ### Diskussion
 
-Wenn die Validierung fehlschlägt, muss die Validierungsfunktion ein Objekt zurückgeben.
-Wir erhalten auf dieses Objekt über das errors-Objekt des Controls Zugriff.
+Wenn die Validierung fehlschlägt, muss die Validierungsfunktion ein nicht leeres Objekt zurückgeben.
+Wir erhalten auf dieses Objekt über das errors-Objekt des FormControls Zugriff.
 Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors)" gesehen.
 Solange das Passwort-Feld keinen Großbuchstaben enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
 Wir hätten auch ein komplexeres Objekt zurückgeben können, genauso wie es die minLength-Validierungsfunktion tut.

@@ -14,22 +14,30 @@ Ich möchte ein ungültiges Formular-Feld farblich hervorheben.
 Jedes Eingabefeld bekommt von Angular gewisse CSS-Klassen gesetzt.
 Um diese zu nutzen, müssen wir nur entsprechende Styles definieren.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   styles: [
     '.ng-invalid { border-color: red; }',
     '.ng-valid { border-color: green; }'
   ],
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
-      <label>Username</label>
-      <input type="text" [(ngModel)]="user.username" required ngControl="username"/>
-      <label>Password</label>
-      <input type="password" [(ngModel)]="user.password" required minlength="10" ngControl="password"/>
+      <label>Username
+        <input type="text"
+          name="username"
+          [(ngModel)]="user.username"
+          required />
+      </label>
+      <label>Password
+        <input type="password"
+          name="password"
+          [(ngModel)]="user.password"
+          required minlength="10" />
+      </label>
       <button type="submit" [disabled]="!form.valid">Submit</button>
     </form>`
 })
@@ -58,6 +66,9 @@ Beim Laden der Anwendung ist die ng-untouched-Klasse gesetzt.
 Die ng-dirty-Klasse wird gesetzt, sobald der Nutzer in ein Eingabefeld etwas geschrieben hat.
 Beim Laden der Anwendung ist die ng-pristine-Klasse gesetzt.
 Wir haben also drei CSS-Klassen Paare die Informationen über den Zustand eines Eingabefelds geben.
+Für das Formular (form-Tag) werden die gleiche CSS-Klassen gesetzt.
+Die ng-dirty-Klasse wird gesetzt sobald mindestens ein Eingabefeld die ng-dirty-Klasse bekommt.
+Die ng-touched-Klasse wird gesetzt sobald mindestens ein Eingabefeld die ng-touched-Klasse bekommt.
 
 ### Code
 

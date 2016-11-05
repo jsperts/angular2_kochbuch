@@ -8,27 +8,35 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 * [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * [Teile der View konditional Anzeigen mit NgIf](#c03-ngif)
 * Elvis-Operator (?.)
-* Lokale (Template-) Variable, die die Instanz der NgControlName-Direktiven des jeweiligen Eingabefelds referenziert (nur Lösung 2)
+* Lokale (Referenz-) Variable, die die Instanz der NgModel-Direktiven des jeweiligen Eingabefelds referenziert (nur Lösung 2)
 
 ### Lösung 1
 
-In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf über die lokale Variable des Formulars auf das Control zugreifen.
+In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf über die lokale (Referenz-) Variable des Formulars auf das Control zugreifen.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
-      <label>Username</label>
-      <input type="text" [(ngModel)]="user.username" required ngControl="username"/>
+      <label>Username
+        <input type="text"
+          name="username"
+          [(ngModel)]="user.username"
+          required />
+      </label>
       <div *ngIf="!form.controls.username?.valid">
         This field is required!
       </div>
-      <label>Password</label>
-      <input type="password" [(ngModel)]="user.password" required minlength="10" ngControl="password"/>
+      <label>Password
+        <input type="password"
+          name="password"
+          [(ngModel)]="user.password"
+          required minlength="10" />
+      </label>
       <div *ngIf="form.controls.password?.errors?.required">
         This field is required!
       </div>
@@ -45,30 +53,40 @@ import { Component } from '@angular/core';
 
 __Erklärung__:
 
-* Zeilen 9-11: Nutzung von __ngIf__ mit Bedingung __!form.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
-* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
-* Zeilen 17-19: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
+* Zeilen 13-15: Nutzung von __ngIf__ mit Bedingung __!form.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeilen 22-24: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
+* Zeilen 25-27: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Lösung 2
 
-Hier werden wir lokale Variablen für jedes Eingabefeld definieren.
+Hier werden wir lokale Variablen für jedes Eingabefeld (Control) definieren.
 Über die lokale Variable werden wir Zugriff auf die Gültigkeit des Eingabefelds bekommen.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-app',
+  selector: 'app-root',
   template: `
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
-      <label>Username</label>
-      <input type="text" [(ngModel)]="user.username" required ngControl="username" #username="ngForm"/>
+      <label>Username
+        <input type="text"
+          name="username"
+          [(ngModel)]="user.username"
+          required
+          #username="ngModel" />
+      </label>
       <div *ngIf="!username.valid">
         This field is required!
       </div>
-      <label>Password</label>
-      <input type="password" [(ngModel)]="user.password" required minlength="10" ngControl="password" #password="ngForm"/>
+      <label>Password
+        <input type="password"
+          name="password"
+          [(ngModel)]="user.password"
+          required minlength="10"
+          #password="ngModel" />
+      </label>
       <div *ngIf="password?.errors?.required">
         This field is required!
       </div>
@@ -85,11 +103,11 @@ import { Component } from '@angular/core';
 
 __Erklärung__:
 
-* Zeile 8: Mit __#username=`"`ngForm`"`__ definieren wir eine lokale Variable namens "username". Die Variable ist eine Referenz auf die Instanz der NgControlName-Direktiven des Eingabefelds
-* Zeilen 9-11: Nutzung von __ngIf__ mit Bedingung __!username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
-* Zeile 13: Mit __#password=`"`ngForm`"`__ definieren wir eine lokale Variable namens "password". Die Variable ist eine Referenz auf die Instanz der NgControlName-Direktiven des Eingabefelds
-* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __password.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
-* Zeilen 17-19: Nutzung von __ngIf__ mit Bedingung __password.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
+* Zeile 12: Mit __#username=`"`ngModel`"`__ definieren wir eine lokale Variable namens "username". Die Variable ist eine Referenz auf die Instanz der NgModel-Direktiven des Eingabefelds
+* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __!username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeile 22: Mit __#password=`"`ngModel`"`__ definieren wir eine lokale Variable namens "password". Die Variable ist eine Referenz auf die Instanz der NgModel-Direktiven des Eingabefelds
+* Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __password.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
+* Zeilen 27-29: Nutzung von __ngIf__ mit Bedingung __password.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Diskussion
 
@@ -102,6 +120,10 @@ Dieser kann uns helfen, wenn wir im Template mit Objekten arbeiten, die __null__
 Da das controls-Objekt des Formulars am Anfang leer ist (__undefined__), nutzen wir den Elvis-Operator, um Exceptions zu vermeiden.
 Wenn ein Eingabefeld gültig ist, ist das errors-Objekt des Controls __null__.
 Darum haben wir in beiden Lösungen den Elvis-Operator bei der Überprüfung der Gültigkeit des Passwort-Felds verwendet.
+
+#### controls-Objekt
+
+Das controls-Objekt der ngForm-Instanz beinhaltet alle Controls des Formulars. Wir können die einzelne Controls über ihren Namen (name-Attribut) referenzieren.
 
 #### errors-Objekt
 
@@ -120,14 +142,8 @@ In der Lösung, die wir oben gezeigt haben, wäre der Wert für die requiredLeng
 
 #### Lösung 2
 
-Genau so wie die NgForm-Direktive hat auch die NgControlName-Direktive die exportAs-Eigenschaft mit dem Wert __`'`ngForm`'`__.
-Somit können wir im Template Zugriff auf das Control und dessen Eigenschaften wie z. B. "valid" und "errors" erhalten.
-Im Übrigen können wir diese Lösung auch ohne Formular und __ngControl__ anwenden.
-Die NgModel-Direktive hat auch __`'`ngForm`'`__ als exportAs-Eigenschaft und gibt uns ebenfalls Zugriff auf das Control.
-Vom Interface her ist das Control der NgControlName- und der NgModel-Direktiven gleich, nur dass wir für die NgModel-Direktive und deren Control kein Formular benötigen.
-Das Control der NgModel-Direktiven registriert sich nicht mit dem Formular, auch wenn wir eins haben.
-Darum brauchen wir die NgControlName-Direktive, um die Gültigkeit eines Formulars zu überprüfen.
-Wenn wir nur einzelne Eingabefelder überprüfen möchten, reicht die NgModel-Direktive aus.
+Genau so wie die NgForm-Direktive hat auch die NgModel-Direktive eine exportAs-Eigenschaft mit dem Wert __`'`ngModel`'`__.
+Somit können wir im Template Zugriff auf die Instanz der NgModel-Direktive und ihre Eigenschaften wie z. B. "valid" und "errors" erhalten.
 
 ### Code
 
@@ -141,6 +157,5 @@ Live Demo der zweiten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.
 
 ### Weitere Ressourcen
 
-* Eine Instanz der NgControlName-Direktiven beinhaltet auch die Eigenschaften der [AbstractControlDirektive](https://angular.io/docs/ts/latest/api/common/AbstractControlDirective-class.html)
 * Weitere Informationen zu lokalen Variablen und zur exportAs-Eigenschaft gibt es in [Appendix A: Template-Syntax](#appendix-a)
 

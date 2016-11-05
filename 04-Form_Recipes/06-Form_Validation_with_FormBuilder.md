@@ -14,22 +14,22 @@ Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich a
 In dieser Lösung werden wir dasselbe Problem lösen wie im Rezept "[Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
 Nur werden wir hier mit Validierungsfunktionen anstelle von Validierungs-Attributen arbeiten.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
 import {
     FormBuilder,
-    ControlGroup,
+    FormGroup,
     Validators
-} from '@angular/common';
+} from '@angular/forms';
 
 ...
 
-export class DemoAppComponent {
-  form: ControlGroup;
+export class AppComponent {
+  myForm: FormGroup;
 
   constructor(builder: FormBuilder) {
-    this.form = builder.group({
+    this.myForm = builder.group({
       username: builder.control('', Validators.required),
       password: builder.control('', Validators.compose([
         Validators.required,
@@ -39,8 +39,8 @@ export class DemoAppComponent {
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log(this.form.value);
+    if (this.myForm.valid) {
+      console.log(this.myForm.value);
     }
   }
 }
@@ -48,7 +48,6 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 5: Hier importieren wir alle Validatoren, die uns Angular zur Verfügung stellt
 * Zeile 15: Control für das Benutzernamefeld definieren. Mit __Validators.required__ definieren wir das Eingabefeld als Pflichtfeld
 * Zeile 16: Ein Control erwartet als zweiten Parameter eine Validierungsfunktion. Wenn wir mehrere Funktionen gleichzeitig nutzen möchten, müssen wir die compose-Funktion nutzen
 * Zeile 17: Hier definieren wir das Passwortfeld als Pflichtfeld

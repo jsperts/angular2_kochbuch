@@ -113,7 +113,7 @@ __Erklärung__:
   * Zeile 30: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
 
-Da sich der Http-Service in einem eigenen Angular-Modul befindet, müssen wir diese Modul in unser "AppModule" importieren.
+Da sich der Http-Service in einem eigenen Angular-Modul befindet, müssen wir dieses Modul in unser "AppModule" importieren.
 
 {title="app.module.ts", lang=js}
 ```

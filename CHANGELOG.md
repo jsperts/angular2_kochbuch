@@ -5,6 +5,10 @@
 ### Added
 
 * Neue TypeScript-Typen undefined, null und never
+* Rezepte für Routing
+  * Einfaches Routing implementieren
+  * Hash-Basiert URLs für das Routing
+  * Die aktuelle Route hervorheben
 
 ### Changed
 

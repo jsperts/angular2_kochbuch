@@ -46,7 +46,7 @@ In unserem Beispiel werden zwei style-Tags im Head des Dokuments hinzugefügt.
 
 Wenn wir in Komponenten CSS-Styles definieren, können die definierten CSS-Styles standardmäßig nur in der Komponente verwendet werden, in der diese definiert worden sind.
 Es ist dabei egal, ob wir die CSS-Styles als inline-styles mittels style-Tag, über die styles-Eigenschaft oder über die styleUrls-Eigenschaft der Komponente definieren.
-Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View Encapsulation" genannt.
+Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in den CSS-Styles, wenn wir z. B. Komponenten wiederverwenden. Die Kapselung von Styles und Komponenten wird in Angular "View-Encapsulation" genannt.
 
 ### Code
 
@@ -54,6 +54,6 @@ Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Template\_and\_Styles
 
 ### Weitere Ressourcen
 
-* Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
+* Informationen zur View-Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
 * Wie die styleUrls-Eigenschaft benutzt wird, wird im Rezept "[Komponente und CSS trennen](#c07-styleurls)" gezeigt
 

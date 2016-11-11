@@ -96,7 +96,7 @@ Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung 
 
 I> #### CSS-Styles in einer Komponente
 I>
-I> Wenn wir CSS-Styles in einer Komponente definieren, können wir diese CSS-Styles standardmäßig nur in der Komponente verwenden, in der diese definiert worden sind. Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in CSS-Styles, wenn man z. B. Komponenten wiederverwendet. Die Kapselung von CSS-Styles und Komponenten wird in Angular "View Encapsulation" genannt.
+I> Wenn wir CSS-Styles in einer Komponente definieren, können wir diese CSS-Styles standardmäßig nur in der Komponente verwenden, in der diese definiert worden sind. Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in CSS-Styles, wenn man z. B. Komponenten wiederverwendet. Die Kapselung von CSS-Styles und Komponenten wird in Angular "View-Encapsulation" genannt.
 
 ### Code
 
@@ -112,6 +112,6 @@ Live Demo für die zweite Lösung auf [angular2kochbuch.de](http://angular2kochb
 
 * Offizielle Dokumentation der [NgClass-Direktiven](https://angular.io/docs/ts/latest/api/common/index/NgClass-directive.html)
 * Weitere Informationen zur Eigenschaften- und Klassen-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)
-* Informationen zur View Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
+* Informationen zur View-Encapsulation gibt es in [unserem Blog](https://jsperts.de/blog/angular2-view-kapselung/)
 * Eine weitere Möglichkeit, CSS-Styles für eine Komponente zu definieren, gibt es im Rezept "[Komponente und CSS trennen](#c07-styleurls)"
 

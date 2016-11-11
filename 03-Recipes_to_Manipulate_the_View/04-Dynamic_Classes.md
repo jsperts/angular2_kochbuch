@@ -90,8 +90,8 @@ Um das Beispiel möglichst klein zu halten, haben wir hier auf das dynamische Ve
 Im Github Code-Beispiel wird gezeigt, wie wir mittels "click" die CSS-Klassen für unsere div-Tags entfernen und hinzufügen können.
 Um das Code-Beispiel zu verstehen, wird zusätzlich das Rezept "[Auf Nutzer-Input reagieren](#c03-user-input)" benötigt.
 
-Wir nutzen hier eine [Daten-Bindung](#gl-data-binding) mit eckigen Klammern ([...]).
-Diese Art der Daten-Bindung wird Eigenschafts-Bindung genannt.
+Wir nutzen hier eine [Datenbindung](#gl-data-binding) mit eckigen Klammern ([...]).
+Diese Art der Datenbindung wird Eigenschafts-Bindung genannt.
 Falls wir nur eine einzige Klasse nutzen, können wir auch eine Klassen-Bindung dafür nutzen.
 
 I> #### CSS-Styles in einer Komponente

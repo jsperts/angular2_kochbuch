@@ -58,7 +58,7 @@ Das ist eine alternative Schreibweise zu der Schreibweise in Lösung 1. Statt Kl
 Die Event-Bindung ersetzt alle Event-Direktiven, die es in Angular 1.x gibt wie z. B. "ng-click", "ng-keypress" und "ng-keydown".
 Wir haben im Beispiel "click" benutzt, aber wir hätten auch andere Event-Namen zwischen den Klammern schreiben können wie z. B. "keypress".
 Allgemein ist der Namen zwischen den Klammern der Namen des Events, auf das wir reagieren möchten. Nach dem Gleichheitszeichen kommt die Aktion, die als Reaktion zum Event ausgeführt werden soll.
-Die Event-Bindung ist eine Form der [Daten-Bindung](#gl-data-binding).
+Die Event-Bindung ist eine Form der [Datenbindung](#gl-data-binding).
 
 ### Code
 

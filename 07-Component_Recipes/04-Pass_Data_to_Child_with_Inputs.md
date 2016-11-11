@@ -56,7 +56,7 @@ __Erklärung__:
 Änderungen in der parentData-Eigenschaft werden zur Laufzeit in die childData-Eigenschaft propagiert.
 Wir müssen also nichts tun, wenn sich z. B. durch Nutzer-Interaktion der Wert der parentData-Eigenschaft ändert.
 Wenn wir einen neuen Wert für die childData-Eigenschaft setzen, wird dieser Wert in der Parent-Component nicht sichtbar sein.
-Wir haben also hier eine Einweg-Daten-Bindung zwischen Parent- und Child-Component.
+Wir haben also hier eine Einweg-Datenbindung zwischen Parent- und Child-Component.
 Allerdings müssen wir aufpassen, wenn wir mit Objekten arbeiten.
 Falls die parentData-Eigenschaft ein Objekt ist und wir eine Eigenschaft dieses Objekts in der Child-Component ändern, ist die Änderung auch in der Parent-Component sichtbar.
 Der Grund dafür ist, dass Angular keine Kopie des Objekts erstellt, sondern die Referenz weitergibt.

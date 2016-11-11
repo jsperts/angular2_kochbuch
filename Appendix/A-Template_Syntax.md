@@ -33,15 +33,15 @@ Z. B. sind "new", "++" und bit-Operationen nicht erlaubt.
 Auch die Nutzung von globalen Variablen ist nicht erlaubt.
 Nur Eigenschaften der Komponente zu der die View gehört und lokale Variablen, die im Template definiert sind, können benutzt werden.
 
-## Daten-Bindung
+## Datenbindung
 
 Angular bietet verschiedene Möglichkeiten, Daten, die sich in einer Komponente befinden, in der dazugehörige View zu nutzen.
 Damit man die Daten nutzen kann, müssen diese als Eigenschaften der Komponente definiert sein.
 Das heißt für uns, sie müssen Eigenschaften des this-Wertes der Komponenten-Klasse sein.
 
-Wir unterscheiden zwischen "Einweg-Daten-Bindung" und "beidseitiger Daten-Bindung".
-Bei der Einweg-Daten-Bindung fließen die Daten entweder von der View in die Komponente oder von der Komponente in die View.
-Bei der beidseitigen Daten-Bindung fließen die Daten mit nur einem Bindungskonstrukt in beide Richtungen.
+Wir unterscheiden zwischen "Einweg-Datenbindung" und "beidseitiger Datenbindung".
+Bei der Einweg-Datenbindung fließen die Daten entweder von der View in die Komponente oder von der Komponente in die View.
+Bei der beidseitigen Datenbindung fließen die Daten mit nur einem Bindungskonstrukt in beide Richtungen.
 Unter Bindungskonstrukt verstehen wir die Syntax, die wir brauchen, um Angular zu signalisieren, dass hier Daten gebunden werden sollen.
 Jetzt werden wir sehen, wie wir die verschiedenen Bindungskonstrukte nutzen können und was diese bewirken.
 
@@ -115,7 +115,7 @@ Es ist also Geschmackssache, ob man Klammern oder "bind-" nutzt.
 
 W> #### HTML-Attribut vs. DOM-Eigenschaft
 W>
-W> Wir müssen hier zwischen HTML-Attributen und DOM-Eigenschaften unterscheiden. Oft gibt es Attribute, die den gleichen Namen wie DOM-Eigenschaften besitzen, z. B. "src". In Angular werden Attribute benutzt, um initiale Werte zu setzen. Diese Werte sind statisch. Sobald wir Daten-Bindungen nutzen, nutzen wir automatisch DOM-Eigenschaften. Streng genommen haben wir also bei der Interpolation die src- und die textContent-Eigenschaft der Elemente gesetzt. Da es gewisse Attribute gibt, die zu keiner DOM-Eigenschaft gehören, bietet Angular auch eine spezielle Syntax an, um Attribute zu binden. Diese werden wir später sehen.
+W> Wir müssen hier zwischen HTML-Attributen und DOM-Eigenschaften unterscheiden. Oft gibt es Attribute, die den gleichen Namen wie DOM-Eigenschaften besitzen, z. B. "src". In Angular werden Attribute benutzt, um initiale Werte zu setzen. Diese Werte sind statisch. Sobald wir Datenbindungen nutzen, nutzen wir automatisch DOM-Eigenschaften. Streng genommen haben wir also bei der Interpolation die src- und die textContent-Eigenschaft der Elemente gesetzt. Da es gewisse Attribute gibt, die zu keiner DOM-Eigenschaft gehören, bietet Angular auch eine spezielle Syntax an, um Attribute zu binden. Diese werden wir später sehen.
 
 ### Event-Bindung
 
@@ -186,12 +186,12 @@ Statt des __$event__, können wir auch direkt einen Wert zuweisen oder der doSom
 Jetzt beinhaltet die name-Eigenschaft den Wert __`'`Max`'`__ und die doSomething-Methode bekommt __`'`Max`'`__ als Wert übergeben.
 Natürlich können auch lokale Variablen oder Eigenschaften als Wert übergeben bzw. zugewiesen werden.
 
-### Beidseitige Daten-Bindung
+### Beidseitige Datenbindung
 
-Um eine beidseitige Daten-Bindung nutzen zu können, benötigen wir spezielle Direktiven und ein weiteres Bindungskonstrukt.
+Um eine beidseitige Datenbindung nutzen zu können, benötigen wir spezielle Direktiven und ein weiteres Bindungskonstrukt.
 Angular bietet von Haus aus eine solche Direktive, und zwar die NgModel-Direktive.
 Das Bindungskonstrukt sind Klammern umgeben von eckigen Klammern __[(...)]__.
-Wie man vermutlich aus der Syntax schon erkennen kann ist eine beidseitige Daten-Bindung eine Kombination einer Eigenschaft- und einer Event-Bindung.
+Wie man vermutlich aus der Syntax schon erkennen kann ist eine beidseitige Datenbindung eine Kombination einer Eigenschaft- und einer Event-Bindung.
 Beidseitige Bindungen funktionieren nur mit Eigenschaften von Komponenten und Direktiven aber nicht mit DOM-Eigenschaften.
 Hier ein Beispiel mit einem Eingabefeld und der NgModel-Direktive:
 

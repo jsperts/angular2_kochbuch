@@ -13,7 +13,7 @@ __barrel__: Ein barrel in Angular 2 ist eine Datei die mehrere Module importiert
 __bootstrap__: Das initialisieren einer Angular 2 Anwendung. Der Initialisierungsprozess beginnt in dem wir eine bootstrap-Funktion aufrufen und das Hauptmodul als Parameter übergeben.
 
 {#gl-data-binding}
-__Daten-Bindung__: Auf Englisch "data binding" ist die Verbindung zwischen Daten in einem Angular-Template und entsprechende Daten in einer Komponente oder Direktive. Daten-Bindungen können auf verschiedenen Weisen entstehen z. B. durch Interpolation, Event-Bindung mittels Klammern (...) oder Eigenschaft-Bindung mittels eckigen Klammern [...].
+__Datenbindung__: Auf Englisch "data binding" ist die Verbindung zwischen Daten in einem Angular-Template und entsprechende Daten in einer Komponente oder Direktive. Datenbindungen können auf verschiedenen Weisen entstehen z. B. durch Interpolation, Event-Bindung mittels Klammern (...) oder Eigenschaft-Bindung mittels eckigen Klammern [...].
 
 {#gl-decorator}
 __Decorator__: Ist eine Funktion die Metadaten zu einer Klasse, deren Methoden und Eigenschaften und Methodenparameter hinzufügen kann. Decorators sind ein TypeScript Feature und fangen immer mit einem "@" an.

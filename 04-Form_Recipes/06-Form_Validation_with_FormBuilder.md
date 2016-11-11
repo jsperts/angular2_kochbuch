@@ -1,4 +1,4 @@
-## Formular mit dem FormBuilder und Validierung {#c04-formbuilder-validation}
+## MDF: Gültigkeit eines Formulars überprüfen {#c04-formbuilder-validation}
 
 ### Problem
 

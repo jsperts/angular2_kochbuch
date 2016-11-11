@@ -5,5 +5,7 @@
 04-Form_Validation_CSS-Classes.md
 05-Form_with_FormBuilder.md
 06-Form_Validation_with_FormBuilder.md
-07-Custom_Validation.md
-08-Custom_Async_Validation.md
+07-Form_Show_Error_for_Field_with_FormBuilder.md
+08-Custom_Validation.md
+09-Custom_Async_Validation.md
+10-Validate_Multiple_Fields.md

@@ -111,7 +111,7 @@ Um den Beispiel-Code aus Github im Browser anzuzeigen, müssen wir mittels `npm 
 
 Unser Code-Beispiel nutzt Angular im Entwicklungsmodus.
 Darüber informiert uns auch Angular, wenn wir im Browser die Konsole offen haben.
-Wir werden in einem weiteren Rezept sehen, wie wir Angular 2 in Produktion nutzen können.
+Im Rezept "[Angular 2 in Produktion nutzen](#c02-prod-build)" wird beschrieben wie wir Angular 2 im Produktionsmodus nutzen können.
 
 #### Angular-Plattformen
 

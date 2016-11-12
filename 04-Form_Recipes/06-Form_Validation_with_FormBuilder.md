@@ -8,6 +8,7 @@ In diesem Rezept lösen wir dasselbe Problem wie im Rezept "[Gültigkeit eines F
 Nur werden wir hier mit Validierungsfunktionen anstelle von Validierungs-Attributen arbeiten.
 
 ### Zutaten
+
 * [Formular mit dem FormBuilder implementieren](#c04-formbuilder)
 * Die Validierungsfunktionen von Angular (Validators-Klasse)
 * Anpassungen an der Komponente aus "Formular mit dem FormBuilder implementieren"

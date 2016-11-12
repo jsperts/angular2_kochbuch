@@ -5,15 +5,26 @@
 ### Added
 
 * Neue TypeScript-Typen undefined, null und never
+* Neues Rezept: Angular 2 in Produktion nutzen
 * Rezepte für Routing
   * Einfaches Routing implementieren
   * Hash-Basiert URLs für das Routing
   * Die aktuelle Route hervorheben
+  * Umleitung für unbekannte Pfade
+  * Navigation in der Klasse der Komponente
+  * Routing-Parameter
+* Rezepte für Formulare
+  * MDF: Fehlermeldungen für einzelne Formular-Felder anzeigen
+  * MDF: Abhängige Eingabefelder validieren
 
 ### Changed
 
 * Schreib-/Grammatikfehler Korrekturen
 * Die Rezepte wurden für Angular 2.x und angular-cli mit Webpack aktualisiert
+* Das Rezept "Formular mit dem FormBuilder und Validierung" hat jetzt 2 mögliche Lösungen
+  * Lösung 1 Submit-Button mit disabled-Eigenschaft
+  * Lösung 2 Submit-Methode mit Gültigkeitsüberprüfung
+* Die Titel der Formular-Rezepten haben jetzt ein "TDF" bzw. "MDF" davor je nachdem, ob sie sich mit Template-Driven oder Model-Driven Formulare befassen
 
 ### Removed
 

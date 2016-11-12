@@ -1,4 +1,4 @@
-## Navigation in der Klasse der Komponente
+## Navigation in der Klasse der Komponente {#c06-navigate-in-class}
 
 ### Problem
 
@@ -78,7 +78,7 @@ Immer wenn wir relative Pfade nutzen, müssen wir dem Router sagen relativ zu we
 Im Falle der RouterLink-Direktive wird immer relativ zu der aktuellen Route navigiert.
 Mit der navigate-Methode müssen wir explizit die Route angeben zu der wir relativ Navigieren wollen, indem wir die relativeTo-Eigenschaft setzen.
 
-Die Auswirkungen von relativen Pfaden sind vor allem sichtbar, wenn wir verschachtelte (nested) Routen nutzen, was wir hier nicht tun.
+Die Auswirkungen von relativen Pfaden sind vor allem sichtbar, wenn wir innerhalb einer Komponente navigieren, die einen eigenen nicht leeren Pfad hat z. B. AdminComponent mit "admin" als Pfad.
 In unserem Beispiel hätten wir problemlos auch absolute Pfade nutzen können z. B. in Zeile 15 "/products" statt "products".
 Wenn wir absolute Pfade nutzen, brauchen wir den zweiten Parameter (`{relativeTo: this.route}`) der navigate-Methode nicht.
 

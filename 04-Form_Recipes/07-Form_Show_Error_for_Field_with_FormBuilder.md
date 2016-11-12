@@ -73,6 +73,9 @@ __Erklärung__:
 
 ### Diskussion
 
+Natürlich setzt Angular auch für Model-Driven Formulare entsprechende CSS-Klassen, die den Zustand eines Eingabefeldes kennzeichen.
+Welche CSS-Klassen uns zur Verfügung stehen, steht im Diskussionsteil des Rezeptes "[TDF: Formular-Felder und CSS-Klassen](#c04-form-css-classes)".
+
 Bei der Erklärung der Lösung haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
 
 #### Elvis-Operator

@@ -91,9 +91,11 @@ __Erklärung__:
 
 FormBuilder ist ein [Service](#gl-service), den Angular uns zur Verfügung stellt.
 Dieser Service erlaubt es uns, mit relativ wenig Code komplexe Formulare zu definieren.
+Model-Driven Formulare können wir auch ohne den FormBuilder schreiben, indem wir selbst Instanze der FormGroup- bzw. FormControl-Klassen erzeugen und diese an das Template binden.
+
 Wie schon erwähnt, arbeiten wir hier mit "Model-Driven Forms".
 Das Modell für das Formular wird in der Klasse definiert und dann an das DOM gebunden.
-Mit __[formGroup]=`"`form`"`__ binden wir das Modell an das DOM-Formular an.
+Mit __[formGroup]=`"`myForm`"`__ binden wir das Modell an das DOM-Formular an.
 Ohne diese Bindung würde Angular für das Formular eine neue Instanz der NgForm-Direktive erzeugen und wir hätten keine Verbindung zu unserem Modell.
 Da ein Formular ohne Eingabefelder nutzlos ist, haben wir beim Aufruf der group-Methoden ein Objekt mit zwei Controls übergeben.
 Die Eigenschaftsnamen im Objekt definieren die Namen der Controls (hier "username" und "password") und die Werte sind Instanzen der FormControl-Klasse.

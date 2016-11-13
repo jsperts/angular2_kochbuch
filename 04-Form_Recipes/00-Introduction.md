@@ -1,7 +1,11 @@
 # Rezepte für Formulare
 
 Angular bietet uns mehrere Möglichkeiten, Formulare zu implementieren.
-Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template-Driven Forms" (TDF) und "Model-Driven Forms" (MDF) auch bekannt als "Reactive Forms".
+Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template-Driven Forms" und "Model-Driven Forms" auch bekannt als "Reactive Forms".
+Beide Formulararten bieten die gleichen Funktionalität an.
+Nur der Weg, den wir gehen müssen, um die Funktionalität zu implementieren ist anders.
+Die Art des Formulars steht im Titel des Rezepts.
+TDF für "Template-Driven" und MDF für "Model-Driven".
 
 Bei den "Template-Driven Forms" befindet sich ein Großteil der Logik, wie z. B. die Validierung, im Template.
 Auch die Synchronisation zwischen den Daten, die der Nutzer sieht und den Daten in der Klasse der Komponente (dem Modell) wird im Template definiert.
@@ -18,5 +22,5 @@ Als Formular-Modell bezeichnen wir in diesem Zusammenhang die Implementierung de
 Wir müssen das Formular im Template implementieren und dann die Logik in der Klasse.
 Da die Logik sich in der Klasse befindet, können wir die Komponente gut Unit-testen.
 
-Wir werden jetzt mit einem einfachen "Template-Driven" Formular anfangen und werden nach und nach komplexere "Model-Driven" Formulare implementieren.
+Wir werden jetzt mit einem einfachen "Template-Driven" Formular anfangen und werden uns danach "Model-Driven" Formulare anschauen.
 

@@ -64,6 +64,8 @@ Die Event-Bindung ist eine Form der [Datenbindung](#gl-data-binding).
 
 Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/03-User\_Interaction](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/03-User_Interaction)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-Recipes_to_Manipulate_the_View/03-User_Interaction/index.html)
+
 ### Weitere Ressourcen
 
 * Weitere informationen zur Event-Bindung gibt es in [Appendix A: Template-Syntax](#appendix-a)

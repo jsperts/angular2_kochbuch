@@ -129,6 +129,8 @@ Dort wird auch beschrieben, wie wir komplexere Provider-Rezepte nutzen können u
 
 Code auf Github: [02-Basic\_Recipes/04-Define\_Service](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/04-Define_Service)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/04-Define_Service/index.html)
+
 ### Weitere Ressourcen
 
 * Neue Services können wir auch mit Hilfe des generate-Kommandos von angular-cli generieren. Mehr Informationen gibt es in [Appendix-B: angular-cli](#appendix-b)

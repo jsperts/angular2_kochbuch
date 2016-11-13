@@ -52,9 +52,9 @@ Die Diskussion styles- vs. stuleUrls-Eigenschaft ist analog zur template- vs. te
 
 ### Code
 
-Code auf Github für die erste Lösung: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles/Solution-01)
+Code auf Github: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles)
 
-Code auf Github für die zweite Lösung: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles/Solution-02)
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/03-Separation_of_Component_and_Styles/index.html)
 
 ### Weitere Ressourcen
 

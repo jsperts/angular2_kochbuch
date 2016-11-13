@@ -48,6 +48,8 @@ Im Beispiel-Code auf Github wird auch die app.component.ts-Datei angepasst, so d
 
 Code auf Github [07-Component\_Recipes/07-Execute\_Code\_on\_Component\_Destroy](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/07-Execute_Code_on_Component_Destroy)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/07-Execute_Code_on_Component_Destroy/index.html)
+
 ### Weitere Ressourcen
 
 * Mehr Informationen über [Lifecycle Hooks](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html) gibt es auf der Angular 2 Webseite

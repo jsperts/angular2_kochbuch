@@ -51,6 +51,8 @@ Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade is
 Code auf Github: [08-List\_Recipes/02-Even\_Odd\_ngFor\_Elements](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/02-Even_Odd_ngFor_Elements).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit even/odd gezeigt.
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/02-Even_Odd_ngFor_Elements/index.html)
+
 ### Weitere Ressourcen
 
 * Weitere Informationen zu lokalen Variablen gibt es in [Appendix A: Template-Syntax](#appendix-a)

@@ -10,6 +10,7 @@ Ich möchte Daten vom Benutzer bekommen und brauche dafür ein einfaches Formula
 * NgModel-Direktive
 * NgForm-Direktive mit dem ngSubmit-Event
 * Anpassungen an der app.module.ts-Datei
+* Anpassungen an der package.json-Datei
 
 ### Lösung
 
@@ -80,8 +81,22 @@ __Erklärung__:
 
 * Zeile 8: Hier importieren wir das "FormsModule" in unser Modul. In diesem Modul befinden sich alle Direktiven, die wir für Template-Driven Forms brauchen
 
-Wenn eine Angular-Anwendung mit angular-cli inititalisiert wird, wird das "FormsModule" automatisch von angular-cli importiert.
-In so einem Fall, müssten wir nicht das "FormsModule" selbst importieren.
+Da sich das "FormsModule" in einem eigenen npm-Paket befindet, müssen wir dieses auch in der package.json deklarieren.
+
+{title="package.json", lang=js}
+```
+{
+  ...
+  "dependencies": {
+    ...
+    "@angular/forms": "2.1.2"
+    ...
+  }
+  ...
+}
+```
+
+Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "FormsModule" automatisch von angular-cli importiert und das entsprechende npm-Paket in der package.json-Datei deklariert.
 
 ### Diskussion
 

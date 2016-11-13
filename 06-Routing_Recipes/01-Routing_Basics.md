@@ -13,6 +13,7 @@ Ich möchte meine Anwendung mit Hilfe des Routers in drei Teilbereichen aufspalt
 * Anpassungen an der app.component.ts- und der app.module.ts-Datei
 * Die RouterLink-Direktive von Angular-Router
 * Die RouterOutlet-Direktive von Angular-Router
+* Anpassungen an der package.json-Datei
 
 ### Lösung
 
@@ -113,6 +114,28 @@ __Erklärung__:
 
 * Zeilen 6-12: Die Navigation für unsere Anwendung. Mit der RouterLink-Direktive definieren wir, zu welchem Teilbereich der Router hin navigieren soll, wenn der Nutzer auf das Element klickt. Die Pfade, die wir der RouterLink-Direktive übergeben, müssen zu den path-Eigenschaften in der Router-Konfiguration passen
 * Zeile 13: Mit der RouterOutlet-Direktive, sagen wir dem Router wo er die Teilbereiche anzeigen soll. Je nach Pfad bzw. Routerzustand, entscheidet der Router welcher Teilbereich angezeigt werden muss
+
+
+Da sich das "RouterModule" in einem eigenen npm-Paket befindet, müssen wir dieses auch in der package.json deklarieren.
+
+{title="package.json", lang=js}
+```
+{
+  ...
+  "dependencies": {
+    ...
+    "@angular/router": "3.1.2"
+    ...
+  }
+  ...
+}
+```
+
+Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "RouterModule" automatisch von angular-cli importiert und das entsprechende npm-Paket in der package.json-Datei deklariert.
+
+### Diskussion
+
+FormBuilder ist ein [Service](#gl-service), den Angular uns zur Verfügung stellt.
 
 ### Diskussion
 

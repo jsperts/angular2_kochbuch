@@ -12,6 +12,7 @@ Ich möchte zur Laufzeit Daten im JSON-Format von einem Server holen.
 * [Auf Nutzer-Input reagieren](#c03-user-input) (Wir holen Daten nach einem Klick auf einen Button)
 * [Liste von Daten anzeigen](#c03-data-list)
 * Anpassungen an der app.module.ts-Datei
+* Anpassungen an der package.json-Datei
 
 ### Lösung
 
@@ -137,8 +138,22 @@ __Erklärung__:
 
 * Zeile 8: Hier importieren wir das "HttpModule" in unser Modul. Jetzt können wir alle Services, die dieses Modul definiert in unserem Code nutzen
 
-Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "HttpModule" automatisch von angular-cli importiert.
-In so einem Fall, müssten wir nicht das "HttpModule" selbst importieren.
+Da sich das "HttpModule" in einem eigenen npm-Paket befindet, müssen wir dieses auch in der package.json-Datei deklarieren.
+
+{title="package.json", lang=js}
+```
+{
+  ...
+  "dependencies": {
+    ...
+    "@angular/http": "2.1.2"
+    ...
+  }
+  ...
+}
+```
+
+Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "HttpModule" automatisch von angular-cli importiert und das entsprechende npm-Paket in der package.json-Datei deklariert.
 
 ### Diskussion
 

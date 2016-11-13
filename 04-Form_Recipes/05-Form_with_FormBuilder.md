@@ -12,6 +12,7 @@ Ich möchte, dass sich die Logik für mein Formular in der Klasse der Komponente
 * Die FormControlName-Direktive von Angular
 * Die FormGroupDirective-Direktive von Angular
 * Anpassungen an der app.module.ts-Datei
+* Anpassungen an der package.json-Datei
 
 ### Lösung
 
@@ -86,6 +87,23 @@ export class AppModule { }
 __Erklärung__:
 
 * Zeile 8: Hier importieren wir das "ReactiveFormsModule" in unser Modul. In diesem Modul befinden sich alle Direktiven und Services, die wir für Model-Driven Forms brauchen
+
+Da sich das "ReactiveFormsModule" in einem eigenen npm-Paket befindet, müssen wir dieses auch in der package.json deklarieren.
+
+{title="package.json", lang=js}
+```
+{
+  ...
+  "dependencies": {
+    ...
+    "@angular/forms": "2.1.2"
+    ...
+  }
+  ...
+}
+```
+
+Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "@angular/forms"-Paket von angular-cli in der package.json-Datei deklariert.
 
 ### Diskussion
 

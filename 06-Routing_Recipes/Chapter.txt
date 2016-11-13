@@ -1,1 +1,7 @@
 00-Introduction.md
+01-Routing_Basics.md
+02-Hash_Based_URLs.md
+03-Highlight_Active_Route.md
+04-Redirect_Unknown_Path.md
+05-Navigation_in_Class.md
+06-Routing_Parameters.md

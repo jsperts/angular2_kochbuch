@@ -3,3 +3,4 @@
 02-Angular_2_App.md
 03-Define_Component.md
 04-Define_Service.md
+05-Production_Build.md

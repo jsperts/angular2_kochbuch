@@ -5,6 +5,7 @@
 Ich hab ein langes Angular-Template und ich möchte das HTML getrennt von meiner Komponente halten.
 
 ### Zutaten
+
 * [Angular 2 Anwendung](#c02-angular-app)
 * Eine Datei für das HTML. Hier app.component.html
 

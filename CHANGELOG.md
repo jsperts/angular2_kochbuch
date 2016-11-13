@@ -16,6 +16,10 @@
 * Rezepte für Formulare
   * MDF: Fehlermeldungen für einzelne Formular-Felder anzeigen
   * MDF: Abhängige Eingabefelder validieren
+* Rezepte für Komponenten
+  * Code ausführen bei der Initialisierung einer Komponente
+  * Code ausführen bei der Zerstörung (destroy) einer Komponente
+* Online Demos für alle Rezepte
 
 ### Changed
 

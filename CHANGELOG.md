@@ -19,7 +19,7 @@
 * Rezepte für Komponenten
   * Code ausführen bei der Initialisierung einer Komponente
   * Code ausführen bei der Zerstörung (destroy) einer Komponente
-* Online Demos für alle Rezepte
+* Online Demos
 
 ### Changed
 
@@ -33,6 +33,7 @@
 ### Removed
 
 * Lösung 1 für die Rezepte "Komponente und HTML-Template trennen" und "Komponente und CSS trennen". Diese funktioniert mit angular-cli und webpack nicht mehr
+* Online Demos für Datenaustausch Rezepte. Diese hatten einen Server nur simuliert und das hat dazugeführt, dass es keine Serveranfragen im Networktab gab. Um verwirrung zu vermeiden, wurden diese entfernt.
 
 ### Deprecated
 

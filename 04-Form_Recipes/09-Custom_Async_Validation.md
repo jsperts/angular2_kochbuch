@@ -91,9 +91,9 @@ Es ist also wichtig, dass wir Fehler in der Validierungsfunktion abfangen und in
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/08-Custom\_Async\_Validation](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/08-Custom_Async_Validation)
+Code auf Github: [04-Form\_Recipes/09-Custom\_Async\_Validation](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/09-Custom_Async_Validation)
 
-Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/08-Custom_Async_Validation/index.html)
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/09-Custom_Async_Validation/index.html)
 
 ### Weitere Ressourcen
 

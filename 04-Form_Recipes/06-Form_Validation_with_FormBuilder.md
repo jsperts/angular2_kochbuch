@@ -110,6 +110,8 @@ __Erklärung__:
 
 Code auf Github für die erste Lösung: [04-Form\_Recipes/06-Form\_Validation\_with\_FormBuilder/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-01)
 
+Live Demo der ersten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-01/index.html)
+
 Code auf Github für die zweite Lösung: [04-Form\_Recipes/06-Form\_Validation\_with\_FormBuilder/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-02)
 
 Live Demo der zweiten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/06-Form_Validation_with_FormBuilder/index.html)

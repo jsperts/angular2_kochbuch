@@ -1,8 +1,8 @@
 # Rezepte für den Datenaustausch
 
-In der Regel möchten wir bei Web-Anwendungen in der Lage sein mit einem Server Daten auszutauschen.
-Wir möchten zur Laufzeit Daten nachladen aber auch Daten, die uns der Nutzer gibt an den Server schicken.
-In diesem Kapitel werden wir den Http-Service von Angular kennen lernen und sehen wie wir den nutzen können, um mit einem Server zu kommunizieren.
+In der Regel möchten wir bei Web-Anwendungen in der Lage sein, mit einem Server Daten auszutauschen.
+Wir möchten zur Laufzeit sowohl Daten nachladen als auch Daten, die uns der Nutzer gibt, an den Server schicken.
+In diesem Kapitel werden wir den Http-Service von Angular kennenlernen und sehen, wie wir ihn nutzen können, um mit einem Server zu kommunizieren.
 
 ## Daten vom Server mit GET holen {#c05-get-data}
 
@@ -11,21 +11,23 @@ In diesem Kapitel werden wir den Http-Service von Angular kennen lernen und sehe
 Ich möchte zur Laufzeit Daten im JSON-Format von einem Server holen.
 
 ### Zutaten
-* [Angular 2 Anwendung](#c02-angular-app)
-* [Ein Service](#c02-define-service)
-* Den Http-Service von Angular
+* [Ein Service](#c02-define-service), um die Daten zu holen
+* Das Http-Modul von Angular
+* Der Http-Service von Angular
 * Die map-Methode für Observables (Ist Teil von RxJS)
-* [Auf Nutzer-Input reagieren](#c03-user-input) (Wir holen die Daten nach einem Klick auf einen Button)
+* [Auf Nutzer-Input reagieren](#c03-user-input) (Wir holen Daten nach einem Klick auf einen Button)
 * [Liste von Daten anzeigen](#c03-data-list)
+* Anpassungen an der app.module.ts-Datei
+* Anpassungen an der package.json-Datei
 
 ### Lösung
 
-In dieser Lösung werden wir sehen wie wir JSON-Daten von einem Server holen können.
-Die Fehlerbehandlung lassen wir außen vor, damit wir uns für das Erste auf die GET-Anfrage konzentrieren können.
+In dieser Lösung werden wir sehen, wie wir JSON-Daten von einem Server holen können.
+Die Fehlerbehandlung lassen wir außen vor, damit wir uns fürs Erste auf die GET-Anfrage konzentrieren können.
 Über Fehler bei Server-Anfragen reden wir im Rezept "[Server-Anfragen und Fehlerbehandlung](#c05-error-handling)".
 
-Wir gehen hier davon aus, dass wir einen Server haben der auf __127.0.0.1:3000__ hört.
-Wenn eine GET-Anfrage nach __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
+Wir gehen hier davon aus, dass wir einen Server haben, der auf __127.0.0.1:3000__ hört.
+Wenn eine GET-Anfrage an __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
 Wir nutzen __http://127.0.0.1:3000/data__ als URL für die Anfrage.
 Die Daten sehen wie folgt aus:
 
@@ -65,28 +67,27 @@ __Erklärung__:
 
 * Zeile 2: Hier importieren wir den Http-Service von Angular
 * Zeile 3: Durch diesen Import erweitern wir die Instanzen der Observable-Klasse (siehe Zeile 16) um eine Methode namens "map"
-* Zeile 5: Im Gegensatz zu dem Service im Rezept "Ein Service definieren", ist der Injectable-Decorator hier nicht optional, da unser Service eine Abhängigkeit hat und zwar den Http-Service (siehe Zeile 9)
-* Zeile 9: Hier definieren wir den Http-Service als Abhängigkeit von unserem Service
-* Zeile 15: Hier rufen wir die get-Methode vom Http-Service auf. Als Parameter bekommt diese Methode eine URL. Der Rückgabewert ist ein Observable (Teil von RxJS)
-* Zeile 16: Wir nutzen die map-Methode, um die Antwort vom Server zu transformieren. Der response-Parameter ist eine Instanz der Response-Klasse und hat eine json-Methode (__.json()__), die die Daten vom Server in ein Objekt transformiert
+* Zeile 5: Im Gegensatz zum Service im Rezept "Ein Service definieren" ist der Injectable-Decorator hier nicht optional, da unser Service eine Abhängigkeit besitzt: den Http-Service (siehe Zeile 9)
+* Zeile 9: Hier definieren wir den Http-Service als Abhängigkeit unseres Services
+* Zeile 15: Hier rufen wir die get-Methode des Http-Services auf. Als Parameter erhält diese Methode eine URL. Der Rückgabewert ist ein Observable (Teil von RxJS)
+* Zeile 16: Wir nutzen die map-Methode, um die Antwort des Servers zu transformieren. Der response-Parameter ist eine Instanz der Response-Klasse und besitzt eine json-Methode (__.json()__), die die Daten des Servers in ein Objekt transformiert
 
 Jetzt müssen wir noch unsere Komponente aus "Ein Service definieren" anpassen, so dass diese mit dem Http-Service und Observables arbeiten kann.
-Wir werden die Daten nach einem Klick auf den "Get Data"-Button holen und diese in eine Liste anzeigen.
+Wir werden die Daten nach einem Klick auf den "Get Data"-Button holen und diese in einer Liste anzeigen.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 import { Component } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
+
 import { DataService } from './data.service';
 
-interface IData {
+interface Data {
   id: number;
   name: string;
 }
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <ul>
@@ -94,9 +95,9 @@ interface IData {
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   dataService: DataService;
-  data: Array<IData>;
+  data: Array<Data>;
 
   constructor(dataService: DataService) {
     this.dataService = dataService;
@@ -114,127 +115,102 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-Verglichen mit der Komponente aus "Ein Service definieren", wurden zwei Änderungen vorgenommen.
-Wir haben weitere Providers definiert und die Konstruktorfunktion angepasst.
+* Zeile 21: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "Data" (Siehe Zeilen 5-8)
+* Zeilen 28-33: Methode, die aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
+  * Zeile 30: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
-* Zeile 2: Hier importieren wir die "HTTP\_PROVIDERS" Variable. Diese beinhaltet Providers für verschiedene Services, die mit Server-Anfragen zu tun haben
-* Zeile 12: Damit unser Service den Http-Service nutzen kann, müssen wir dem Injector die HTTP\_PROVIDERS-Variable übergeben
-* Zeile 22: Die data-Eigenschaft wird benutzt, um die Daten in der Liste anzuzeigen. Sie ist vom Typ "IData" (Siehe Zeilen 5-8)
-* Zeilen 29-34: Methode die Aufgerufen wird, wenn der Nutzer auf den "Get Data"-Button klickt
-  * Zeile 31: Die getData-Methode des Services gibt ein Observable zurück. Jedes Observable hat eine subscribe-Methode die wir nutzen können, um auf Änderungen zu reagieren, indem wir der Methode eine Callback-Funktion übergeben
 
-Da sich der Http-Service in einem eigenen Paket befindet, müssen wir dieses Paket auch über npm herunterladen und SystemJS informieren, dass es das Paket importieren soll.
-Wenn wir ein Projekt mit angular-cli initialisieren, ist das @angular/http-Paket schon als Abhängigkeit definiert da müssen wir also keine Änderungen vornehmen um den Http-Service zu nutzen.
+Da sich der Http-Service in einem eigenen Angular-Modul befindet, müssen wir dieses Modul in unser "AppModule" importieren.
 
-{title="package.json", lang=json}
+{title="app.module.ts", lang=js}
+```
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+import { DataService } from './data.service';
+
+@NgModule({
+  imports: [ BrowserModule, HttpModule ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+  providers: [ DataService ]
+})
+export class AppModule { }
+```
+
+__Erklärung__:
+
+* Zeile 8: Hier importieren wir das "HttpModule" in unser Modul. Jetzt können wir alle Services, die dieses Modul definiert in unserem Code nutzen
+
+Da sich das "HttpModule" in einem eigenen npm-Paket befindet, müssen wir dieses auch in der package.json-Datei deklarieren.
+
+{title="package.json", lang=js}
 ```
 {
-
-...
-
+  ...
   "dependencies": {
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-
-    "@angular/http": "2.0.0-rc.1",
-
-    "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-    "es6-shim": "^0.35.0",
-    "reflect-metadata": "0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "systemjs": "0.19.26",
-    "zone.js": "^0.6.12"
-  },
-
-...
-
+    ...
+    "@angular/http": "2.1.2"
+    ...
+  }
+  ...
 }
 ```
 
-{title="system-config.ts", lang=js}
-```
-...
-
-const barrels: string[] = [
-  // Angular specific barrels.
-  '@angular/core',
-  '@angular/common',
-  '@angular/compiler',
-
-  '@angular/http',
-
-  '@angular/platform-browser',
-  '@angular/platform-browser-dynamic',
-
-  // Thirdparty barrels.
-  'rxjs',
-
-  // App specific barrels.
-  'app',
-  'app/shared',
-  /** @cli-barrel */
-];
-
-...
-```
+Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "HttpModule" automatisch von angular-cli importiert und das entsprechende npm-Paket in der package.json-Datei deklariert.
 
 ### Diskussion
 
-Wir hätten den Http-Service auch direkt in unsere Komponenten nutzen können.
+Wir hätten den Http-Service auch direkt in unserer Komponenten nutzen können.
 Wir haben uns stattdessen für die Nutzung eines weiteren Services entschieden.
-Der Grund dafür ist, dass wir die Logik für den Aufruf nicht in unsere Komponenten haben wollen.
-Die Komponente interessiert sich nicht wie wir die Daten bekommen.
-Diese braucht nur ein Array mit Daten.
-Woher dieses Array stammt ist der Komponente egal.
-Mit dem extra Service ist es einfacher z. B. die URL zu ändern ohne, dass wir die Komponente anpassen müssen.
-Wir passen nur den Service an und alle Komponenten die diesen Service benutzen werden weiterhin funktionieren.
-Es ist allgemein ein "Best Practice" unsere Komponenten schlank zu halten und Logik wie z. B. "Wie hole ich Daten?" einem Service zu überlassen.
+Der Grund dafür ist, dass wir die Logik für den Aufruf nicht in unserer Komponenten haben wollen.
+Die Komponente interessiert sich nicht dafür, wie wir die Daten bekommen.
+Diese benötigt nur ein Array mit Daten.
+Woher dieses Array stammt, ist der Komponente egal.
+Mit dem gesonderten Service ist es einfacher z. B. die URL zu ändern, ohne dass wir die Komponente anpassen müssen.
+Wir passen nur den Service an und alle Komponenten, die diesen Service benutzen, werden weiterhin funktionieren.
+Es ist allgemein ein "Best Practice" unsere Komponenten schlank zu halten und Logik wie z. B. "Wie hole ich Daten?" einem Service zu überlassen.
 
 I> #### Observables
 I>
-I> Observables sind Objekte, die eine Folge von Werten generieren (einen Fluss/Stream). Das Generieren der Werte kann synchron oder asynchron erfolgen. Die generierte Werte werden an sogenannten "Observers" übergeben die etwas mit den Daten machen z. B. diese in der View anzeigen. In unserem Beispiel erzeugt die get-Methode des Http-Services ein Observable. Dieses Observable generiert ein Wert, wenn der Server eine Antwort geliefert hat. Die generierte Werte können transformiert werden (z. B. mit der map-Methode) und am Ende werden diese einem Observer übergeben.
+I> Observables sind Objekte, die eine Folge von Werten generieren (einen Fluss/Stream). Das Generieren der Werte kann synchron oder asynchron erfolgen. Die generierten Werte werden an sogenannte "Observer" übergeben, die etwas mit den Daten machen, z. B. diese in der View anzeigen. In unserem Beispiel erzeugt die get-Methode des Http-Services ein Observable. Dieses Observable generiert einen Wert, wenn der Server eine Antwort geliefert hat. Die generierten Werte können transformiert werden (z. B. mit der map-Methode). Am Ende werden sie einem Observer übergeben.
 
-I> #### Observers
+I> #### Observer
 I>
-I> Observers sind die Callback-Funktionen, die wir der subscribe-Methode übergeben. In unserem Beispiel ist die Funktion mit dem data-Parameter (Zeilen 30-32) ein Observer.
+I> Observer sind die Callback-Funktionen, die wir der subscribe-Methode übergeben. In unserem Beispiel ist die Funktion mit dem data-Parameter (Zeilen 30-32) ein Observer.
 
 ### Code
 
 Code auf Github: [05-Recipes\_for\_Data\_Exchange/01-Get\_Data](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/01-Get_Data)
 
-Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/05-Recipes_for_Data_Exchange/01-Get_Data)
-
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
 
 ### Weitere Ressourcen
 
-* Offizielle [HTTP\_PROVIDERS](https://angular.io/docs/ts/latest/api/http/HTTP_PROVIDERS-let.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle Dokumentation für das [response-Objekt](https://angular.io/docs/ts/latest/api/http/Response-class.html) auf der Angular 2 Webseite
-* Offizielle [Http-Service](https://angular.io/docs/ts/latest/api/http/Http-class.html) Dokumentation auf der Angular 2 Webseite
-* Die RxJS-Dokumentation hat mehr Informationen über [Observables](https://github.com/ReactiveX/RxJS/blob/master/doc/observable.md) und [Observers](https://github.com/ReactiveX/rxjs/blob/master/doc/observer.md)
+* Offizielle Dokumentation für das [response-Objekt](https://angular.io/docs/ts/latest/api/http/index/Response-class.html) auf der Angular 2 Webseite
+* Offizielle [Http-Service](https://angular.io/docs/ts/latest/api/http/index/Http-class.html) Dokumentation auf der Angular 2 Webseite
+* Die RxJS-Dokumentation bietet weitere Informationen über [Observables](https://github.com/ReactiveX/RxJS/blob/master/doc/observable.md) und [Observer](https://github.com/ReactiveX/rxjs/blob/master/doc/observer.md)
 
-## Daten an den Server mit POST schicken
+## Daten mit POST an den Server schicken
 
 ### Problem
 
-Ich möchte mittels POST-Anfrage Daten an einem Server schicken.
+Ich möchte mittels POST-Anfrage Daten an einen Server schicken.
 
 ### Zutaten
 * [Daten vom Server mit GET holen](#c05-get-data)
-* Die Headers-Klasse von Angular
-* Die RequestOptions-Klasse von Angular
 
 ### Lösung
 
-Wir werden hier die Lösung vom Rezept "Daten vom Server mit GET holen" erweitern, so dass wir auch Daten an den Server schicken können.
+Wir werden hier die Lösung aus dem Rezept "Daten vom Server mit GET holen" erweitern, so dass wir auch Daten an den Server schicken können.
 Auch hier lassen wir die Fehlerbehandlung außen vor.
 Siehe dazu "[Server-Anfragen und Fehlerbehandlung](#c05-error-handling)".
 
-Wir gehen davon aus, dass wir einen Server haben der auf __127.0.0.1:3000__ hört.
-Wenn eine POST-Anfrage nach __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
-Bei der Anfrage erwartet der Server ein Objekt im JSON-Format mit eine name-Eigenschaft.
+Wir gehen davon aus, dass wir einen Server haben, der auf __127.0.0.1:3000__ hört.
+Wenn eine POST-Anfrage an __/data__ geschickt wird, antwortet der Server mit Status __200__ und Daten im JSON-Format.
+Bei der Anfrage erwartet der Server ein Objekt im JSON-Format mit einer name-Eigenschaft.
 Für die Antwort wird dieses Objekt um eine id-Eigenschaft erweitert.
 Wir nutzten __http://127.0.0.1:3000/data__ als URL für die Anfrage.
 
@@ -255,17 +231,13 @@ Wir nutzten __http://127.0.0.1:3000/data__ als URL für die Anfrage.
 }
 ```
 
-Unser DataService wird um eine neue Methode und ein Import erweitert.
-Der Rest bleibt gleich wie im Rezept "Daten vom Server mit GET holen".
+Unser DataService wird um eine neue Methode und einen Import erweitert.
+Der Rest bleibt zum Rezept "Daten vom Server mit GET holen" gleich.
 
 {title="data.service.ts", lang=js}
 ```
 import { Injectable } from '@angular/core';
-import {
-    Http,
-    Headers,
-    RequestOptions
-} from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -276,12 +248,9 @@ export class DataService {
   getData() {...}
 
   sendData(name) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers });
+    const data = { name: name };
 
-    const data = JSON.stringify({ name });
-
-    const observable = this.http.post(this.url, data, options);
+    const observable = this.http.post(this.url, data);
     const anotherObservable = observable.map((response) => response.json().data);
     return anotherObservable;
   }
@@ -290,23 +259,19 @@ export class DataService {
 
 __Erklärung__:
 
-* Zeilen 4-5: Hier werden die Klassen Headers und RequestOptions importiert
-* Zeilen 16-25: Methode die wir Aufrufen, um Daten an den Server zu schicken
-  * Zeile 17: Instantiierung eines headers-Objektes mit "Content-Type" __application/json__
-  * Zeile 18: Instantiierung eines Objektes für Request-Optionen. Das headers-Objekt wird dem RequestOptions-Konstruktor übergeben
-  * Zeile 20: Zur Zeit erwartet Angular ein String bei dem Aufruf der post-Methode (Zeile 22). Darum müssen wir unser Objekt in ein String transformieren
-  * Zeile 22: Aufruf der post-Methode mit den Daten als zweiten Parameter und die Optionen für die Anfrage als dritten Parameter
+* Zeilen 12-18: Methode, die wir aufrufen, um Daten an den Server zu schicken
+  * Zeile 13: Die Daten, die wir zum Server schicken wollen
+  * Zeile 15: Aufruf der post-Methode mit den Daten als zweitem Parameter
 
 
-Auch unsere Komponente wird um eine sendData-Methode erweitert.
+Unsere Komponente wird auch um eine sendData-Methode erweitert.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <button (click)="sendData()">Send Data</button>
@@ -315,7 +280,7 @@ Auch unsere Komponente wird um eine sendData-Methode erweitert.
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
 
   ...
 
@@ -335,41 +300,28 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 8: Neuer Button. Bei Klick wird dir sendData-Methode aufgerufen
-* Zeilen 22-28: Methode die aufgerufen wird, um Daten zu schicken
-  * Zeile 23: Die Daten, die wir schicken wollen
-  * Zeile 24: Aufruf der sendData-Methode des DataService. Diese Methode gibt ein Observable zurück.
-  * Zeile 25: Die Callback-Funktion (Observer) der subscribe-Methode wird aufgerufen, wenn der Server uns eine Antwort geschickt hat. Die data-Variable ist ein Objekt mit "name" und "id" als Eigenschaften
-  * Zeile 26: Das neue Objekt wird der Liste mit den Daten hinzugefügt
+* Zeile 7: Neuer Button. Bei Klick wird die sendData-Methode aufgerufen
+* Zeilen 21-27: Methode, die aufgerufen wird, um Daten zu schicken
+  * Zeile 22: Die Daten, die wir schicken wollen
+  * Zeile 23: Aufruf der sendData-Methode des DataService. Diese Methode gibt ein Observable zurück.
+  * Zeile 24: Die Callback-Funktion (Observer) der subscribe-Methode wird aufgerufen, wenn der Server uns eine Antwort geschickt hat. Die data-Variable ist ein Objekt mit den Eigenschaften "name" und "id"
+  * Zeile 25: Das neue Objekt wird der Liste mit den Daten hinzugefügt
 
 ### Diskussion
 
-Einige Serverimplementierungen erwarten __application/json__ als "Content-Type", damit diese eine Anfrage mit JSON-Daten bearbeiten können.
-Aus diesem Grund haben wir extra Optionen der post-Methode übergeben.
-Tatsächlich ist der dritte Parameter der post-Methode optional.
-Alle Methoden der Http-Klasse, darunter auch die get-Methode, die wir schon gesehen haben, können als letzten Parameter eine Instanz der RequestOptions-Klasse bekommen.
-Wenn wir also für einzelne Anfragen extra Headers brauchen, können wir diese mit Hilfe der Headers- und der RequestOptions-Klassen definieren.
-
-Wir haben bis jetzt ein Detail über die Observables, die die Methoden der Http-Klasse zurück geben verschwiegen.
-Die subscribe-Methode ist nicht nur eine Möglichkeit mittels einer Callback-Funktion auf Änderungen zu reagieren.
+Wir haben bis jetzt ein Detail über die Observables, die die Methoden der Http-Klasse zurückgeben, verschwiegen.
+Die subscribe-Methode ist nicht nur eine Möglichkeit, mittels einer Callback-Funktion auf Änderungen zu reagieren.
 Ohne den Aufruf der subscribe-Methode (mit oder ohne Callback) würde Angular gar keine Server-Anfrage schicken.
-Der Grund dafür ist, dass die Http-Methoden sogenannte "Cold Observables" zurück geben.
+Der Grund dafür ist, dass die Http-Methoden sogenannte "Cold Observables" zurückgeben.
 Cold Observables führen erst dann die gewünschte Operation, wenn jemand die subscribe-Methode des Observable aufruft.
-In unsere Lösung ist die Operation die POST-Anfrage und unser "jemand" die sendData-Methode der Komponente.
+In unserer Lösung ist die Operation die POST-Anfrage und unser "jemand" die sendData-Methode der Komponente.
 Siehe auch [Cold vs. Hot Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables).
 
 ### Code
 
 Code auf Github: [05-Recipes\_for\_Data\_Exchange/02-Post\_Data](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/02-Post_Data)
 
-Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/05-Recipes_for_Data_Exchange/02-Post_Data)
-
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
-
-### Weitere Ressourcen
-
-* Offizielle [Headers](https://angular.io/docs/ts/latest/api/http/Headers-class.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/RequestOptions-class.html) Dokumentation auf der Angular 2 Webseite
 
 ## Server-Anfragen und Fehlerbehandlung {#c05-error-handling}
 
@@ -444,19 +396,18 @@ __Erklärung__:
 * Zeilen 19-21: Hier wird die catch-Methode benutzt, um Fehler beim Server-Aufruf zu behandeln
   * Zeile 20: Wenn ein Fehler auftritt, wird die handleResponseError-Methode aufgerufen
 * Zeilen 25-33: Methode, um Server-Fehler zu behandeln
-  * Zeile 32: Wir geben zurück eine Instanz von Observable mit Fehler, so dass der zweite Parameter der subscribe-Methode aufgerufen wird (siehe Zeile 24 im Ausschnitt aus der app.component.ts-Datei)
+  * Zeile 32: Wir geben eine Observable-Instanz mit Fehler zurück, so dass der zweite Parameter der subscribe-Methode aufgerufen wird (siehe Zeile 24 im Ausschnitt aus der app.component.ts-Datei)
 
 
-Den eigentlichen Server-Fehler haben wir schon im Service behandelt mit Hilfe der catch-Methode.
-Da wir auch dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen wir auch in der Komponente den Fehler behandeln.
+Den eigentlichen Server-Fehler haben wir schon im Service mit Hilfe der catch-Methode behandelt.
+Da wir zusätzlich dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen wir den Fehler auch in der Komponente behandeln.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <p>
@@ -467,7 +418,7 @@ Da wir auch dem Nutzer eine sinnvolle Fehlermeldung anzeigen möchten, müssen w
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   ...
 
   errorText: string;
@@ -487,34 +438,34 @@ export class DemoAppComponent {
 
 __Erklärung__:
 
-* Zeile 9: Fehlermeldung in der View anzeigen
-* Zeilen 27-29: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
-  * Zeile 28: Fehlertext von Zeile 31 des Services als Wert für die errorText-Eigenschaft setzen
+* Zeile 8: Fehlermeldung in der View anzeigen
+* Zeilen 26-28: Fehlerbehandlungsfunktion als zweiter Parameter der subscribe-Methode
+  * Zeile 27: Fehlertext von Zeile 31 des Services als Wert der errorText-Eigenschaft setzen
 
 ### Diskussion
 
-Die catch-Methode von Instanzen der Observable-Klasse ist vergleichbar zu der catch-Methode einer Promise-Kette oder dem catch-Block einer __try__/__catch__-Anweisung.
-Jeder Fehler in der Kette von Observables, der vor der catch-Methode auftritt, kann in der catch-Methode behandelt werden.
+Die catch-Methode von Instanzen der Observable-Klasse ist vergleichbar mit der catch-Methode einer Promise-Kette oder dem catch-Block einer __try__/__catch__-Anweisung.
+Jeder Fehler in der Kette der Observables, der vor der catch-Methode auftritt, kann in der catch-Methode behandelt werden.
 Ähnlich wie bei einem __try__/__catch__ und bei Promises wird bei einen Fehler die Ausführungs-Kette "unterbrochen" und wir springen direkt zu der catch-Methode.
-Bei der Fehlerbehandlung in der catch-Methode können wir eine Instanz von Observable mit Fehler zurück geben, um erneut ein Fehler zu erzeugen.
-Das ist ähnlich wie, wenn wir bei einer try/catch-Anweisung ein throw-Anweisung im catch-Block nutzen.
+Bei der Fehlerbehandlung in der catch-Methode können wir eine Instanz eines Observable mit Fehler zurückgeben, um erneut einen Fehler zu erzeugen.
+Das ist ähnlich zu einer throw-Anweisung in einem catch-Block einer try/catch-Anweisung.
 
-Wie wir in diesem Rezept gesehen haben, kann die subscribe-Methode nicht nur eine Callback-Funktion als Parameter haben, sondern zwei (genauer gesagt sind es drei aber der dritte Parameter ist für uns vorerst nicht relevant).
+Wie wir in diesem Rezept gesehen haben, kann die subscribe-Methode nicht nur eine Callback-Funktion als Parameter erhalten, sondern zwei (genauer gesagt sind es drei aber der dritte Parameter ist für uns vorerst nicht relevant).
 Wir wissen schon, dass die erste Callback-Funktion aufgerufen wird, wenn die Server-Anfrage erfolgreich ist.
 Die zweite Callback-Funktion wird im Falle eines Fehlers aufgerufen.
-Diese Callback-Funktion ist unsere zweite Möglichkeit einen Fehler in eine Observables-Kette zu behandeln.
-Wir haben also den Fehler an zwei verschiedenen Orten behandelt.
-Einmal in unserem Service mittels catch-Methode und einmal in unsere Komponente mit Hilfe des zweiten Parameters der subscribe-Methode.
-Prinzipiell wäre es möglich den Fehler entweder im Service oder in der Komponente zu behandeln.
+Diese Callback-Funktion ist unsere zweite Möglichkeit, einen Fehler in einer Observables-Kette zu behandeln.
+Wir haben also den Fehler an zwei verschiedenen Orten behandelt:
+Einmal in unserem Service mittels catch-Methode und einmal in unserer Komponente mit Hilfe des zweiten Parameters der subscribe-Methode.
+Prinzipiell wäre es möglich, den Fehler entweder im Service oder in der Komponente zu behandeln.
 Der zweite Parameter der subscribe-Methode ist optional und optional ist auch die Nutzung der catch-Methode.
-Der Grund weshalb wir den Fehler an zwei Stellen behandeln ist ganz einfach.
-Wir wollen nicht, dass unsere Komponente wissen muss wie die Server-Antwort aussieht im Falle eines Fehlers genau so wie wir nicht wollten, dass die Komponente weiß was mit einer erfolgreiche Server-Antwort zu tun ist bevor Daten angezeigt werden können.
-Der Komponente reicht es Daten bzw. Fehlermeldungen zu bekommen, die direkt angezeigt werden können.
+Der Grund, weshalb wir den Fehler an zwei Stellen behandeln, ist ganz einfach.
+Wir wollen nicht, dass unsere Komponente wissen muss, wie die Server-Antwort im Falle eines Fehlers aussieht, genauso, wie wir nicht wollten, dass die Komponente weiß, was mit einer erfolgreichen Server-Antwort zu tun ist, bevor Daten angezeigt werden können.
+Der Komponente reicht es, Daten bzw. Fehlermeldungen zu erhalten, die direkt angezeigt werden können.
 
 I> #### Fehler bei einer Server-Anfrage
 I>
 I> Grob können wir bei Server-Anfragen mittels des Http-Services, zwei Fehlerquellen unterscheiden:
-I> (1) Die Anfrage kann nicht geschickt werden z. B., wenn der Server nicht verfügbar ist
+I> (1) Die Anfrage kann nicht geschickt werden, z. B., wenn der Server nicht verfügbar ist
 I> (2) Der Status der Antwort (response.status) ist nicht zwischen __200__ und __299__
 
 ### Code
@@ -523,7 +474,7 @@ Code auf Github: [05-Recipes\_for\_Data\_Exchange/03-Error\_Handling](https://gi
 
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
 
-## Server-Anfrage mit Query-Parameter
+## Server-Anfrage mit Query-Parametern
 
 ### Problem
 
@@ -536,7 +487,7 @@ Ich möchte bei der Anfrage Query-Parameter an den Server schicken.
 
 ### Lösung
 
-Wir konzentrieren uns in der Lösung auf GET-Anfragen, da diese am häufigsten mit Query-Parameter benutzen werden aber wir können auch z. B. bei POST-Anfragen Query-Parameter mitschicken.
+Wir konzentrieren uns in der Lösung auf GET-Anfragen, da diese am Häufigsten mit Query-Parametern benutzen werden. Wir können aber auch z. B. bei POST-Anfragen Query-Parameter mitschicken.
 
 {title="data.service.ts", lang=js}
 ```
@@ -570,23 +521,18 @@ export class DataService {
 
 __Erklärung__:
 
-* Zeile 4-5: Hier werden die Klassen "RequestOptions" und "URLSearchParams" importiert
-* Zeile 17: Erzeugung einer Instanz der URLSearchParams-Klasse
-* Zeile 18: Query-Parameter "limit" definieren mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein)
-* Zeile 20: Erzeugung einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert für die search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter für die Anfrage
+* Zeile 17: Erzeugen einer Instanz der URLSearchParams-Klasse
+* Zeile 18: Query-Parameter "limit" mit Wert __`'`1`'`__ (der zweite Parameter der set-Methode muss ein String sein) definieren
+* Zeile 20: Erzeugen einer Instanz der RequestOptions-Klasse. Wir setzen unsere "params" als Wert der search-Eigenschaft. Die search-Eigenschaft definiert die Query-Parameter der Anfrage
 * Zeile 22: Aufruf der get-Methode mit einer URL und Optionen für die Anfrage
 
 ### Diskussion
 
-Wir können die Query-Parameter auch mittels String-Konkatenierung definieren, indem wir selbst ein Query-String zusammen setzen und diesen mit der URL konkatenieren.
-Für ein, zwei Parameter können wir dies auch tun aber für viele Parameter ist diese Lösung nicht wirklich geeignet.
-Die Nutzung der URLSearchParams-Klasse hat in dem Fall zwei Vorteile.
-Zum einen wird der Code lesbarer, wenn wir pro Parameter eine Zeile Code haben.
-Zum anderen kümmert sich Angular um das richtige Format für den String der später als Teil der URL mitgeschickt wird.
-
-W> #### URL-Encoding
-W>
-W> Derzeit werden die Query-Parameter nicht automatisch encodiert vor diese an den Server geschickt werden. Wenn also Zeichen wie z. B. "=" und "&" in den Parametern vorhanden sind (als Teil des Keys oder Wertes), müssen wir diese selbst transformieren. Siehe auch [#4948](https://github.com/angular/angular/issues/4948).
+Wir können die Query-Parameter auch mittels String-Konkatenierung definieren, indem wir selbst einen Query-String zusammensetzen und diesen mit der URL konkatenieren.
+Für ein bis zwei Parameter können wir dies auch tun, aber für viele Parameter ist diese Lösung nicht wirklich geeignet.
+Die Nutzung der URLSearchParams-Klasse hat in diesem Fall zwei Vorteile.
+Zum Einen wird der Code lesbarer, wenn wir pro Parameter eine Zeile Code haben.
+Zum Anderen kümmert sich Angular um das richtige Format für den String, der später als Teil der URL mitgeschickt wird.
 
 ### Code
 
@@ -596,27 +542,27 @@ Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_c
 
 ### Weitere Ressourcen
 
-* Offizielle [URLSearchParams](https://angular.io/docs/ts/latest/api/http/URLSearchParams-class.html) Dokumentation auf der Angular 2 Webseite
-* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/RequestOptions-class.html) Dokumentation auf der Angular 2 Webseite
+* Offizielle [URLSearchParams](https://angular.io/docs/ts/latest/api/http/index/URLSearchParams-class.html)-Dokumentation auf der Angular 2 Webseite
+* Offizielle [RequestOptions](https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html)-Dokumentation auf der Angular 2 Webseite
 
 ## Server-Anfrage abbrechen (cancel) {#c05-cancel-request}
 
 ### Problem
 
-Ich möchte dem Nutzer die Möglichkeit anbieten eine Server-Anfrage abzubrechen, wenn diese zu lange dauert.
+Ich möchte dem Nutzer die Möglichkeit anbieten, eine Server-Anfrage abzubrechen, wenn diese zu lange dauert.
 
 ### Zutaten
 
 * [Daten vom Server mit GET holen](#c05-get-data)
-* Neue URL, um eine Anfrage zu simulieren die drei Sekunden braucht
-* Änderungen an der Komponente von "Daten vom Server mit GET holen"
+* Neue URL, um eine Anfrage zu simulieren, die drei Sekunden braucht
+* Änderungen an der Komponente aus "Daten vom Server mit GET holen"
 * Die Subscription-Klasse von RxJS (wird nur für die Typdefinition gebraucht)
 
 ### Lösung
 
-In unserem Service (data.service.ts) haben wir nur eine Änderung gemacht und zwar haben wir die url-Eigenschaft angepasst. Diese hat jetzt den Wert __`'`http://127.0.0.1:3000/longrequest`'`__.
+In unserem Service (data.service.ts) haben wir nur eine Änderung durchgeführt. Und zwar haben wir die url-Eigenschaft angepasst. Diese besitzt jetzt den Wert __`'`http://127.0.0.1:3000/longrequest`'`__.
 
-{title="demo.component.ts", lang=js}
+{title="app.component.ts", lang=js}
 ```
 ...
 
@@ -625,8 +571,7 @@ import { Subscription } from 'rxjs/Subscription';
 ...
 
 @Component({
-  selector: 'demo-app',
-  providers: [DataService, HTTP_PROVIDERS],
+  selector: 'app-root',
   template: `
     <button (click)="getData()">Get Data</button>
     <button (click)="cancelRequest()">Cancel</button>
@@ -635,7 +580,7 @@ import { Subscription } from 'rxjs/Subscription';
     </ul>
   `
 })
-export class DemoAppComponent {
+export class AppComponent {
   ...
 
   subscription: Subscription;
@@ -660,21 +605,21 @@ export class DemoAppComponent {
 __Erklärung__:
 
 * Zeile 3: Hier importieren wir die Subscription-Klasse von RxJS, die wir in Zeile 17 als Typ nutzen
-* Zeile 26: Hier speichern wir den Rückgabewert der subscribe-Methode in die subscription-Eigenschaft der Komponenteninstanz
-* Zeilen 32-36: Methode die aufgerufen wird, wenn der Nutzer den cancel-Button klickt
+* Zeile 25: Hier speichern wir den Rückgabewert der subscribe-Methode in die subscription-Eigenschaft der Komponenteninstanz
+* Zeilen 31-35: Methode, die aufgerufen wird, wenn der Nutzer den cancel-Button klickt
 
 ### Diskussion
 
-Die subscribe-Methode von Instanzen der Observables-Klasse gibt eine Instanz der Subscription-Klasse zurück.
-Wir können auf diese Instanz die unsubscribe-Methode aufrufen, um die dazugehörige Observables wegzuschmeisen.
-Nach dem Aufruf der unsubscribe-Methode werden die Observables gelöscht und deren Callback-Funktionen werden nicht mehr aufgerufen.
-Auch z. B. die Callback-Funktion der map-Methode (diese wird in der data.service.ts benutzt) wird nicht mehr aufgerufen.
+Die subscribe-Methode der Instanzen der Observables-Klasse gibt eine Instanz der Subscription-Klasse zurück.
+Wir können auf dieser Instanz die unsubscribe-Methode aufrufen, um die dazugehörigen Observables wegzuwerfen.
+Nach dem Aufruf der unsubscribe-Methode werden die Observables gelöscht und deren Callback-Funktionen nicht mehr aufgerufen.
+Auch z. B. die Callback-Funktion der map-Methode (diese wird in der data.service.ts benutzt) wird nicht mehr aufgerufen.
 Also erzeugen die Observables keine neuen Werte mehr und der Fluss (stream) wird unterbrochen.
-Bei Server-Anfrage wird auch die abort-Methode der XMLHttpRequest-Instanz aufgerufen und die Anfrage wird abgebrochen.
+Bei Server-Anfragen wird auch die abort-Methode der XMLHttpRequest-Instanz aufgerufen und die Anfrage wird abgebrochen.
 
 W> #### Server-Anfragen, wenn die Komponente entfernt wird
 W>
-W> Es gibt verschiedene Situationen, wo eine Komponente entfernt wird. Genauer gibt es Situationen, wo die View der Komponente aus dem DOM entfernt wird. In so einem Fall wird die Komponente meistens von Angular zerstört (destroy), um Ressourcen zu befreien. Aktive Server-Anfragen werden bei der Zerstörung einer Komponente nicht automatisch abgebrochen. Wenn die Antwort zurück kommt, werden alle Callback-Funktionen aufgerufen für eine Komponente die gar keine Daten mehr anzeigen kann. Im schlimmsten Fall kann es zu Fehlern kommen, die wir dem Nutzer nicht oder nicht sinnvoll anzeigen können. Es ist also in den meisten Fällen eine gute Idee die unsubscribe-Methode aufzurufen, wenn die View der Komponente nicht mehr angezeigt wird.
+W> Es gibt verschiedene Situationen, in welchen eine Komponente entfernt wird. Genauer gibt es Situationen, in welchen die View der Komponente aus dem DOM entfernt wird. In einem solchen Fall wird die Komponente meistens von Angular zerstört (destroy), um Ressourcen zu befreien. Aktive Server-Anfragen werden bei der Zerstörung einer Komponente nicht automatisch abgebrochen. Wenn die Antwort zurückkommt, werden alle Callback-Funktionen aufgerufen, auch für eine Komponente die gar keine Daten mehr anzeigen kann. Im schlimmsten Fall kann es zu Fehlern kommen, die wir dem Nutzer nicht oder nicht sinnvoll anzeigen können. Es ist also in den meisten Fällen eine gute Idee die unsubscribe-Methode aufzurufen, wenn die View der Komponente nicht mehr angezeigt wird.
 
 ### Code
 
@@ -684,5 +629,5 @@ Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_c
 
 ### Weitere Ressourcen
 
-* Die RxJS-Dokumentation hat mehr Informationen über [Subscriptions](https://github.com/ReactiveX/rxjs/blob/master/doc/subscription.md)
+* Die RxJS-Dokumentation bietet weitere Informationen über [Subscriptions](https://github.com/ReactiveX/rxjs/blob/master/doc/subscription.md)
 

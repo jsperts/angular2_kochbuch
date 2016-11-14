@@ -92,6 +92,7 @@ __Erklärung__:
 asyncValidator
 compose/composeAsync
 can't just use invalid for the group since an invalid control in the group makes the group invalid
+value.passwords is object
 
 ### Code
 

@@ -37,3 +37,6 @@ __Erklärung__:
 
 Code auf Github: [06-Routing\_Recipes/04-Redirect\_Unknown\_Path](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/04-Redirect_Unknown_Path)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/06-Routing_Recipes/04-Redirect_Unknown_Path/index.html).
+Nutzt Hash-Basierte URLs: "[Hash-Basierte URLs für das Routing](#c06-hash-based-url)"
+

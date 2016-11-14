@@ -58,6 +58,9 @@ Um das zu verhindern, sagen wir dem Router mittels `[routerLinkActiveOptions]="{
 
 Code auf Github: [06-Routing\_Recipes/03-Highlight\_Active\_Route](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/03-Highlight_Active_Route)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/06-Routing_Recipes/03-Highlight_Active_Route/index.html).
+Nutzt Hash-Basierte URLs: "[Hash-Basierte URLs für das Routing](#c06-hash-based-url)"
+
 ### Weitere Ressourcen
 
 * Offizielle Dokumentation für die [RouterLinkActive-Direktive](https://angular.io/docs/ts/latest/api/router/index/RouterLinkActive-directive.html) auf der Angular 2 Webseite

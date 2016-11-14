@@ -86,6 +86,9 @@ Wenn wir absolute Pfade nutzen, brauchen wir den zweiten Parameter (`{relativeTo
 
 Code auf Github: [07-Routing\_Recipes/05-Navigation\_in\_Class](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/05-Navigation_in_Class)
 
+Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/06-Routing_Recipes/05-Navigation_in_Class/index.html).
+Nutzt Hash-Basierte URLs: "[Hash-Basierte URLs für das Routing](#c06-hash-based-url)"
+
 ### Weitere Ressourcen
 
 * Offizielle Dokumentation für den [Router-Service](https://angular.io/docs/ts/latest/api/router/index/Router-class.html) auf der Angular 2 Webseite

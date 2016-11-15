@@ -79,7 +79,7 @@ Ich persönlich versuche immer kleine Komponenten mit wenig HTML (10-15 Zeilen) 
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/01-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Separation_of_Component_and_Template)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Separation_of_Component_and_Template)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/01-Separation_of_Component_and_Template/index.html)
 
@@ -135,7 +135,7 @@ Dieses Verhalten kann uns vor Fehlern schützen und meidet Konflikte in den CSS-
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/02-Separation\_of\_Template\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Template_and_Styles)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/02-Separation_of_Template_and_Styles)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/02-Separation_of_Templates_and_Styles/index.html)
 
@@ -198,7 +198,7 @@ Die Diskussion styles- vs. stuleUrls-Eigenschaft ist analog zur template- vs. te
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/03-Separation\_of\_Component\_and\_Styles](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/03-Separation_of_Component_and_Styles)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/03-Separation_of_Component_and_Styles/index.html)
 
@@ -279,9 +279,9 @@ I> Angular erlaubt es uns, zwei Namen für eine input-Eigenschaft zu definieren,
 
 ### Code
 
-Code auf Github für die Lösung: [07-Component\_Recipes/04-Pass\_Data\_to\_Child\_with\_Inputs/Solution](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Solution)
+Code auf Github für [die Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Solution)
 
-Code auf Github für die Demonstration: [07-Component\_Recipes/04-Pass\_Data\_to\_Child\_with\_Inputs/Demo](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Demo)
+Code auf Github für [die Demonstration](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Demo)
 
 Live Demo (Code aus dem Demo-Verzeichnis) auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/04-Pass_Data_to_Child_with_Inputs/Demo/index.html).
 
@@ -374,7 +374,7 @@ I> Angular erlaubt es uns, zwei Namen für eine output-Eigenschaft zu definieren
 
 ### Code
 
-Code auf Github [07-Component\_Recipes/05-Pass\_Data\_to\_Parent\_with\_Outputs](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Parent_with_Outputs)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/05-Pass_Data_to_Parent_with_Outputs)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/05-Pass_Data_to_Parent_with_Outputs/index.html)
 
@@ -441,7 +441,7 @@ Im Allgemeinen wird empfohlen den OnInit-Hook für Initialisierungscode und die 
 
 ### Code
 
-Code auf Github [07-Component\_Recipes/06-Execute\_Code\_on\_Component\_Init](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/06-Execute_Code_on_Component_Init)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/06-Execute_Code_on_Component_Init)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/06-Execute_Code_on_Component_Init/index.html)
 
@@ -497,7 +497,7 @@ Im Beispiel-Code auf Github wird auch die app.component.ts-Datei angepasst, so d
 
 ### Code
 
-Code auf Github [07-Component\_Recipes/07-Execute\_Code\_on\_Component\_Destroy](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/07-Execute_Code_on_Component_Destroy)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/07-Execute_Code_on_Component_Destroy)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/07-Execute_Code_on_Component_Destroy/index.html)
 

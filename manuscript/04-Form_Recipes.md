@@ -1,7 +1,7 @@
 # Rezepte für Formulare
 
 Angular bietet uns mehrere Möglichkeiten, Formulare zu implementieren.
-Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template-Driven Forms" und "Model-Driven Forms" auch bekannt als "Reactive Forms".
+Wir können in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template-Driven Forms" und "Model-Driven Forms" auch bekannt als "Reactive Forms".
 Beide Formulararten bieten die gleichen Funktionalität an.
 Nur der Weg, den wir gehen müssen, um die Funktionalität zu implementieren ist anders.
 Die Art des Formulars steht im Titel des Rezepts.
@@ -133,19 +133,19 @@ Das ngSubmit-Event ist also eine [output-Eigenschaft](#gl-output-property) der N
 Im Grunde genommen bindet die NgForm-Direktive das submit-Event des Formulars und leitet es an das ngSubmit-Event weiter.
 Der einzige Unterschied zwischen den zwei Events ist, dass ngSubmit die submitted-Eigenschaft des Formulars (NgForm-Instanz) auf __true__ setzt.
 
-Die NgModel-Direktive definiert ein sogenanntes Control und bindet ein Modell in der Komponenten-Klasse mit einem Eingabefeld/Select usw. in der View.
+Die NgModel-Direktive definiert ein sogenanntes "Control" und bindet ein Modell in der Komponenten-Klasse mit einem Eingabefeld/Select usw. in der View.
 Ein Control kann dann entweder innerhalb eines form-Tags oder ohne form-Tag (standalone Control) benutzt werden.
 Wenn wir die NgModel-Direktive innerhalb eines form-Tags nutzen, müssen wir für das Element mit der Direktive auch das name-Attribut definieren.
-Das name-Attribut wird benutzt um das Control mit der Instanz der ngForm-Direktive zu registieren.
+Das name-Attribut wird benutzt, um das Control mit der Instanz der ngForm-Direktive zu registieren.
 
 Wie schon erwähnt, nutzen wir in den Zeilen 9 und 14 eine beidseitige Bindung.
-Wir hätten die beidseitige Bindung auch in eine Eigenschafts- und eine Event-Bindung aufspalten können.
-Wie das aussieht wird in "[Appendix A](#appendix-a)" gezeigt.
+Wir hätten die beidseitige Bindung auch in eine Eigenschaft- und eine Event-Bindung aufspalten können.
+Wie das aussieht wird in [Appendix A](#appendix-a) gezeigt.
 Da die Nutzung der beidseitigen Bindung einfacher ist, werden wir sie auch in weiteren Formular-Rezepten nutzen.
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/01-Simple\_Form](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/01-Simple_Form)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/01-Simple_Form)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/01-Simple_Form/index.html)
 
@@ -171,7 +171,7 @@ Ich möchte, dass ein Submit nur dann möglich ist, wenn das Formular gültig is
 
 In dieser Lösung werden wir sehen, wie wir die Gültigkeit des Formulars im Template überprüfen können.
 Wir werden den Submit-Button deaktivieren, wenn das Formular ungültig ist.
-Dadurch wird das Submit-Event unterbunden, wenn nicht alle Formular-Felder gültig sind.
+Dadurch wird das Submit-Event unterbunden, solange nicht alle Formular-Felder gültig sind.
 
 {title="app.component.ts", lang=js}
 ```
@@ -190,7 +190,7 @@ import { Component } from '@angular/core';
           required
           minlength="10" />
       </label>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </form>
   `
 })
@@ -206,7 +206,7 @@ __Erklärung__:
 * Zeilen 12-14: Eingabefeld für das Passwort
   * Zeile 13: Mittels __required__ definieren wir das Eingabefeld als Pflichtfeld
   * Zeile 14: Mittels __minlength=`"`10`"`__ definieren wir, dass das Passwort mindestens zehn Zeichen lang sein muss
-* Zeile 16: Hier binden wir die disabled-Eigenschaft an den Ausdruck __!form.valid__. Wenn das Formular ungültig ist, wird der Button deaktiviert sein
+* Zeile 16: Hier binden wir die disabled-Eigenschaft an den Ausdruck __form.invalid__. Wenn das Formular ungültig ist, wird der Button deaktiviert sein
 
 ### Lösung 2
 
@@ -261,7 +261,7 @@ __Erklärung__:
 
 ### Diskussion
 
-Wie schon im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" erwähnt, erhält jedes form-Tag eine Instanz der NgForm-Direktive.
+Wie schon im Rezept "[TDF: Ein einfaches Formular implementieren](#c04-simple-form)" erwähnt, erhält jedes form-Tag eine Instanz der NgForm-Direktive.
 Diese Instanz beinhaltet verschiedene Informationen über das Formular wie z. B. dessen Gültigkeitsstatus, dessen Controls und die Werte der Controls.
 Die Direktive hat eine exportAs-Eigenschaft mit dem Wert __`'`ngForm`'`__ (ein String).
 Den Wert der exportAs-Eigenschaft können wir im Template nutzen, um die Instanz der Direktive im Template zu referenzieren.
@@ -281,11 +281,11 @@ Siehe hierzu Github-Issues [#2961](https://github.com/angular/angular/issues/296
 
 ### Code
 
-Code auf Github für die erste Lösung: [04-Form\_Recipes/04-Check\_Form\_Validity\_in\_Template/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-01)
+Code auf Github für die [erste Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-01)
 
 Live Demo der ersten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-01/index.html)
 
-Code auf Github für die zweite Lösung: [04-Form\_Recipes/04-Check\_Form\_Validity\_in\_Template/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-02)
+Code auf Github für die [zweite Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Check_Form_Validity_in_Template/Solution-02)
 
 Live Demo der zweiten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/02-Check_Form_Validity/Solution-02/index.html)
 
@@ -301,14 +301,14 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 
 ### Zutaten
 
-* [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
+* [TDF: Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * [Teile der View konditional Anzeigen mit NgIf](#c03-ngif)
 * Elvis-Operator (?.)
 * Lokale (Referenz-) Variable, die die Instanz der NgModel-Direktiven des jeweiligen Eingabefelds referenziert (nur Lösung 2)
 
 ### Lösung 1
 
-In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf über die lokale (Referenz-) Variable des Formulars auf das Control zugreifen.
+In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir über die lokale (Referenz-) Variable des Formulars auf das Control zugreifen.
 
 {title="app.component.ts", lang=js}
 ```
@@ -324,7 +324,7 @@ import { Component } from '@angular/core';
           [(ngModel)]="user.username"
           required />
       </label>
-      <div *ngIf="!form.controls.username?.valid">
+      <div *ngIf="form.controls.username?.invalid">
         This field is required!
       </div>
       <label>Password
@@ -339,7 +339,7 @@ import { Component } from '@angular/core';
       <div *ngIf="form.controls.password?.errors?.minlength">
         This field must have at least 10 characters
       </div>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </form>
   `
 })
@@ -349,7 +349,7 @@ import { Component } from '@angular/core';
 
 __Erklärung__:
 
-* Zeilen 13-15: Nutzung von __ngIf__ mit Bedingung __!form.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeilen 13-15: Nutzung von __ngIf__ mit Bedingung __form.controls.username?.invalid__. Damit greifen wir auf die invalid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld ungültig ist
 * Zeilen 22-24: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
 * Zeilen 25-27: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
@@ -373,7 +373,7 @@ import { Component } from '@angular/core';
           required
           #username="ngModel" />
       </label>
-      <div *ngIf="!username.valid">
+      <div *ngIf="username.invalid">
         This field is required!
       </div>
       <label>Password
@@ -400,14 +400,14 @@ import { Component } from '@angular/core';
 __Erklärung__:
 
 * Zeile 12: Mit __#username=`"`ngModel`"`__ definieren wir eine lokale Variable namens "username". Die Variable ist eine Referenz auf die Instanz der NgModel-Direktiven des Eingabefelds
-* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __!username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __username?.invalid__. Damit greifen wir auf die invalid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld ungültig ist
 * Zeile 22: Mit __#password=`"`ngModel`"`__ definieren wir eine lokale Variable namens "password". Die Variable ist eine Referenz auf die Instanz der NgModel-Direktiven des Eingabefelds
 * Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __password.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
 * Zeilen 27-29: Nutzung von __ngIf__ mit Bedingung __password.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Diskussion
 
-Bei der Erklärung der Lösung haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
+Bei der Erklärung der Lösungen haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
 
 #### Elvis-Operator
 
@@ -443,11 +443,11 @@ Somit können wir im Template Zugriff auf die Instanz der NgModel-Direktive und 
 
 ### Code
 
-Code auf Github für die erste Lösung: [04-Form\_Recipes/03-Form\_Show\_Error\_for\_Field/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-01)
+Code auf Github für die [erste Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-01)
 
 Live Demo der ersten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-01/index.html)
 
-Code auf Github für die zweite Lösung: [04-Form\_Recipes/03-Form\_Show\_Error\_for\_Field/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-02)
+Code auf Github für die [zweite Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-02)
 
 Live Demo der zweiten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/03-Form_Show_Error_for_Field/Solution-02/index.html)
 
@@ -495,7 +495,7 @@ import { Component } from '@angular/core';
           [(ngModel)]="user.password"
           required minlength="10" />
       </label>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </form>`
 })
 
@@ -529,7 +529,7 @@ Die ng-touched-Klasse wird gesetzt sobald mindestens ein Eingabefeld die ng-touc
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/04-Form\_Validation\_CSS-Classes](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Form_Validation_CSS-Classes)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/04-Form_Validation_CSS-Classes)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/04-Form_Validation_CSS-Classes/index.html)
 
@@ -591,10 +591,9 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 7-15: Das HTML für unser Formular
-  * Zeile 7: Nutzung der FormGroupDirective-Direktiven (__formGroup__). Damit verbinden wir das Formular in der Klasse (Zeile 21) mit dem Formular im DOM. __ngSubmit__ wird im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" erklärt
+  * Zeile 7: Nutzung der FormGroupDirective-Direktiven (__formGroup__). Damit verbinden wir das Formular in der Klasse (Zeile 21) mit dem Formular im DOM. __ngSubmit__ wird im Rezept "[TDF: Ein einfaches Formular implementieren](#c04-simple-form)" erklärt
   * Zeile 9: Nutzung der FormControlName-Direktiven. Damit verbinden wir das username-Control in der Klasse (Zeile 22) mit dem Eingabefeld im DOM
-  * Zeile 11: Nutzung der FormControlName-Direktiven. Damit verbinden wir das password-Control in der Klasse (Zeile 23) mit dem Eingabefeld im DOM
-* Zeile 19: Typdefinition für die form-Eigenschaft
+  * Zeile 12: Nutzung der FormControlName-Direktiven. Damit verbinden wir das password-Control in der Klasse (Zeile 23) mit dem Eingabefeld im DOM
 * Zeile 20: Konstruktor der Klasse mit einer Instanz des FormBuilder-Services als Parameter
 * Zeilen 21-24: Das Modell für unser Formular
   * Zeile 21: Hier rufen wir die group-Methode auf, die eine Instanz der FormGroup-Klasse erzeugt
@@ -602,8 +601,9 @@ __Erklärung__:
   * Zeile 23: Gleiches wie oben, aber für das Passwort-Feld
 * Zeile 28: Hier greifen wir auf die Werte zu, die sich im Formular befinden
 
-Da sich Formular-Direktiven wie z. B. "FormGroupName" in einem eigenen Angular-Modul befinden, müssen wir dieses Modul in unser "AppModule" importieren
+Da sich Formular-Direktiven wie z. B. "FormControlName" in einem eigenen Angular-Modul befinden, müssen wir dieses Modul in unser "AppModule" importieren
 
+{title="app.component.ts", lang=js}
 ```
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -658,14 +658,14 @@ Dies tun wir mit Hilfe der FormControlName-Direktiven.
 Ein Detail hatten wir bis jetzt ignoriert.
 Wie wusste Angular überhaupt, dass wir den FormBuilder-Service brauchten?
 Anhand der Typinformation, die wir bei der Parameterdefinition im Konstruktor angegeben haben und mittels [Dependency Injection (DI)](#gl-di) kann Angular uns eine Instanz eines Services bei der Initialisierung der Komponente übergeben.
-Die Typinformation befindet sich auf Zeile 20 und ist der Teil nach dem Doppelpunkt.
+Die Typinformation befindet sich auf Zeile 20 (app.component.ts) und ist der Teil nach dem Doppelpunkt.
 Wir haben __builder: FormBuilder__ geschrieben. In diesem Fall ist "builder" der Parametername und "FormBuilder" die Typinformation.
 Mit Hilfe des Typs schaut Angular nach, welche Services zur Verfügung stehen und gibt uns eine Instanz mit dem richtigen Typ zurück.
-Dependency Injection in Angular mit Services ist ein relativ komplexes Thema und eine vollständige Erklärung würde den Rahmen eines Rezeptes sprengen.
+Dependency Injection in Angular ist ein relativ komplexes Thema und eine vollständige Erklärung würde den Rahmen eines Rezeptes sprengen.
 Wer mehr über dieses Thema lesen möchte, kann einige Informationen auf der Angular 2 Webseite finden.
 
 Natürlich wollen wir auch Zugriff auf die Daten erhalten, die der Nutzer in das Formular eingegeben hat.
-Im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" haben wir dafür die NgModel-Direktive benutzt.
+Im Rezept "[TDF: Ein einfaches Formular implementieren](#c04-simple-form)" haben wir dafür die NgModel-Direktive benutzt.
 Da wir hier die NgModel-Direktive nicht nutzen, brauchen wir einen anderen Weg, um auf die Daten zuzugreifen.
 Zum Glück beinhaltet auch unser Formular-Modell alle Daten, die in die jeweiligen Eingabefelder geschrieben worden sind.
 Die Daten befinden sich in der value-Eigenschaft des Formular-Modells.
@@ -683,11 +683,11 @@ Der Unterschied zwischen den beiden Rezepten sind die Mittel, die wir benutzt ha
 
 Für Template-Driven Formulare brauchen wir das "FormsModule" und für Model-Driven Formulare das "ReactiveFormsModule".
 Direktiven und Klassen mit "Ng" bzw. "ng" als Präfix gehören zu den Template-Driven Formulare.
-Die Restlichen Direktiven, Klassen und Services gehören zu den Model-Driven Formularen oder können von beiden Arten benutzt werden.
+Die Restlichen Direktiven, Klassen und Services gehören zu den Model-Driven Formularen oder können von beiden Formulararten benutzt werden.
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/05-Form\_with\_FormBuilder](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/05-Form_with_FormBuilder)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/05-Form_with_FormBuilder)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/05-Form_with_FormBuilder/index.html)
 
@@ -707,19 +707,19 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-
 
 Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich auch in der Lage sein, zu erkennen, wann das Formular gültig ist.
 
-In diesem Rezept lösen wir dasselbe Problem wie im Rezept "[Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
+In diesem Rezept lösen wir dasselbe Problem wie im Rezept "[TDF: Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
 Nur werden wir hier mit Validierungsfunktionen anstelle von Validierungs-Attributen arbeiten.
 
 ### Zutaten
 
-* [Formular mit dem FormBuilder implementieren](#c04-formbuilder)
+* [MDF: Formular mit dem FormBuilder implementieren](#c04-formbuilder)
 * Die Validierungsfunktionen von Angular (Validators-Klasse)
-* Anpassungen an der Komponente aus "Formular mit dem FormBuilder implementieren"
+* Anpassungen an der app.component.ts-Datei
 
 ### Lösung 1
 
 In dieser Lösung werden wir sehen, wie wir den Submit-Button deaktivieren können, wenn wir ein Model-Driven Formular nutzen.
-Diese Lösung ist äquivalent zur Lösung 1 im Rezept "Gültigkeit eines Formulars überprüfen".
+Diese Lösung ist äquivalent zur Lösung 1 im Rezept "TDF: Gültigkeit eines Formulars überprüfen".
 
 {title="app.component.ts", lang=js}
 ```
@@ -742,7 +742,7 @@ import {
       </label>
       <button
         type="submit"
-        [disabled]="!myForm.valid"
+        [disabled]="myForm.invalid"
       >Submit</button>
     </form>
   `
@@ -768,7 +768,7 @@ export class AppComponent {
 
 __Erklärung__:
 
-* Zeile 20: Hier binden wir die disabled-Eigenschaft an den Ausdruck __!myForm.valid__
+* Zeile 20: Hier binden wir die disabled-Eigenschaft an den Ausdruck __myForm.invalid__
 * Zeile 30: Control für das Benutzernamefeld definieren. Mit __Validators.required__ definieren wir das Eingabefeld als Pflichtfeld
 * Zeile 31: Ein Control erwartet als zweiten Parameter eine Validierungsfunktion. Wenn wir mehrere Funktionen gleichzeitig nutzen möchten, müssen wir die compose-Funktion nutzen
 * Zeile 32: Hier definieren wir das Passwortfeld als Pflichtfeld
@@ -776,9 +776,9 @@ __Erklärung__:
 
 ### Lösung 2
 
-Diese Lösung ist äquivalent zur Lösung 2 im Rezept "Gültigkeit eines Formulars überprüfen".
+Diese Lösung ist äquivalent zur Lösung 2 im Rezept "TDF: Gültigkeit eines Formulars überprüfen".
 Auch hier überprüfen wir die Gültigkeit des Formulars in der Komponenten-Klasse statt im Template.
-Das Template bleibt das gleiche wie im Rezept "Formular mit dem FormBuilder implementieren".
+Das Template bleibt das gleiche wie im Rezept "MDF: Formular mit dem FormBuilder implementieren".
 
 {title="app.component.ts", lang=js}
 ```
@@ -811,11 +811,11 @@ __Erklärung__:
 
 ### Code
 
-Code auf Github für die erste Lösung: [04-Form\_Recipes/06-Form\_Validation\_with\_FormBuilder/Solution-01](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-01)
+Code auf Github für die [erste Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-01)
 
 Live Demo der ersten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-01/index.html)
 
-Code auf Github für die zweite Lösung: [04-Form\_Recipes/06-Form\_Validation\_with\_FormBuilder/Solution-02](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-02)
+Code auf Github für die [zweite Lösung](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/06-Form_Validation_with_FormBuilder/Solution-02)
 
 Live Demo der zweiten Lösung auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/06-Form_Validation_with_FormBuilder/index.html)
 
@@ -837,7 +837,7 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 
 ### Lösung
 
-Wir werden die Gültigkeit des jeweiligen Eingabefelders überprüfen, indem wir im Template über das Formular auf das jeweilige Control zugreifen.
+Wir werden die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir im Template über das Formular auf das jeweilige Control zugreifen.
 
 {title="app.component.ts", lang=js}
 ```
@@ -855,7 +855,7 @@ import {
       <label>Username
         <input type="text" formControlName="username"/>
       </label>
-      <div *ngIf="!myForm.controls.username.valid">
+      <div *ngIf="myForm.controls.username.invalid">
         This field is required!
       </div>
       <label>Password
@@ -867,7 +867,7 @@ import {
       <div *ngIf="myForm.controls.password.errors?.minlength">
         This field must have at least 10 characters
       </div>
-      <button type="submit" [disabled]="!myForm.valid">Submit</button>
+      <button type="submit" [disabled]="myForm.invalid">Submit</button>
     </form>
   `
 })
@@ -892,24 +892,22 @@ export class AppComponent {
 
 __Erklärung__:
 
-* Zeilen 15-17: Nutzung von __ngIf__ mit Bedingung __!myForm.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
-* Zeilen 21-23: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password?.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
-* Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password?.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
+* Zeilen 15-17: Nutzung von __ngIf__ mit Bedingung __myForm.controls.username.invalid__. Damit greifen wir auf die invalid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld ungültig ist
+* Zeilen 21-23: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
+* Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Diskussion
 
-Natürlich setzt Angular auch für Model-Driven Formulare entsprechende CSS-Klassen, die den Zustand eines Eingabefeldes kennzeichen.
+Natürlich setzt Angular auch für Model-Driven Formulare entsprechende CSS-Klassen, die den Zustand eines Eingabefeldes kennzeichnen.
 Welche CSS-Klassen uns zur Verfügung stehen, steht im Diskussionsteil des Rezeptes "[TDF: Formular-Felder und CSS-Klassen](#c04-form-css-classes)".
 
 Bei der Erklärung der Lösung haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
 
 #### Elvis-Operator
 
-Den Elvis-Operator haben wir in beiden Lösungen verwendet.
-Dieser kann uns helfen, wenn wir im Template mit Objekten arbeiten, die __null__ oder __undefined__ sein könnten.
-Da das controls-Objekt des Formulars am Anfang leer ist (__undefined__), nutzen wir den Elvis-Operator, um Exceptions zu vermeiden.
+Der Elvis-Operator kann uns helfen, wenn wir im Template mit Objekten arbeiten, die __null__ oder __undefined__ sein könnten.
 Wenn ein Eingabefeld gültig ist, ist das errors-Objekt des Controls __null__.
-Darum haben wir in beiden Lösungen den Elvis-Operator bei der Überprüfung der Gültigkeit des Passwort-Felds verwendet.
+Darum haben wir Elvis-Operator bei der Überprüfung der Gültigkeit des Passwort-Felds verwendet.
 
 #### controls-Objekt
 
@@ -917,8 +915,7 @@ Das controls-Objekt der ngForm-Instanz beinhaltet alle Controls des Formulars. W
 
 #### errors-Objekt
 
-In beiden Lösungen haben wir das errors-Objekt benutzt, um Bedingungen für die NgIf-Direktiven zu definieren.
-Dieses beinhaltet die Gründe weshalb ein Eingabefeld ungültig ist.
+Das errors-Objekt beinhaltet die Gründe weshalb ein Eingabefeld ungültig ist.
 Wenn z. B. das required-Attribut eines Eingabefeldes definiert und das Feld leer ist, beinhaltet das errors-Objekt die Eigenschaft "required" mit dem Wert __true__.
 Der Name der Eigenschaft, in unserem Beispiel "required", zeigt an, welche Validierung fehlschlägt.
 Dieser Fehlschlag ist der Grund für die Ungültigkeit des Eingabefeldes.
@@ -932,7 +929,7 @@ In der Lösung, die wir oben gezeigt haben, wäre der Wert für die requiredLeng
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/07-Form\_Show\_Error\_for\_Field\_with\_FormBuilder](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/07-Form_Show_Error_for_Field_with_FormBuilder)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/07-Form_Show_Error_for_Field_with_FormBuilder)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/07-Form_Show_Error_for_Field_with_FormBuilder/index.html)
 
@@ -944,13 +941,13 @@ Ich möchte überprüfen, ob ein Eingabefeld mindestens einen Großbuchstaben be
 
 ### Zutaten
 
-* [Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
+* [MDF: Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
 * Validierungsfunktion, die überprüft, ob ein Eingabefeld mindestens einen Großbuchstaben beinhaltet
-* Anpassungen an der Komponente aus "Formular mit dem FormBuilder und Validierung"
+* Anpassungen an der app.component.ts-Datei
 
 ### Lösung
 
-Wir werden hier die gleichen Validierungsfunktionen wie im Rezept "Formular mit dem FormBuilder und Validierung" nutzen. Wir werden zusätzlich eine eigene Validierungsfunktion namens "containsCapital" implementieren.
+Wir werden hier die gleichen Validierungsfunktionen wie im Rezept "MDF: Formular mit dem FormBuilder und Validierung" nutzen. Wir werden zusätzlich eine eigene Validierungsfunktion namens "containsCapital" implementieren.
 
 {title="app.component.ts", lang=js}
 ```
@@ -965,7 +962,7 @@ import {
 ...
 
 export class AppComponent {
-  form: FormGroup;
+  myForm: FormGroup;
 
   constructor(builder: FormBuilder) {
     this.myForm = builder.group({
@@ -998,16 +995,16 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 20-29: Unsere Validierungsfunktion
-  * Zeile 20: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
+  * Zeile 20: Als Parameter erhält die Validierungsfunktion eine Instanz der FormControl-Klasse. In diesem Fall ist die Instanz unser password-Control
   * Zeile 22: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
   * Zeile 23: Wenn das Eingabefeld einen gültigen Wert besitzt, geben wir __null__ zurück
-  * Zeile 25: Wenn das Eingabefeld einen ungültigen Wert besitzt, geben wir ein Objekt zurück
+  * Zeilen 25-27: Wenn das Eingabefeld einen ungültigen Wert besitzt, geben wir ein Objekt zurück
 
 ### Diskussion
 
 Wenn die Validierung fehlschlägt, muss die Validierungsfunktion ein nicht leeres Objekt zurückgeben.
 Wir erhalten auf dieses Objekt über das errors-Objekt des FormControls Zugriff.
-Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors)" gesehen.
+Dieses Objekt haben wir im Rezept "[MDF: Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors-formbuilder)" gesehen.
 Solange das Passwort-Feld keinen Großbuchstaben enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
 Wir hätten auch ein komplexeres Objekt zurückgeben können, genauso wie es die minLength-Validierungsfunktion tut.
 Wenn der Wert des Eingabefelds gültig ist, geben wir __null__ zurück.
@@ -1015,7 +1012,7 @@ Andere Werte wie z. B. __undefined__ haben den gleichen Effekt. Da aber die An
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/08-Custom\_Validation](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/08-Custom_Validation)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/08-Custom_Validation)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/08-Custom_Validation/index.html)
 
@@ -1026,9 +1023,9 @@ Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-
 Ich möchte überprüfen, ob der angegebene Benutzername bereits existiert. Dafür muss ich den Server kontaktieren und auf die Antwort warten, bevor ich weiß, ob das Eingabefeld gültig oder ungültig ist.
 
 ### Zutaten
-* [Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
+* [MDF: Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
 * Validierungsfunktion, die asynchron überprüft, ob ein Benutzername schon existiert
-* Anpassungen an der Komponente aus "Formular mit dem FormBuilder und Validierung"
+* Anpassungen an der app.component.ts-Datei
 
 ### Lösung
 
@@ -1047,7 +1044,7 @@ import {
 ...
 
 export class AppComponent {
-  form: FormGroup;
+  myForm: FormGroup;
 
   constructor(builder: FormBuilder) {
     this.myForm = builder.group({
@@ -1065,7 +1062,10 @@ export class AppComponent {
               }, 1000);
             });
           }),
-      password: builder.control('', Validators.compose([Validators.required, Validators.minLength(10)]))
+      password: builder.control('', Validators.compose([
+        Validators.required,
+        Validators.minLength(10)
+      ]))
     });
   }
 
@@ -1080,29 +1080,29 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 17-29: Unsere asynchrone Validierungsfunktion
-  * Zeile 17: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der FormControl-Klasse. In diesem Fall ist die Instanz unser username-Control
+  * Zeile 17: Als Parameter erhält die Validierungsfunktion eine Instanz der FormControl-Klasse. In diesem Fall ist die Instanz unser username-Control
   * Zeile 18: Asynchrone Validierungsfunktionen liefern Promises als Rückgabewert zurück
   * Zeile 19: Wir simulieren mit der setTimeout-Funktion eine Server-Anfrage
   * Zeile 20: Überprüfung, ob der Wert (__control.value__) des Controls gleich dem String __Max__ ist
   * Zeilen 21-23: Wenn der Wert gleich __Max__ ist, ist das Eingabefeld ungültig. Eir teilen Angular dies mit, indem wir der resolve-Funktion ein Objekt übergeben
   * Zeile 25: Wenn der Wert ungleich __Max__ ist, ist das Eingabefeld gültig. Wir teilen Angular dies mit, indem wir der resolve-Funktion __null__ übergeben
-* Zeile 35: Hier wird überprüft (__this.myForm.pending__), ob alle asynchronen Validierungsfunktionen eine Antwort erhalten haben
+* Zeile 38: Hier wird überprüft (__this.myForm.pending__), ob alle asynchronen Validierungsfunktionen eine Antwort erhalten haben
 
 ### Diskussion
 
-Eine asynchrone Validierungsfunktion ist sehr ähnlich zu einer synchronen Validierungsfunktion, wie wir sie im Rezept "[Eigene Validatoren definieren](#c04-custom-validation)" gesehen haben.
+Eine asynchrone Validierungsfunktion ist sehr ähnlich zu einer synchronen Validierungsfunktion, wie wir sie im Rezept "[MDF: Eigene Validatoren definieren](#c04-custom-validation)" gesehen haben.
 Beide Funktionen erhalten eine Instanz der FormControl-Klasse als Funktionsparameter.
 Beide signalisieren die Gültigkeit des Eingabefelds, indem sie __null__ und die Ungültigkeit des Eingabefelds, indem sie ein Objekt zurückgeben.
 Zwischen synchronen und asynchronen Validierungsfunktionen gibt es aber auch Unterschiede.
 Wir nutzen den dritten Parameter der control-Methode für asynchrone Validierungsfunktionen.
 Um mehrere asynchrone Validierungsfunktionen für ein Control zu definieren, müssen wir die composeAsync-Methode anstelle der compose-Methode nutzen.
-Asynchrone Validierungsfunktionen liefern ein Promise als Rückgabewert zurück. Die Gültigkeit wird durch den Aufruf der resolve-Funktion angegeben.
+Asynchrone Validierungsfunktionen liefern ein Promise (oder ein Observable) als Rückgabewert zurück. Die Gültigkeit wird durch den Aufruf der resolve-Funktion angegeben.
 
 Asynchrone Validierungsfunktionen besitzen noch weitere Besonderheiten.
 Sie werden nur dann aufgerufen, wenn das Eingabefeld nach dem Aufruf der synchronen Validierungsfunktionen gültig ist.
 Wenn es ungültig ist, werden die asynchronen Validierungsfunktionen nicht aufgerufen.
 Da wir auf die asynchronen Funktionen warten müssen, bevor wir die Gültigkeit des Eingabefelds und des Formulars prüfen können, wird von Angular die pending-Eigenschaft des FormControls und des Formulars auf __true__ gesetzt, bis wir eine Antwort erhalten haben.
-Wir haben im Code bereits gesehen (Zeile 35), wie wir die pending-Eigenschaft nutzen können.
+Wir haben im Code bereits gesehen (Zeile 38), wie wir die pending-Eigenschaft nutzen können.
 
 Es ist vermutlich bekannt, dass Promises zwei Funktionen besitzen:
 die resolve- und die reject-Funktion.
@@ -1112,7 +1112,7 @@ Es ist also wichtig, dass wir Fehler in der Validierungsfunktion abfangen und in
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/09-Custom\_Async\_Validation](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/09-Custom_Async_Validation)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/09-Custom_Async_Validation)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/09-Custom_Async_Validation/index.html)
 
@@ -1130,6 +1130,7 @@ Ich möchte sicherstellen, dass zwei voneinander abhängige Eingabefelder den gl
 
 * [MDF: Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
 * [Teile der View konditional Anzeigen mit NgIf](#c03-ngif)
+* Die FormGroupName-Direktive von Angular-Forms
 * Anpassungen an der app.component.ts-Datei
 * Eine Validierungsfunktion, die überprüft, ob zwei Felder den gleichen Wert beinhalten
 
@@ -1203,7 +1204,7 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 15 und 18: Hier sagen wir Angular, dass die zwei Password-Eingabefelder zu der "FormGroup" mit Name "passwords" gehören
-* Zeilen 21-23: Nutzung von __ngIf__ mit der Bedingung __myForm.controls.passwords.hasError('passwordsNotEqual')__. Damit fragen wir die FormGroup, ob sie einen Fehler namens "passwordsNotEqual" hat. Wenn die zwei Eingabefelder der FormGroup nicht den gleichen Wert haben, wird die Bedingung __true__ sein
+* Zeilen 21-23: Hier nutzen wir __ngIf__ mit der Bedingung __myForm.controls.passwords.hasError('passwordsNotEqual')__. Damit fragen wir die FormGroup, ob sie einen Fehler namens "passwordsNotEqual" hat. Wenn die zwei Eingabefelder der FormGroup nicht den gleichen Wert haben, wird die Bedingung __true__ sein
 * Zeilen 34-49: Definition einer "FormGroup" namens "passwords"
   * Zeilen 35-39: Die Controls der FormGroup
   * Zeilen 41-48: Unsere Validierungsfunktion
@@ -1211,10 +1212,10 @@ __Erklärung__:
 ### Diskussion
 
 Ein Formular in Angular ist eine "FormGroup" und kann nebst Controls auch weiter FormGroups beinhalten, die wiederum Controls und weitere FormGroups beinhalten können.
-In unserem Beispiel haben wir eine "FormGroup" namens "passwords" definiert, die zwei Controls hat.
+In unserem Beispiel haben wir eine FormGroup namens "passwords" definiert, die zwei Controls hat.
 Das password- und das passwordRepeat-Control.
-Diese "FormGroup" ist nur dann gültig (valid-Eigenschaft is __true__), wenn die jeweilige Controls gültig sind und, wenn die Validierungsfunktionen der Gruppe __null__ zurückliefern.
-Das ist auch der Grund weshalb wir, __myForm.controls.passwords.hasError('passwordsNotEqual')__ und nicht einfach __myForm.controls.passwords.invalid__ als Bedingung für die NgIf-Direktive benutzt haben.
+Diese FormGroup ist nur dann gültig (valid-Eigenschaft is __true__), wenn die jeweilige Controls gültig sind und, wenn die Validierungsfunktionen der Gruppe __null__ zurückliefern.
+Darum nutzen wir __myForm.controls.passwords.hasError('passwordsNotEqual')__ und nicht einfach __myForm.controls.passwords.invalid__ als Bedingung für die NgIf-Direktive.
 Alternativ hätten wir auch das errors-Objekt (__myForm.controls.passwords.errors?.passwordsNotEqual__) nutzen können, wie wir es in anderen Rezepten auch getan haben.
 
 Der zweite Parameter der group-Methode (Zeilen 40-49) bekommt ein Objekt mit zwei optionale Eigenschaft.
@@ -1245,7 +1246,11 @@ Das value-Objekt sieht in diesem Rezept so aus:
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/10-Validate\_Multiple\_Fields](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/10-Validate_Multiple_Fields)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/10-Validate_Multiple_Fields)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/10-Validate_Multiple_Fields/index.html)
+
+### Weitere Ressourcen
+
+* Offizielle [FormGroupName](https://angular.io/docs/ts/latest/api/forms/index/FormGroupName-directive.html)-Dokumentation auf der Angular 2 Webseite
 

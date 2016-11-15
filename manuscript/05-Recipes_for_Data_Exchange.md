@@ -183,7 +183,7 @@ I> Observer sind die Callback-Funktionen, die wir der subscribe-Methode übergeb
 
 ### Code
 
-Code auf Github: [05-Recipes\_for\_Data\_Exchange/01-Get\_Data](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/01-Get_Data)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/01-Get_Data)
 
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
 
@@ -319,7 +319,7 @@ Siehe auch [Cold vs. Hot Observables](https://github.com/Reactive-Extensions/RxJ
 
 ### Code
 
-Code auf Github: [05-Recipes\_for\_Data\_Exchange/02-Post\_Data](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/02-Post_Data)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/02-Post_Data)
 
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
 
@@ -470,7 +470,7 @@ I> (2) Der Status der Antwort (response.status) ist nicht zwischen __200__ und _
 
 ### Code
 
-Code auf Github: [05-Recipes\_for\_Data\_Exchange/03-Error\_Handling](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/03-Error_Handling)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/03-Error_Handling)
 
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
 
@@ -536,7 +536,7 @@ Zum Anderen kümmert sich Angular um das richtige Format für den String, der sp
 
 ### Code
 
-Code auf Github: [05-Recipes\_for\_Data\_Exchange/04-Query\_Parameters](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/04-Query_Parameters)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/04-Query_Parameters)
 
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js)
 
@@ -619,11 +619,11 @@ Bei Server-Anfragen wird auch die abort-Methode der XMLHttpRequest-Instanz aufge
 
 W> #### Server-Anfragen, wenn die Komponente entfernt wird
 W>
-W> Es gibt verschiedene Situationen, in welchen eine Komponente entfernt wird. Genauer gibt es Situationen, in welchen die View der Komponente aus dem DOM entfernt wird. In einem solchen Fall wird die Komponente meistens von Angular zerstört (destroy), um Ressourcen zu befreien. Aktive Server-Anfragen werden bei der Zerstörung einer Komponente nicht automatisch abgebrochen. Wenn die Antwort zurückkommt, werden alle Callback-Funktionen aufgerufen, auch für eine Komponente die gar keine Daten mehr anzeigen kann. Im schlimmsten Fall kann es zu Fehlern kommen, die wir dem Nutzer nicht oder nicht sinnvoll anzeigen können. Es ist also in den meisten Fällen eine gute Idee die unsubscribe-Methode aufzurufen, wenn die View der Komponente nicht mehr angezeigt wird.
+W> Es gibt verschiedene Situationen, in welchen eine Komponente entfernt wird. Genauer gibt es Situationen, in welchen die View der Komponente aus dem DOM entfernt wird. In einem solchen Fall wird die Komponente meistens von Angular zerstört (destroy), um Ressourcen zu befreien. Aktive Server-Anfragen werden bei der Zerstörung einer Komponente nicht automatisch abgebrochen. Wenn die Antwort zurückkommt, werden alle Callback-Funktionen aufgerufen, auch für eine Komponente die gar keine Daten mehr anzeigen kann. Im schlimmsten Fall kann es zu Fehlern kommen, die wir dem Nutzer nicht oder nicht sinnvoll anzeigen können. Es ist also in den meisten Fällen eine gute Idee die unsubscribe-Methode aufzurufen, wenn die View der Komponente nicht mehr angezeigt wird. Im Rezept "[Code ausführen bei der Zerstörung (destroy) einer Komponente](#c07-on-destroy)" wird gezeigt welche Methode wir für ein Cleanup nutzen können.
 
 ### Code
 
-Code auf Github: [05-Recipes\_for\_Data\_Exchange/05-Cancel\_Request](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/05-Cancel_Request)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/05-Cancel_Request)
 
 Code für den Server: [server.js](https://github.com/jsperts/angular2_kochbuch_code/tree/master/05-Recipes_for_Data_Exchange/server.js). Der Server funktioniert mit Node.js.
 

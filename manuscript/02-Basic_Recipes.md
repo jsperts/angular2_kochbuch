@@ -237,7 +237,7 @@ Die Aufspaltung erhöht also die Wiederverwendbarkeit des Moduls.
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/02-Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Angular_App)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Angular_App)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/02-Angular_App/index.html)
 
@@ -344,7 +344,7 @@ Natürlich würden wir in so einem Fall auch für jedes Feature ein eigenes Angu
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/03-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Define_Component)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Define_Component)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/03-Define_Component/index.html)
 
@@ -439,7 +439,7 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeile 9: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService" erhalten
-* Zeile 10: Hier nutzen wir die getData-Methode der dataService-Instanz
+* Zeile 10: Hier nutzen wir die getData-Methode der dataService-Instanz. Statt die Daten in der Konstruktorfunktion zu holen, ist es besser die Daten in der ngOnInit-Methode zu holen. Die ngOnInit-Methode wird im Rezept "[Code ausführen bei der Initialisierung einer Komponente](#c07-on-init)" gezeigt
 
 ### Diskussion
 
@@ -482,7 +482,7 @@ Dort wird auch beschrieben, wie wir komplexere Provider-Rezepte nutzen können u
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/04-Define\_Service](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/04-Define_Service)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/04-Define_Service)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/04-Define_Service/index.html)
 
@@ -547,7 +547,7 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 
 __Erklärung__:
 
-* Zeile 4: Importiert eine environment-Datei. Ob es die environment.ts- oder die environment.prod.ts-Datei ist, wird von angular-cli zur Bauzeit definiert
+* Zeile 5: Importiert eine environment-Datei. Ob es die environment.ts- oder die environment.prod.ts-Datei ist, wird von angular-cli zur Bauzeit definiert
 * Zeilen 8-10: Hier wird der Produktions-Modus von Angular aktiviert aber nur, wenn angular-cli die environment.prod.ts-Datei nutzt
 
 Als letztes müssen wir unser Projekt mit der `--prod`-Option bauen.
@@ -561,7 +561,7 @@ In allen anderen Fällen z. B. beim `ng serve` wird die environment.ts-Datei be
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/05-Production\_Build](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/05-Production_Build)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/05-Production_Build)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/05-Production_Build/index.html)
 

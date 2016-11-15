@@ -46,7 +46,7 @@ Hier zeigen wir den Index nur in der View an. Natürlich können wir die lokale 
 
 ### Code
 
-Code auf Github: [08-List\_Recipes/01-ngFor\_Element\_Index](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/01-ngFor_Element_Index).
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/01-ngFor_Element_Index).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit Index gezeigt.
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/01-ngFor_Element_Index/index.html)
@@ -105,7 +105,7 @@ Hier nutzen wir die Information, ob das aktuelle Element gerade oder ungerade is
 
 ### Code
 
-Code auf Github: [08-List\_Recipes/02-Even\_Odd\_ngFor\_Elements](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/02-Even_Odd_ngFor_Elements).
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/02-Even_Odd_ngFor_Elements).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit even/odd gezeigt.
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/02-Even_Odd_ngFor_Elements/index.html)
@@ -165,7 +165,7 @@ Wie auch in den vorherigen zwei Rezepten können wir hier die Information, ob ei
 
 ### Code
 
-Code auf Github: [08-List\_Recipes/03-First\_Last\_ngFor\_Element](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/03-First_Last_ngFor_Element).
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/03-First_Last_ngFor_Element).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive gezeigt.
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/03-First_Last_ngFor_Element/index.html)
@@ -252,7 +252,7 @@ In den Varianten ohne "trackBy" wird sich die komplette Liste ändern und in den
 
 ### Code
 
-Code auf Github: [08-List\_Recipes/04-Improve\_Performance\_with\_trackBy](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/04-Improve_Performance_with_trackBy).
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/04-Improve_Performance_with_trackBy).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit trackBy gezeigt.
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/04-Improve_Performance_with_trackBy/index.html)

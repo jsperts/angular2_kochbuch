@@ -55,7 +55,7 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 
 __Erklärung__:
 
-* Zeile 4: Importiert eine environment-Datei. Ob es die environment.ts- oder die environment.prod.ts-Datei ist, wird von angular-cli zur Bauzeit definiert
+* Zeile 5: Importiert eine environment-Datei. Ob es die environment.ts- oder die environment.prod.ts-Datei ist, wird von angular-cli zur Bauzeit definiert
 * Zeilen 8-10: Hier wird der Produktions-Modus von Angular aktiviert aber nur, wenn angular-cli die environment.prod.ts-Datei nutzt
 
 Als letztes müssen wir unser Projekt mit der `--prod`-Option bauen.

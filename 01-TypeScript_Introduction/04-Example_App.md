@@ -64,7 +64,8 @@ import TodoItem from './todo_item';
 
 const todos: Array<TodoItem> = [new TodoItem('Todo 1'), new TodoItem('Todo 2')];
 
-const inputElement: HTMLInputElement = document.getElementsByTagName('input').item(0);
+const inputElement: HTMLInputElement =
+  document.getElementsByTagName('input').item(0);
 const button: HTMLElement = document.getElementById('addTodo');
 const todosList: HTMLElement = document.getElementById('todosList');
 
@@ -89,7 +90,7 @@ Es hat Zugriff auf DOM-Elemente und ruft Methoden auf, um die existierende Todos
 
 * Zeilen 1-2: Import der Module "TodoList" und "TodoItem" mittels [ESM import-Anweisung](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import). Wir nutzen hier den Namen der Datei ohne Endung, da wir SystemJS schon gesagt haben, dass Dateien im app-Verzeichnis immer die Endung ".ts" haben (Siehe index.html Zeile 14)
 * Zeile 4: Todos für unsere Liste. Die Liste beinhaltet Elemente vom Typ "TodoItem"
-* Zeilen 6-8: DOM-Elemente an Konstanten zuweisen. Wir nutzen dafür das [ES6/ES2015 Keyword __const__](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const). Die Typen "HTMLInputElement" und "HTMLElement" sind in TypeScript vordefiniert
+* Zeilen 6-9: DOM-Elemente an Konstanten zuweisen. Wir nutzen dafür das [ES6/ES2015 Keyword __const__](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/const). Die Typen "HTMLInputElement" und "HTMLElement" sind in TypeScript vordefiniert
 
 I> #### TypeScript DOM-Typen
 I>

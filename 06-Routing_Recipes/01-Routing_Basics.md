@@ -80,7 +80,10 @@ import { ProductsComponent } from './products.component';
 
 @NgModule({
   imports: [ BrowserModule, routing ],
-  declarations: [ AppComponent, AdminComponent, HomeComponent, ProductsComponent ],
+  declarations: [
+    AppComponent, AdminComponent,
+    HomeComponent, ProductsComponent
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

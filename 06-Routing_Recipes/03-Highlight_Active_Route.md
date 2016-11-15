@@ -49,10 +49,10 @@ __Erklärung__:
 Die RouterLinkActive-Direktive nimmt den Wert der RouterLink-Direktive und ermittelt, ob der Pfad der RouterLink-Direktive der gleiche ist wie der Pfad der aktuellen Route.
 Falls ja wird der Wert nach dem Gleichheitszeichen als CSS-Klasse für das Element gesetzt.
 In unserem Fall wird die "active-route"-CSS-Klasse auf das a-Tag gesetzt.
-Wenn z. B. der Pfad "admin" ist, wird die CSS-Klasse auf das a-Tag mit `routerLink="admin"` gesetzt.
+Wenn z. B. der Pfad "admin" ist, wird die CSS-Klasse auf das a-Tag mit __routerLink="admin"__ gesetzt.
 Für die "Home"-Route nutzen wir einen leeren String als Pfad.
 Da der leerer String Teil jedes Pfades ist, wird der a-Tag für die "Home"-Route immer als aktuell/aktiv gesetzt.
-Um das zu verhindern, sagen wir dem Router mittels `[routerLinkActiveOptions]="{exact: true}"`, dass das a-Tag mit `routerLink=""` nur dann die aktuelle Route ist, wenn der Pfad der aktuellen Route ein leerer String ist.
+Um das zu verhindern, sagen wir dem Router mittels __[routerLinkActiveOptions]="{exact: true}"__, dass das a-Tag mit __routerLink=""__ nur dann die aktuelle Route ist, wenn der Pfad der aktuellen Route ein leerer String ist.
 
 ### Code
 

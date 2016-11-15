@@ -33,7 +33,7 @@ export class HomeComponent {}
 __Erklärung__:
 
 Wie wir sehen, haben wir jetzt keine selector-Eigenschaft für den @Component-Decorator definiert.
-Wir brauchen diese nicht weil unsere Komponente nicht in einem Template referenziert wird, sondern vom Router abhängig vom Pfad geladen wird.
+Wir brauchen diese nicht, weil unsere Komponente nicht in einem Template referenziert wird, sondern vom Router abhängig vom Pfad geladen wird.
 Die Restlichen zwei Komponenten zeigen wir hier nicht, diese werden analog zu der "HomeComponent" definiert.
 
 Damit der Router weiß welcher Pfad bzw. URL zu welcher Komponente gehört, müssen wir diesen jetzt konfigurieren.
@@ -58,8 +58,8 @@ export const routing = RouterModule.forRoot(routes);
 
 __Erklärung__:
 
-* Zeile 1: Als Erstes importieren wir die nötigen Abhängigkeiten aus dem __@angular/router__  Paket. Dieses kann mittels __npm__ installiert werden
-* Zeilen 7-11: Unsere Router-Konfiguration. Die path-Eigenschaft ist der Teil nach dem Domain der URL. Z. B. in der URL "http://localhost:4200/foo" ist "foo" der Pfad
+* Zeile 1: Als Erstes importieren wir die nötigen Abhängigkeiten aus dem __@angular/router__-Paket. Dieses kann mittels __npm__ installiert werden
+* Zeilen 7-11: Unsere Router-Konfiguration. Die path-Eigenschaft ist der Teil nach der Domain der URL. Z. B. in der URL "http://localhost:4200/foo" ist "foo" der Pfad
   * Zeile 8: Wenn kein Pfad angegeben wird, wird die "HomeComponent" angezeigt
   * Zeile 9: Wenn der Pfad "admin" ist, wird die "AdminComponent" angezeigt
   * Zeile 10: Wenn der Pfad "products" ist, wird die "ProductsComponent" angezeigt
@@ -135,14 +135,10 @@ Wenn eine Angular-Anwendung mit angular-cli initialisiert wird, wird das "Router
 
 ### Diskussion
 
-FormBuilder ist ein [Service](#gl-service), den Angular uns zur Verfügung stellt.
-
-### Diskussion
-
 Standardmäßig nutzt der Angular-Router HTML5-URLs.
 Allerdings brauchen die meisten Webserver eine spezielle Konfiguration, damit diese mit HTML5-URLs umgehen können.
 Aus diesem Grund bietet uns Angular auch die Möglichkeit Hash-Basierte (#) URLs zu nutzen.
-Wie das geht wird im Rezept [Hash-Basiert URLs für das Routing](#c06-hash-based-url) gezeigt
+Wie das geht wird im Rezept "[Hash-Basiert URLs für das Routing](#c06-hash-based-url)" gezeigt
 
 ### Code
 

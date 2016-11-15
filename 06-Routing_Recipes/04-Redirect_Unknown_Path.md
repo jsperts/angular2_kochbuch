@@ -31,7 +31,7 @@ export const routing = RouterModule.forRoot(routes);
 
 __Erklärung__:
 
-* Zeile 12: Hier definieren wir eine Route mit Pfad "\*\*", die immer dann greift, wenn keine andere Route zu der Browser-URL passt. Die redirectTo-Eigenschaft bekommt als Wert den Pfad zu den wir umleiten möchten
+* Zeile 11: Hier definieren wir eine Route mit Pfad "\*\*", die immer dann greift, wenn keine andere Route zu der Browser-URL passt. Die redirectTo-Eigenschaft bekommt als Wert den Pfad zu den wir umleiten möchten
 
 ### Code
 

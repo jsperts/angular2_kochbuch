@@ -13,7 +13,7 @@ Ich möchte zu eine andere Komponente navigieren, indem ich auf einen Button kli
 
 ### Lösung
 
-Wir wollen jetzt nicht mit Hilfe der RouterLink-Direktive navigieren, sondern mit der navigate-Methode des Routers. Diese können wir nutzen, um zu navigieren als Reaktion auf ein Event z. B. nach dem Speichern von Daten.
+Wir wollen jetzt nicht mit Hilfe der RouterLink-Direktive navigieren, sondern mit der navigate-Methode des Routers. Diese können wir nutzen, um zu navigieren als Reaktion z. B. auf ein Event nach dem Speichern von Daten.
 
 {title="app.component.ts", lang=js}
 ```
@@ -64,9 +64,9 @@ __Erklärung__:
 Die a-Tags mit der RouterLink-Direktive, die wir im Rezept "Einfaches Routing implementieren" benutzt haben, haben wir hier mit einem button-Tag ersetzt.
 Jeder Button ruft bei einem Klick die navigate-Methode der Komponenten-Klasse und übergibt den Pfad.
 
-* Zeile 34: Hier injizieren wir den ActivatedRoute- und den Router-Service. Der ActivatedRoute-Service repräsentiert die aktuelle Route
-* Zeilen 39-41: navigate-Methode, die von den Buttons aufgerufen wird
-  * Zeile 40: Hier wird die navigate-Methode des Routers aufgerufen. Dieser Aufruf ist äquivalent zu der RouterLink-Direktive, die wir schon gesehen haben
+* Zeile 32: Hier injizieren wir den ActivatedRoute- und den Router-Service. Der ActivatedRoute-Service repräsentiert die aktuelle Route
+* Zeilen 37-39: navigate-Methode, die von den Buttons aufgerufen wird
+  * Zeile 38: Hier wird die navigate-Methode des Routers aufgerufen. Dieser Aufruf ist äquivalent zu der RouterLink-Direktive, die wir schon gesehen haben
 
 ### Diskussion
 
@@ -80,7 +80,7 @@ Mit der navigate-Methode müssen wir explizit die Route angeben zu der wir relat
 
 Die Auswirkungen von relativen Pfaden sind vor allem sichtbar, wenn wir innerhalb einer Komponente navigieren, die einen eigenen nicht leeren Pfad hat z. B. AdminComponent mit "admin" als Pfad.
 In unserem Beispiel hätten wir problemlos auch absolute Pfade nutzen können z. B. in Zeile 15 "/products" statt "products".
-Wenn wir absolute Pfade nutzen, brauchen wir den zweiten Parameter (`{relativeTo: this.route}`) der navigate-Methode nicht.
+Wenn wir absolute Pfade nutzen, brauchen wir den zweiten Parameter (__{relativeTo: this.route}__) der navigate-Methode nicht.
 
 ### Code
 

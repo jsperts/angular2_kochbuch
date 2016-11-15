@@ -1,7 +1,7 @@
 # Rezepte für Formulare
 
 Angular bietet uns mehrere Möglichkeiten, Formulare zu implementieren.
-Grob können wir in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template-Driven Forms" und "Model-Driven Forms" auch bekannt als "Reactive Forms".
+Wir können in Angular 2 zwischen zwei Arten von Formularen unterscheiden: "Template-Driven Forms" und "Model-Driven Forms" auch bekannt als "Reactive Forms".
 Beide Formulararten bieten die gleichen Funktionalität an.
 Nur der Weg, den wir gehen müssen, um die Funktionalität zu implementieren ist anders.
 Die Art des Formulars steht im Titel des Rezepts.

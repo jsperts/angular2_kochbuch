@@ -107,14 +107,14 @@ Das ngSubmit-Event ist also eine [output-Eigenschaft](#gl-output-property) der N
 Im Grunde genommen bindet die NgForm-Direktive das submit-Event des Formulars und leitet es an das ngSubmit-Event weiter.
 Der einzige Unterschied zwischen den zwei Events ist, dass ngSubmit die submitted-Eigenschaft des Formulars (NgForm-Instanz) auf __true__ setzt.
 
-Die NgModel-Direktive definiert ein sogenanntes Control und bindet ein Modell in der Komponenten-Klasse mit einem Eingabefeld/Select usw. in der View.
+Die NgModel-Direktive definiert ein sogenanntes "Control" und bindet ein Modell in der Komponenten-Klasse mit einem Eingabefeld/Select usw. in der View.
 Ein Control kann dann entweder innerhalb eines form-Tags oder ohne form-Tag (standalone Control) benutzt werden.
 Wenn wir die NgModel-Direktive innerhalb eines form-Tags nutzen, müssen wir für das Element mit der Direktive auch das name-Attribut definieren.
-Das name-Attribut wird benutzt um das Control mit der Instanz der ngForm-Direktive zu registieren.
+Das name-Attribut wird benutzt, um das Control mit der Instanz der ngForm-Direktive zu registieren.
 
 Wie schon erwähnt, nutzen wir in den Zeilen 9 und 14 eine beidseitige Bindung.
-Wir hätten die beidseitige Bindung auch in eine Eigenschafts- und eine Event-Bindung aufspalten können.
-Wie das aussieht wird in "[Appendix A](#appendix-a)" gezeigt.
+Wir hätten die beidseitige Bindung auch in eine Eigenschaft- und eine Event-Bindung aufspalten können.
+Wie das aussieht wird in [Appendix A](#appendix-a) gezeigt.
 Da die Nutzung der beidseitigen Bindung einfacher ist, werden wir sie auch in weiteren Formular-Rezepten nutzen.
 
 ### Code

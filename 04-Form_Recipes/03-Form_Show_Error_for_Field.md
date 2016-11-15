@@ -6,14 +6,14 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 
 ### Zutaten
 
-* [Gültigkeit eines Formulars überprüfen](#c04-form-validation)
+* [TDF: Gültigkeit eines Formulars überprüfen](#c04-form-validation)
 * [Teile der View konditional Anzeigen mit NgIf](#c03-ngif)
 * Elvis-Operator (?.)
 * Lokale (Referenz-) Variable, die die Instanz der NgModel-Direktiven des jeweiligen Eingabefelds referenziert (nur Lösung 2)
 
 ### Lösung 1
 
-In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir auf über die lokale (Referenz-) Variable des Formulars auf das Control zugreifen.
+In der ersten Lösung werden wir die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir über die lokale (Referenz-) Variable des Formulars auf das Control zugreifen.
 
 {title="app.component.ts", lang=js}
 ```
@@ -29,7 +29,7 @@ import { Component } from '@angular/core';
           [(ngModel)]="user.username"
           required />
       </label>
-      <div *ngIf="!form.controls.username?.valid">
+      <div *ngIf="form.controls.username?.invalid">
         This field is required!
       </div>
       <label>Password
@@ -44,7 +44,7 @@ import { Component } from '@angular/core';
       <div *ngIf="form.controls.password?.errors?.minlength">
         This field must have at least 10 characters
       </div>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </form>
   `
 })
@@ -54,7 +54,7 @@ import { Component } from '@angular/core';
 
 __Erklärung__:
 
-* Zeilen 13-15: Nutzung von __ngIf__ mit Bedingung __!form.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeilen 13-15: Nutzung von __ngIf__ mit Bedingung __form.controls.username?.invalid__. Damit greifen wir auf die invalid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld ungültig ist
 * Zeilen 22-24: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
 * Zeilen 25-27: Nutzung von __ngIf__ mit Bedingung __form.controls.password?.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
@@ -78,7 +78,7 @@ import { Component } from '@angular/core';
           required
           #username="ngModel" />
       </label>
-      <div *ngIf="!username.valid">
+      <div *ngIf="username.invalid">
         This field is required!
       </div>
       <label>Password
@@ -105,14 +105,14 @@ import { Component } from '@angular/core';
 __Erklärung__:
 
 * Zeile 12: Mit __#username=`"`ngModel`"`__ definieren wir eine lokale Variable namens "username". Die Variable ist eine Referenz auf die Instanz der NgModel-Direktiven des Eingabefelds
-* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __!username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
+* Zeilen 14-16: Nutzung von __ngIf__ mit Bedingung __username?.invalid__. Damit greifen wir auf die invalid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld ungültig ist
 * Zeile 22: Mit __#password=`"`ngModel`"`__ definieren wir eine lokale Variable namens "password". Die Variable ist eine Referenz auf die Instanz der NgModel-Direktiven des Eingabefelds
 * Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __password.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
 * Zeilen 27-29: Nutzung von __ngIf__ mit Bedingung __password.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Diskussion
 
-Bei der Erklärung der Lösung haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
+Bei der Erklärung der Lösungen haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
 
 #### Elvis-Operator
 

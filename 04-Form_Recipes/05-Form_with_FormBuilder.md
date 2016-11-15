@@ -56,10 +56,9 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 7-15: Das HTML für unser Formular
-  * Zeile 7: Nutzung der FormGroupDirective-Direktiven (__formGroup__). Damit verbinden wir das Formular in der Klasse (Zeile 21) mit dem Formular im DOM. __ngSubmit__ wird im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" erklärt
+  * Zeile 7: Nutzung der FormGroupDirective-Direktiven (__formGroup__). Damit verbinden wir das Formular in der Klasse (Zeile 21) mit dem Formular im DOM. __ngSubmit__ wird im Rezept "[TDF: Ein einfaches Formular implementieren](#c04-simple-form)" erklärt
   * Zeile 9: Nutzung der FormControlName-Direktiven. Damit verbinden wir das username-Control in der Klasse (Zeile 22) mit dem Eingabefeld im DOM
-  * Zeile 11: Nutzung der FormControlName-Direktiven. Damit verbinden wir das password-Control in der Klasse (Zeile 23) mit dem Eingabefeld im DOM
-* Zeile 19: Typdefinition für die form-Eigenschaft
+  * Zeile 12: Nutzung der FormControlName-Direktiven. Damit verbinden wir das password-Control in der Klasse (Zeile 23) mit dem Eingabefeld im DOM
 * Zeile 20: Konstruktor der Klasse mit einer Instanz des FormBuilder-Services als Parameter
 * Zeilen 21-24: Das Modell für unser Formular
   * Zeile 21: Hier rufen wir die group-Methode auf, die eine Instanz der FormGroup-Klasse erzeugt
@@ -67,8 +66,9 @@ __Erklärung__:
   * Zeile 23: Gleiches wie oben, aber für das Passwort-Feld
 * Zeile 28: Hier greifen wir auf die Werte zu, die sich im Formular befinden
 
-Da sich Formular-Direktiven wie z. B. "FormGroupName" in einem eigenen Angular-Modul befinden, müssen wir dieses Modul in unser "AppModule" importieren
+Da sich Formular-Direktiven wie z. B. "FormControlName" in einem eigenen Angular-Modul befinden, müssen wir dieses Modul in unser "AppModule" importieren
 
+{title="app.component.ts", lang=js}
 ```
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -123,14 +123,14 @@ Dies tun wir mit Hilfe der FormControlName-Direktiven.
 Ein Detail hatten wir bis jetzt ignoriert.
 Wie wusste Angular überhaupt, dass wir den FormBuilder-Service brauchten?
 Anhand der Typinformation, die wir bei der Parameterdefinition im Konstruktor angegeben haben und mittels [Dependency Injection (DI)](#gl-di) kann Angular uns eine Instanz eines Services bei der Initialisierung der Komponente übergeben.
-Die Typinformation befindet sich auf Zeile 20 und ist der Teil nach dem Doppelpunkt.
+Die Typinformation befindet sich auf Zeile 20 (app.component.ts) und ist der Teil nach dem Doppelpunkt.
 Wir haben __builder: FormBuilder__ geschrieben. In diesem Fall ist "builder" der Parametername und "FormBuilder" die Typinformation.
 Mit Hilfe des Typs schaut Angular nach, welche Services zur Verfügung stehen und gibt uns eine Instanz mit dem richtigen Typ zurück.
-Dependency Injection in Angular mit Services ist ein relativ komplexes Thema und eine vollständige Erklärung würde den Rahmen eines Rezeptes sprengen.
+Dependency Injection in Angular ist ein relativ komplexes Thema und eine vollständige Erklärung würde den Rahmen eines Rezeptes sprengen.
 Wer mehr über dieses Thema lesen möchte, kann einige Informationen auf der Angular 2 Webseite finden.
 
 Natürlich wollen wir auch Zugriff auf die Daten erhalten, die der Nutzer in das Formular eingegeben hat.
-Im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" haben wir dafür die NgModel-Direktive benutzt.
+Im Rezept "[TDF: Ein einfaches Formular implementieren](#c04-simple-form)" haben wir dafür die NgModel-Direktive benutzt.
 Da wir hier die NgModel-Direktive nicht nutzen, brauchen wir einen anderen Weg, um auf die Daten zuzugreifen.
 Zum Glück beinhaltet auch unser Formular-Modell alle Daten, die in die jeweiligen Eingabefelder geschrieben worden sind.
 Die Daten befinden sich in der value-Eigenschaft des Formular-Modells.
@@ -148,7 +148,7 @@ Der Unterschied zwischen den beiden Rezepten sind die Mittel, die wir benutzt ha
 
 Für Template-Driven Formulare brauchen wir das "FormsModule" und für Model-Driven Formulare das "ReactiveFormsModule".
 Direktiven und Klassen mit "Ng" bzw. "ng" als Präfix gehören zu den Template-Driven Formulare.
-Die Restlichen Direktiven, Klassen und Services gehören zu den Model-Driven Formularen oder können von beiden Arten benutzt werden.
+Die Restlichen Direktiven, Klassen und Services gehören zu den Model-Driven Formularen oder können von beiden Formulararten benutzt werden.
 
 ### Code
 

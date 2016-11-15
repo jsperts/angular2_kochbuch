@@ -38,7 +38,7 @@ import { Component } from '@angular/core';
           [(ngModel)]="user.password"
           required minlength="10" />
       </label>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </form>`
 })
 

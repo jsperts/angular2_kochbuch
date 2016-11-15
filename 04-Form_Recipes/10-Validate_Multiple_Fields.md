@@ -8,6 +8,7 @@ Ich möchte sicherstellen, dass zwei voneinander abhängige Eingabefelder den gl
 
 * [MDF: Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
 * [Teile der View konditional Anzeigen mit NgIf](#c03-ngif)
+* Die FormGroupName-Direktive von Angular-Forms
 * Anpassungen an der app.component.ts-Datei
 * Eine Validierungsfunktion, die überprüft, ob zwei Felder den gleichen Wert beinhalten
 
@@ -81,7 +82,7 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 15 und 18: Hier sagen wir Angular, dass die zwei Password-Eingabefelder zu der "FormGroup" mit Name "passwords" gehören
-* Zeilen 21-23: Nutzung von __ngIf__ mit der Bedingung __myForm.controls.passwords.hasError('passwordsNotEqual')__. Damit fragen wir die FormGroup, ob sie einen Fehler namens "passwordsNotEqual" hat. Wenn die zwei Eingabefelder der FormGroup nicht den gleichen Wert haben, wird die Bedingung __true__ sein
+* Zeilen 21-23: Hier nutzen wir __ngIf__ mit der Bedingung __myForm.controls.passwords.hasError('passwordsNotEqual')__. Damit fragen wir die FormGroup, ob sie einen Fehler namens "passwordsNotEqual" hat. Wenn die zwei Eingabefelder der FormGroup nicht den gleichen Wert haben, wird die Bedingung __true__ sein
 * Zeilen 34-49: Definition einer "FormGroup" namens "passwords"
   * Zeilen 35-39: Die Controls der FormGroup
   * Zeilen 41-48: Unsere Validierungsfunktion
@@ -89,10 +90,10 @@ __Erklärung__:
 ### Diskussion
 
 Ein Formular in Angular ist eine "FormGroup" und kann nebst Controls auch weiter FormGroups beinhalten, die wiederum Controls und weitere FormGroups beinhalten können.
-In unserem Beispiel haben wir eine "FormGroup" namens "passwords" definiert, die zwei Controls hat.
+In unserem Beispiel haben wir eine FormGroup namens "passwords" definiert, die zwei Controls hat.
 Das password- und das passwordRepeat-Control.
-Diese "FormGroup" ist nur dann gültig (valid-Eigenschaft is __true__), wenn die jeweilige Controls gültig sind und, wenn die Validierungsfunktionen der Gruppe __null__ zurückliefern.
-Das ist auch der Grund weshalb wir, __myForm.controls.passwords.hasError('passwordsNotEqual')__ und nicht einfach __myForm.controls.passwords.invalid__ als Bedingung für die NgIf-Direktive benutzt haben.
+Diese FormGroup ist nur dann gültig (valid-Eigenschaft is __true__), wenn die jeweilige Controls gültig sind und, wenn die Validierungsfunktionen der Gruppe __null__ zurückliefern.
+Darum nutzen wir __myForm.controls.passwords.hasError('passwordsNotEqual')__ und nicht einfach __myForm.controls.passwords.invalid__ als Bedingung für die NgIf-Direktive.
 Alternativ hätten wir auch das errors-Objekt (__myForm.controls.passwords.errors?.passwordsNotEqual__) nutzen können, wie wir es in anderen Rezepten auch getan haben.
 
 Der zweite Parameter der group-Methode (Zeilen 40-49) bekommt ein Objekt mit zwei optionale Eigenschaft.
@@ -126,4 +127,8 @@ Das value-Objekt sieht in diesem Rezept so aus:
 Code auf Github: [04-Form\_Recipes/10-Validate\_Multiple\_Fields](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/10-Validate_Multiple_Fields)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/10-Validate_Multiple_Fields/index.html)
+
+### Weitere Ressourcen
+
+* Offizielle [FormGroupName](https://angular.io/docs/ts/latest/api/forms/index/FormGroupName-directive.html)-Dokumentation auf der Angular 2 Webseite
 

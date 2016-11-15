@@ -4,19 +4,19 @@
 
 Ich möchte ein Formular mit dem FormBuilder bauen und zusätzlich möchte ich auch in der Lage sein, zu erkennen, wann das Formular gültig ist.
 
-In diesem Rezept lösen wir dasselbe Problem wie im Rezept "[Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
+In diesem Rezept lösen wir dasselbe Problem wie im Rezept "[TDF: Gültigkeit eines Formulars überprüfen](#c04-form-validation)".
 Nur werden wir hier mit Validierungsfunktionen anstelle von Validierungs-Attributen arbeiten.
 
 ### Zutaten
 
-* [Formular mit dem FormBuilder implementieren](#c04-formbuilder)
+* [MDF: Formular mit dem FormBuilder implementieren](#c04-formbuilder)
 * Die Validierungsfunktionen von Angular (Validators-Klasse)
-* Anpassungen an der Komponente aus "Formular mit dem FormBuilder implementieren"
+* Anpassungen an der app.component.ts-Datei
 
 ### Lösung 1
 
 In dieser Lösung werden wir sehen, wie wir den Submit-Button deaktivieren können, wenn wir ein Model-Driven Formular nutzen.
-Diese Lösung ist äquivalent zur Lösung 1 im Rezept "Gültigkeit eines Formulars überprüfen".
+Diese Lösung ist äquivalent zur Lösung 1 im Rezept "TDF: Gültigkeit eines Formulars überprüfen".
 
 {title="app.component.ts", lang=js}
 ```
@@ -39,7 +39,7 @@ import {
       </label>
       <button
         type="submit"
-        [disabled]="!myForm.valid"
+        [disabled]="myForm.invalid"
       >Submit</button>
     </form>
   `
@@ -65,7 +65,7 @@ export class AppComponent {
 
 __Erklärung__:
 
-* Zeile 20: Hier binden wir die disabled-Eigenschaft an den Ausdruck __!myForm.valid__
+* Zeile 20: Hier binden wir die disabled-Eigenschaft an den Ausdruck __myForm.invalid__
 * Zeile 30: Control für das Benutzernamefeld definieren. Mit __Validators.required__ definieren wir das Eingabefeld als Pflichtfeld
 * Zeile 31: Ein Control erwartet als zweiten Parameter eine Validierungsfunktion. Wenn wir mehrere Funktionen gleichzeitig nutzen möchten, müssen wir die compose-Funktion nutzen
 * Zeile 32: Hier definieren wir das Passwortfeld als Pflichtfeld
@@ -73,9 +73,9 @@ __Erklärung__:
 
 ### Lösung 2
 
-Diese Lösung ist äquivalent zur Lösung 2 im Rezept "Gültigkeit eines Formulars überprüfen".
+Diese Lösung ist äquivalent zur Lösung 2 im Rezept "TDF: Gültigkeit eines Formulars überprüfen".
 Auch hier überprüfen wir die Gültigkeit des Formulars in der Komponenten-Klasse statt im Template.
-Das Template bleibt das gleiche wie im Rezept "Formular mit dem FormBuilder implementieren".
+Das Template bleibt das gleiche wie im Rezept "MDF: Formular mit dem FormBuilder implementieren".
 
 {title="app.component.ts", lang=js}
 ```

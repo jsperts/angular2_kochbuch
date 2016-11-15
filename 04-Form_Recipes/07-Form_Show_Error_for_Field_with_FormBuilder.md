@@ -12,7 +12,7 @@ Ich möchte für jedes ungültige Eingabefeld eine Fehlermeldung anzeigen. Je na
 
 ### Lösung
 
-Wir werden die Gültigkeit des jeweiligen Eingabefelders überprüfen, indem wir im Template über das Formular auf das jeweilige Control zugreifen.
+Wir werden die Gültigkeit des jeweiligen Eingabefeldes überprüfen, indem wir im Template über das Formular auf das jeweilige Control zugreifen.
 
 {title="app.component.ts", lang=js}
 ```
@@ -30,7 +30,7 @@ import {
       <label>Username
         <input type="text" formControlName="username"/>
       </label>
-      <div *ngIf="!myForm.controls.username.valid">
+      <div *ngIf="myForm.controls.username.invalid">
         This field is required!
       </div>
       <label>Password
@@ -42,7 +42,7 @@ import {
       <div *ngIf="myForm.controls.password.errors?.minlength">
         This field must have at least 10 characters
       </div>
-      <button type="submit" [disabled]="!myForm.valid">Submit</button>
+      <button type="submit" [disabled]="myForm.invalid">Submit</button>
     </form>
   `
 })
@@ -67,24 +67,22 @@ export class AppComponent {
 
 __Erklärung__:
 
-* Zeilen 15-17: Nutzung von __ngIf__ mit Bedingung __!myForm.controls.username?.valid__. Damit greifen wir auf die valid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld gültig ist
-* Zeilen 21-23: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password?.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
-* Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password?.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
+* Zeilen 15-17: Nutzung von __ngIf__ mit Bedingung __myForm.controls.username.invalid__. Damit greifen wir auf die invalid-Eigenschaft des Controls zu. Diese Eigenschaft ist __true__, wenn das Eingabefeld ungültig ist
+* Zeilen 21-23: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password.errors?.required__. Die Bedingung ist wahr, wenn das Eingabefeld leer ist
+* Zeilen 24-26: Nutzung von __ngIf__ mit Bedingung __myForm.controls.password.errors?.minlength__. Die Bedingung ist wahr, wenn das Eingabefeld nicht leer ist und weniger als zehn Zeichen beinhaltet
 
 ### Diskussion
 
-Natürlich setzt Angular auch für Model-Driven Formulare entsprechende CSS-Klassen, die den Zustand eines Eingabefeldes kennzeichen.
+Natürlich setzt Angular auch für Model-Driven Formulare entsprechende CSS-Klassen, die den Zustand eines Eingabefeldes kennzeichnen.
 Welche CSS-Klassen uns zur Verfügung stehen, steht im Diskussionsteil des Rezeptes "[TDF: Formular-Felder und CSS-Klassen](#c04-form-css-classes)".
 
 Bei der Erklärung der Lösung haben wir einige Details weggelassen. Nun möchten wir auch diese Details erklären. Wir fangen mit dem Elvis-Operator (?.) an.
 
 #### Elvis-Operator
 
-Den Elvis-Operator haben wir in beiden Lösungen verwendet.
-Dieser kann uns helfen, wenn wir im Template mit Objekten arbeiten, die __null__ oder __undefined__ sein könnten.
-Da das controls-Objekt des Formulars am Anfang leer ist (__undefined__), nutzen wir den Elvis-Operator, um Exceptions zu vermeiden.
+Der Elvis-Operator kann uns helfen, wenn wir im Template mit Objekten arbeiten, die __null__ oder __undefined__ sein könnten.
 Wenn ein Eingabefeld gültig ist, ist das errors-Objekt des Controls __null__.
-Darum haben wir in beiden Lösungen den Elvis-Operator bei der Überprüfung der Gültigkeit des Passwort-Felds verwendet.
+Darum haben wir Elvis-Operator bei der Überprüfung der Gültigkeit des Passwort-Felds verwendet.
 
 #### controls-Objekt
 
@@ -92,8 +90,7 @@ Das controls-Objekt der ngForm-Instanz beinhaltet alle Controls des Formulars. W
 
 #### errors-Objekt
 
-In beiden Lösungen haben wir das errors-Objekt benutzt, um Bedingungen für die NgIf-Direktiven zu definieren.
-Dieses beinhaltet die Gründe weshalb ein Eingabefeld ungültig ist.
+Das errors-Objekt beinhaltet die Gründe weshalb ein Eingabefeld ungültig ist.
 Wenn z. B. das required-Attribut eines Eingabefeldes definiert und das Feld leer ist, beinhaltet das errors-Objekt die Eigenschaft "required" mit dem Wert __true__.
 Der Name der Eigenschaft, in unserem Beispiel "required", zeigt an, welche Validierung fehlschlägt.
 Dieser Fehlschlag ist der Grund für die Ungültigkeit des Eingabefeldes.

@@ -6,13 +6,13 @@ Ich möchte überprüfen, ob ein Eingabefeld mindestens einen Großbuchstaben be
 
 ### Zutaten
 
-* [Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
+* [MDF: Formular mit dem FormBuilder und Validierung](#c04-formbuilder-validation)
 * Validierungsfunktion, die überprüft, ob ein Eingabefeld mindestens einen Großbuchstaben beinhaltet
-* Anpassungen an der Komponente aus "Formular mit dem FormBuilder und Validierung"
+* Anpassungen an der app.component.ts-Datei
 
 ### Lösung
 
-Wir werden hier die gleichen Validierungsfunktionen wie im Rezept "Formular mit dem FormBuilder und Validierung" nutzen. Wir werden zusätzlich eine eigene Validierungsfunktion namens "containsCapital" implementieren.
+Wir werden hier die gleichen Validierungsfunktionen wie im Rezept "MDF: Formular mit dem FormBuilder und Validierung" nutzen. Wir werden zusätzlich eine eigene Validierungsfunktion namens "containsCapital" implementieren.
 
 {title="app.component.ts", lang=js}
 ```
@@ -27,7 +27,7 @@ import {
 ...
 
 export class AppComponent {
-  form: FormGroup;
+  myForm: FormGroup;
 
   constructor(builder: FormBuilder) {
     this.myForm = builder.group({
@@ -60,16 +60,16 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 20-29: Unsere Validierungsfunktion
-  * Zeile 20: Als Parameter erhält eine Validierungsfunktion immer eine Instanz der Control-Klasse. In diesem Fall ist die Instanz unser password-Control
+  * Zeile 20: Als Parameter erhält die Validierungsfunktion eine Instanz der FormControl-Klasse. In diesem Fall ist die Instanz unser password-Control
   * Zeile 22: Überprüfung, ob der Wert (__control.value__) des Controls einen Großbuchstaben beinhaltet
   * Zeile 23: Wenn das Eingabefeld einen gültigen Wert besitzt, geben wir __null__ zurück
-  * Zeile 25: Wenn das Eingabefeld einen ungültigen Wert besitzt, geben wir ein Objekt zurück
+  * Zeilen 25-27: Wenn das Eingabefeld einen ungültigen Wert besitzt, geben wir ein Objekt zurück
 
 ### Diskussion
 
 Wenn die Validierung fehlschlägt, muss die Validierungsfunktion ein nicht leeres Objekt zurückgeben.
 Wir erhalten auf dieses Objekt über das errors-Objekt des FormControls Zugriff.
-Dieses Objekt haben wir im Rezept "[Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors)" gesehen.
+Dieses Objekt haben wir im Rezept "[MDF: Fehlermeldungen für einzelne Formular-Felder anzeigen](#c04-input-field-errors-formbuilder)" gesehen.
 Solange das Passwort-Feld keinen Großbuchstaben enthält, hat das errors-Objekt eine Eigenschaft namens "containsCapital" mit Wert __true__.
 Wir hätten auch ein komplexeres Objekt zurückgeben können, genauso wie es die minLength-Validierungsfunktion tut.
 Wenn der Wert des Eingabefelds gültig ist, geben wir __null__ zurück.

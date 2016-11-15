@@ -14,7 +14,7 @@ Ich möchte, dass ein Submit nur dann möglich ist, wenn das Formular gültig is
 
 In dieser Lösung werden wir sehen, wie wir die Gültigkeit des Formulars im Template überprüfen können.
 Wir werden den Submit-Button deaktivieren, wenn das Formular ungültig ist.
-Dadurch wird das Submit-Event unterbunden, wenn nicht alle Formular-Felder gültig sind.
+Dadurch wird das Submit-Event unterbunden, solange nicht alle Formular-Felder gültig sind.
 
 {title="app.component.ts", lang=js}
 ```
@@ -33,7 +33,7 @@ import { Component } from '@angular/core';
           required
           minlength="10" />
       </label>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </form>
   `
 })
@@ -49,7 +49,7 @@ __Erklärung__:
 * Zeilen 12-14: Eingabefeld für das Passwort
   * Zeile 13: Mittels __required__ definieren wir das Eingabefeld als Pflichtfeld
   * Zeile 14: Mittels __minlength=`"`10`"`__ definieren wir, dass das Passwort mindestens zehn Zeichen lang sein muss
-* Zeile 16: Hier binden wir die disabled-Eigenschaft an den Ausdruck __!form.valid__. Wenn das Formular ungültig ist, wird der Button deaktiviert sein
+* Zeile 16: Hier binden wir die disabled-Eigenschaft an den Ausdruck __form.invalid__. Wenn das Formular ungültig ist, wird der Button deaktiviert sein
 
 ### Lösung 2
 
@@ -104,7 +104,7 @@ __Erklärung__:
 
 ### Diskussion
 
-Wie schon im Rezept "[Ein einfaches Formular implementieren](#c04-simple-form)" erwähnt, erhält jedes form-Tag eine Instanz der NgForm-Direktive.
+Wie schon im Rezept "[TDF: Ein einfaches Formular implementieren](#c04-simple-form)" erwähnt, erhält jedes form-Tag eine Instanz der NgForm-Direktive.
 Diese Instanz beinhaltet verschiedene Informationen über das Formular wie z. B. dessen Gültigkeitsstatus, dessen Controls und die Werte der Controls.
 Die Direktive hat eine exportAs-Eigenschaft mit dem Wert __`'`ngForm`'`__ (ein String).
 Den Wert der exportAs-Eigenschaft können wir im Template nutzen, um die Instanz der Direktive im Template zu referenzieren.

@@ -24,7 +24,7 @@
 ### Changed
 
 * Schreib-/Grammatikfehler Korrekturen
-* Die Rezepte wurden für Angular 2.x und angular-cli mit Webpack aktualisiert
+* Die Rezepte wurden für Angular 2.1.2 und angular-cli 1.0.0-beta.19-3 mit Webpack aktualisiert
 * Das Rezept "Formular mit dem FormBuilder und Validierung" hat jetzt 2 mögliche Lösungen
   * Lösung 1 Submit-Button mit disabled-Eigenschaft
   * Lösung 2 Submit-Methode mit Gültigkeitsüberprüfung

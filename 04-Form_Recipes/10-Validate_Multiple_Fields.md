@@ -82,7 +82,7 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeilen 15 und 18: Hier sagen wir Angular, dass die zwei Password-Eingabefelder zu der "FormGroup" mit Name "passwords" gehören
-* Zeilen 21-23: Hier nutzen wir __ngIf__ mit der Bedingung __myForm.controls.passwords.hasError('passwordsNotEqual')__. Damit fragen wir die FormGroup, ob sie einen Fehler namens "passwordsNotEqual" hat. Wenn die zwei Eingabefelder der FormGroup nicht den gleichen Wert haben, wird die Bedingung __true__ sein
+* Zeilen 21-23: Hier nutzen wir die Bedingung __myForm.controls.passwords.hasError('passwordsNotEqual')__. Damit fragen wir die FormGroup, ob sie einen Fehler namens "passwordsNotEqual" hat. Wenn die zwei Eingabefelder der FormGroup nicht den gleichen Wert haben, wird die Bedingung __true__ sein
 * Zeilen 34-49: Definition einer "FormGroup" namens "passwords"
   * Zeilen 35-39: Die Controls der FormGroup
   * Zeilen 41-48: Unsere Validierungsfunktion

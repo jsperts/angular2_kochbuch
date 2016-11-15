@@ -49,7 +49,7 @@ Wie auch in den vorherigen zwei Rezepten können wir hier die Information, ob ei
 
 ### Code
 
-Code auf Github: [08-List\_Recipes/03-First\_Last\_ngFor\_Element](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/03-First_Last_ngFor_Element).
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/03-First_Last_ngFor_Element).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive gezeigt.
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/03-First_Last_ngFor_Element/index.html)

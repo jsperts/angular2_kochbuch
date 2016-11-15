@@ -69,7 +69,7 @@ In allen anderen Fällen z. B. beim `ng serve` wird die environment.ts-Datei be
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/05-Production\_Build](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/05-Production_Build)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/05-Production_Build)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/05-Production_Build/index.html)
 

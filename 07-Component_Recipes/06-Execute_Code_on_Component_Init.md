@@ -57,7 +57,7 @@ Im Allgemeinen wird empfohlen den OnInit-Hook für Initialisierungscode und die 
 
 ### Code
 
-Code auf Github [07-Component\_Recipes/06-Execute\_Code\_on\_Component\_Init](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/06-Execute_Code_on_Component_Init)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/06-Execute_Code_on_Component_Init)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/06-Execute_Code_on_Component_Init/index.html)
 

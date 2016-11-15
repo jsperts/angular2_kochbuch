@@ -42,7 +42,7 @@ Hier zeigen wir den Index nur in der View an. Natürlich können wir die lokale 
 
 ### Code
 
-Code auf Github: [08-List\_Recipes/01-ngFor\_Element\_Index](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/01-ngFor_Element_Index).
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/08-List_Recipes/01-ngFor_Element_Index).
 Dort werden auch die weiteren möglichen Schreibweisen der NgFor-Direktive mit Index gezeigt.
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/08-List_Recipes/01-ngFor_Element_Index/index.html)

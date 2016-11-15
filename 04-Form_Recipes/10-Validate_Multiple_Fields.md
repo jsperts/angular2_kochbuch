@@ -124,7 +124,7 @@ Das value-Objekt sieht in diesem Rezept so aus:
 
 ### Code
 
-Code auf Github: [04-Form\_Recipes/10-Validate\_Multiple\_Fields](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/10-Validate_Multiple_Fields)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/04-Form_Recipes/10-Validate_Multiple_Fields)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/04-Form_Recipes/10-Validate_Multiple_Fields/index.html)
 

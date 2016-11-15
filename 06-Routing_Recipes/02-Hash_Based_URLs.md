@@ -60,7 +60,7 @@ Eine vollständige Erklärung, wie Dependency Injection funktioniert und was wir
 
 ### Code
 
-Code auf Github: [06-Routing\_Recipes/02-Hash\_Based\_URLs](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/02-Hash_Based_URLs)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/02-Hash_Based_URLs)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/06-Routing_Recipes/02-Hash_Based_URLs/index.html)
 

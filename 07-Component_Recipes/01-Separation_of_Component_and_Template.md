@@ -73,7 +73,7 @@ Ich persönlich versuche immer kleine Komponenten mit wenig HTML (10-15 Zeilen) 
 
 ### Code
 
-Code auf Github: [07-Component\_Recipes/01-Separation\_of\_Component\_and\_Template](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Separation_of_Component_and_Template)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/07-Component_Recipes/01-Separation_of_Component_and_Template)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/07-Component_Recipes/01-Separation_of_Component_and_Template/index.html)
 

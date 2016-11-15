@@ -112,8 +112,12 @@ Ausführlichere Informationen zu relativen bzw. absoluten Pfaden gibt es in der 
 
 ### Code
 
-Code auf Github: [06-Routing\_Recipes/06-Routing\_Parameters](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/06-Routing_Parameters)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/06-Routing_Parameters)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/06-Routing_Recipes/06-Routing_Parameters/index.html).
 Nutzt Hash-Basierte URLs: "[Hash-Basierte URLs für das Routing](#c06-hash-based-url)"
+
+### Weitere Ressourcen
+
+* Offizielle Dokumentation für den [ActivatedRoute-Service](https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html) auf der Angular 2 Webseite
 

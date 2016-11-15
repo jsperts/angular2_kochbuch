@@ -145,7 +145,7 @@ Wie das geht wird im Rezept "[Hash-Basiert URLs für das Routing](#c06-hash-base
 
 ### Code
 
-Code auf Github: [06-Routing\_Recipes/01-Routing\_Basics](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/01-Routing_Basics)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/06-Routing_Recipes/01-Routing_Basics)
 
 ### Weitere Ressourcen
 

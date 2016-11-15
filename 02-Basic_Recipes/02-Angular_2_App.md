@@ -136,7 +136,7 @@ Die Aufspaltung erhöht also die Wiederverwendbarkeit des Moduls.
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/02-Angular\_App](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Angular_App)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/02-Angular_App)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/02-Angular_App/index.html)
 

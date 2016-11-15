@@ -92,7 +92,7 @@ Natürlich würden wir in so einem Fall auch für jedes Feature ein eigenes Angu
 
 ### Code
 
-Code auf Github: [02-Basic\_Recipes/03-Define\_Component](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Define_Component)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/02-Basic_Recipes/03-Define_Component)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/02-Basic_Recipes/03-Define_Component/index.html)
 

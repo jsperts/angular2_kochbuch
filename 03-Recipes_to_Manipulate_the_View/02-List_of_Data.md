@@ -66,7 +66,7 @@ Diese können wir nur innerhalb des Elementes mit dem ngFor nutzen. Sie hält ei
 
 ### Code
 
-Code auf Github: [03-Recipes\_to\_Manipulate\_the\_View/02-List\_of\_Data](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/02-List_of_Data)
+[Code auf Github](https://github.com/jsperts/angular2_kochbuch_code/tree/master/03-Recipes_to_Manipulate_the_View/02-List_of_Data)
 
 Live Demo auf [angular2kochbuch.de](http://angular2kochbuch.de/examples/code/03-Recipes_to_Manipulate_the_View/02-List_of_Data/index.html)
 

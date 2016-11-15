@@ -98,7 +98,7 @@ export class ProductComponent {
 
 __Erklärung__:
 
-* Zeile 11: Hier lesen wir den id-Parameter aus der aktuellen Route. Der String, hier __'id'__ muss der gleiche sein wie der String nach dem Doppelpunkt in der Pfaddefinition (app.routes.ts-Datei)
+* Zeile 11: Hier lesen wir den id-Parameter aus der aktuellen Route. Der String, hier __'id'__ muss der gleiche sein wie der String nach dem Doppelpunkt in der Pfaddefinition (app.routes.ts-Datei). Alternativ können wir die id-Eigenschaft in der ngOnInit-Methode lesen. Mehr Informationen über diese Methode gibt es im Rezept "[Code ausführen bei der Initialisierung einer Komponente](#c07-on-init)"
 
 ### Diskussion
 

@@ -84,7 +84,7 @@ export class AppComponent {
 __Erklärung__:
 
 * Zeile 9: Hier definieren wir den "DataService" als Abhängigkeit unserer Komponente. Zur Laufzeit wird die Konstruktorfunktion eine Instanz des "DataService" erhalten
-* Zeile 10: Hier nutzen wir die getData-Methode der dataService-Instanz
+* Zeile 10: Hier nutzen wir die getData-Methode der dataService-Instanz. Statt die Daten in der Konstruktorfunktion zu holen, ist es besser die Daten in der ngOnInit-Methode zu holen. Die ngOnInit-Methode wird im Rezept "[Code ausführen bei der Initialisierung einer Komponente](#c07-on-init)" gezeigt
 
 ### Diskussion
 

@@ -700,5 +700,5 @@ tsc -p Hauptverzeichnis
 ```
 
 aufrufen, wobei __Hauptverzeichnis__ der Pfad zu dem Verzeichnis ist, in dem die tsconfig.json-Datei liegt.
-Da unsere config-Datei die files-Eigenschaft nicht setzt, werden alle \*.ts-Dateien kompiliert, die sich im Haupt- und in den Unterverzeichnissen befinden. Das TypeScript-Handbuch bietet weitere Informationen über die [tsconfig.json-Datei](http://www.typescriptlang.org/docs/handbook/tsconfig.json.html) an und die Eigenschaften, die diese enthalten kann.
+Da unsere config-Datei die files-Eigenschaft nicht setzt, werden alle \*.ts-Dateien kompiliert, die sich im Haupt- und in den Unterverzeichnissen befinden. Das TypeScript-Handbuch bietet weitere Informationen über die [tsconfig.json-Datei](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html) an und die Eigenschaften, die diese enthalten kann.
 

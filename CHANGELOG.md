@@ -1,5 +1,17 @@
 # Change Log
 
+## [v1.0.1] - 2016-11-17
+
+### Added
+
+### Changed
+
+* Link fixes
+
+### Removed
+
+### Deprecated
+
 ## [v1.0.0] - 2016-11-15
 
 ### Added
